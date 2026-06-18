@@ -1,0 +1,15 @@
+includes:
+	- vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+	level: 5
+	paths:
+		- includes
+		- elallas-for-woo.php
+	bootstrapFiles:
+		- elallas-for-woo.php
+	scanDirectories:
+		- vendor/woocommerce
+	ignoreErrors:
+		# WooCommerce / third-party classes are not always present at analysis time.
+		- '#Call to method [a-zA-Z0-9_]+\(\) on an unknown class (WC_Email|WC_Order|WC_Order_Item)#'

@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "elallas/withdrawal-form",
+	"version": "1.0.0",
+	"title": "Elállási űrlap",
+	"category": "widgets",
+	"icon": "undo",
+	"description": "Online elállási nyilatkozat űrlap megjelenítése a látogatók számára.",
+	"textdomain": "elallas-for-woo",
+	"supports": {
+		"align": false,
+		"html": false,
+		"multiple": false
+	},
+	"editorScript": "file:./editor.js",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,105 @@
+/* Elallas for WooCommerce — front-end styles */
+
+.elallas-form {
+	max-width: 720px;
+	margin: 1.5em 0;
+}
+
+.elallas-form h2 {
+	margin-bottom: .5em;
+}
+
+.elallas-field {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1em;
+}
+
+.elallas-field label {
+	font-weight: 600;
+	margin-bottom: .25em;
+}
+
+.elallas-field input,
+.elallas-field textarea {
+	padding: .5em;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.elallas-field .required {
+	color: #d63638;
+}
+
+.elallas-order-summary {
+	list-style: none;
+	margin: 0 0 1.25em;
+	padding: 1em;
+	background: #f6f7f7;
+	border-radius: 6px;
+}
+
+.elallas-order-summary li {
+	margin: 0 0 .35em;
+}
+
+.elallas-items {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 1.25em;
+}
+
+.elallas-items th,
+.elallas-items td {
+	text-align: left;
+	padding: .5em;
+	border-bottom: 1px solid #e2e4e7;
+}
+
+.elallas-items .elallas-sku {
+	color: #777;
+	font-size: .9em;
+}
+
+.elallas-declaration {
+	margin: 1em 0;
+	padding: .75em 1em;
+	border-left: 4px solid #2271b1;
+	background: #f0f6fc;
+}
+
+.elallas-consent {
+	margin: .5em 0;
+}
+
+.elallas-consent label {
+	display: flex;
+	gap: .5em;
+	align-items: flex-start;
+}
+
+.elallas-notice {
+	padding: .75em 1em;
+	border-radius: 4px;
+	margin-bottom: 1em;
+}
+
+.elallas-notice-error {
+	background: #fcf0f1;
+	border: 1px solid #d63638;
+	color: #8a1f21;
+}
+
+.elallas-notice-warning {
+	background: #fcf9e8;
+	border: 1px solid #dba617;
+	color: #674e00;
+}
+
+.elallas-actions {
+	margin-top: 1.5em;
+}
+
+.elallas-confirm {
+	font-weight: 700;
+}
