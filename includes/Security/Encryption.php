@@ -10,7 +10,12 @@ declare(strict_types=1);
 namespace LightweightPlugins\Elallas\Security;
 
 /**
- * Hashes and (reversibly) encrypts personal data using WordPress salts.
+ * Hashes and (reversibly) encrypts personal data.
+ *
+ * Keys are derived from wp_salt('auth') (which WordPress auto-generates and
+ * persists when the AUTH_KEY/AUTH_SALT constants are missing), with separate
+ * derived keys for the lookup HMAC and the cipher. Encryption is authenticated
+ * (AES-256-GCM) so ciphertext cannot be tampered with.
  */
 final class Encryption {
 
@@ -21,11 +26,11 @@ final class Encryption {
 	 * @return string 64-char hex string.
 	 */
 	public static function hash( string $value ): string {
-		return hash_hmac( 'sha256', strtolower( trim( $value ) ), self::key() );
+		return hash_hmac( 'sha256', strtolower( trim( $value ) ), self::hmac_key() );
 	}
 
 	/**
-	 * Encrypt a value (AES-256-CBC) — returns base64(iv.cipher).
+	 * Encrypt a value with AES-256-GCM — returns base64( iv . tag . cipher ).
 	 *
 	 * @param string $value Plain value.
 	 * @return string
@@ -35,10 +40,11 @@ final class Encryption {
 			return '';
 		}
 
-		$iv     = random_bytes( 16 );
-		$cipher = openssl_encrypt( $value, 'aes-256-cbc', self::key(), OPENSSL_RAW_DATA, $iv );
+		$iv     = random_bytes( 12 );
+		$tag    = '';
+		$cipher = openssl_encrypt( $value, 'aes-256-gcm', self::cipher_key(), OPENSSL_RAW_DATA, $iv, $tag );
 
-		return false === $cipher ? '' : base64_encode( $iv . $cipher );
+		return false === $cipher ? '' : base64_encode( $iv . $tag . $cipher );
 	}
 
 	/**
@@ -54,26 +60,33 @@ final class Encryption {
 
 		$raw = base64_decode( $payload, true );
 
-		if ( false === $raw || strlen( $raw ) <= 16 ) {
+		if ( false === $raw || strlen( $raw ) <= 28 ) {
 			return '';
 		}
 
-		$iv     = substr( $raw, 0, 16 );
-		$cipher = substr( $raw, 16 );
-		$plain  = openssl_decrypt( $cipher, 'aes-256-cbc', self::key(), OPENSSL_RAW_DATA, $iv );
+		$iv     = substr( $raw, 0, 12 );
+		$tag    = substr( $raw, 12, 16 );
+		$cipher = substr( $raw, 28 );
+		$plain  = openssl_decrypt( $cipher, 'aes-256-gcm', self::cipher_key(), OPENSSL_RAW_DATA, $iv, $tag );
 
 		return false === $plain ? '' : $plain;
 	}
 
 	/**
-	 * Encryption/hash key derived from WordPress auth salts.
+	 * 32-byte raw key for the cipher.
 	 *
 	 * @return string
 	 */
-	private static function key(): string {
-		$salt = defined( 'AUTH_KEY' ) ? AUTH_KEY : 'lw-elallas';
-		$salt .= defined( 'AUTH_SALT' ) ? AUTH_SALT : 'fallback';
+	private static function cipher_key(): string {
+		return hash_hmac( 'sha256', 'elallas:cipher', wp_salt( 'auth' ), true );
+	}
 
-		return hash( 'sha256', $salt, true );
+	/**
+	 * Key for the deterministic lookup HMAC (distinct from the cipher key).
+	 *
+	 * @return string
+	 */
+	private static function hmac_key(): string {
+		return hash_hmac( 'sha256', 'elallas:hmac', wp_salt( 'auth' ) );
 	}
 }

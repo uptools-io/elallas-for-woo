@@ -4,7 +4,7 @@ Tags: woocommerce, withdrawal, refund, gdpr, compliance
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 8.0
@@ -105,6 +105,15 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 6. Onboarding wizard
 
 == Changelog ==
+
+= 1.0.1 =
+* Security: PDF statements now use an unguessable filename so they cannot be enumerated on servers that ignore .htaccess (Nginx/LiteSpeed)
+* Security: document download tokens are now random, per-document and revocable (no longer derived only from the document ID)
+* Security: authenticated encryption (AES-256-GCM) for PII at rest, with wp_salt-derived, purpose-separated keys
+* Security: the confirm REST endpoint is now rate-limited, plus a cross-IP per-order throttle on the public flow
+* Security: honeypot now uses a rotating field name and a minimum form-fill-time check
+* Security: logged-in users may only act on their own orders
+* Fix: the withdrawal-statement PDF is now correctly attached to the customer confirmation email
 
 = 1.0.0 =
 * New: Online withdrawal page and button ("Elállás a szerződéstől") with shortcode `[elallas_form]`

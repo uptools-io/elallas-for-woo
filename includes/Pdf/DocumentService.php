@@ -78,7 +78,8 @@ final class DocumentService {
 			return 0;
 		}
 
-		$file_name = 'statement-' . sanitize_file_name( $case_number ) . '.pdf';
+		// Unguessable filename so direct enumeration fails where .htaccess is ignored (Nginx/LiteSpeed).
+		$file_name = 'statement-' . sanitize_file_name( $case_number ) . '-' . wp_generate_password( 16, false ) . '.pdf';
 		$abs_path  = $base_dir . $file_name;
 
 		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents
@@ -92,6 +93,7 @@ final class DocumentService {
 				'document_type' => self::DOC_TYPE,
 				'file_path'     => self::DIR . $file_name,
 				'file_hash'     => hash( 'sha256', $pdf ),
+				'token'         => wp_generate_password( 40, false ),
 			]
 		);
 	}
@@ -118,26 +120,38 @@ final class DocumentService {
 	/**
 	 * Build a token-gated download URL for a document.
 	 *
+	 * Uses the document's random, per-row token (unguessable, revocable, not
+	 * reconstructable from the ID).
+	 *
 	 * @param int $document_id Document ID.
-	 * @return string
+	 * @return string Download URL, or '' if the document/token is missing.
 	 */
 	public static function download_url( int $document_id ): string {
+		$doc = DocumentRepository::find( $document_id );
+
+		if ( null === $doc || empty( $doc->token ) ) {
+			return '';
+		}
+
 		return add_query_arg(
 			[
 				'elallas_doc' => $document_id,
-				'token'       => self::token( $document_id ),
+				'token'       => (string) $doc->token,
 			],
 			home_url( '/' )
 		);
 	}
 
 	/**
-	 * Compute the HMAC token for a document download URL.
+	 * Verify a supplied download token against the stored per-document token.
 	 *
-	 * @param int $document_id Document ID.
-	 * @return string
+	 * @param int    $document_id Document ID.
+	 * @param string $token       Supplied token.
+	 * @return bool
 	 */
-	public static function token( int $document_id ): string {
-		return hash_hmac( 'sha256', (string) $document_id, wp_salt( 'auth' ) );
+	public static function verify( int $document_id, string $token ): bool {
+		$doc = DocumentRepository::find( $document_id );
+
+		return null !== $doc && ! empty( $doc->token ) && hash_equals( (string) $doc->token, $token );
 	}
 }

@@ -162,6 +162,7 @@ final class Schema {
 			document_type VARCHAR(50) NOT NULL DEFAULT 'withdrawal_statement',
 			file_path VARCHAR(255) NOT NULL DEFAULT '',
 			file_hash CHAR(64) NOT NULL DEFAULT '',
+			token VARCHAR(64) NOT NULL DEFAULT '',
 			created_at DATETIME NOT NULL,
 			PRIMARY KEY (id),
 			KEY case_id (case_id)

@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.0.1] - 2026-06-18
+
+### Security
+- PDF statements use an unguessable filename so they cannot be enumerated on servers that ignore `.htaccess` (Nginx/LiteSpeed)
+- Document download tokens are now random, per-document and revocable (no longer derived only from the document ID)
+- Authenticated encryption (AES-256-GCM) for PII at rest, with `wp_salt`-derived, purpose-separated keys
+- The `confirm` REST endpoint is now rate-limited; added a cross-IP per-order throttle across the public flow
+- Honeypot uses a rotating field name plus a signed minimum form-fill-time check
+- Logged-in users may only act on their own orders
+
+### Fixed
+- The withdrawal-statement PDF is now correctly attached to the customer confirmation email
+
+### Removed
+- Unused `immutable_audit` option (the audit log is already append-only)
+
 ## [1.0.0] - 2026-06-18
 
 ### Added

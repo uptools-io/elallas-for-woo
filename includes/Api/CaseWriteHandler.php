@@ -35,12 +35,14 @@ final class CaseWriteHandler {
 	 * @return WP_REST_Response
 	 */
 	public function create( WP_REST_Request $request ): WP_REST_Response {
-		if ( ! Options::get( 'enabled' ) || RateLimiter::too_many( 'rest_cases_create' ) ) {
+		$order_number = sanitize_text_field( (string) $request->get_param( 'order_number' ) );
+
+		if ( ! Options::get( 'enabled' ) || RateLimiter::too_many( 'rest_cases_create' ) || RateLimiter::too_many_global( 'order_' . $order_number ) ) {
 			return $this->neutral();
 		}
 
 		$email  = sanitize_email( (string) $request->get_param( 'email' ) );
-		$order  = OrderAdapter::get_order_by_number( sanitize_text_field( (string) $request->get_param( 'order_number' ) ) );
+		$order  = OrderAdapter::get_order_by_number( $order_number );
 		$result = $order ? ( new EligibilityChecker() )->check( $order, $email ) : null;
 
 		if ( null === $order || ! $result instanceof EligibilityResult || ! $result->eligible ) {
@@ -101,9 +103,17 @@ final class CaseWriteHandler {
 	 * @return WP_REST_Response
 	 */
 	public function confirm( WP_REST_Request $request ): WP_REST_Response {
+		if ( RateLimiter::too_many( 'rest_confirm' ) ) {
+			return $this->neutral();
+		}
+
 		$case = CaseRepository::find( (int) $request['id'] );
 
 		if ( null === $case ) {
+			return $this->neutral();
+		}
+
+		if ( RateLimiter::too_many_global( 'order_' . $case->order_id ) ) {
 			return $this->neutral();
 		}
 

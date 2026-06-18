@@ -144,10 +144,10 @@ class CustomerConfirmation extends \WC_Email {
 			return $attachments;
 		}
 
-		$document = \LightweightPlugins\Elallas\Pdf\DocumentService::generate( $this->object->id );
+		$document_id = \LightweightPlugins\Elallas\Pdf\DocumentService::generate( (int) $this->object->id );
 
-		if ( is_object( $document ) && method_exists( $document, 'get_file_path' ) ) {
-			$path = (string) $document->get_file_path();
+		if ( $document_id > 0 ) {
+			$path = \LightweightPlugins\Elallas\Pdf\DocumentService::get_file_path( $document_id );
 
 			if ( '' !== $path && file_exists( $path ) ) {
 				$attachments[] = $path;

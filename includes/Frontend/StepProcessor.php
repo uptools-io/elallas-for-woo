@@ -33,7 +33,7 @@ final class StepProcessor {
 	 * @return array{view: string, data: array<string, mixed>}
 	 */
 	public function identify(): array {
-		if ( RateLimiter::too_many( 'identify' ) ) {
+		if ( RateLimiter::too_many( 'identify' ) || RateLimiter::too_many_global( 'order_' . FormRequest::order_number() ) ) {
 			return $this->denied();
 		}
 
@@ -93,6 +93,10 @@ final class StepProcessor {
 	 * @return array{view: string, data: array<string, mixed>}
 	 */
 	public function confirm(): array {
+		if ( RateLimiter::too_many_global( 'order_' . FormRequest::order_number() ) ) {
+			return $this->denied();
+		}
+
 		[ $order, $email, $order_number, $result ] = $this->revalidate();
 
 		if ( null === $order ) {

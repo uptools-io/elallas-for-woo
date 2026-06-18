@@ -42,12 +42,13 @@ final class IdentifyController {
 	 * @return WP_REST_Response
 	 */
 	public function handle( WP_REST_Request $request ): WP_REST_Response {
-		if ( ! Options::get( 'enabled' ) || RateLimiter::too_many( 'rest_identify' ) ) {
+		$order_number = sanitize_text_field( (string) $request->get_param( 'order_number' ) );
+
+		if ( ! Options::get( 'enabled' ) || RateLimiter::too_many( 'rest_identify' ) || RateLimiter::too_many_global( 'order_' . $order_number ) ) {
 			return $this->neutral();
 		}
 
-		$order_number = sanitize_text_field( (string) $request->get_param( 'order_number' ) );
-		$email        = sanitize_email( (string) $request->get_param( 'email' ) );
+		$email = sanitize_email( (string) $request->get_param( 'email' ) );
 
 		$order  = OrderAdapter::get_order_by_number( $order_number );
 		$result = $order ? ( new EligibilityChecker() )->check( $order, $email ) : null;

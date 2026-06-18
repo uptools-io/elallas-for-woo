@@ -24,7 +24,7 @@ final class Activator {
 	/**
 	 * Current DB version.
 	 */
-	private const DB_VERSION = '1.0.0';
+	private const DB_VERSION = '1.0.1';
 
 	/**
 	 * Daily retention cron hook.

@@ -63,7 +63,7 @@ final class DownloadHandler {
 			return true;
 		}
 
-		return $document_id > 0 && hash_equals( DocumentService::token( $document_id ), $token );
+		return $document_id > 0 && DocumentService::verify( $document_id, $token );
 	}
 
 	/**

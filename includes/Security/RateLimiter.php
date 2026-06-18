@@ -38,6 +38,30 @@ final class RateLimiter {
 	}
 
 	/**
+	 * Whether a global (cross-IP) counter has exceeded its limit.
+	 *
+	 * Used for per-order throttling so an IP pool cannot brute-force the billing
+	 * email against a single order. Increments the counter as a side effect.
+	 *
+	 * @param string $action Action slug (e.g. "order_123").
+	 * @param int    $max    Maximum attempts within the window.
+	 * @param int    $window Window length in seconds.
+	 * @return bool True if the limit is exceeded.
+	 */
+	public static function too_many_global( string $action, int $max = 20, int $window = 3600 ): bool {
+		$key   = 'lw_elallas_rlg_' . md5( $action );
+		$count = (int) get_transient( $key );
+
+		if ( $count >= $max ) {
+			return true;
+		}
+
+		set_transient( $key, $count + 1, $window );
+
+		return false;
+	}
+
+	/**
 	 * Transient key for the current client and action.
 	 *
 	 * @param string $action Action slug.

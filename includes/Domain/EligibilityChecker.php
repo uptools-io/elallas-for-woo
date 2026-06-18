@@ -45,6 +45,11 @@ final class EligibilityChecker {
 			$reasons[] = __( 'A rendeléshez már tartozik folyamatban lévő elállási ügy.', 'elallas-for-woo' );
 		}
 
+		// Logged-in users may only act on their own orders (guests fall back to email match).
+		if ( $this->ownership_mismatch( $order ) ) {
+			$reasons[] = __( 'A rendelés másik fiókhoz tartozik.', 'elallas-for-woo' );
+		}
+
 		// Deadline handling: 'block' refuses expired orders; other modes flag for manual review.
 		if ( DeadlineStatus::EXPIRED === $deadline_status && 'block' === Options::get( 'expired_handling' ) ) {
 			$reasons[] = __( 'Az elállási határidő lejárt.', 'elallas-for-woo' );
@@ -75,6 +80,18 @@ final class EligibilityChecker {
 		$allowed = (array) Options::get( 'eligible_statuses', [ 'processing', 'completed' ] );
 
 		return in_array( $order->get_status(), $allowed, true );
+	}
+
+	/**
+	 * Whether a logged-in user is trying to act on someone else's order.
+	 *
+	 * @param \WC_Order $order Order.
+	 * @return bool
+	 */
+	private function ownership_mismatch( \WC_Order $order ): bool {
+		$customer_id = (int) $order->get_customer_id();
+
+		return $customer_id > 0 && is_user_logged_in() && get_current_user_id() !== $customer_id;
 	}
 
 	/**

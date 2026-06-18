@@ -3,7 +3,7 @@
  * Plugin Name:       Elallas for WooCommerce
  * Plugin URI:        https://github.com/uptools-io/elallas-for-woo
  * Description:       Online withdrawal (elállás) button and case management for WooCommerce — compliant with Directive (EU) 2023/2673 and 415/2025. (XII. 23.) Korm. rendelet.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 6.4
  * Requires PHP:      8.2
  * Author:            uptools.io
@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin constants.
-define( 'ELALLAS_FOR_WOO_VERSION', '1.0.0' );
+define( 'ELALLAS_FOR_WOO_VERSION', '1.0.1' );
 define( 'ELALLAS_FOR_WOO_FILE', __FILE__ );
 define( 'ELALLAS_FOR_WOO_PATH', plugin_dir_path( __FILE__ ) );
 define( 'ELALLAS_FOR_WOO_URL', plugin_dir_url( __FILE__ ) );
