@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.4] - 2026-06-19
+
+### Fixed
+- Admin case-detail document download link pointed at an unhandled `download_doc` parameter (dead since the initial build). It now uses the token-gated `DownloadHandler` (`?elallas_doc=ID`), with admins authorised via the `manage_woocommerce` capability.
+
 ## [1.0.3] - 2026-06-19
 
 ### Removed

@@ -131,20 +131,11 @@ final class CaseDetailSections {
 		echo '<h2>' . esc_html__( 'Dokumentumok', 'elallas-for-woo' ) . '</h2><ul>';
 
 		foreach ( DocumentRepository::for_case( $case->id ) as $doc ) {
-			$url = wp_nonce_url(
-				add_query_arg(
-					[
-						'page'        => 'elallas-for-woo',
-						'view'        => 'case',
-						'case_id'     => $case->id,
-						'download_doc' => (int) ( $doc->id ?? 0 ),
-					],
-					admin_url( 'admin.php' )
-				),
-				'elallas_download_doc'
-			);
+			// Served by DownloadHandler (?elallas_doc=ID): admins are authorised via the
+			// manage_woocommerce capability, so no token is needed here.
+			$url = add_query_arg( 'elallas_doc', (int) ( $doc->id ?? 0 ), home_url( '/' ) );
 			printf(
-				'<li><a href="%s">%s</a></li>',
+				'<li><a href="%s" target="_blank" rel="noopener">%s</a></li>',
 				esc_url( $url ),
 				esc_html( (string) ( $doc->document_type ?? '' ) )
 			);

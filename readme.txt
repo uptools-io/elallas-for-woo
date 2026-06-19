@@ -4,7 +4,7 @@ Tags: woocommerce, withdrawal, refund, gdpr, compliance
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 8.0
@@ -105,6 +105,9 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 6. Onboarding wizard
 
 == Changelog ==
+
+= 1.0.4 =
+* Fix: the document download link on the admin case-detail page now works — it pointed at an unhandled `download_doc` parameter; it now uses the token-gated download handler (admins are authorised via capability). This was broken since the initial release, not a regression.
 
 = 1.0.3 =
 * Change: removed the automatic header/footer link (it injected a stray, unstyled link above the theme header). Place the withdrawal link yourself via the shortcode, Gutenberg block, Elementor widget, or a menu — the My Account, order-details and order-email surfaces are unchanged.
