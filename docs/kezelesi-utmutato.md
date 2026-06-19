@@ -15,7 +15,7 @@ Korm. rendelet módosítása, **2026. június 19-től** alkalmazandó) szerint.
 |---|---|
 | WordPress | 6.4+ |
 | WooCommerce | 8.0+ (HPOS támogatott) |
-| PHP | 8.2+ |
+| PHP | 8.0+ |
 
 ## 2. Telepítés
 
