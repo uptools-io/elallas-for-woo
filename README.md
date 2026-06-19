@@ -1,4 +1,4 @@
-# Elallas for WooCommerce
+# Elállás for WooCommerce
 
 A free, GPL-2.0 WooCommerce plugin that provides the **online withdrawal function** (online elállási funkció) consumers can use to declare their intent to withdraw from a distance contract, and gives the merchant a logged, order-linked, auditable case-management workflow. It is not "just a button": every declaration becomes a verifiable, timestamped case the merchant can administer end to end. HPOS compatible.
 

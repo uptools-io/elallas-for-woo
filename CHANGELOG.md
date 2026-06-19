@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.6] - 2026-06-19
+
+### Changed
+- Plugin display name is now "Elállás for WooCommerce" (with the Hungarian accent). The slug (`elallas-for-woo`), text domain, namespace and Composer package name are unchanged.
+
 ## [1.0.5] - 2026-06-19
 
 ### Added

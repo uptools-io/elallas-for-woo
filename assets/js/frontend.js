@@ -1,4 +1,4 @@
-/* Elallas for WooCommerce — front-end progressive enhancement.
+/* Elállás for WooCommerce — front-end progressive enhancement.
  * Core flow works without JS; this only adds quantity convenience controls.
  */
 ( function () {

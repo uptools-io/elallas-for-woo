@@ -2,7 +2,7 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Elallas for WooCommerce 1.0.0\n"
+"Project-Id-Version: Elállás for WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/elallas-for-woo\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: elallas-for-woo.php
-msgid "Elallas for WooCommerce"
+msgid "Elállás for WooCommerce"
 msgstr ""
 
 #. Plugin URI of the plugin
@@ -239,7 +239,7 @@ msgid "Szűrés"
 msgstr ""
 
 #: includes/Admin/NoticeManager.php:58
-msgid "Elallas for WooCommerce:"
+msgid "Elállás for WooCommerce:"
 msgstr ""
 
 #: includes/Admin/NoticeManager.php:59
@@ -702,7 +702,7 @@ msgid "Státusz módosítva: %1$s → %2$s"
 msgstr ""
 
 #: includes/Domain/CaseService.php:171
-msgid "Elállási nyilatkozat érkezett (Elallas for WooCommerce)."
+msgid "Elállási nyilatkozat érkezett (Elállás for WooCommerce)."
 msgstr ""
 
 #: includes/Domain/EligibilityChecker.php:36

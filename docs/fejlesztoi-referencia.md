@@ -1,4 +1,4 @@
-# Elallas for WooCommerce — Fejlesztői referencia
+# Elállás for WooCommerce — Fejlesztői referencia
 
 PSR-4, `LightweightPlugins\Elallas\` névtér, `includes/` mappa. HPOS-kompatibilis (minden
 rendelés-hozzáférés WooCommerce CRUD-on keresztül megy, az `OrderAdapter`-ben).

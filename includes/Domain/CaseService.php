@@ -169,7 +169,7 @@ final class CaseService {
 		$order->update_meta_data( '_lw_elallas_has_case', 'yes' );
 		$order->update_meta_data( '_lw_elallas_case_ids', array_values( array_unique( array_map( 'intval', $case_ids ) ) ) );
 		$order->update_meta_data( '_lw_elallas_deadline_status', $deadline_status );
-		$order->add_order_note( __( 'Elállási nyilatkozat érkezett (Elallas for WooCommerce).', 'elallas-for-woo' ) );
+		$order->add_order_note( __( 'Elállási nyilatkozat érkezett (Elállás for WooCommerce).', 'elallas-for-woo' ) );
 		$order->save();
 	}
 }

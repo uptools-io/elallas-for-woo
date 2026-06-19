@@ -1,10 +1,10 @@
-=== Elallas for WooCommerce ===
+=== Elállás for WooCommerce ===
 Contributors: uptools
 Tags: woocommerce, withdrawal, refund, gdpr, compliance
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 8.0
@@ -14,7 +14,7 @@ Compliant online withdrawal (elállás) button and audited case management for W
 
 == Description ==
 
-Elallas for WooCommerce adds the **online withdrawal function** (online elállási funkció) that distance sellers must provide, and turns each declaration into a logged, order-linked, auditable case for the merchant. It is not "just a button": it is a legally defensible, verifiable, timestamped process plus an administrable workflow.
+Elállás for WooCommerce adds the **online withdrawal function** (online elállási funkció) that distance sellers must provide, and turns each declaration into a logged, order-linked, auditable case for the merchant. It is not "just a button": it is a legally defensible, verifiable, timestamped process plus an administrable workflow.
 
 = Legal basis =
 
@@ -50,7 +50,7 @@ The function implements the requirements introduced by **Directive (EU) 2023/267
 
 = By uptools.io =
 
-Elallas for WooCommerce is built by [uptools.io](https://uptools.io) — lightweight WordPress plugins with minimal footprint, no upsells and no tracking.
+Elállás for WooCommerce is built by [uptools.io](https://uptools.io) — lightweight WordPress plugins with minimal footprint, no upsells and no tracking.
 
 == Installation ==
 
@@ -105,6 +105,9 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 6. Onboarding wizard
 
 == Changelog ==
+
+= 1.0.6 =
+* Change: plugin display name is now "Elállás for WooCommerce" (with the Hungarian accent). The slug, text domain and package name are unchanged.
 
 = 1.0.5 =
 * New: optional bank account / IBAN field on the form (encrypted at rest, shown to admins and on the PDF, anonymized by the retention cleanup)

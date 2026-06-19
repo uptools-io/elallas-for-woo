@@ -1,4 +1,4 @@
-# Elallas for WooCommerce — Kezelési útmutató
+# Elállás for WooCommerce — Kezelési útmutató
 
 Online elállási (visszalépési) funkció és naplózott ügykezelés WooCommerce webshopokhoz,
 a **Directive (EU) 2023/2673** és a **415/2025. (XII. 23.) Korm. rendelet** (45/2014. (II. 26.)

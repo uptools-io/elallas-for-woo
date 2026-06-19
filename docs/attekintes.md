@@ -1,4 +1,4 @@
-# Elallas for WooCommerce — Áttekintés: mi ez, minek kell megfelelni, miben segít
+# Elállás for WooCommerce — Áttekintés: mi ez, minek kell megfelelni, miben segít
 
 Ez a dokumentum **döntéshozóknak és webshop-tulajdonosoknak** szól: röviden elmagyarázza, mi a
 2026-os jogszabályváltozás lényege, mit kell emiatt a webshopodnak tudnia, és hogy ebből mit old

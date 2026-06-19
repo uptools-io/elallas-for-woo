@@ -55,7 +55,7 @@ final class NoticeManager {
 		?>
 		<div class="notice notice-info is-dismissible">
 			<p>
-				<strong><?php esc_html_e( 'Elallas for WooCommerce:', 'elallas-for-woo' ); ?></strong>
+				<strong><?php esc_html_e( 'Elállás for WooCommerce:', 'elallas-for-woo' ); ?></strong>
 				<?php esc_html_e( 'Még nincs beállítva elállási oldal. Indítsd el a beüzemelést.', 'elallas-for-woo' ); ?>
 				<a class="button button-primary" href="<?php echo esc_url( $wizard ); ?>">
 					<?php esc_html_e( 'Beüzemelés indítása', 'elallas-for-woo' ); ?>
