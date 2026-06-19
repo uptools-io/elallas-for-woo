@@ -4,7 +4,7 @@ Tags: woocommerce, withdrawal, refund, gdpr, compliance
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 8.0
@@ -24,7 +24,7 @@ The function implements the requirements introduced by **Directive (EU) 2023/267
 
 = Key features =
 
-* **Online withdrawal page and button** — default label "Elállás a szerződéstől" (the legal wording, not "rendeléstől"). Public page, shortcode `[elallas_form]`, header/footer link, My Account endpoint and an order-details button.
+* **Online withdrawal page and button** — default label "Elállás a szerződéstől" (the legal wording, not "rendeléstől"). Public page, shortcode `[elallas_form]`, Gutenberg block / Elementor widget, My Account endpoint and an order-details button.
 * **Reachable in two clicks** — the withdrawal function is placed where customers can find it from their account or order-details page, "well visible and easily accessible".
 * **Two-step flow** — the consumer fills the declaration on the electronic interface, then finalises it with a separate **"Elállás megerősítése"** confirmation button, with explicit data/intent/consent checkboxes.
 * **Durable-medium email** — an automatic acknowledgement email containing the withdrawal data and the exact date/time of receipt, plus an optional PDF attachment.
@@ -105,6 +105,9 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 6. Onboarding wizard
 
 == Changelog ==
+
+= 1.0.3 =
+* Change: removed the automatic header/footer link (it injected a stray, unstyled link above the theme header). Place the withdrawal link yourself via the shortcode, Gutenberg block, Elementor widget, or a menu — the My Account, order-details and order-email surfaces are unchanged.
 
 = 1.0.2 =
 * Change: minimum PHP lowered to 8.0 (dependencies pinned to 8.0-compatible versions)

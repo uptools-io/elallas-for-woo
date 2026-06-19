@@ -45,8 +45,6 @@ final class Options {
 			'withdrawal_page_id'      => 0,
 			'button_label'            => __( 'Elállás a szerződéstől', 'elallas-for-woo' ),
 			'confirm_label'           => __( 'Elállás megerősítése', 'elallas-for-woo' ),
-			'display_header'          => false,
-			'display_footer'          => true,
 			'display_account'         => true,
 			'display_order_details'   => true,
 			'display_order_email'     => true,

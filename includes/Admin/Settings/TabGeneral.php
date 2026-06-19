@@ -44,8 +44,6 @@ final class TabGeneral implements TabInterface {
 			'enabled'               => 'bool',
 			'button_label'          => 'text',
 			'confirm_label'         => 'text',
-			'display_header'        => 'bool',
-			'display_footer'        => 'bool',
 			'display_account'       => 'bool',
 			'display_order_details' => 'bool',
 			'display_order_email'   => 'bool',
@@ -94,8 +92,6 @@ final class TabGeneral implements TabInterface {
 			<tr>
 				<th scope="row"><?php esc_html_e( 'Megjelenítési helyek', 'elallas-for-woo' ); ?></th>
 				<td>
-					<?php $this->render_checkbox( 'display_header', __( 'Fejlécben', 'elallas-for-woo' ) ); ?><br />
-					<?php $this->render_checkbox( 'display_footer', __( 'Láblécben', 'elallas-for-woo' ) ); ?><br />
 					<?php $this->render_checkbox( 'display_account', __( 'Fiók oldalon', 'elallas-for-woo' ) ); ?><br />
 					<?php $this->render_checkbox( 'display_order_details', __( 'Rendelés részleteinél', 'elallas-for-woo' ) ); ?><br />
 					<?php $this->render_checkbox( 'display_order_email', __( 'Rendelési e-mailben', 'elallas-for-woo' ) ); ?>

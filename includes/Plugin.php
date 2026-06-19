@@ -15,7 +15,6 @@ namespace LightweightPlugins\Elallas;
 use LightweightPlugins\Elallas\Frontend\Shortcodes;
 use LightweightPlugins\Elallas\Frontend\MyAccountEndpoint;
 use LightweightPlugins\Elallas\Frontend\Assets;
-use LightweightPlugins\Elallas\Frontend\DisplayLinks;
 use LightweightPlugins\Elallas\Woo\Hooks as WooHooks;
 use LightweightPlugins\Elallas\Woo\OrderStatusManager;
 use LightweightPlugins\Elallas\Emails\EmailManager;
@@ -99,7 +98,6 @@ final class Plugin {
 		new MyAccountEndpoint();
 		new Assets();
 		new WooHooks();
-		new DisplayLinks();
 		new OrderStatusManager();
 	}
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.3] - 2026-06-19
+
+### Removed
+- The automatic header/footer link (`DisplayLinks`, `display_header`/`display_footer` options). It injected a stray, unstyled link above the theme header. Use the `[elallas_form]`/`[elallas_button]` shortcode, the Gutenberg block, the Elementor widget, a menu item, or the My Account / order-details / order-email surfaces instead.
+
 ## [1.0.2] - 2026-06-19
 
 ### Changed

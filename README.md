@@ -10,7 +10,7 @@ The withdrawal function implements the requirements introduced by **Directive (E
 
 ## Features
 
-- **Online withdrawal page and button** — default label `Elállás a szerződéstől`; public page, `[elallas_form]` shortcode, header/footer link, My Account endpoint and an order-details button (reachable within two clicks).
+- **Online withdrawal page and button** — default label `Elállás a szerződéstől`; public page, `[elallas_form]` shortcode, Gutenberg block / Elementor widget, My Account endpoint and an order-details button (reachable within two clicks).
 - **Two-step flow** — declaration on the electronic interface, then a separate `Elállás megerősítése` confirmation step with explicit data/intent/consent checkboxes.
 - **Durable-medium email** — automatic acknowledgement with the withdrawal data and exact receipt time, plus optional PDF attachment.
 - **Full / partial / per-line / per-quantity withdrawal**.
@@ -101,7 +101,7 @@ Work through this once after activating the plugin on a fresh site.
 - [ ] Turn on **Engedélyezés** (master switch) under **Settings → General**
 
 **Configure (Settings tabs)**
-- [ ] **General** — confirm the button label (`Elállás a szerződéstől`) and choose display surfaces (footer / header / My Account / order page / order email)
+- [ ] **General** — confirm the button label (`Elállás a szerződéstől`) and choose display surfaces (My Account / order details / order email). Place the link yourself anywhere else via the `[elallas_form]`/`[elallas_button]` shortcode, the Gutenberg block, the Elementor widget, or a menu item.
 - [ ] **Deadline** — set the withdrawal window (default 14 days), the start date (order / completed / delivery), and how expired requests are handled
 - [ ] **Statuses** — pick which order statuses may start a withdrawal; optionally enable the custom `wc-withdrawal-*` order statuses
 - [ ] **Privacy** — IP/UA storage (full / hash / off), email encryption, and a retention period (the daily cron anonymizes older cases)

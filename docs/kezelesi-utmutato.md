@@ -38,7 +38,7 @@ A **WooCommerce → Elállás – beállítások** oldalon és a beüzemelő var
 1. **Webshop adatok** – cégnév, székhely, e-mail, ÁSZF/adatkezelési URL.
 2. **Elállási oldal létrehozása** – egy kattintással létrejön a `/elallas/` oldal a
    `[elallas_form]` shortcode-dal, és beállítódik a „Megjelenítési oldal".
-3. **Megjelenítés** – hol jelenjen meg a gomb (lábléc, fejléc, Fiókom, rendelés-oldal, e-mail).
+3. **Megjelenítés** – hol jelenjen meg a gomb (Fiókom, rendelés-oldal, rendelési e-mail).
 4. **Határidő** – alap 14 nap + a határidő kezdete.
 5. **Teszt** – próba-nyilatkozat.
 
@@ -51,7 +51,7 @@ A **WooCommerce → Elállás – beállítások** oldalon és a beüzemelő var
   Fiókom-végpont és a REST sem működik.
 - **Gomb felirata** – alapértelmezett: **„Elállás a szerződéstől"** (a jogszabályi szöveg).
 - **Megerősítő gomb** – **„Elállás megerősítése"**.
-- **Megjelenítés** – fejléc / lábléc / Fiókom / rendelés részletei / rendelési e-mail.
+- **Megjelenítés** – Fiókom / rendelés részletei / rendelési e-mail. (A linket bárhová máshová a `[elallas_form]`/`[elallas_button]` shortcode-dal, a Gutenberg blokkal, az Elementor widgettel vagy egy menüponttal teheted ki.)
 - **Megjelenítési oldal** – a `[elallas_form]`-ot tartalmazó oldal.
 
 ### Határidő
@@ -108,7 +108,7 @@ A `/elallas/` oldal **regisztráció nélkül** is működik (a vendég vásárl
 
 **Megjelenési felületek:** `/elallas/` oldal, `[elallas_form]` shortcode, Gutenberg „Elállási
 űrlap" blokk, Elementor „Elállási űrlap" widget, Fiókom → Elállás (`/my-account/withdrawals/`),
-rendelés-oldali gomb, rendelési e-mailbe ágyazott link, fejléc/lábléc link.
+rendelés-oldali gomb, rendelési e-mailbe ágyazott link.
 
 ---
 
