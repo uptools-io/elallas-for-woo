@@ -33,7 +33,8 @@ final class EligibilityChecker {
 		$reasons         = [];
 		$deadline_status = $this->deadline_status( $order );
 
-		if ( ! OrderAdapter::email_matches( $order, $email ) ) {
+		// A logged-in owner is verified by ownership, so the email match is not required for them.
+		if ( ! $this->owns_order( $order ) && ! OrderAdapter::email_matches( $order, $email ) ) {
 			$reasons[] = __( 'Az e-mail cím nem egyezik a rendeléssel.', 'elallas-for-woo' );
 		}
 
@@ -92,6 +93,18 @@ final class EligibilityChecker {
 		$customer_id = (int) $order->get_customer_id();
 
 		return $customer_id > 0 && is_user_logged_in() && get_current_user_id() !== $customer_id;
+	}
+
+	/**
+	 * Whether the current logged-in user owns this order.
+	 *
+	 * @param \WC_Order $order Order.
+	 * @return bool
+	 */
+	private function owns_order( \WC_Order $order ): bool {
+		$customer_id = (int) $order->get_customer_id();
+
+		return $customer_id > 0 && is_user_logged_in() && get_current_user_id() === $customer_id;
 	}
 
 	/**

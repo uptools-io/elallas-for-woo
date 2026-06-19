@@ -30,6 +30,9 @@ $elallas_declaration   = (string) Options::get( 'legal_declaration' );
 $elallas_declaration   = '' !== $elallas_declaration ? $elallas_declaration : DefaultTexts::declaration();
 $elallas_generated     = current_time( 'Y-m-d H:i:s' );
 $elallas_hash          = '________________________________________________________________';
+$elallas_bank          = ( $elallas_case && ! empty( $elallas_case->bank_account_encrypted ) )
+	? \LightweightPlugins\Elallas\Security\Encryption::decrypt( (string) $elallas_case->bank_account_encrypted )
+	: '';
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -89,6 +92,12 @@ $elallas_hash          = '______________________________________________________
 			<td class="label"><?php echo esc_html__( 'Rendelés dátuma', 'elallas-for-woo' ); ?></td>
 			<td><?php echo esc_html( $elallas_order_date ); ?></td>
 		</tr>
+		<?php if ( '' !== $elallas_bank ) : ?>
+		<tr>
+			<td class="label"><?php echo esc_html__( 'Visszatérítési bankszámla', 'elallas-for-woo' ); ?></td>
+			<td><?php echo esc_html( $elallas_bank ); ?></td>
+		</tr>
+		<?php endif; ?>
 	</table>
 
 	<h2><?php echo esc_html__( 'Érintett termékek', 'elallas-for-woo' ); ?></h2>

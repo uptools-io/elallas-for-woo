@@ -117,7 +117,7 @@ final class StepProcessor {
 		}
 
 		$type    = count( $rows ) === count( OrderAdapter::items( $order ) ) ? 'full' : 'partial';
-		$context = SubmissionContext::build( $email, $type, $result->deadline_status, FormRequest::note() );
+		$context = SubmissionContext::build( $email, $type, $result->deadline_status, FormRequest::note(), FormRequest::bank_account() );
 		$service = new CaseService();
 		$case_id = $service->create( $order, $rows, $context );
 

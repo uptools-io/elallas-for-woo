@@ -79,7 +79,7 @@ final class DocumentService {
 		}
 
 		// Unguessable filename so direct enumeration fails where .htaccess is ignored (Nginx/LiteSpeed).
-		$file_name = 'statement-' . sanitize_file_name( $case_number ) . '-' . wp_generate_password( 16, false ) . '.pdf';
+		$file_name = 'elallasi-nyilatkozat-' . sanitize_file_name( $case_number ) . '-' . wp_generate_password( 16, false ) . '.pdf';
 		$abs_path  = $base_dir . $file_name;
 
 		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents
@@ -140,6 +140,18 @@ final class DocumentService {
 			],
 			home_url( '/' )
 		);
+	}
+
+	/**
+	 * Human-readable, translatable label for a document type.
+	 *
+	 * @param string $type Document type slug.
+	 * @return string
+	 */
+	public static function type_label( string $type ): string {
+		$labels = [ self::DOC_TYPE => __( 'Elállási nyilatkozat', 'elallas-for-woo' ) ];
+
+		return $labels[ $type ] ?? $type;
 	}
 
 	/**

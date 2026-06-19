@@ -11,6 +11,8 @@ namespace LightweightPlugins\Elallas\Admin;
 
 use LightweightPlugins\Elallas\Database\CaseItemRepository;
 use LightweightPlugins\Elallas\Database\DocumentRepository;
+use LightweightPlugins\Elallas\Pdf\DocumentService;
+use LightweightPlugins\Elallas\Security\Encryption;
 use LightweightPlugins\Elallas\Database\EventRepository;
 use LightweightPlugins\Elallas\Models\CaseStatus;
 use LightweightPlugins\Elallas\Models\WithdrawalCase;
@@ -35,6 +37,14 @@ final class CaseDetailSections {
 		self::row( __( 'Státusz', 'elallas-for-woo' ), esc_html( $case->status_label() ) );
 		self::row( __( 'Beérkezett', 'elallas-for-woo' ), esc_html( (string) $case->submitted_at ) );
 		self::row( __( 'Határidő', 'elallas-for-woo' ), esc_html( $case->deadline_label() ) );
+
+		$bank = ( null !== $case->bank_account_encrypted && '' !== $case->bank_account_encrypted )
+			? Encryption::decrypt( (string) $case->bank_account_encrypted )
+			: '';
+		if ( '' !== $bank ) {
+			self::row( __( 'Bankszámlaszám', 'elallas-for-woo' ), esc_html( $bank ) );
+		}
+
 		echo '</tbody></table>';
 	}
 
@@ -137,7 +147,7 @@ final class CaseDetailSections {
 			printf(
 				'<li><a href="%s" target="_blank" rel="noopener">%s</a></li>',
 				esc_url( $url ),
-				esc_html( (string) ( $doc->document_type ?? '' ) )
+				esc_html( DocumentService::type_label( (string) ( $doc->document_type ?? '' ) ) )
 			);
 		}
 

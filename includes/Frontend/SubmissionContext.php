@@ -29,10 +29,11 @@ final class SubmissionContext {
 	 * @param string $note            Optional customer note.
 	 * @return array<string, mixed>
 	 */
-	public static function build( string $email, string $withdrawal_type, string $deadline_status, string $note = '' ): array {
+	public static function build( string $email, string $withdrawal_type, string $deadline_status, string $note = '', string $bank_account = '' ): array {
 		return [
 			'email_hash'       => Encryption::hash( $email ),
 			'email_encrypted'  => Options::get( 'encrypt_email' ) ? Encryption::encrypt( $email ) : null,
+			'bank_account_encrypted' => '' !== $bank_account ? Encryption::encrypt( $bank_account ) : null,
 			'ip_hash'          => self::process( RateLimiter::client_ip(), (string) Options::get( 'store_ip', 'hash' ) ),
 			'user_agent_hash'  => self::process( self::user_agent(), (string) Options::get( 'store_user_agent', 'hash' ) ),
 			'source_url'       => self::current_url(),

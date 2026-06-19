@@ -75,7 +75,8 @@ final class CaseWriteHandler {
 		$type    = count( $rows ) === count( OrderAdapter::items( $order ) ) ? 'full' : 'partial';
 		$email   = sanitize_email( (string) $request->get_param( 'email' ) );
 		$note    = sanitize_textarea_field( (string) $request->get_param( 'customer_note' ) );
-		$context = SubmissionContext::build( $email, $type, $result->deadline_status, $note );
+		$bank    = sanitize_text_field( (string) $request->get_param( 'bank_account' ) );
+		$context = SubmissionContext::build( $email, $type, $result->deadline_status, $note, $bank );
 		$service = new CaseService();
 		$case_id = $service->create( $order, $rows, $context );
 

@@ -4,7 +4,7 @@ Tags: woocommerce, withdrawal, refund, gdpr, compliance
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 8.0
@@ -105,6 +105,13 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 6. Onboarding wizard
 
 == Changelog ==
+
+= 1.0.5 =
+* New: optional bank account / IBAN field on the form (encrypted at rest, shown to admins and on the PDF, anonymized by the retention cleanup)
+* New: customers can download their own withdrawal-statement PDF from My Account
+* New: logged-in customers can pick from their eligible orders and the email is pre-filled; opening the form from an order pre-selects it
+* New: editable extra text appended to the customer confirmation email (Emails settings)
+* Change: the generated document name is Hungarian (elallasi-nyilatkozat-…) and the admin/My Account label shows "Elállási nyilatkozat"
 
 = 1.0.4 =
 * Fix: the document download link on the admin case-detail page now works — it pointed at an unhandled `download_doc` parameter; it now uses the token-gated download handler (admins are authorised via capability). This was broken since the initial release, not a regression.

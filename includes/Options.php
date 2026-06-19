@@ -72,6 +72,7 @@ final class Options {
 			'email_admin_enabled'     => true,
 			'email_status_enabled'    => true,
 			'email_admin_recipient'   => '',
+			'email_customer_extra'    => '',
 
 			// Legal texts.
 			'legal_declaration'       => DefaultTexts::declaration(),

@@ -11,6 +11,8 @@ namespace LightweightPlugins\Elallas\Frontend;
 
 use LightweightPlugins\Elallas\Options;
 use LightweightPlugins\Elallas\Database\CaseRepository;
+use LightweightPlugins\Elallas\Database\DocumentRepository;
+use LightweightPlugins\Elallas\Pdf\DocumentService;
 
 /**
  * Adds a /my-account/withdrawals/ endpoint listing the customer's cases.
@@ -83,13 +85,26 @@ final class MyAccountEndpoint {
 	 * @return void
 	 */
 	public function render(): void {
-		$cases = CaseRepository::find_by_customer( get_current_user_id() );
+		$cases     = CaseRepository::find_by_customer( get_current_user_id() );
+		$downloads = [];
+
+		foreach ( $cases as $case ) {
+			$docs = DocumentRepository::for_case( $case->id );
+
+			if ( ! empty( $docs ) ) {
+				$url = DocumentService::download_url( (int) $docs[0]->id );
+				if ( '' !== $url ) {
+					$downloads[ $case->id ] = $url;
+				}
+			}
+		}
 
 		echo TemplateLoader::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			'frontend/my-account.php',
 			[
-				'cases'    => $cases,
-				'form_url' => Shortcodes::page_url(),
+				'cases'     => $cases,
+				'downloads' => $downloads,
+				'form_url'  => Shortcodes::page_url(),
 			]
 		);
 	}

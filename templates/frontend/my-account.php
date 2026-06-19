@@ -4,8 +4,9 @@
  *
  * @package LightweightPlugins\Elallas
  *
- * @var array  $cases    Array of WithdrawalCase objects.
- * @var string $form_url Withdrawal page URL.
+ * @var array            $cases     Array of WithdrawalCase objects.
+ * @var array<int,string> $downloads Map of case ID => token-gated PDF download URL.
+ * @var string           $form_url  Withdrawal page URL.
  */
 
 declare(strict_types=1);
@@ -26,6 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<th><?php esc_html_e( 'Rendelés', 'elallas-for-woo' ); ?></th>
 				<th><?php esc_html_e( 'Beküldve', 'elallas-for-woo' ); ?></th>
 				<th><?php esc_html_e( 'Státusz', 'elallas-for-woo' ); ?></th>
+				<th><?php esc_html_e( 'Dokumentum', 'elallas-for-woo' ); ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -35,6 +37,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<td><?php echo esc_html( $elallas_case->order_number ); ?></td>
 					<td><?php echo esc_html( (string) $elallas_case->submitted_at ); ?></td>
 					<td><?php echo esc_html( $elallas_case->status_label() ); ?></td>
+					<td>
+						<?php if ( ! empty( $downloads[ $elallas_case->id ] ) ) : ?>
+							<a href="<?php echo esc_url( $downloads[ $elallas_case->id ] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Elállási nyilatkozat (PDF)', 'elallas-for-woo' ); ?></a>
+						<?php else : ?>
+							—
+						<?php endif; ?>
+					</td>
 				</tr>
 			<?php endforeach; ?>
 		</tbody>

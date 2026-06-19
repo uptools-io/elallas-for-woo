@@ -83,6 +83,16 @@ final class FormRequest {
 	}
 
 	/**
+	 * Optional bank account / IBAN for the refund.
+	 *
+	 * @return string
+	 */
+	public static function bank_account(): string {
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		return isset( $_POST['bank_account'] ) ? sanitize_text_field( wp_unslash( $_POST['bank_account'] ) ) : '';
+	}
+
+	/**
 	 * Whether the honeypot field was filled (bot).
 	 *
 	 * @return bool

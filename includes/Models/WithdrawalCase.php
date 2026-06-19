@@ -35,6 +35,7 @@ final class WithdrawalCase {
 	public string $language             = '';
 	public int $assigned_admin_id       = 0;
 	public ?string $customer_note       = null;
+	public ?string $bank_account_encrypted = null;
 	public string $created_at           = '';
 	public string $updated_at           = '';
 

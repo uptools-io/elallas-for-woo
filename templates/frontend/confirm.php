@@ -73,6 +73,12 @@ $elallas_error = isset( $error ) ? (string) $error : '';
 	<?php endforeach; ?>
 
 	<p class="elallas-field">
+		<label for="elallas-bank"><?php esc_html_e( 'Bankszámlaszám / IBAN (opcionális)', 'elallas-for-woo' ); ?></label>
+		<input type="text" id="elallas-bank" name="bank_account" value="" autocomplete="off" />
+		<span class="elallas-hint"><?php esc_html_e( 'Ha megadod, erre a számlaszámra utaljuk vissza az összeget.', 'elallas-for-woo' ); ?></span>
+	</p>
+
+	<p class="elallas-field">
 		<label for="elallas-note"><?php esc_html_e( 'Megjegyzés (opcionális)', 'elallas-for-woo' ); ?></label>
 		<textarea id="elallas-note" name="customer_note" rows="3"></textarea>
 	</p>

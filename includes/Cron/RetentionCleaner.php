@@ -51,6 +51,7 @@ final class RetentionCleaner {
 					'user_agent_hash'          => '',
 					'source_url'               => '',
 					'customer_note'            => null,
+					'bank_account_encrypted'   => null,
 				]
 			);
 

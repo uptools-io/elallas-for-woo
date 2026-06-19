@@ -54,6 +54,7 @@ final class CaseService {
 				'source_url'               => (string) ( $context['source_url'] ?? '' ),
 				'language'                 => (string) ( $context['language'] ?? '' ),
 				'customer_note'            => $context['customer_note'] ?? null,
+				'bank_account_encrypted'   => $context['bank_account_encrypted'] ?? null,
 			]
 		);
 

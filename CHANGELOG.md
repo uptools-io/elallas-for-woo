@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.5] - 2026-06-19
+
+### Added
+- Optional bank account / IBAN field on the withdrawal form for the refund destination — encrypted at rest (AES-256-GCM), shown to admins and on the PDF, and cleared by the retention anonymization
+- My Account: customers can download their own withdrawal-statement PDF (token-gated)
+- Logged-in customers can select from their eligible orders (with the email pre-filled); opening the form from an order (`?order=ID`) pre-selects it. A logged-in owner is verified by ownership, so the email match is not required for them
+- Editable extra text appended to the customer confirmation email (Emails settings tab)
+
+### Changed
+- Generated document filename is Hungarian (`elallasi-nyilatkozat-…`); the admin and My Account labels show "Elállási nyilatkozat"
+
 ## [1.0.4] - 2026-06-19
 
 ### Fixed

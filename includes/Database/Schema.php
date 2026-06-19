@@ -85,6 +85,7 @@ final class Schema {
 			language VARCHAR(12) NOT NULL DEFAULT '',
 			assigned_admin_id BIGINT(20) UNSIGNED NOT NULL DEFAULT 0,
 			customer_note TEXT NULL,
+			bank_account_encrypted TEXT NULL,
 			created_at DATETIME NOT NULL,
 			updated_at DATETIME NOT NULL,
 			PRIMARY KEY (id),
