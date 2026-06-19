@@ -3,8 +3,8 @@ Contributors: uptools
 Tags: woocommerce, withdrawal, refund, gdpr, compliance
 Requires at least: 6.4
 Tested up to: 6.8
-Requires PHP: 8.2
-Stable tag: 1.0.1
+Requires PHP: 8.0
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 8.0
@@ -105,6 +105,10 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 6. Onboarding wizard
 
 == Changelog ==
+
+= 1.0.2 =
+* Change: minimum PHP lowered to 8.0 (dependencies pinned to 8.0-compatible versions)
+* Build: releases are now gated on a PHP 8.0 validation job (PHPCompatibility + tests) — no build is published unless it passes
 
 = 1.0.1 =
 * Security: PDF statements now use an unguessable filename so they cannot be enumerated on servers that ignore .htaccess (Nginx/LiteSpeed)

@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.2] - 2026-06-19
+
+### Changed
+- Minimum PHP lowered to 8.0; dependencies pinned to 8.0-compatible versions (`composer config platform.php = 8.0.30`, dompdf with `thecodingmachine/safe` v2, PHPUnit 9.6)
+
+### Build
+- The Release workflow now runs a PHP 8.0 validation job (PHPCompatibility ruleset + PHPUnit) first and only publishes the build if it passes
+- CI test matrix expanded to PHP 8.0–8.4
+
 ## [1.0.1] - 2026-06-18
 
 ### Security

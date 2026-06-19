@@ -8,7 +8,32 @@ on:
       - 'elallas-for-woo.php'
 
 jobs:
+  validate:
+    name: Validate (PHP 8.0)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Setup PHP 8.0
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+          tools: composer
+
+      - name: Install dependencies
+        run: composer install --no-progress --prefer-dist
+
+      - name: PHP 8.0 compatibility + coding standards
+        run: composer phpcs
+
+      - name: Tests
+        run: composer test
+
   release:
+    name: Release
+    needs: validate
     runs-on: ubuntu-latest
     permissions:
       contents: write

@@ -87,6 +87,41 @@ wp elallas cleanup
 - [Kezelési útmutató (HU)](docs/kezelesi-utmutato.md) — install, setup, settings, customer & admin flows.
 - [Fejlesztői referencia (HU)](docs/fejlesztoi-referencia.md) — hooks, REST API, WP-CLI, abilities, templates, data model.
 
+## Setup checklist (new install)
+
+Work through this once after activating the plugin on a fresh site.
+
+**Prerequisites**
+- [ ] WooCommerce 8.0+ installed and active
+- [ ] PHP 8.0+ (8.2+ recommended); `AUTH_KEY` / `AUTH_SALT` set in `wp-config.php` (used to derive the PII encryption keys)
+
+**Create & enable**
+- [ ] Run the onboarding wizard: **WooCommerce → Elállási ügyek → Beállítások**
+- [ ] Create the public withdrawal page (`/elallas/`) — the wizard adds the `[elallas_form]` shortcode and sets it as the *withdrawal page* (or create a page manually and select it under **Settings → General**)
+- [ ] Turn on **Engedélyezés** (master switch) under **Settings → General**
+
+**Configure (Settings tabs)**
+- [ ] **General** — confirm the button label (`Elállás a szerződéstől`) and choose display surfaces (footer / header / My Account / order page / order email)
+- [ ] **Deadline** — set the withdrawal window (default 14 days), the start date (order / completed / delivery), and how expired requests are handled
+- [ ] **Statuses** — pick which order statuses may start a withdrawal; optionally enable the custom `wc-withdrawal-*` order statuses
+- [ ] **Privacy** — IP/UA storage (full / hash / off), email encryption, and a retention period (the daily cron anonymizes older cases)
+- [ ] **Emails** — enable the customer / admin / status emails and set the admin recipient
+- [ ] **Legal** — review the declaration & confirmation texts and **validate them with a lawyer** (see below)
+- [ ] **Product exceptions** — for any non-withdrawable products, tick *Elállásból kizárt* on the product's **General** tab
+
+**Verify reachability (legal requirement)**
+- [ ] The withdrawal function is reachable in **≤ 2 clicks** from the customer's account / order page
+
+**Test before going live**
+- [ ] Place a test order and move it to an eligible status (e.g. *completed*)
+- [ ] Submit a withdrawal at `/elallas/` (order number + email → select items → tick the 3 consents → confirm)
+- [ ] Confirm the case appears under **WooCommerce → Elállási ügyek**, the confirmation email is sent (durable medium), and the PDF is generated
+- [ ] Try a wrong email → you should get the neutral "not found / not eligible" message (no field-level disclosure)
+
+**Production notes**
+- [ ] On **Nginx / LiteSpeed**, the `.htaccess` in `uploads/elallas-docs/` is ignored — PDFs use unguessable filenames + token-gated downloads, but you may also add a server `location` deny rule for `uploads/elallas-docs/`
+- [ ] If you bump the plugin version, update **all** locations: `elallas-for-woo.php` (header + `ELALLAS_FOR_WOO_VERSION`), `readme.txt` (Stable tag + Changelog), `CHANGELOG.md` — then push to `main` (the gated Release workflow validates on PHP 8.0 and publishes the build only if it passes)
+
 ## Not legal advice
 
 This plugin ships sample legal and message texts and a compliance-oriented workflow, but it does not constitute legal advice. The legal value lies in keeping the wording and process up to date and validated. Validate the final texts with your own terms of service (ÁSZF) and a Hungarian e-commerce lawyer before relying on them.
