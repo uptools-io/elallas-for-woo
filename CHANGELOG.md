@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.8] - 2026-06-22
+
+### Fixed
+- Logged-in customers could not identify an order that is not linked to their account — e.g. a guest order placed with a different email — because the identify step rendered the order-number field as a dropdown of only their own orders, with no free-text fallback. The order number is now always a free-text input; for logged-in users their own eligible orders are offered as an optional JS quick-pick that fills the field. The ownership binding in `EligibilityChecker` still blocks orders that belong to a *different* registered account.
+- The confirm-step double-submit guard in `frontend.js` no longer depends on a select-step element being present (it never ran on the confirm step before).
+
 ## [1.0.7] - 2026-06-22
 
 ### Fixed

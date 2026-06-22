@@ -21,7 +21,8 @@
 }
 
 .elallas-field input,
-.elallas-field textarea {
+.elallas-field textarea,
+.elallas-field select {
 	padding: .5em;
 	border: 1px solid #ccc;
 	border-radius: 4px;
@@ -29,6 +30,12 @@
 
 .elallas-field .required {
 	color: #d63638;
+}
+
+.elallas-field-hint {
+	margin-top: .35em;
+	color: #646970;
+	font-size: .9em;
 }
 
 .elallas-order-summary {

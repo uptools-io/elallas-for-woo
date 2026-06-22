@@ -4,7 +4,7 @@ Tags: woocommerce, withdrawal, refund, gdpr, compliance
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 8.0
@@ -105,6 +105,9 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 6. Onboarding wizard
 
 == Changelog ==
+
+= 1.0.8 =
+* Fix: a logged-in customer can now also identify a guest order placed with a different email. The order field is always a free-text input again; for logged-in users their own eligible orders are offered as an optional quick-pick dropdown that fills it. Orders belonging to a different registered account stay blocked.
 
 = 1.0.7 =
 * Fix: the WooCommerce email preview (WooCommerce → Settings → Emails) no longer shows a rendering error for the withdrawal emails. They are now preview-aware and render with sample data when no real case object is present. Actual email delivery was never affected.

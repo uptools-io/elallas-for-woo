@@ -1,5 +1,6 @@
 /* Elállás for WooCommerce — front-end progressive enhancement.
- * Core flow works without JS; this only adds quantity convenience controls.
+ * Core flow works without JS; this adds the order quick-pick and a
+ * double-submit guard on the confirm step.
  */
 ( function () {
 	'use strict';
@@ -13,12 +14,18 @@
 	}
 
 	onReady( function () {
-		var form = document.querySelector( '.elallas-step-select .elallas-step-form' );
-		if ( ! form ) {
-			return;
+		// Identify step: the order quick-pick fills the manual order-number field.
+		var orderPick  = document.querySelector( '.elallas-order-pick' );
+		var orderInput = document.getElementById( 'elallas-order-number' );
+		if ( orderPick && orderInput ) {
+			orderPick.addEventListener( 'change', function () {
+				if ( orderPick.value ) {
+					orderInput.value = orderPick.value;
+				}
+			} );
 		}
 
-		// Disable the submit briefly on confirm to prevent double submissions.
+		// Confirm step: disable the submit briefly to prevent double submissions.
 		var confirmForm = document.querySelector( '.elallas-step-confirm .elallas-step-form' );
 		if ( confirmForm ) {
 			confirmForm.addEventListener( 'submit', function () {

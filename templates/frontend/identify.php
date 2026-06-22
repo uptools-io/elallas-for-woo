@@ -40,19 +40,25 @@ $elallas_orders   = ( isset( $user_orders ) && is_array( $user_orders ) ) ? $use
 	?>
 	<input type="hidden" name="elallas_step" value="identify" />
 
+	<?php if ( ! empty( $elallas_orders ) ) : ?>
+	<p class="elallas-field">
+		<label for="elallas-order-pick"><?php esc_html_e( 'Válassz a rendeléseid közül', 'elallas-for-woo' ); ?></label>
+		<select id="elallas-order-pick" class="elallas-order-pick">
+			<option value=""><?php esc_html_e( '— Válassz a rendeléseid közül —', 'elallas-for-woo' ); ?></option>
+			<?php foreach ( $elallas_orders as $elallas_o ) : ?>
+				<option value="<?php echo esc_attr( (string) $elallas_o['number'] ); ?>" <?php selected( $elallas_p_order, (string) $elallas_o['number'] ); ?>>
+					#<?php echo esc_html( (string) $elallas_o['number'] ); ?><?php echo '' !== $elallas_o['date'] ? ' — ' . esc_html( (string) $elallas_o['date'] ) : ''; ?>
+				</option>
+			<?php endforeach; ?>
+		</select>
+	</p>
+	<?php endif; ?>
+
 	<p class="elallas-field">
 		<label for="elallas-order-number"><?php esc_html_e( 'Rendelési szám', 'elallas-for-woo' ); ?> <span class="required">*</span></label>
+		<input type="text" id="elallas-order-number" name="order_number" required value="<?php echo esc_attr( $elallas_p_order ); ?>" autocomplete="off" />
 		<?php if ( ! empty( $elallas_orders ) ) : ?>
-			<select id="elallas-order-number" name="order_number" required>
-				<option value=""><?php esc_html_e( '— Válassz a rendeléseid közül —', 'elallas-for-woo' ); ?></option>
-				<?php foreach ( $elallas_orders as $elallas_o ) : ?>
-					<option value="<?php echo esc_attr( (string) $elallas_o['number'] ); ?>" <?php selected( $elallas_p_order, (string) $elallas_o['number'] ); ?>>
-						#<?php echo esc_html( (string) $elallas_o['number'] ); ?><?php echo '' !== $elallas_o['date'] ? ' — ' . esc_html( (string) $elallas_o['date'] ) : ''; ?>
-					</option>
-				<?php endforeach; ?>
-			</select>
-		<?php else : ?>
-			<input type="text" id="elallas-order-number" name="order_number" required value="<?php echo esc_attr( $elallas_p_order ); ?>" autocomplete="off" />
+			<span class="elallas-field-hint"><?php esc_html_e( 'Ha vendégként, a fiókod e-mail címétől eltérő címmel adtad le a rendelést, ide kézzel is beírhatod a rendelési számot.', 'elallas-for-woo' ); ?></span>
 		<?php endif; ?>
 	</p>
 
