@@ -4,7 +4,7 @@ Tags: woocommerce, withdrawal, refund, gdpr, compliance
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 1.0.8
+Stable tag: 1.0.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 8.0
@@ -105,6 +105,9 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 6. Onboarding wizard
 
 == Changelog ==
+
+= 1.0.9 =
+* New: withdrawal exceptions can now be set by product category and product tag, not just per product. Open a product category or tag, tick "Elállásból kizárt" and pick a reason — products in it are flagged as excepted in the case (per-product settings take precedence). Like product-level exceptions, this flags for review and never auto-blocks.
 
 = 1.0.8 =
 * Fix: a logged-in customer can now also identify a guest order placed with a different email. The order field is always a free-text input again; for logged-in users their own eligible orders are offered as an optional quick-pick dropdown that fills it. Orders belonging to a different registered account stay blocked.

@@ -70,9 +70,16 @@ A **WooCommerce → Elállás – beállítások** oldalon és a beüzemelő var
   `wc-withdrawal-*` rendelési státuszokat, és az ügy státuszához igazítja a rendelés státuszát.
 
 ### Kivételek
-Termékszinten állítható: nyisd meg a terméket → **Termékadatok → Általános** → „Elállásból kizárt"
+**Termékszinten:** nyisd meg a terméket → **Termékadatok → Általános** → „Elállásból kizárt"
 + a kizárás indoka (bontatlan / egyedi / digitális / szolgáltatás / higiéniai / romlandó / zárt
-csomagolás). A kizárt termékek az elállási űrlapon jelölve jelennek meg.
+csomagolás).
+
+**Kategória vagy címke szerint:** nyisd meg szerkesztésre a kívánt **termékkategóriát**
+(Termékek → Kategóriák) vagy **termékcímkét** (Termékek → Címkék), és jelöld be az
+„Elállásból kizárt" lehetőséget az indokkal. Az adott kategóriába/címkébe tartozó termékek
+automatikusan „kizárt"-ként jelölődnek. A termékszintű beállítás elsőbbséget élvez (a saját
+indokával). A jelölés az ügy-pillanatképben és az admin ügynézetben jelenik meg — a kizárás
+**jelöl, nem blokkol** (a végső döntés a kereskedőé).
 
 ### Dokumentumok
 - **PDF generálás** – elállási nyilatkozat PDF (dompdf), SHA-256 hash-sel, védett könyvtárban.

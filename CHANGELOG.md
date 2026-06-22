@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.9] - 2026-06-22
+
+### Added
+- Withdrawal exceptions by **product category** and **product tag**, in addition to the existing per-product exclusion (issue #14). The exclusion is set directly on the category/tag edit screen (a new `Admin\TermFields` adds an "Elállásból kizárt" checkbox + reason, stored as term meta). A new `Domain\ProductExclusion` resolver combines per-product meta with the product's term meta, and `OrderSnapshotBuilder` flags matching items as `excepted` (per-product settings take precedence). The Exceptions settings tab now just explains where to set both. Consistent with product-level exceptions, this flags for review and never auto-blocks.
+
 ## [1.0.8] - 2026-06-22
 
 ### Fixed

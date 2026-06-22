@@ -12,7 +12,7 @@ namespace LightweightPlugins\Elallas\Admin\Settings;
 use LightweightPlugins\Elallas\Data\DefaultTexts;
 
 /**
- * Explains product-level withdrawal exceptions.
+ * Explains where to set product-level and category/tag-level exceptions.
  */
 final class TabExceptions implements TabInterface {
 
@@ -56,10 +56,12 @@ final class TabExceptions implements TabInterface {
 		<div class="notice notice-warning inline" style="margin:0 0 16px;">
 			<p><?php echo esc_html( DefaultTexts::exception_warning() ); ?></p>
 		</div>
+
+		<h3><?php esc_html_e( 'Termék szinten', 'elallas-for-woo' ); ?></h3>
 		<p>
 			<?php
 			esc_html_e(
-				'A kivételeket termék szinten állíthatod be. Nyisd meg a kívánt terméket, és a "Termékadatok → Általános" fülön jelöld be az "Elállásból kizárt" lehetőséget, valamint válaszd ki a kizárás indokát.',
+				'Nyisd meg a kívánt terméket, és a "Termékadatok → Általános" fülön jelöld be az "Elállásból kizárt" lehetőséget, valamint válaszd ki a kizárás indokát.',
 				'elallas-for-woo'
 			);
 			?>
@@ -69,8 +71,23 @@ final class TabExceptions implements TabInterface {
 				<?php esc_html_e( 'Termékek megnyitása', 'elallas-for-woo' ); ?>
 			</a>
 		</p>
-		<p class="description">
-			<?php esc_html_e( 'Kategória szintű kizárás opcionális, terméken keresztül kezelhető.', 'elallas-for-woo' ); ?>
+
+		<h3><?php esc_html_e( 'Kategória vagy címke szinten', 'elallas-for-woo' ); ?></h3>
+		<p>
+			<?php
+			esc_html_e(
+				'Nyiss meg egy termékkategóriát vagy -címkét szerkesztésre, és jelöld be az "Elállásból kizárt" lehetőséget az indokkal. Az adott kategóriába/címkébe tartozó termékek automatikusan "kizárt"-ként jelölődnek az elállási ügyekben. A termék szintű beállítás elsőbbséget élvez. A kizárás jelöl, nem automatikusan tilt.',
+				'elallas-for-woo'
+			);
+			?>
+		</p>
+		<p>
+			<a class="button" href="<?php echo esc_url( admin_url( 'edit-tags.php?taxonomy=product_cat&post_type=product' ) ); ?>">
+				<?php esc_html_e( 'Kategóriák megnyitása', 'elallas-for-woo' ); ?>
+			</a>
+			<a class="button" href="<?php echo esc_url( admin_url( 'edit-tags.php?taxonomy=product_tag&post_type=product' ) ); ?>">
+				<?php esc_html_e( 'Címkék megnyitása', 'elallas-for-woo' ); ?>
+			</a>
 		</p>
 		<?php
 	}

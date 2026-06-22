@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace LightweightPlugins\Elallas\Domain;
 
 use LightweightPlugins\Elallas\Woo\OrderAdapter;
-use LightweightPlugins\Elallas\Admin\ProductFields;
 
 /**
  * Builds case-item snapshots from a live order.
@@ -67,8 +66,12 @@ final class OrderSnapshotBuilder {
 	 * @return array{0: string, 1: string}
 	 */
 	private static function eligibility( int $product_id ): array {
-		if ( class_exists( ProductFields::class ) && ProductFields::is_excluded( $product_id ) ) {
-			return [ 'excepted', ProductFields::exclusion_label( $product_id ) ];
+		if ( class_exists( ProductExclusion::class ) ) {
+			[ $excluded, $label ] = ProductExclusion::evaluate( $product_id );
+
+			if ( $excluded ) {
+				return [ 'excepted', $label ];
+			}
 		}
 
 		return [ 'eligible', '' ];

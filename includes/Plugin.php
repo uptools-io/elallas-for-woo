@@ -28,6 +28,7 @@ use LightweightPlugins\Elallas\Integrations\Multilingual;
 use LightweightPlugins\Elallas\Integrations\Elementor;
 use LightweightPlugins\Elallas\Admin\AdminMenu;
 use LightweightPlugins\Elallas\Admin\ProductFields;
+use LightweightPlugins\Elallas\Admin\TermFields;
 use LightweightPlugins\Elallas\Admin\NoticeManager;
 use LightweightPlugins\Elallas\SiteManager\Integration as SiteManagerIntegration;
 use LightweightPlugins\Elallas\CLI\Commands as CliCommands;
@@ -134,6 +135,7 @@ final class Plugin {
 	private function init_admin(): void {
 		new AdminMenu();
 		new ProductFields();
+		new TermFields();
 		new NoticeManager();
 	}
 
