@@ -4,7 +4,7 @@ Tags: woocommerce, withdrawal, refund, gdpr, compliance
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 1.0.9
+Stable tag: 1.0.10
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 8.0
@@ -107,6 +107,9 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 6. Onboarding wizard
 
 == Changelog ==
+
+= 1.0.10 =
+* Fix: the bundled Dompdf is now namespace-scoped (Strauss) under LightweightPlugins\Elallas\Vendor\, so it can no longer collide with a Dompdf shipped by another active plugin (e.g. a PDF-invoice plugin) — which previously could cause a fatal error such as "Call to undefined method Dompdf\LineBox::reset_float_reflow_limit()". When installed via Composer (unscoped), the renderer falls back to the host project's Dompdf.
 
 = 1.0.9 =
 * New: withdrawal exceptions can now be set by product category and product tag, not just per product. Open a product category or tag, tick "Elállásból kizárt" and pick a reason — products in it are flagged as excepted in the case (per-product settings take precedence). Like product-level exceptions, this flags for review and never auto-blocks.

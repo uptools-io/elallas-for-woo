@@ -45,6 +45,23 @@
             "php": "8.0.30"
         }
     },
+    "extra": {
+        "strauss": {
+            "target_directory": "vendor-prefixed",
+            "namespace_prefix": "LightweightPlugins\\Elallas\\Vendor\\",
+            "classmap_prefix": "LightweightPlugins_Elallas_Vendor_",
+            "constant_prefix": "ELALLAS_VENDOR_",
+            "packages": [
+                "dompdf/dompdf",
+                "dompdf/php-font-lib",
+                "dompdf/php-svg-lib",
+                "masterminds/html5",
+                "sabberworm/php-css-parser",
+                "thecodingmachine/safe"
+            ],
+            "delete_vendor_packages": true
+        }
+    },
     "scripts": {
         "phpcs": "phpcs",
         "phpcbf": "phpcbf",

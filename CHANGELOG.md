@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.10] - 2026-06-22
+
+### Fixed
+- The bundled Dompdf is now **namespace-scoped** with [Strauss](https://github.com/BrianHenryIE/strauss) under `LightweightPlugins\Elallas\Vendor\`, so it can no longer collide with a Dompdf bundled by another active plugin (issue #15). Before, two plugins shipping Dompdf in the global `\Dompdf\` namespace could mix classes across versions and fatal with e.g. `Call to undefined method Dompdf\LineBox::reset_float_reflow_limit()`. `PdfRenderer` now uses the scoped class and falls back to the global `\Dompdf\Dompdf` when the plugin is installed as a Composer dependency (unscoped). Scoping runs in the release build (`release.yml`); the original global packages are removed from `vendor/`.
+
 ## [1.0.9] - 2026-06-22
 
 ### Added

@@ -22,7 +22,9 @@ final class PdfRenderer {
 	 * @return string PDF bytes, or '' if Dompdf is unavailable.
 	 */
 	public static function to_pdf_string( string $html, array $context = [] ): string {
-		if ( ! class_exists( '\Dompdf\Dompdf' ) ) {
+		$dompdf_class = self::dompdf_class();
+
+		if ( '' === $dompdf_class ) {
 			return '';
 		}
 
@@ -34,11 +36,30 @@ final class PdfRenderer {
 		 */
 		$html = (string) apply_filters( 'elallas_pdf_html', $html, $context );
 
-		$dompdf = new \Dompdf\Dompdf();
+		$dompdf = new $dompdf_class();
 		$dompdf->loadHtml( $html );
 		$dompdf->setPaper( 'A4' );
 		$dompdf->render();
 
 		return (string) $dompdf->output();
+	}
+
+	/**
+	 * Resolve the Dompdf class name.
+	 *
+	 * Prefers the scoped (Strauss-prefixed) class shipped in release builds so the
+	 * bundled Dompdf never collides with another plugin's. Falls back to the global
+	 * \Dompdf\Dompdf when installed as a Composer dependency.
+	 *
+	 * @return string Fully-qualified class name, or '' if Dompdf is unavailable.
+	 */
+	private static function dompdf_class(): string {
+		$scoped = '\LightweightPlugins\Elallas\Vendor\Dompdf\Dompdf';
+
+		if ( class_exists( $scoped ) ) {
+			return $scoped;
+		}
+
+		return class_exists( '\Dompdf\Dompdf' ) ? '\Dompdf\Dompdf' : '';
 	}
 }

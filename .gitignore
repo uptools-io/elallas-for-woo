@@ -1,6 +1,10 @@
 # Dependencies
 /vendor/
+/vendor-prefixed/
 /node_modules/
+
+# Strauss (downloaded at build time)
+/strauss.phar
 
 # Composer
 composer.lock
