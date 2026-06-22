@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'elallas-for-woo.php'
+  workflow_dispatch:
 
 jobs:
   validate:
