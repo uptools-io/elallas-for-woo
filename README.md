@@ -1,77 +1,77 @@
 # Elállás for WooCommerce
 
-A free, GPL-2.0 WooCommerce plugin that provides the **online withdrawal function** (online elállási funkció) consumers can use to declare their intent to withdraw from a distance contract, and gives the merchant a logged, order-linked, auditable case-management workflow. It is not "just a button": every declaration becomes a verifiable, timestamped case the merchant can administer end to end. HPOS compatible.
+Ingyenes, GPL-2.0 licencű WooCommerce bővítmény, amely biztosítja a kötelező **online elállási funkciót** (a fogyasztó ezzel jelezheti a távollévők között kötött szerződéstől való elállási szándékát), a kereskedőnek pedig naplózott, rendeléshez kötött, auditálható ügykezelést ad. Ez nem „csak egy gomb": minden nyilatkozat egy igazolható, időbélyegzett üggyé válik, amelyet a kereskedő végig adminisztrálhat. HPOS-kompatibilis.
 
-## Legal basis
+## Jogi alap
 
-The withdrawal function implements the requirements introduced by **Directive (EU) 2023/2673** (amending the Consumer Rights Directive 2011/83/EU) and, in Hungary, by **415/2025. (XII. 23.) Korm. rendelet** (amending 45/2014. (II. 26.) Korm. rendelet). These rules apply from **19 June 2026** and require online sellers to make an electronic withdrawal function easily reachable and to acknowledge each declaration on a durable medium.
+A funkció a **Directive (EU) 2023/2673** irányelv (amely a 2011/83/EU fogyasztói jogi irányelvet módosítja), Magyarországon pedig a **415/2025. (XII. 23.) Korm. rendelet** (a 45/2014. (II. 26.) Korm. rendelet módosítása) követelményeit valósítja meg. Ezek **2026. június 19-től** alkalmazandók, és előírják, hogy az online értékesítők könnyen elérhető elektronikus elállási funkciót biztosítsanak, és minden nyilatkozatot tartós adathordozón visszaigazoljanak.
 
-> **Not legal advice.** The bundled legal texts are samples only and do not constitute legal advice. Before going live, validate the final wording against your own terms of service (ÁSZF) and with a Hungarian e-commerce lawyer.
+> **Ez nem jogi tanácsadás.** A bővítményhez mellékelt jogi szövegek csak minták. Élesítés előtt a végleges szövegeket a saját ÁSZF-eddel összhangban, magyar e-commerce jogásszal kell validáltatni.
 
-## Features
+## Funkciók
 
-- **Online withdrawal page and button** — default label `Elállás a szerződéstől`; public page, `[elallas_form]` shortcode, Gutenberg block / Elementor widget, My Account endpoint and an order-details button (reachable within two clicks).
-- **Guest-friendly identification** — works without an account. Logged-in customers get their email pre-filled and a quick-pick of their eligible orders; the order number can always be entered manually, so a guest order placed with a different email can be identified too. Opening the form from an order (`?order=ID`) pre-selects it. A logged-in customer cannot act on another account's order.
-- **Self-service in My Account** — customers see their previous withdrawal cases and can download their own withdrawal-statement PDF via a token-gated link.
-- **Two-step flow** — declaration on the electronic interface, then a separate `Elállás megerősítése` confirmation step with explicit data/intent/consent checkboxes. Optional refund **bank account / IBAN** (stored encrypted) and a free-text note.
-- **Durable-medium email** — automatic acknowledgement with the withdrawal data and exact receipt time, plus optional PDF attachment and editable extra text appended to the customer email.
-- **Full / partial / per-line / per-quantity withdrawal**.
-- **Deadline flagging, never blocking** — the 14-day window is calculated and flagged (within / expired / unknown); the merchant keeps the final decision.
-- **Order snapshot** — names, SKUs, quantities and totals captured at submission time, so cases stay reconstructable after product or price changes.
-- **Audit log** — append-only event log (who, when, what).
-- **Case management admin** — filterable cases list and a detailed case view (summary incl. refund bank account, declaration, order snapshot, audit log, admin decision, documents) under WooCommerce.
-- **CSV export** and **PDF withdrawal statement** (dompdf, SHA-256 hash, protected token-gated download).
-- **Neutral identification** — wrong order number or email returns the same neutral message to prevent brute forcing.
-- **Privacy controls** — IP/UA full/hash/off, email hashing and optional encryption, encrypted bank account, configurable retention with scheduled anonymization.
-- **B2B detection** and **withdrawal exceptions by product, category and tag** (set per product, or on the category/tag edit screen; flags for review, never auto-blocks).
-- **Onboarding wizard** — shop data, automatic `/elallas/` page creation, display toggles, deadline and a test step.
-- **Gutenberg block & Elementor widget** — place the withdrawal form anywhere; `[elallas_form]` shortcode fallback.
-- **Multilingual** — WPML / Polylang / TranslatePress integration; legal texts manageable per language.
-- **REST API** — `elallas-for-woo/v1` endpoints (identify, cases, confirm, status, document) with nonce + rate limiting on public routes and `manage_woocommerce` on admin routes.
-- **Invoicing & shipping integrations** — Számlázz.hu / Billingo / NAV VAT detection (notes + hooks, no auto-storno) and carrier delivery-date pull (GLS, Packeta/Foxpost, MPL, DPD, Shipment Tracking).
-- **LW Site Manager abilities** — list/get cases, update status and read the audit log via the WordPress Abilities API (AI/REST agents).
-- **HPOS compatible** — declares compatibility with WooCommerce custom order tables.
+- **Online elállási oldal és gomb** — alapértelmezett felirat: `Elállás a szerződéstől`; önálló oldal, `[elallas_form]` shortcode, Gutenberg blokk / Elementor widget, Fiókom-végpont és rendelés-oldali gomb (két kattintáson belül elérhető).
+- **Vendégbarát azonosítás** — fiók nélkül is működik. Belépett vásárlónál az e-mail előre kitöltött, és a saját jogosult rendelései gyorsválasztóból választhatók; a rendelésszám mindig kézzel is megadható, így egy vendégként, más e-mail címmel leadott rendelés is azonosítható. A `?order=ID` paraméterrel megnyitott űrlap előválasztja az adott rendelést. Belépett vásárló nem műveletezhet másik fiók rendelésével.
+- **Önkiszolgálás a Fiókom oldalon** — a vásárló látja a korábbi elállási ügyeit, és token-védett linken letöltheti a saját elállási nyilatkozat PDF-jét.
+- **Kétlépcsős folyamat** — a nyilatkozat kitöltése az elektronikus felületen, majd külön `Elállás megerősítése` lépés, kifejezett adat/szándék/hozzájárulás pipákkal. Opcionális visszatérítési **bankszámla / IBAN** (titkosítva tárolva) és szabad szöveges megjegyzés.
+- **Tartós adathordozós e-mail** — automatikus visszaigazolás az elállás adataival és a pontos beérkezési időponttal, opcionális PDF-csatolmánnyal és a vásárlói e-mailhez fűzhető szerkeszthető extra szöveggel.
+- **Teljes / részleges / tételenkénti / mennyiségenkénti elállás.**
+- **Határidő-jelölés, sosem blokkol** — a 14 napos ablakot kiszámolja és jelöli (határidőn belül / lejárt / nem megállapítható); a végső döntés a kereskedőé.
+- **Rendelés-pillanatkép** — a nevek, SKU-k, mennyiségek és összegek a beküldés pillanatában rögzülnek, így az ügy a termék/ár későbbi változása után is rekonstruálható.
+- **Audit log** — append-only eseménynapló (ki, mikor, mit).
+- **Ügykezelő admin** — szűrhető ügylista és részletes ügynézet (összefoglaló a visszatérítési bankszámlával, nyilatkozat, rendelés-pillanatkép, audit log, admin döntés, dokumentumok) a WooCommerce alatt.
+- **CSV export** és **PDF elállási nyilatkozat** (dompdf, SHA-256 hash, védett, token-védett letöltés).
+- **Semleges azonosítás** — hibás rendelésszám vagy e-mail ugyanazt a semleges üzenetet adja, megakadályozva a próbálgatást.
+- **Adatvédelmi vezérlők** — IP/UA teljes/hash/kikapcsolva, e-mail hash-elés és opcionális titkosítás, titkosított bankszámla, állítható megőrzés ütemezett anonimizálással.
+- **B2B-felismerés** és **elállási kivételek termék, kategória és címke szerint** (terméken, vagy a kategória/címke szerkesztő oldalán állítva; jelöl, sosem blokkol automatikusan).
+- **Beüzemelő varázsló** — webshop-adatok, a `/elallas/` oldal automatikus létrehozása, megjelenítési kapcsolók, határidő és egy teszt lépés.
+- **Gutenberg blokk és Elementor widget** — az elállási űrlap bárhova beilleszthető; az `[elallas_form]` shortcode az univerzális tartalék.
+- **Többnyelvű** — WPML / Polylang / TranslatePress integráció; a jogi szövegek nyelvenként kezelhetők.
+- **REST API** — `elallas-for-woo/v1` végpontok (azonosítás, ügyek, megerősítés, státusz, dokumentum) nonce-szal + rate limittel a publikus, és `manage_woocommerce` ellenőrzéssel az admin útvonalakon.
+- **Számlázási és szállítási integrációk** — Számlázz.hu / Billingo / NAV ÁFA-felismerés (rendelés-jegyzetek + hookok, automatikus storno nélkül) és futár kézbesítési dátum (GLS, Packeta/Foxpost, MPL, DPD, Shipment Tracking).
+- **LW Site Manager abilities** — ügyek listázása/lekérése, státuszváltás és az audit log olvasása a WordPress Abilities API-n keresztül (AI/REST ügynököknek).
+- **HPOS-kompatibilis** — deklarálja a kompatibilitást a WooCommerce egyedi rendelési tábláival.
 
-## Requirements
+## Követelmények
 
 - WordPress 6.4+
 - WooCommerce 8.0+
-- PHP 8.0+ (8.2+ recommended)
+- PHP 8.0+ (8.2+ ajánlott)
 
-## Installation
+## Telepítés
 
-Via Composer:
+Composerrel:
 
 ```bash
 composer require uptools-io/elallas-for-woo
 ```
 
-Or download the release ZIP and install it through **Plugins → Add New → Upload Plugin** in WordPress. The release ZIP bundles the vendor dependencies. After activation, go to **WooCommerce → Elállási ügyek → Beállítások**, run the onboarding wizard and create the `/elallas/` withdrawal page.
+Vagy töltsd le a release ZIP-et, és telepítsd a **Bővítmények → Új hozzáadása → Bővítmény feltöltése** menüben. A release ZIP a Composer-függőségeket is tartalmazza. Aktiválás után nyisd meg a **WooCommerce → Elállási ügyek → Beállítások** oldalt, futtasd a beüzemelő varázslót, és hozd létre a `/elallas/` elállási oldalt.
 
-## Developer notes
+## Fejlesztői jegyzetek
 
-### Action hooks
+### Action hookok
 
-| Hook | Arguments | Fired when |
-|------|-----------|------------|
-| `elallas_case_created` | `$case_id`, `$order_id` | A withdrawal case has been created |
-| `elallas_case_confirmed` | `$case_id` | A case has been confirmed in the two-step flow |
-| `elallas_case_status_changed` | `$case_id`, `$old_status`, `$new_status` | A case status changes |
+| Hook | Paraméterek | Mikor |
+|------|-------------|-------|
+| `elallas_case_created` | `$case_id`, `$order_id` | Egy elállási ügy létrejött |
+| `elallas_case_confirmed` | `$case_id` | Egy ügyet megerősítettek a kétlépcsős flow-ban |
+| `elallas_case_status_changed` | `$case_id`, `$old_status`, `$new_status` | Egy ügy státusza megváltozik |
 
-### Filters
+### Filterek
 
-| Hook | Signature | Purpose |
-|------|-----------|---------|
-| `elallas_is_order_eligible` | `($eligible, $order)` | Override whether an order is eligible for withdrawal |
-| `elallas_deadline_days` | `($days, $order)` | Override the withdrawal deadline window (default 14) |
-| `elallas_pdf_html` | `($html, $context)` | Filter the HTML used to render the PDF statement |
-| `elallas_delivery_date` | `($date, $order)` | Provide a carrier delivery date (the bundled Shipping integration resolves it from common carriers / Shipment Tracking) |
-| `elallas_is_order_b2b` | `($is_b2b, $order)` | Override B2B detection |
+| Hook | Aláírás | Cél |
+|------|---------|-----|
+| `elallas_is_order_eligible` | `($eligible, $order)` | A rendelés jogosultságának felülbírálása |
+| `elallas_deadline_days` | `($days, $order)` | Az elállási határidő felülbírálása (alap 14) |
+| `elallas_pdf_html` | `($html, $context)` | A PDF-nyilatkozat HTML-jének szűrése |
+| `elallas_delivery_date` | `($date, $order)` | Futár kézbesítési dátum megadása (a beépített szállítási integráció a gyakori futárokból / Shipment Trackingből oldja fel) |
+| `elallas_is_order_b2b` | `($is_b2b, $order)` | A B2B-felismerés felülbírálása |
 
-The deadline start can be driven by the delivery date. The bundled shipping
-integration resolves it via the `elallas_delivery_date` filter (reading GLS /
-Packeta / Foxpost / MPL / DPD / WooCommerce Shipment Tracking meta), and it is
-also stored in the `_lw_elallas_delivery_date` order meta.
+A határidő kezdetét a kézbesítési dátum is vezérelheti. A beépített szállítási
+integráció ezt az `elallas_delivery_date` filteren keresztül oldja fel (a GLS /
+Packeta / Foxpost / MPL / DPD / WooCommerce Shipment Tracking metákat olvasva), és
+a `_lw_elallas_delivery_date` rendelés-metában is eltárolja.
 
 ### WP-CLI
 
@@ -84,54 +84,54 @@ wp elallas pdf <id>
 wp elallas cleanup
 ```
 
-## Documentation
+## Dokumentáció
 
-- [Kezelési útmutató (HU)](docs/kezelesi-utmutato.md) — install, setup, settings, customer & admin flows.
-- [Fejlesztői referencia (HU)](docs/fejlesztoi-referencia.md) — hooks, REST API, WP-CLI, abilities, templates, data model.
+- [Kezelési útmutató](docs/kezelesi-utmutato.md) — telepítés, beüzemelés, beállítások, vásárlói és admin folyamatok.
+- [Fejlesztői referencia](docs/fejlesztoi-referencia.md) — hookok, REST API, WP-CLI, abilities, sablonok, adatmodell.
 
-## Setup checklist (new install)
+## Beüzemelési checklist (új telepítés)
 
-Work through this once after activating the plugin on a fresh site.
+Friss oldalon az aktiválás után egyszer érdemes végigmenni rajta.
 
-**Prerequisites**
-- [ ] WooCommerce 8.0+ installed and active
-- [ ] PHP 8.0+ (8.2+ recommended); `AUTH_KEY` / `AUTH_SALT` set in `wp-config.php` (used to derive the PII encryption keys)
+**Előfeltételek**
+- [ ] WooCommerce 8.0+ telepítve és aktív
+- [ ] PHP 8.0+ (8.2+ ajánlott); az `AUTH_KEY` / `AUTH_SALT` beállítva a `wp-config.php`-ban (ezekből származnak a PII titkosítási kulcsok)
 
-**Create & enable**
-- [ ] Run the onboarding wizard: **WooCommerce → Elállási ügyek → Beállítások**
-- [ ] Create the public withdrawal page (`/elallas/`) — the wizard adds the `[elallas_form]` shortcode and sets it as the *withdrawal page* (or create a page manually and select it under **Settings → General**)
-- [ ] Turn on **Engedélyezés** (master switch) under **Settings → General**
+**Létrehozás és engedélyezés**
+- [ ] Futtasd a beüzemelő varázslót: **WooCommerce → Elállási ügyek → Beállítások**
+- [ ] Hozd létre a publikus elállási oldalt (`/elallas/`) — a varázsló beilleszti az `[elallas_form]` shortcode-ot, és beállítja *megjelenítési oldalként* (vagy hozz létre egy oldalt kézzel, és válaszd ki a **Beállítások → Általános** alatt)
+- [ ] Kapcsold be az **Engedélyezés** főkapcsolót a **Beállítások → Általános** alatt
 
-**Configure (Settings tabs)**
-- [ ] **General** — confirm the button label (`Elállás a szerződéstől`) and choose display surfaces (My Account / order details / order email). Place the link yourself anywhere else via the `[elallas_form]`/`[elallas_button]` shortcode, the Gutenberg block, the Elementor widget, or a menu item.
-- [ ] **Deadline** — set the withdrawal window (default 14 days), the start date (order / completed / delivery), and how expired requests are handled
-- [ ] **Statuses** — pick which order statuses may start a withdrawal; optionally enable the custom `wc-withdrawal-*` order statuses
-- [ ] **Privacy** — IP/UA storage (full / hash / off), email encryption, and a retention period (the daily cron anonymizes older cases)
-- [ ] **Emails** — enable the customer / admin / status emails and set the admin recipient
-- [ ] **Legal** — review the declaration & confirmation texts and **validate them with a lawyer** (see below)
-- [ ] **Exceptions** — for any non-withdrawable products tick *Elállásból kizárt* on the product's **General** tab; to exclude a whole group, edit a product **category** or **tag** and tick *Elállásból kizárt* there (per-product setting wins; flags for review, never auto-blocks)
+**Beállítás (Beállítások fülek)**
+- [ ] **Általános** — erősítsd meg a gomb feliratát (`Elállás a szerződéstől`), és válaszd ki a megjelenítési felületeket (Fiókom / rendelés részletei / rendelési e-mail). A linket bárhová máshová az `[elallas_form]`/`[elallas_button]` shortcode-dal, a Gutenberg blokkal, az Elementor widgettel vagy egy menüponttal teheted ki.
+- [ ] **Határidő** — állítsd be az elállási ablakot (alap 14 nap), a kezdő dátumot (rendelés / teljesítés / kézbesítés) és a lejárt kérések kezelését
+- [ ] **Státuszok** — válaszd ki, mely rendelési státuszoknál indítható elállás; opcionálisan engedélyezd az egyedi `wc-withdrawal-*` rendelési státuszokat
+- [ ] **Adatvédelem** — IP/UA tárolás (teljes / hash / kikapcsolva), e-mail titkosítás és megőrzési idő (a napi cron anonimizálja a régebbi ügyeket)
+- [ ] **E-mailek** — engedélyezd a vásárlói / admin / státusz e-maileket, és add meg az admin címzettet
+- [ ] **Jogi szövegek** — nézd át a nyilatkozat és visszaigazoló szövegeket, és **validáltasd jogásszal** (lásd lent)
+- [ ] **Kivételek** — a nem visszaküldhető termékeknél jelöld be az *Elállásból kizárt* opciót a termék **Általános** fülén; egész csoport kizárásához szerkessz egy termék**kategóriát** vagy **címkét**, és ott jelöld be az *Elállásból kizárt*-ot (a termékszintű beállítás elsőbbséget élvez; jelöl, sosem blokkol automatikusan)
 
-**Verify reachability (legal requirement)**
-- [ ] The withdrawal function is reachable in **≤ 2 clicks** from the customer's account / order page
+**Elérhetőség ellenőrzése (jogszabályi követelmény)**
+- [ ] Az elállási funkció **≤ 2 kattintással** elérhető a vásárló fiók / rendelés oldaláról
 
-**Test before going live**
-- [ ] Place a test order and move it to an eligible status (e.g. *completed*)
-- [ ] Submit a withdrawal at `/elallas/` (order number + email → select items → tick the 3 consents → confirm)
-- [ ] Confirm the case appears under **WooCommerce → Elállási ügyek**, the confirmation email is sent (durable medium), and the PDF is generated
-- [ ] Try a wrong email → you should get the neutral "not found / not eligible" message (no field-level disclosure)
+**Teszt élesítés előtt**
+- [ ] Adj le egy teszt rendelést, és állítsd jogosult státuszba (pl. *teljesítve*)
+- [ ] Küldj be egy elállást a `/elallas/`-on (rendelésszám + e-mail → tételek kiválasztása → 3 pipa → megerősítés)
+- [ ] Ellenőrizd, hogy az ügy megjelenik a **WooCommerce → Elállási ügyek** alatt, a visszaigazoló e-mail kimegy (tartós adathordozó), és a PDF elkészül
+- [ ] Próbálj hibás e-mailt → a semleges „nem található / nem jogosult" üzenetet kell kapnod (mező-szintű információ nélkül)
 
-**Production notes**
-- [ ] On **Nginx / LiteSpeed**, the `.htaccess` in `uploads/elallas-docs/` is ignored — PDFs use unguessable filenames + token-gated downloads, but you may also add a server `location` deny rule for `uploads/elallas-docs/`
-- [ ] If you bump the plugin version, update **all** locations: `elallas-for-woo.php` (header + `ELALLAS_FOR_WOO_VERSION`), `readme.txt` (Stable tag + Changelog), `CHANGELOG.md` — then push to `main` (the gated Release workflow validates on PHP 8.0 and publishes the build only if it passes)
+**Éles üzemeltetési jegyzetek**
+- [ ] **Nginx / LiteSpeed** alatt az `uploads/elallas-docs/`-ban lévő `.htaccess` figyelmen kívül marad — a PDF-ek kitalálhatatlan fájlnevet + token-védett letöltést használnak, de érdemes egy szerver oldali `location` deny szabályt is hozzáadni az `uploads/elallas-docs/`-ra
+- [ ] Verzióemeléskor frissítsd **minden** helyen: `elallas-for-woo.php` (fejléc + `ELALLAS_FOR_WOO_VERSION`), `readme.txt` (Stable tag + Changelog), `CHANGELOG.md` — majd push a `main`-re (a gated Release workflow PHP 8.0-n validál, és csak siker esetén ad ki buildet)
 
-## Not legal advice
+## Nem jogi tanácsadás
 
-This plugin ships sample legal and message texts and a compliance-oriented workflow, but it does not constitute legal advice. The legal value lies in keeping the wording and process up to date and validated. Validate the final texts with your own terms of service (ÁSZF) and a Hungarian e-commerce lawyer before relying on them.
+A bővítmény minta jogi és üzenetszövegeket, valamint egy megfelelés-orientált folyamatot szállít, de nem minősül jogi tanácsadásnak. A jogi érték a szövegek és a folyamat naprakészen tartásában és validáltságában rejlik. Élesítés előtt a végleges szövegeket a saját ÁSZF-eddel és magyar e-commerce jogásszal kell validáltatni.
 
-## License
+## Licenc
 
-GPL-2.0-or-later. See [license.txt](license.txt).
+GPL-2.0-or-later. Lásd: [license.txt](license.txt).
 
 ---
 
-By [uptools.io](https://uptools.io) — lightweight WordPress plugins with minimal footprint, no upsells and no tracking.
+Készítette az [uptools.io](https://uptools.io) — könnyűsúlyú WordPress bővítmények minimális footprinttel, felár és tracking nélkül.
