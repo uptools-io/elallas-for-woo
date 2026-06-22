@@ -49,4 +49,19 @@ final class CaseItem {
 
 		return $instance;
 	}
+
+	/**
+	 * Sample item with placeholder data for the WooCommerce email preview.
+	 *
+	 * @return self
+	 */
+	public static function sample(): self {
+		$instance                        = new self();
+		$instance->product_name_snapshot = __( 'Mintatermék', 'elallas-for-woo' );
+		$instance->sku_snapshot          = 'SKU-001';
+		$instance->qty_ordered           = 1;
+		$instance->qty_withdrawn         = 1;
+
+		return $instance;
+	}
 }

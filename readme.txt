@@ -4,7 +4,7 @@ Tags: woocommerce, withdrawal, refund, gdpr, compliance
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 8.0
@@ -105,6 +105,9 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 6. Onboarding wizard
 
 == Changelog ==
+
+= 1.0.7 =
+* Fix: the WooCommerce email preview (WooCommerce → Settings → Emails) no longer shows a rendering error for the withdrawal emails. They are now preview-aware and render with sample data when no real case object is present. Actual email delivery was never affected.
 
 = 1.0.6 =
 * Change: plugin display name is now "Elállás for WooCommerce" (with the Hungarian accent). The slug, text domain and package name are unchanged.

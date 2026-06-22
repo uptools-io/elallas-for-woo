@@ -11,13 +11,15 @@ namespace LightweightPlugins\Elallas\Emails;
 
 use LightweightPlugins\Elallas\Options;
 use LightweightPlugins\Elallas\Database\CaseRepository;
-use LightweightPlugins\Elallas\Database\CaseItemRepository;
+use LightweightPlugins\Elallas\Models\WithdrawalCase;
 use LightweightPlugins\Elallas\Woo\OrderAdapter;
 
 /**
  * Sent to the customer when their withdrawal case is confirmed.
  */
 class CustomerConfirmation extends \WC_Email {
+
+	use PreviewableEmailTrait;
 
 	/**
 	 * Constructor.
@@ -118,9 +120,11 @@ class CustomerConfirmation extends \WC_Email {
 	 * @return array<string, mixed>
 	 */
 	private function template_args( bool $plain_text ): array {
+		[ $case, $items ] = $this->resolve_case_items();
+
 		return [
-			'case'          => $this->object,
-			'items'         => $this->object ? CaseItemRepository::for_case( $this->object->id ) : [],
+			'case'          => $case,
+			'items'         => $items,
 			'email_heading' => $this->get_heading(),
 			'sent_to_admin' => false,
 			'plain_text'    => $plain_text,
@@ -136,7 +140,7 @@ class CustomerConfirmation extends \WC_Email {
 	public function get_attachments(): array {
 		$attachments = [];
 
-		if ( ! $this->object || ! Options::get( 'pdf_enabled' ) ) {
+		if ( ! ( $this->object instanceof WithdrawalCase ) || ! Options::get( 'pdf_enabled' ) ) {
 			return $attachments;
 		}
 

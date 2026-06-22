@@ -81,4 +81,21 @@ final class WithdrawalCase {
 	public function deadline_label(): string {
 		return DeadlineStatus::label( $this->deadline_status );
 	}
+
+	/**
+	 * Sample case with placeholder data for the WooCommerce email preview.
+	 *
+	 * @return self
+	 */
+	public static function sample(): self {
+		$instance                  = new self();
+		$instance->case_number     = 'EL-2026-000001';
+		$instance->order_number    = '1001';
+		$instance->status          = CaseStatus::RECEIVED;
+		$instance->withdrawal_type = 'full';
+		$instance->submitted_at    = '2026-06-19 10:00:00';
+		$instance->deadline_status = DeadlineStatus::WITHIN;
+
+		return $instance;
+	}
 }

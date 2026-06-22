@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.7] - 2026-06-22
+
+### Fixed
+- The WooCommerce email preview (WooCommerce → Settings → Emails) no longer shows a rendering error for the three withdrawal emails. WooCommerce renders the preview without calling `trigger()`, so `$this->object` was not a `WithdrawalCase` (it is a dummy `WC_Order`), and the case-specific templates threw. The emails are now preview-aware: a shared `PreviewableEmailTrait` substitutes a sample `WithdrawalCase` + `CaseItem` when no real case is set. Actual email delivery was never affected.
+
 ## [1.0.6] - 2026-06-19
 
 ### Changed
