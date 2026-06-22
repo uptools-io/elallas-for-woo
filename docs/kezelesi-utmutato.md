@@ -88,13 +88,18 @@ indokával). A jelölés az ügy-pillanatképben és az admin ügynézetben jele
 ### Adatvédelem (GDPR)
 - **IP-cím / User agent tárolása** – teljes / hash / kikapcsolva.
 - **E-mail titkosítás** – a vásárlói e-mail titkosítva tárolódik (kereséshez hash-elve is).
+- **Bankszámla/IBAN** – ha a vásárló megadja, **mindig titkosítva** (AES-256-GCM) tárolódik, és az
+  adatmegőrzési anonimizálás törli.
 - **Adatmegőrzés (nap)** – 0 = örökre. Ha > 0, a napi karbantartó cron a megőrzési időn túli
-  ügyek **személyes adatait anonimizálja** (e-mail, IP, user agent, megjegyzés törlése), de az ügy
-  és az audit log megmarad. Kézzel is futtatható: `wp elallas cleanup`.
+  ügyek **személyes adatait anonimizálja** (e-mail, IP, user agent, megjegyzés, bankszámla
+  törlése), de az ügy és az audit log megmarad. Kézzel is futtatható: `wp elallas cleanup`.
 
 ### E-mailek
 - Vásárlói visszaigazoló (tartós adathordozó), admin értesítő, státusz-frissítés – külön
   ki/bekapcsolható; az admin értesítő címe megadható.
+- **Vásárlói e-mail extra szöveg** – a visszaigazoló e-mail aljához fűzött szabad szöveg (pl.
+  visszaküldési cím, ügyfélszolgálat). A tárgyat/fejlécet a WooCommerce → Beállítások → E-mailek
+  alatt, a teljes sablont a témád `elallas-for-woo/` mappájában szabhatod testre.
 
 ### Jogi szövegek
 - **Nyilatkozat szövege** és **visszaigazoló szöveg** – szabadon szerkeszthető; a beállítások
@@ -108,14 +113,24 @@ A `/elallas/` oldal **regisztráció nélkül** is működik (a vendég vásárl
 
 1. **Azonosítás** – rendelési szám + e-mail. Hibás adatnál **semleges** üzenet (nem árulja el,
    melyik mező rossz) → nem lehet rendelési számokat próbálgatni.
+   - **Belépett vásárlónak** az e-mail előre kitöltött, és a saját jogosult rendelései egy
+     gyorsválasztó legördülőből választhatók (ami kitölti a rendelésszám mezőt). A rendelésszám
+     mindig kézzel is megadható – így egy vendégként, más e-mail címmel leadott rendelés is
+     azonosítható. Másik regisztrált fiók rendelése viszont nem indítható.
+   - A `?order=ID` paraméterrel megnyitott űrlap automatikusan előválasztja az adott rendelést.
 2. **Tételek kiválasztása** – teljes vagy részleges elállás, mennyiség szerint.
 3. **Megerősítés** – összefoglaló + 3 nyilatkozat-pipa + **„Elállás megerősítése"** gomb.
+   Opcionálisan megadható a **visszatérítési bankszámla/IBAN** is (titkosítva tárolódik, lásd
+   Adatvédelem), valamint egy szabad szöveges megjegyzés.
 4. **Visszaigazolás** – ügyszám (pl. `EL-2026-000001`) + a beérkezés időpontja; automatikus
-   e-mail tartós adathordozón.
+   e-mail tartós adathordozón (opcionális PDF nyilatkozat-csatolmánnyal).
 
 **Megjelenési felületek:** `/elallas/` oldal, `[elallas_form]` shortcode, Gutenberg „Elállási
 űrlap" blokk, Elementor „Elállási űrlap" widget, Fiókom → Elállás (`/my-account/withdrawals/`),
 rendelés-oldali gomb, rendelési e-mailbe ágyazott link.
+
+A **Fiókom → Elállás** oldalon a vásárló a korábbi elállási ügyeit is látja, és — ha készült
+PDF — token-védett linken **le is töltheti a saját elállási nyilatkozatát**.
 
 ---
 
@@ -123,9 +138,10 @@ rendelés-oldali gomb, rendelési e-mailbe ágyazott link.
 
 - **Ügylista** – ügyszám, rendelés, vásárló, státusz, típus, beérkezés, határidő-státusz, tételek.
   Szűrhető státusz/határidő/típus szerint és kereshető. Tömeges műveletek: státuszváltás, CSV export.
-- **Ügy részletei** – összefoglaló, vásárlói nyilatkozat, **rendelés-pillanatkép** (a beküldéskori
-  adatok, akkor is, ha a termék/ár később változik), **audit log** (ki, mikor, mit), admin döntés
-  (státuszváltás), dokumentumok (PDF letöltés token-védetten).
+- **Ügy részletei** – összefoglaló (a megadott visszatérítési bankszámlával, ha van),
+  vásárlói nyilatkozat, **rendelés-pillanatkép** (a beküldéskori adatok, akkor is, ha a termék/ár
+  később változik; a kizárt tételek „kizárt"-ként jelölve), **audit log** (ki, mikor, mit), admin
+  döntés (státuszváltás), dokumentumok (PDF letöltés token-védetten).
 
 ### Ügy-státuszok
 `Beérkezett` → `Automatikusan visszaigazolva` / `Manuális ellenőrzés alatt` → `Elfogadva` /

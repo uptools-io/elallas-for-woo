@@ -9,10 +9,11 @@ rendelés-hozzáférés WooCommerce CRUD-on keresztül megy, az `OrderAdapter`-b
 |---|---|
 | `Database/` | `Schema` (4 tábla) + repository-k (`CaseRepository`, `CaseItemRepository`, `EventRepository`, `DocumentRepository`, `CaseQuery`) |
 | `Models/` | `WithdrawalCase`, `CaseItem`, `CaseStatus`, `DeadlineStatus` |
-| `Domain/` | `CaseService`, `EligibilityChecker`, `DeadlineCalculator`, `B2BDetector`, `OrderSnapshotBuilder`, `CaseNumberGenerator` |
-| `Frontend/` | flow (`FormHandler`, `StepProcessor`, `FormRequest`, `WithdrawalForm`), `Shortcodes`, `MyAccountEndpoint`, `DisplayLinks`, `Assets`, `TemplateLoader`, `SubmissionContext` |
-| `Admin/` | menü, `CasesListTable`, ügy-részletek, `Settings/`, `Onboarding/`, `ProductFields` |
-| `Emails/` | `EmailManager` + 3 `WC_Email` osztály |
+| `Domain/` | `CaseService`, `EligibilityChecker`, `DeadlineCalculator`, `B2BDetector`, `OrderSnapshotBuilder`, `ProductExclusion`, `CaseNumberGenerator`, `EligibilityResult` |
+| `Frontend/` | flow (`FormHandler`, `StepProcessor`, `FormRequest`, `WithdrawalForm`), `Shortcodes`, `MyAccountEndpoint`, `Assets`, `TemplateLoader`, `SubmissionContext` |
+| `Admin/` | menü, `CasesListTable`, ügy-részletek, `Settings/`, `Onboarding/`, `ProductFields` (termék-meta), `TermFields` (kategória/címke-meta) |
+| `Emails/` | `EmailManager` + 3 `WC_Email` osztály + `PreviewableEmailTrait` (előnézet-minta) |
+| `Security/` | `Encryption` (AES-256-GCM), `RateLimiter`, `Honeypot` |
 | `Pdf/` | `PdfRenderer` (dompdf), `DocumentService`, `DownloadHandler` (token-védett) |
 | `Woo/` | `OrderAdapter` (HPOS-safe), `OrderStatusManager`, `Hooks` |
 | `Integrations/` | `Invoicing`, `Shipping`, `Multilingual`, `Elementor` |
@@ -99,7 +100,7 @@ your-theme/elallas-for-woo/pdf/withdrawal-statement.php
 
 | Tábla | Tartalom |
 |---|---|
-| `{prefix}lw_elallas_cases` | elállási ügyek (snapshot határidő, hash-elt/titkosított PII) |
+| `{prefix}lw_elallas_cases` | elállási ügyek (snapshot határidő, hash-elt/titkosított PII, titkosított `bank_account_encrypted`) |
 | `{prefix}lw_elallas_case_items` | érintett tételek pillanatképe (név, SKU, mennyiség, összegek) |
 | `{prefix}lw_elallas_events` | audit log (append-only) |
 | `{prefix}lw_elallas_documents` | generált dokumentumok (útvonal, SHA-256 hash) |
@@ -107,8 +108,11 @@ your-theme/elallas-for-woo/pdf/withdrawal-statement.php
 ### Rendelés-meta
 
 `_lw_elallas_has_case` (yes/no) · `_lw_elallas_case_ids` (json) · `_lw_elallas_deadline_status` ·
-`_lw_elallas_delivery_date`. Termék-meta: `_lw_elallas_excluded` (yes/no) ·
-`_lw_elallas_exclusion_reason`.
+`_lw_elallas_delivery_date`.
+
+**Termék-meta** (`ProductFields`) és **term-meta** (`TermFields`, `product_cat` / `product_tag`):
+`_lw_elallas_excluded` (yes/no) · `_lw_elallas_exclusion_reason`. A `ProductExclusion` resolver
+ezeket összegzi (a termék-meta elsőbbséget élvez a kategória/címke felett).
 
 ## Opció kulcs
 
@@ -125,8 +129,11 @@ Ha a `use_wc_statuses` be van kapcsolva: `wc-withdrawal-requested`, `wc-withdraw
 
 ## Dokumentum-letöltés
 
-A PDF a `wp-content/uploads/elallas-docs/` védett könyvtárba kerül (`.htaccess` deny-all).
-Letöltés token-védett: `?elallas_doc=<id>&token=<hmac>` vagy `manage_woocommerce` joggal.
+A PDF a `wp-content/uploads/elallas-docs/` védett könyvtárba kerül (`.htaccess` deny-all),
+nem kitalálható fájlnévvel. Letöltés token-védett: `?elallas_doc=<id>&token=<token>`, ahol a
+token **dokumentumonkénti, véletlen, visszavonható** (nem az ID-ből származtatott), vagy
+`manage_woocommerce` joggal. A vásárló a Fiókom oldalról a saját nyilatkozatát töltheti le ezen
+a tokenes linken (`DocumentService::download_url()`).
 
 ## Minőség
 

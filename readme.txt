@@ -26,19 +26,21 @@ The function implements the requirements introduced by **Directive (EU) 2023/267
 
 * **Online withdrawal page and button** — default label "Elállás a szerződéstől" (the legal wording, not "rendeléstől"). Public page, shortcode `[elallas_form]`, Gutenberg block / Elementor widget, My Account endpoint and an order-details button.
 * **Reachable in two clicks** — the withdrawal function is placed where customers can find it from their account or order-details page, "well visible and easily accessible".
-* **Two-step flow** — the consumer fills the declaration on the electronic interface, then finalises it with a separate **"Elállás megerősítése"** confirmation button, with explicit data/intent/consent checkboxes.
-* **Durable-medium email** — an automatic acknowledgement email containing the withdrawal data and the exact date/time of receipt, plus an optional PDF attachment.
+* **Guest-friendly identification** — works without an account. Logged-in customers get their email pre-filled and a quick-pick of their own eligible orders; the order number can always be typed in manually, so a guest order placed with a different email can be identified too. Opening the form from an order (?order=ID) pre-selects it, and a logged-in customer cannot act on another account's order.
+* **Self-service in My Account** — customers see their previous withdrawal cases and can download their own withdrawal-statement PDF via a token-gated link.
+* **Two-step flow** — the consumer fills the declaration on the electronic interface, then finalises it with a separate **"Elállás megerősítése"** confirmation button, with explicit data/intent/consent checkboxes. An optional refund bank account / IBAN (stored encrypted) and a free-text note can be added.
+* **Durable-medium email** — an automatic acknowledgement email containing the withdrawal data and the exact date/time of receipt, plus an optional PDF attachment and editable extra text appended to the customer email.
 * **Full or partial withdrawal** — per order, per line item and per quantity.
 * **Deadline flagging, never blocking** — the 14-day window is calculated and flagged (within / expired / unknown) but never auto-rejected, so the merchant keeps the final decision on edge cases and extended deadlines.
 * **Order snapshot** — product names, SKUs, quantities and totals are stored at submission time, so a case stays reconstructable even if the product or price changes later.
-* **Audit log** — every event (who, when, what) is recorded in an append-only events table, with an optional immutable mode.
-* **Case management admin** — a filterable case list and a detailed case view (summary, customer declaration, order snapshot, audit log, admin decision, documents) under WooCommerce.
+* **Audit log** — every event (who, when, what) is recorded in an append-only events table.
+* **Case management admin** — a filterable case list and a detailed case view (summary incl. the refund bank account, customer declaration, order snapshot, audit log, admin decision, documents) under WooCommerce.
 * **CSV export** — export the cases matching your current filters.
-* **PDF withdrawal statement** — generated via dompdf with an SHA-256 file hash, stored in a protected directory and served through a token-gated download (direct URL access blocked). HTML fallback available.
+* **PDF withdrawal statement** — generated via dompdf with an SHA-256 file hash and an unguessable filename, stored in a protected directory and served through a token-gated download (direct URL access blocked). HTML fallback available.
 * **Neutral identification** — a wrong order number or email returns the same neutral message, so order numbers cannot be brute-forced to reveal customer data.
-* **Privacy controls** — IP and user agent stored as full / hash / off, email hashed for lookup and optionally encrypted, configurable retention with scheduled cleanup, and WordPress export/erasure friendly storage.
+* **Privacy controls** — IP and user agent stored as full / hash / off, email hashed for lookup and optionally encrypted, bank account encrypted at rest, configurable retention with scheduled anonymization, and WordPress export/erasure friendly storage.
 * **B2B detection** — likely-B2B orders (company name / VAT number) are flagged so the consumer-only right is applied correctly.
-* **Product and category exceptions** — mark products as withdrawal exceptions (with a legal-risk warning); surfaced on the form.
+* **Exceptions by product, category and tag** — exclude individual products (on the product), or whole product categories / tags (on the category/tag edit screen) from withdrawal, with a reason and a legal-risk warning; matching items are flagged in the case (per-product setting wins, and it flags for review rather than auto-blocking).
 * **Onboarding wizard** — shop data, automatic creation of the `/elallas/` page, display toggles, deadline and a test step.
 * **Gutenberg block & Elementor widget** — drop the withdrawal form into any page or template; the `[elallas_form]` shortcode is the universal fallback.
 * **Multilingual ready** — WPML, Polylang and TranslatePress integration; legal texts are manageable per language so the declaration can be accepted in the customer's chosen language.

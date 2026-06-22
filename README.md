@@ -11,17 +11,19 @@ The withdrawal function implements the requirements introduced by **Directive (E
 ## Features
 
 - **Online withdrawal page and button** — default label `Elállás a szerződéstől`; public page, `[elallas_form]` shortcode, Gutenberg block / Elementor widget, My Account endpoint and an order-details button (reachable within two clicks).
-- **Two-step flow** — declaration on the electronic interface, then a separate `Elállás megerősítése` confirmation step with explicit data/intent/consent checkboxes.
-- **Durable-medium email** — automatic acknowledgement with the withdrawal data and exact receipt time, plus optional PDF attachment.
+- **Guest-friendly identification** — works without an account. Logged-in customers get their email pre-filled and a quick-pick of their eligible orders; the order number can always be entered manually, so a guest order placed with a different email can be identified too. Opening the form from an order (`?order=ID`) pre-selects it. A logged-in customer cannot act on another account's order.
+- **Self-service in My Account** — customers see their previous withdrawal cases and can download their own withdrawal-statement PDF via a token-gated link.
+- **Two-step flow** — declaration on the electronic interface, then a separate `Elállás megerősítése` confirmation step with explicit data/intent/consent checkboxes. Optional refund **bank account / IBAN** (stored encrypted) and a free-text note.
+- **Durable-medium email** — automatic acknowledgement with the withdrawal data and exact receipt time, plus optional PDF attachment and editable extra text appended to the customer email.
 - **Full / partial / per-line / per-quantity withdrawal**.
 - **Deadline flagging, never blocking** — the 14-day window is calculated and flagged (within / expired / unknown); the merchant keeps the final decision.
 - **Order snapshot** — names, SKUs, quantities and totals captured at submission time, so cases stay reconstructable after product or price changes.
-- **Audit log** — append-only event log with an optional immutable mode.
-- **Case management admin** — filterable cases list and a detailed case view (summary, declaration, order snapshot, audit log, admin decision, documents) under WooCommerce.
+- **Audit log** — append-only event log (who, when, what).
+- **Case management admin** — filterable cases list and a detailed case view (summary incl. refund bank account, declaration, order snapshot, audit log, admin decision, documents) under WooCommerce.
 - **CSV export** and **PDF withdrawal statement** (dompdf, SHA-256 hash, protected token-gated download).
 - **Neutral identification** — wrong order number or email returns the same neutral message to prevent brute forcing.
-- **Privacy controls** — IP/UA full/hash/off, email hashing and optional encryption, configurable retention with scheduled cleanup.
-- **B2B detection** and **product/category withdrawal exceptions**.
+- **Privacy controls** — IP/UA full/hash/off, email hashing and optional encryption, encrypted bank account, configurable retention with scheduled anonymization.
+- **B2B detection** and **withdrawal exceptions by product, category and tag** (set per product, or on the category/tag edit screen; flags for review, never auto-blocks).
 - **Onboarding wizard** — shop data, automatic `/elallas/` page creation, display toggles, deadline and a test step.
 - **Gutenberg block & Elementor widget** — place the withdrawal form anywhere; `[elallas_form]` shortcode fallback.
 - **Multilingual** — WPML / Polylang / TranslatePress integration; legal texts manageable per language.
@@ -34,7 +36,7 @@ The withdrawal function implements the requirements introduced by **Directive (E
 
 - WordPress 6.4+
 - WooCommerce 8.0+
-- PHP 8.2+
+- PHP 8.0+ (8.2+ recommended)
 
 ## Installation
 
@@ -107,7 +109,7 @@ Work through this once after activating the plugin on a fresh site.
 - [ ] **Privacy** — IP/UA storage (full / hash / off), email encryption, and a retention period (the daily cron anonymizes older cases)
 - [ ] **Emails** — enable the customer / admin / status emails and set the admin recipient
 - [ ] **Legal** — review the declaration & confirmation texts and **validate them with a lawyer** (see below)
-- [ ] **Product exceptions** — for any non-withdrawable products, tick *Elállásból kizárt* on the product's **General** tab
+- [ ] **Exceptions** — for any non-withdrawable products tick *Elállásból kizárt* on the product's **General** tab; to exclude a whole group, edit a product **category** or **tag** and tick *Elállásból kizárt* there (per-product setting wins; flags for review, never auto-blocks)
 
 **Verify reachability (legal requirement)**
 - [ ] The withdrawal function is reachable in **≤ 2 clicks** from the customer's account / order page
