@@ -79,7 +79,7 @@ jobs:
         run: |
           curl -sSL -o strauss.phar https://github.com/BrianHenryIE/strauss/releases/download/0.27.3/strauss.phar
           php strauss.phar
-          composer dump-autoload --no-dev --optimize-autoloader --no-interaction
+          composer dump-autoload --no-dev --optimize --no-interaction
           test -f vendor-prefixed/dompdf/dompdf/src/Dompdf.php || { echo "Strauss scoping failed: vendor-prefixed/dompdf missing"; exit 1; }
           ! grep -rq "^namespace Dompdf;" vendor/ || { echo "Global Dompdf still present in vendor/ after scoping"; exit 1; }
 
