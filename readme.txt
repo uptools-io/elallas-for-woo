@@ -109,6 +109,7 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 == Changelog ==
 
 = 1.0.11 =
+* Fix: PDF generation could fatal with "Class FontLib\TrueType\File not found" once dompdf had to parse a font (a regression from the 1.0.10 Dompdf scoping). The bundled font library's dynamic class references are now correctly namespaced in the build.
 * Fix: the admin notification email ("Új elállási nyilatkozat (admin)") was never sent because its recipient was never set — trigger() read the (empty) current recipient instead of the configured admin recipient. It now uses the configured "Admin recipient" (falling back to the site admin email), so the notification is actually delivered. The customer confirmation email was unaffected.
 
 = 1.0.10 =

@@ -80,6 +80,7 @@ jobs:
         run: |
           curl -sSL -o strauss.phar https://github.com/BrianHenryIE/strauss/releases/download/0.27.3/strauss.phar
           php strauss.phar
+          php bin/strauss-fixups.php
           composer dump-autoload --no-dev --optimize --no-interaction
           test -f vendor-prefixed/dompdf/dompdf/src/Dompdf.php || { echo "Strauss scoping failed: vendor-prefixed/dompdf missing"; exit 1; }
           ! grep -rq "^namespace Dompdf;" vendor/ || { echo "Global Dompdf still present in vendor/ after scoping"; exit 1; }
@@ -94,7 +95,7 @@ jobs:
             --exclude='builds' --exclude='composer.json' --exclude='composer.lock' \
             --exclude='phpcs.xml.dist' --exclude='phpstan.neon.dist' --exclude='phpunit.xml.dist' \
             --exclude='docs' --exclude='tests' --exclude='node_modules' --exclude='.gitignore' \
-            --exclude='strauss.phar' --exclude='*.log' . dist/elallas-for-woo/
+            --exclude='bin' --exclude='strauss.phar' --exclude='*.log' . dist/elallas-for-woo/
           cd dist && zip -r "elallas-for-woo-${VERSION}.zip" elallas-for-woo/
 
       - name: Create tag and release

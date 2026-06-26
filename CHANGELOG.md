@@ -3,6 +3,7 @@
 ## [1.0.11] - 2026-06-26
 
 ### Fixed
+- PDF generation fatally errored with `Class "FontLib\TrueType\File" not found` as soon as dompdf had to parse a font file (issue #16) — a regression from the 1.0.10 Dompdf scoping. Strauss prefixes namespaces but not the namespaces embedded in dompdf/php-font-lib's *interpolated* class-name strings (`"FontLib\\$class"`) or its index-based type lookup (`getFontType()` returning `$class_parts[1]`). A new post-Strauss build step (`bin/strauss-fixups.php`, run in `release.yml`) rewrites those so the scoped FontLib classes resolve; it self-verifies and fails the build if any unprefixed reference remains. (Simple PDFs using cached core-font metrics were unaffected, which is why earlier tests passed.)
 - The admin notification email (`elallas_admin_notification`) was never sent (issues #17, #18). `AdminNotification::trigger()` set `$this->recipient = $this->get_recipient()`, which returns the already-set (empty) recipient — the constructor never sets one and `WC_Email` has no automatic `get_default_recipient()` call. With an empty recipient the send condition was false, so `send()` never ran (no attempt even reached the mail log) and the WooCommerce Emails screen showed an empty recipient. It now uses `get_default_recipient()` (the configured "Admin recipient", falling back to `admin_email`). The customer confirmation and status-update emails were unaffected (they set the recipient from the order).
 
 ## [1.0.10] - 2026-06-22
