@@ -82,7 +82,7 @@ class AdminNotification extends \WC_Email {
 		}
 
 		$this->object                       = $case;
-		$this->recipient                    = $this->get_recipient();
+		$this->recipient                    = $this->get_default_recipient();
 		$this->placeholders['{case_number}']  = $case->case_number;
 		$this->placeholders['{order_number}'] = $case->order_number;
 

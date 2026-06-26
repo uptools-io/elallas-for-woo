@@ -4,7 +4,7 @@ Tags: woocommerce, withdrawal, refund, gdpr, compliance
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 1.0.10
+Stable tag: 1.0.11
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 8.0
@@ -107,6 +107,9 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 6. Onboarding wizard
 
 == Changelog ==
+
+= 1.0.11 =
+* Fix: the admin notification email ("Új elállási nyilatkozat (admin)") was never sent because its recipient was never set — trigger() read the (empty) current recipient instead of the configured admin recipient. It now uses the configured "Admin recipient" (falling back to the site admin email), so the notification is actually delivered. The customer confirmation email was unaffected.
 
 = 1.0.10 =
 * Fix: the bundled Dompdf is now namespace-scoped (Strauss) under LightweightPlugins\Elallas\Vendor\, so it can no longer collide with a Dompdf shipped by another active plugin (e.g. a PDF-invoice plugin) — which previously could cause a fatal error such as "Call to undefined method Dompdf\LineBox::reset_float_reflow_limit()". When installed via Composer (unscoped), the renderer falls back to the host project's Dompdf.
