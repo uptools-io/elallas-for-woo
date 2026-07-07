@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.12] - 2026-07-07
+
+### Fixed
+- **WPML/Polylang: dynamic strings are now translated on every output path.** The admin-entered strings (`button_label`, `confirm_label`, `legal_declaration`, `legal_confirmation`, `email_customer_extra`) were registered for translation but printed raw from the database, so the `[elallas_button]` label, the confirmation button, the withdrawal declaration, and the extra e-mail text always appeared in the source language. A single `Integrations\Multilingual::translate_option_string()` helper (WPML `wpml_translate_single_string` / Polylang `pll__`, graceful passthrough when neither is active) is now used by the shortcode, the WooCommerce order/e-mail button, the confirm step, the customer e-mail (HTML + plain) and the PDF.
+- **WPML: the stored `withdrawal_page_id` is resolved to the translated page.** The `[elallas_button]`/order button link and the front-end asset loading (`is_page()`) now run the page ID through `wpml_object_id`, so on a translated page the button points to the right language's withdrawal page and the CSS/JS still loads.
+- **WPML: e-mails and the PDF now render in the case's language.** The submission language is stored as the WPML/Polylang language code (was `determine_locale()`), and the customer confirmation + status-update e-mails and the withdrawal-statement PDF switch to that language while rendering (the admin notification renders in the shop's default language). The PDF `<html lang>` is no longer hard-coded to `hu`.
+- **`confirm_label` option is now actually used** — the confirmation step button rendered a hard-coded gettext string and ignored the configured (and translatable) label.
+- **Early-translation notice fixed.** `Options::get_defaults()` (read from module constructors on `plugins_loaded`) no longer calls `__()`, which triggered WordPress 6.7's "translation loading was triggered too early" notice for the `elallas-for-woo` text domain.
+
+### Added
+- `wpml-config.xml` declaring the product/category/tag withdrawal-exception meta as `copy` and the `[elallas_button]` `label` attribute as translatable.
+- JavaScript translation support for the block editor script (`editor.asset.php` dependency manifest + `wp_set_script_translations()`).
+
 ## [1.0.11] - 2026-06-26
 
 ### Fixed

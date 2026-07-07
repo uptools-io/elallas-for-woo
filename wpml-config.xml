@@ -1,0 +1,47 @@
+<wpml-config>
+    <!--
+        Elállás for WooCommerce — WPML compatibility configuration.
+
+        The withdrawal-exception flags stored on products, categories and tags
+        are marked "copy" so a product's translations inherit the same exclusion
+        state and reason. The stored reason value is a key (e.g. "hygiene"); its
+        human label is a static gettext string translated via the .po/.mo files.
+
+        NOTE ON OPTION STRINGS: the admin-entered strings (button_label,
+        confirm_label, legal_declaration, legal_confirmation, email_customer_extra)
+        are intentionally NOT declared as <admin-texts> here. They are registered
+        and translated at runtime under the "elallas-for-woo" string context (see
+        includes/Integrations/Multilingual.php) so the exact same mechanism also
+        works with Polylang, and so background render paths (emails, PDFs) can
+        translate them in an explicitly switched language. Declaring them here as
+        well would register them twice and let WPML auto-filter the option value,
+        which conflicts with the runtime path.
+    -->
+
+    <!-- Product meta: withdrawal exception flag + reason key. -->
+    <custom-fields>
+        <custom-field action="copy">_lw_elallas_excluded</custom-field>
+        <custom-field action="copy">_lw_elallas_exclusion_reason</custom-field>
+    </custom-fields>
+
+    <!-- Product category / tag meta: same exception flag + reason key. -->
+    <custom-term-fields>
+        <custom-term-field action="copy">_lw_elallas_excluded</custom-term-field>
+        <custom-term-field action="copy">_lw_elallas_exclusion_reason</custom-term-field>
+    </custom-term-fields>
+
+    <!--
+        The [elallas_button] shortcode may carry a translatable label attribute.
+        Consumed by WPML's bundled page-builders add-on; harmless without it.
+        (When no label attribute is given, the translated button_label option is
+        used instead — see the note above.)
+    -->
+    <shortcodes>
+        <shortcode>
+            <tag>elallas_button</tag>
+            <attributes>
+                <attribute>label</attribute>
+            </attributes>
+        </shortcode>
+    </shortcodes>
+</wpml-config>

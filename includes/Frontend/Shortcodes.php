@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace LightweightPlugins\Elallas\Frontend;
 
 use LightweightPlugins\Elallas\Options;
+use LightweightPlugins\Elallas\Integrations\Multilingual;
 
 /**
  * Registers the [elallas_form] and [elallas_button] shortcodes.
@@ -47,9 +48,15 @@ final class Shortcodes {
 			return '';
 		}
 
+		// Default to the raw (untranslated) option value; the label is translated
+		// exactly once below, whether it comes from the option or the attribute.
 		$atts  = shortcode_atts( [ 'label' => (string) Options::get( 'button_label' ) ], (array) $atts, 'elallas_button' );
 		$url   = self::page_url();
-		$label = '' !== $atts['label'] ? $atts['label'] : __( 'Elállás a szerződéstől', 'elallas-for-woo' );
+
+		$label = (string) $atts['label'];
+		$label = '' !== $label
+			? Multilingual::translate_string( $label, 'button_label' )
+			: __( 'Elállás a szerződéstől', 'elallas-for-woo' );
 
 		if ( '' === $url ) {
 			return '';
@@ -70,6 +77,14 @@ final class Shortcodes {
 	public static function page_url(): string {
 		$page_id = (int) Options::get( 'withdrawal_page_id' );
 
-		return $page_id > 0 ? (string) get_permalink( $page_id ) : '';
+		if ( $page_id <= 0 ) {
+			return '';
+		}
+
+		// Resolve to the translated page so the link points to the current
+		// language's withdrawal page instead of the original one.
+		$page_id = Multilingual::object_id( $page_id, 'page' );
+
+		return (string) get_permalink( $page_id );
 	}
 }

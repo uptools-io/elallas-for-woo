@@ -12,6 +12,7 @@
  * @var string    $withdrawal_type full|partial.
  * @var string    $deadline_status Deadline status flag.
  * @var string    $declaration     Declaration text.
+ * @var string    $confirm_label   Translated confirm-button label.
  * @var string    $form_action     Form action URL.
  * @var string    $nonce_field     Nonce field markup.
  * @var string    $honeypot        Honeypot field markup.
@@ -24,7 +25,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$elallas_error = isset( $error ) ? (string) $error : '';
+$elallas_error         = isset( $error ) ? (string) $error : '';
+$elallas_confirm_label = ( isset( $confirm_label ) && '' !== (string) $confirm_label )
+	? (string) $confirm_label
+	: __( 'Elállás megerősítése', 'elallas-for-woo' );
 ?>
 <h2><?php esc_html_e( 'Elállási nyilatkozat megerősítése', 'elallas-for-woo' ); ?></h2>
 
@@ -94,6 +98,6 @@ $elallas_error = isset( $error ) ? (string) $error : '';
 	</p>
 
 	<p class="elallas-actions">
-		<button type="submit" class="button elallas-button elallas-confirm"><?php esc_html_e( 'Elállás megerősítése', 'elallas-for-woo' ); ?></button>
+		<button type="submit" class="button elallas-button elallas-confirm"><?php echo esc_html( $elallas_confirm_label ); ?></button>
 	</p>
 </form>

@@ -10,6 +10,8 @@ declare(strict_types=1);
 namespace LightweightPlugins\Elallas\Emails;
 
 use LightweightPlugins\Elallas\Options;
+use LightweightPlugins\Elallas\Database\CaseRepository;
+use LightweightPlugins\Elallas\Integrations\Multilingual;
 
 /**
  * Registers email classes with WooCommerce and triggers sends on domain events.
@@ -48,12 +50,26 @@ final class EmailManager {
 	public function on_confirmed( int $case_id ): void {
 		$emails = \WC()->mailer()->get_emails();
 
+		// Customer-facing email: render in the language the case was submitted in.
 		if ( Options::get( 'email_customer_enabled' ) && isset( $emails['Elallas_Customer_Confirmation'] ) ) {
-			$emails['Elallas_Customer_Confirmation']->trigger( $case_id );
+			Multilingual::switch_to( self::case_language( $case_id ) );
+
+			try {
+				$emails['Elallas_Customer_Confirmation']->trigger( $case_id );
+			} finally {
+				Multilingual::restore();
+			}
 		}
 
+		// Admin notification: render in the shop's default language.
 		if ( Options::get( 'email_admin_enabled' ) && isset( $emails['Elallas_Admin_Notification'] ) ) {
-			$emails['Elallas_Admin_Notification']->trigger( $case_id );
+			Multilingual::switch_to( Multilingual::default_language() );
+
+			try {
+				$emails['Elallas_Admin_Notification']->trigger( $case_id );
+			} finally {
+				Multilingual::restore();
+			}
 		}
 	}
 
@@ -75,7 +91,25 @@ final class EmailManager {
 		$emails = \WC()->mailer()->get_emails();
 
 		if ( isset( $emails['Elallas_Status_Update'] ) ) {
-			$emails['Elallas_Status_Update']->trigger( $case_id );
+			Multilingual::switch_to( self::case_language( $case_id ) );
+
+			try {
+				$emails['Elallas_Status_Update']->trigger( $case_id );
+			} finally {
+				Multilingual::restore();
+			}
 		}
+	}
+
+	/**
+	 * Language the case was submitted in, or '' when unknown.
+	 *
+	 * @param int $case_id Case ID.
+	 * @return string
+	 */
+	private static function case_language( int $case_id ): string {
+		$case = CaseRepository::find( $case_id );
+
+		return ( $case && '' !== $case->language ) ? $case->language : '';
 	}
 }

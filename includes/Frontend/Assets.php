@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace LightweightPlugins\Elallas\Frontend;
 
 use LightweightPlugins\Elallas\Options;
+use LightweightPlugins\Elallas\Integrations\Multilingual;
 
 /**
  * Enqueues the small front-end stylesheet/script only where needed.
@@ -57,8 +58,13 @@ final class Assets {
 	private function should_load(): bool {
 		$page_id = (int) Options::get( 'withdrawal_page_id' );
 
-		if ( $page_id > 0 && is_page( $page_id ) ) {
-			return true;
+		// Match the translated withdrawal page too, not just the original one.
+		if ( $page_id > 0 ) {
+			$page_id = Multilingual::object_id( $page_id, 'page' );
+
+			if ( is_page( $page_id ) ) {
+				return true;
+			}
 		}
 
 		if ( function_exists( 'is_account_page' ) && is_account_page() ) {

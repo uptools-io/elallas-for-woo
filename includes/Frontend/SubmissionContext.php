@@ -12,6 +12,7 @@ namespace LightweightPlugins\Elallas\Frontend;
 use LightweightPlugins\Elallas\Options;
 use LightweightPlugins\Elallas\Security\Encryption;
 use LightweightPlugins\Elallas\Security\RateLimiter;
+use LightweightPlugins\Elallas\Integrations\Multilingual;
 
 /**
  * Produces the context array consumed by CaseService::create().
@@ -37,7 +38,9 @@ final class SubmissionContext {
 			'ip_hash'          => self::process( RateLimiter::client_ip(), (string) Options::get( 'store_ip', 'hash' ) ),
 			'user_agent_hash'  => self::process( self::user_agent(), (string) Options::get( 'store_user_agent', 'hash' ) ),
 			'source_url'       => self::current_url(),
-			'language'         => function_exists( 'determine_locale' ) ? determine_locale() : get_locale(),
+			// Store the WPML/Polylang language code (falls back to the locale) so
+			// emails and PDFs can later be rendered in the submission language.
+			'language'         => Multilingual::current_language(),
 			'withdrawal_type'  => $withdrawal_type,
 			'deadline_status'  => $deadline_status,
 			'customer_note'    => '' !== $note ? $note : null,

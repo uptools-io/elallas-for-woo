@@ -14,6 +14,7 @@ use LightweightPlugins\Elallas\Database\CaseRepository;
 use LightweightPlugins\Elallas\Database\CaseItemRepository;
 use LightweightPlugins\Elallas\Database\DocumentRepository;
 use LightweightPlugins\Elallas\Frontend\TemplateLoader;
+use LightweightPlugins\Elallas\Integrations\Multilingual;
 use LightweightPlugins\Elallas\Woo\OrderAdapter;
 
 /**
@@ -44,14 +45,23 @@ final class DocumentService {
 		$items = CaseItemRepository::for_case( $case_id );
 		$order = OrderAdapter::get_order( (int) $case->order_id );
 
-		$html = TemplateLoader::render(
-			'pdf/withdrawal-statement.php',
-			[
-				'case'  => $case,
-				'items' => $items,
-				'order' => $order,
-			]
-		);
+		// Render the document in the language the case was submitted in, so the
+		// PDF matches the customer's language regardless of who triggers it
+		// (customer email, admin regeneration, download handler).
+		Multilingual::switch_to( '' !== $case->language ? $case->language : '' );
+
+		try {
+			$html = TemplateLoader::render(
+				'pdf/withdrawal-statement.php',
+				[
+					'case'  => $case,
+					'items' => $items,
+					'order' => $order,
+				]
+			);
+		} finally {
+			Multilingual::restore();
+		}
 
 		$pdf = PdfRenderer::to_pdf_string( $html, [ 'case_id' => $case_id ] );
 
