@@ -156,7 +156,8 @@ final class CaseDetailSections {
 		wp_nonce_field( 'elallas_change_status' );
 		echo '<input type="hidden" name="action" value="elallas_change_status" />';
 		echo '<input type="hidden" name="case_id" value="' . esc_attr( (string) $case->id ) . '" />';
-		echo '<select name="new_status">';
+		echo '<p><label for="elallas-new-status"><strong>' . esc_html__( 'Új státusz', 'elallas-for-woo' ) . '</strong></label><br />';
+		echo '<select name="new_status" id="elallas-new-status">';
 		foreach ( CaseStatus::labels() as $key => $label ) {
 			printf(
 				'<option value="%s" %s>%s</option>',
@@ -165,7 +166,12 @@ final class CaseDetailSections {
 				esc_html( $label )
 			);
 		}
-		echo '</select> ';
+		echo '</select></p>';
+
+		echo '<p><label for="elallas-status-message"><strong>' . esc_html__( 'Üzenet a vásárlónak (opcionális)', 'elallas-for-woo' ) . '</strong></label><br />';
+		echo '<textarea name="status_message" id="elallas-status-message" rows="3" class="large-text" style="max-width:600px;"></textarea><br />';
+		echo '<span class="description">' . esc_html__( 'Ha kitöltöd, bekerül a vásárlónak küldött státusz e-mailbe (pl. az elutasítás indoka).', 'elallas-for-woo' ) . '</span></p>';
+
 		submit_button( __( 'Státusz mentése', 'elallas-for-woo' ), 'primary', 'submit', false );
 		echo '</form>';
 	}

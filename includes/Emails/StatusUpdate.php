@@ -20,6 +20,13 @@ class StatusUpdate extends \WC_Email {
 	use PreviewableEmailTrait;
 
 	/**
+	 * Optional admin note to the customer, shown in this e-mail.
+	 *
+	 * @var string
+	 */
+	protected string $status_message = '';
+
+	/**
 	 * Constructor.
 	 */
 	public function __construct() {
@@ -61,10 +68,11 @@ class StatusUpdate extends \WC_Email {
 	/**
 	 * Trigger the email.
 	 *
-	 * @param int $case_id Case ID.
+	 * @param int    $case_id Case ID.
+	 * @param string $message Optional admin note to the customer.
 	 * @return void
 	 */
-	public function trigger( int $case_id ): void {
+	public function trigger( int $case_id, string $message = '' ): void {
 		$case = CaseRepository::find( $case_id );
 
 		if ( ! $case ) {
@@ -77,6 +85,7 @@ class StatusUpdate extends \WC_Email {
 			return;
 		}
 
+		$this->status_message               = $message;
 		$this->object                       = $case;
 		$this->recipient                    = $order->get_billing_email();
 		$this->placeholders['{case_number}']  = $case->case_number;
@@ -121,12 +130,13 @@ class StatusUpdate extends \WC_Email {
 		[ $case, $items ] = $this->resolve_case_items();
 
 		return [
-			'case'          => $case,
-			'items'         => $items,
-			'email_heading' => $this->get_heading(),
-			'sent_to_admin' => false,
-			'plain_text'    => $plain_text,
-			'email'         => $this,
+			'case'           => $case,
+			'items'          => $items,
+			'email_heading'  => $this->get_heading(),
+			'sent_to_admin'  => false,
+			'plain_text'     => $plain_text,
+			'status_message' => $this->status_message,
+			'email'          => $this,
 		];
 	}
 }

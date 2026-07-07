@@ -40,9 +40,10 @@ final class CaseActions {
 
 		$case_id    = isset( $_POST['case_id'] ) ? absint( $_POST['case_id'] ) : 0;
 		$new_status = isset( $_POST['new_status'] ) ? sanitize_key( wp_unslash( $_POST['new_status'] ) ) : '';
+		$message    = isset( $_POST['status_message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['status_message'] ) ) : '';
 
 		if ( $case_id > 0 && CaseStatus::is_valid( $new_status ) ) {
-			( new CaseService() )->change_status( $case_id, $new_status, get_current_user_id() );
+			( new CaseService() )->change_status( $case_id, $new_status, get_current_user_id(), $message );
 		}
 
 		wp_safe_redirect(
