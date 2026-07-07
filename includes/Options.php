@@ -85,6 +85,9 @@ final class Options {
 			'legal_declaration'       => DefaultTexts::declaration(),
 			'legal_confirmation'      => DefaultTexts::confirmation(),
 
+			// Diagnostics.
+			'logging_enabled'         => false,
+
 			// Uninstall.
 			'uninstall_remove_data'   => false,
 		];

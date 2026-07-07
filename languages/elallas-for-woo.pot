@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-07T13:04:05+00:00\n"
+"POT-Creation-Date: 2026-07-07T13:56:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: elallas-for-woo\n"
@@ -286,7 +286,7 @@ msgid "Bolt adatai"
 msgstr ""
 
 #: includes/Admin/Onboarding/Wizard.php:82
-#: includes/Admin/Settings/TabGeneral.php:76
+#: includes/Admin/Settings/TabGeneral.php:77
 msgid "Elállási oldal"
 msgstr ""
 
@@ -609,48 +609,60 @@ msgstr ""
 msgid "Általános"
 msgstr ""
 
-#: includes/Admin/Settings/TabGeneral.php:61
+#: includes/Admin/Settings/TabGeneral.php:62
 msgid "Általános beállítások"
 msgstr ""
 
-#: includes/Admin/Settings/TabGeneral.php:64
+#: includes/Admin/Settings/TabGeneral.php:65
 msgid "Bekapcsolás"
 msgstr ""
 
-#: includes/Admin/Settings/TabGeneral.php:65
+#: includes/Admin/Settings/TabGeneral.php:66
 msgid "Online elállási nyilatkozat engedélyezése"
 msgstr ""
 
-#: includes/Admin/Settings/TabGeneral.php:68
+#: includes/Admin/Settings/TabGeneral.php:69
 msgid "Gomb felirata"
 msgstr ""
 
-#: includes/Admin/Settings/TabGeneral.php:72
+#: includes/Admin/Settings/TabGeneral.php:73
 msgid "Megerősítés gomb felirata"
 msgstr ""
 
-#: includes/Admin/Settings/TabGeneral.php:84
+#: includes/Admin/Settings/TabGeneral.php:85
 msgid "— Válassz oldalt —"
 msgstr ""
 
-#: includes/Admin/Settings/TabGeneral.php:89
+#: includes/Admin/Settings/TabGeneral.php:90
 msgid "Az az oldal, amely tartalmazza az [elallas_form] rövidkódot."
 msgstr ""
 
-#: includes/Admin/Settings/TabGeneral.php:93
+#: includes/Admin/Settings/TabGeneral.php:94
 msgid "Megjelenítési helyek"
 msgstr ""
 
-#: includes/Admin/Settings/TabGeneral.php:95
+#: includes/Admin/Settings/TabGeneral.php:96
 msgid "Fiók oldalon"
 msgstr ""
 
-#: includes/Admin/Settings/TabGeneral.php:96
+#: includes/Admin/Settings/TabGeneral.php:97
 msgid "Rendelés részleteinél"
 msgstr ""
 
-#: includes/Admin/Settings/TabGeneral.php:97
+#: includes/Admin/Settings/TabGeneral.php:98
 msgid "Rendelési e-mailben"
+msgstr ""
+
+#: includes/Admin/Settings/TabGeneral.php:102
+msgid "Debug naplózás"
+msgstr ""
+
+#: includes/Admin/Settings/TabGeneral.php:104
+msgid "Részletes naplózás a WooCommerce → Állapot → Naplók alá (forrás: elallas-for-woo)"
+msgstr ""
+
+#: includes/Admin/Settings/TabGeneral.php:105
+msgid "Hibák és figyelmeztetések bekapcsolás nélkül is naplózódnak. Bekapcsolva a részletes (info/debug) események is bekerülnek. Nem tartalmaz személyes adatot."
 msgstr ""
 
 #: includes/Admin/Settings/TabLegal.php:36
@@ -798,25 +810,25 @@ msgstr ""
 msgid "Nincs B2B jelző"
 msgstr ""
 
-#: includes/Domain/CaseService.php:67
+#: includes/Domain/CaseService.php:75
 msgid "Elállási nyilatkozat beérkezett."
 msgstr ""
 
-#: includes/Domain/CaseService.php:98
+#: includes/Domain/CaseService.php:117
 msgid "A fogyasztó megerősítette a nyilatkozatot."
 msgstr ""
 
 #. translators: 1: old status label, 2: new status label.
-#: includes/Domain/CaseService.php:135
+#: includes/Domain/CaseService.php:156
 msgid "Státusz módosítva: %1$s → %2$s"
 msgstr ""
 
 #. translators: %s: admin note sent to the customer.
-#: includes/Domain/CaseService.php:142
+#: includes/Domain/CaseService.php:163
 msgid "Üzenet a vásárlónak: %s"
 msgstr ""
 
-#: includes/Domain/CaseService.php:181
+#: includes/Domain/CaseService.php:212
 msgid "Elállási nyilatkozat érkezett (Elállás for WooCommerce)."
 msgstr ""
 
@@ -982,7 +994,7 @@ msgstr ""
 msgid "Nem megállapítható – manuális ellenőrzést igényel"
 msgstr ""
 
-#: includes/Pdf/DocumentService.php:162
+#: includes/Pdf/DocumentService.php:172
 #: templates/pdf/withdrawal-statement.php:43
 #: templates/pdf/withdrawal-statement.php:61
 msgid "Elállási nyilatkozat"

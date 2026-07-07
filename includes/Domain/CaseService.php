@@ -15,6 +15,7 @@ use LightweightPlugins\Elallas\Database\EventRepository;
 use LightweightPlugins\Elallas\Models\CaseStatus;
 use LightweightPlugins\Elallas\Models\DeadlineStatus;
 use LightweightPlugins\Elallas\Woo\OrderAdapter;
+use LightweightPlugins\Elallas\Support\Logger;
 
 /**
  * Creates withdrawal cases and manages their lifecycle.
@@ -59,6 +60,13 @@ final class CaseService {
 		);
 
 		if ( 0 === $case_id ) {
+			Logger::error(
+				'Elállási ügy létrehozása sikertelen (adatbázis-beszúrás).',
+				[
+					'order_id'     => $order->get_id(),
+					'order_number' => $order->get_order_number(),
+				]
+			);
 			return 0;
 		}
 
@@ -73,6 +81,17 @@ final class CaseService {
 		 * @param int $order_id Order ID.
 		 */
 		do_action( 'elallas_case_created', $case_id, $order->get_id() );
+
+		Logger::info(
+			'Elállási ügy létrehozva.',
+			[
+				'case_id'      => $case_id,
+				'order_id'     => $order->get_id(),
+				'order_number' => $order->get_order_number(),
+				'type'         => (string) ( $context['withdrawal_type'] ?? 'full' ),
+				'deadline'     => $deadline_status,
+			]
+		);
 
 		return $case_id;
 	}
@@ -103,6 +122,8 @@ final class CaseService {
 		 * @param int $case_id Case ID.
 		 */
 		do_action( 'elallas_case_confirmed', $case_id );
+
+		Logger::info( 'Elállási ügy megerősítve.', [ 'case_id' => $case_id, 'status' => $status ] );
 
 		return true;
 	}
@@ -159,6 +180,16 @@ final class CaseService {
 		 * @param string $message    Optional note to the customer.
 		 */
 		do_action( 'elallas_case_status_changed', $case_id, $old_status, $new_status, $message );
+
+		Logger::info(
+			'Elállási ügy státusza módosítva.',
+			[
+				'case_id'  => $case_id,
+				'from'     => $old_status,
+				'to'       => $new_status,
+				'actor_id' => $actor_id,
+			]
+		);
 
 		return true;
 	}

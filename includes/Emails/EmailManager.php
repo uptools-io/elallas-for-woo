@@ -12,6 +12,7 @@ namespace LightweightPlugins\Elallas\Emails;
 use LightweightPlugins\Elallas\Options;
 use LightweightPlugins\Elallas\Database\CaseRepository;
 use LightweightPlugins\Elallas\Integrations\Multilingual;
+use LightweightPlugins\Elallas\Support\Logger;
 
 /**
  * Registers email classes with WooCommerce and triggers sends on domain events.
@@ -102,6 +103,7 @@ final class EmailManager {
 
 			try {
 				$emails['Elallas_Customer_Confirmation']->trigger( $case_id );
+				Logger::debug( 'Vevői visszaigazoló e-mail elindítva.', [ 'case_id' => $case_id ] );
 			} finally {
 				Multilingual::restore();
 			}
@@ -113,6 +115,7 @@ final class EmailManager {
 
 			try {
 				$emails['Elallas_Admin_Notification']->trigger( $case_id );
+				Logger::debug( 'Admin értesítő e-mail elindítva.', [ 'case_id' => $case_id ] );
 			} finally {
 				Multilingual::restore();
 			}
@@ -142,6 +145,7 @@ final class EmailManager {
 
 			try {
 				$emails['Elallas_Status_Update']->trigger( $case_id, $message );
+				Logger::debug( 'Státusz e-mail elindítva.', [ 'case_id' => $case_id ] );
 			} finally {
 				Multilingual::restore();
 			}

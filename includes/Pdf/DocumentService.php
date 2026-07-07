@@ -15,6 +15,7 @@ use LightweightPlugins\Elallas\Database\CaseItemRepository;
 use LightweightPlugins\Elallas\Database\DocumentRepository;
 use LightweightPlugins\Elallas\Frontend\TemplateLoader;
 use LightweightPlugins\Elallas\Integrations\Multilingual;
+use LightweightPlugins\Elallas\Support\Logger;
 use LightweightPlugins\Elallas\Woo\OrderAdapter;
 
 /**
@@ -66,10 +67,19 @@ final class DocumentService {
 		$pdf = PdfRenderer::to_pdf_string( $html, [ 'case_id' => $case_id ] );
 
 		if ( '' === $pdf ) {
+			Logger::error( 'PDF generálás sikertelen (üres kimenet).', [ 'case_id' => $case_id ] );
 			return 0;
 		}
 
-		return self::persist( $case_id, (string) $case->case_number, $pdf );
+		$document_id = self::persist( $case_id, (string) $case->case_number, $pdf );
+
+		if ( 0 === $document_id ) {
+			Logger::error( 'PDF mentése sikertelen.', [ 'case_id' => $case_id ] );
+		} else {
+			Logger::debug( 'PDF generálva.', [ 'case_id' => $case_id, 'document_id' => $document_id ] );
+		}
+
+		return $document_id;
 	}
 
 	/**

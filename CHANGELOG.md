@@ -21,6 +21,7 @@
 - **Status-change note to the customer** (issue #22): an optional message field on the admin decision form that is logged and included in the status-update e-mail (e.g. the reason for a rejection).
 - **Order-screen withdrawal panel** (issue #22): a prominent panel on the WooCommerce order edit screen (legacy + HPOS) listing the order's withdrawal case(s), status, date, a link to the case, and an excluded-item flag.
 - **Excluded-items listing** on the Exceptions settings tab (issue #21): the products, categories and tags currently excluded from withdrawal, each with its reason and an edit link.
+- **WooCommerce-native logging** (issue #20): a new `Support\Logger` writes to WooCommerce → Status → Logs under the `elallas-for-woo` source. Warnings/errors (failed case insert, failed/exception PDF render, unavailable Dompdf) are always recorded; verbose info/debug (case created/confirmed, status changed, e-mails triggered, rejected identification) are gated behind a new "Debug naplózás" option (default off). Context is scrubbed of PII. `PdfRenderer` now also catches Dompdf exceptions so a PDF failure can no longer break case creation or e-mail sending.
 - Regenerated `languages/elallas-for-woo.pot` with all new strings.
 
 ## [1.0.11] - 2026-06-26
