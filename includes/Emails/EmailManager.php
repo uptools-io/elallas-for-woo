@@ -25,6 +25,52 @@ final class EmailManager {
 		add_filter( 'woocommerce_email_classes', [ $this, 'register_emails' ] );
 		add_action( 'elallas_case_confirmed', [ $this, 'on_confirmed' ] );
 		add_action( 'elallas_case_status_changed', [ $this, 'on_status_changed' ], 10, 3 );
+		add_filter( 'woocommerce_email_from_address', [ $this, 'from_address' ], 10, 2 );
+		add_filter( 'woocommerce_email_from_name', [ $this, 'from_name' ], 10, 2 );
+	}
+
+	/**
+	 * Override the From address for this plugin's e-mails when configured.
+	 *
+	 * @param string $address Default from address.
+	 * @param mixed  $email   WC_Email instance (or null in some contexts).
+	 * @return string
+	 */
+	public function from_address( $address, $email = null ) {
+		if ( ! self::is_plugin_email( $email ) ) {
+			return $address;
+		}
+
+		$custom = trim( (string) Options::get( 'email_from_address', '' ) );
+
+		return ( '' !== $custom && is_email( $custom ) ) ? $custom : $address;
+	}
+
+	/**
+	 * Override the From name for this plugin's e-mails when configured.
+	 *
+	 * @param string $name  Default from name.
+	 * @param mixed  $email WC_Email instance (or null in some contexts).
+	 * @return string
+	 */
+	public function from_name( $name, $email = null ) {
+		if ( ! self::is_plugin_email( $email ) ) {
+			return $name;
+		}
+
+		$custom = trim( (string) Options::get( 'email_from_name', '' ) );
+
+		return '' !== $custom ? $custom : $name;
+	}
+
+	/**
+	 * Whether the given WC_Email belongs to this plugin.
+	 *
+	 * @param mixed $email WC_Email instance or other.
+	 * @return bool
+	 */
+	private static function is_plugin_email( $email ): bool {
+		return $email instanceof \WC_Email && str_starts_with( (string) $email->id, 'elallas_' );
 	}
 
 	/**

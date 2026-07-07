@@ -77,6 +77,8 @@ final class Options {
 			'email_admin_enabled'     => true,
 			'email_status_enabled'    => true,
 			'email_admin_recipient'   => '',
+			'email_from_name'         => '',
+			'email_from_address'      => '',
 			'email_customer_extra'    => '',
 
 			// Legal texts.
