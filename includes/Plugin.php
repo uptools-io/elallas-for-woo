@@ -174,7 +174,7 @@ final class Plugin {
 	 */
 	public function add_settings_link( array $links ): array {
 		$url  = admin_url( 'admin.php?page=elallas-for-woo-settings' );
-		$link = '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Settings', 'elallas-for-woo' ) . '</a>';
+		$link = '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Beállítások', 'elallas-for-woo' ) . '</a>';
 		array_unshift( $links, $link );
 		return $links;
 	}

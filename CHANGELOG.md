@@ -9,9 +9,18 @@
 - **`confirm_label` option is now actually used** — the confirmation step button rendered a hard-coded gettext string and ignored the configured (and translatable) label.
 - **Early-translation notice fixed.** `Options::get_defaults()` (read from module constructors on `plugins_loaded`) no longer calls `__()`, which triggered WordPress 6.7's "translation loading was triggered too early" notice for the `elallas-for-woo` text domain.
 
+- **Admin case detail now surfaces the full context** (issue #22). The eligibility flag is shown translated ("Kizárt – ellenőrizendő" / "Jogosult") instead of the raw `excepted`/`eligible`, together with the exclusion reason; the customer note is shown under a clear heading; and each product name links to the product editor.
+- **The plugin action link label** is now Hungarian ("Beállítások" instead of "Settings").
+
 ### Added
 - `wpml-config.xml` declaring the product/category/tag withdrawal-exception meta as `copy` and the `[elallas_button]` `label` attribute as translatable.
 - JavaScript translation support for the block editor script (`editor.asset.php` dependency manifest + `wp_set_script_translations()`).
+- **Admin notification e-mail warning** (issue #22): a prominent banner and per-item flag when the case contains products excluded from withdrawal, with the reason for each.
+- **Sender e-mail settings** (issue #22): "Feladó neve" / "Feladó e-mail címe" (`email_from_name`, `email_from_address`) so the plugin's e-mails can be sent from — and replied to at — a monitored mailbox.
+- **Status-change note to the customer** (issue #22): an optional message field on the admin decision form that is logged and included in the status-update e-mail (e.g. the reason for a rejection).
+- **Order-screen withdrawal panel** (issue #22): a prominent panel on the WooCommerce order edit screen (legacy + HPOS) listing the order's withdrawal case(s), status, date, a link to the case, and an excluded-item flag.
+- **Excluded-items listing** on the Exceptions settings tab (issue #21): the products, categories and tags currently excluded from withdrawal, each with its reason and an edit link.
+- Regenerated `languages/elallas-for-woo.pot` with all new strings.
 
 ## [1.0.11] - 2026-06-26
 
