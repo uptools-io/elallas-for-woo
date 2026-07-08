@@ -54,10 +54,10 @@ final class WithdrawalForm {
 	 */
 	private static function identify_prefill(): array {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$order_param = isset( $_GET['order'] ) ? absint( wp_unslash( $_GET['order'] ) ) : 0;
+		$order_param = isset( $_GET['order'] ) ? sanitize_text_field( wp_unslash( $_GET['order'] ) ) : '';
 
 		$data = [
-			'prefill_order' => $order_param > 0 ? (string) $order_param : '',
+			'prefill_order' => $order_param,
 			'prefill_email' => '',
 			'user_orders'   => [],
 		];

@@ -51,7 +51,7 @@ final class Hooks {
 
 		printf(
 			'<p class="elallas-order-action"><a class="button elallas-button" href="%1$s">%2$s</a></p>',
-			esc_url( add_query_arg( 'order', $order->get_id(), $url ) ),
+			esc_url( add_query_arg( 'order', $order->get_order_number(), $url ) ),
 			esc_html( Multilingual::translate_option_string( 'button_label' ) )
 		);
 	}

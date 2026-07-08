@@ -108,6 +108,15 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 
 == Changelog ==
 
+= 1.0.12 =
+* New: WPML/Polylang compatibility — admin-entered dynamic strings (button label, confirm label, withdrawal declaration, extra e-mail text) are now translated on every output path, the withdrawal page ID resolves to the translated page, and e-mails/PDF render in the case's language.
+* New: WooCommerce Sequential Order Numbers (Pro) compatibility (issue #19) — the order is resolved by the sequential number the customer sees, and the withdrawal button/link now carries that same display number so the identify step is pre-filled correctly.
+* New: WooCommerce-native logging (issue #20) under WooCommerce → Status → Logs (source "elallas-for-woo"); warnings/errors always logged, verbose info/debug behind a "Debug naplózás" option, PII scrubbed. PDF rendering now degrades gracefully instead of breaking case creation.
+* New: Exceptions settings tab lists the products, categories and tags excluded from withdrawal, each with its reason and an edit link (issue #21).
+* New: Sender e-mail settings, status-change note to the customer, an order-screen withdrawal panel (legacy + HPOS), and an admin-notification warning when an excluded product is in the case (issue #22).
+* Fix: admin case detail shows the translated eligibility flag and exclusion reason, the customer note, and product-editor links (issue #22).
+* Fix: WordPress 6.7 "translation loading was triggered too early" notice.
+
 = 1.0.11 =
 * Fix: PDF generation could fatal with "Class FontLib\TrueType\File not found" once dompdf had to parse a font (a regression from the 1.0.10 Dompdf scoping). The bundled font library's dynamic class references are now correctly namespaced in the build.
 * Fix: the admin notification email ("Új elállási nyilatkozat (admin)") was never sent because its recipient was never set — trigger() read the (empty) current recipient instead of the configured admin recipient. It now uses the configured "Admin recipient" (falling back to the site admin email), so the notification is actually delivered. The customer confirmation email was unaffected.
