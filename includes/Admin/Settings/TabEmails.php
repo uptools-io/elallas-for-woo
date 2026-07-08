@@ -45,6 +45,8 @@ final class TabEmails implements TabInterface {
 			'email_admin_enabled'    => 'bool',
 			'email_status_enabled'   => 'bool',
 			'email_admin_recipient'  => 'text',
+			'email_from_name'        => 'text',
+			'email_from_address'     => 'text',
 			'email_customer_extra'   => 'textarea',
 		];
 	}
@@ -77,6 +79,14 @@ final class TabEmails implements TabInterface {
 			<tr>
 				<th scope="row"><label for="email_customer_extra"><?php esc_html_e( 'Vásárlói e-mail extra szöveg', 'elallas-for-woo' ); ?></label></th>
 				<td><?php $this->render_textarea( 'email_customer_extra', __( 'A visszaigazoló e-mail aljához fűzött szöveg (pl. visszaküldési cím, ügyfélszolgálat). A tárgyat és a fejlécet a WooCommerce → Beállítások → E-mailek alatt szabhatod testre, a teljes sablont pedig a témád elallas-for-woo/emails/ mappájában írhatod felül.', 'elallas-for-woo' ) ); ?></td>
+			</tr>
+			<tr>
+				<th scope="row"><label for="email_from_name"><?php esc_html_e( 'Feladó neve', 'elallas-for-woo' ); ?></label></th>
+				<td><?php $this->render_text( 'email_from_name', __( 'A plugin e-mailjeinek feladó neve. Üresen hagyva a WooCommerce beállítás érvényes.', 'elallas-for-woo' ) ); ?></td>
+			</tr>
+			<tr>
+				<th scope="row"><label for="email_from_address"><?php esc_html_e( 'Feladó e-mail címe', 'elallas-for-woo' ); ?></label></th>
+				<td><?php $this->render_text( 'email_from_address', __( 'A plugin e-mailjeinek feladó (From) címe. Állítsd egy figyelt postafiókra, hogy a vásárlói válaszok is megérkezzenek. Üresen hagyva a WooCommerce alapértelmezett feladó címe.', 'elallas-for-woo' ) ); ?></td>
 			</tr>
 		</table>
 		<?php

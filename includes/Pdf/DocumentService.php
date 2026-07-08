@@ -14,6 +14,8 @@ use LightweightPlugins\Elallas\Database\CaseRepository;
 use LightweightPlugins\Elallas\Database\CaseItemRepository;
 use LightweightPlugins\Elallas\Database\DocumentRepository;
 use LightweightPlugins\Elallas\Frontend\TemplateLoader;
+use LightweightPlugins\Elallas\Integrations\Multilingual;
+use LightweightPlugins\Elallas\Support\Logger;
 use LightweightPlugins\Elallas\Woo\OrderAdapter;
 
 /**
@@ -44,22 +46,40 @@ final class DocumentService {
 		$items = CaseItemRepository::for_case( $case_id );
 		$order = OrderAdapter::get_order( (int) $case->order_id );
 
-		$html = TemplateLoader::render(
-			'pdf/withdrawal-statement.php',
-			[
-				'case'  => $case,
-				'items' => $items,
-				'order' => $order,
-			]
-		);
+		// Render the document in the language the case was submitted in, so the
+		// PDF matches the customer's language regardless of who triggers it
+		// (customer email, admin regeneration, download handler).
+		Multilingual::switch_to( '' !== $case->language ? $case->language : '' );
+
+		try {
+			$html = TemplateLoader::render(
+				'pdf/withdrawal-statement.php',
+				[
+					'case'  => $case,
+					'items' => $items,
+					'order' => $order,
+				]
+			);
+		} finally {
+			Multilingual::restore();
+		}
 
 		$pdf = PdfRenderer::to_pdf_string( $html, [ 'case_id' => $case_id ] );
 
 		if ( '' === $pdf ) {
+			Logger::error( 'PDF generálás sikertelen (üres kimenet).', [ 'case_id' => $case_id ] );
 			return 0;
 		}
 
-		return self::persist( $case_id, (string) $case->case_number, $pdf );
+		$document_id = self::persist( $case_id, (string) $case->case_number, $pdf );
+
+		if ( 0 === $document_id ) {
+			Logger::error( 'PDF mentése sikertelen.', [ 'case_id' => $case_id ] );
+		} else {
+			Logger::debug( 'PDF generálva.', [ 'case_id' => $case_id, 'document_id' => $document_id ] );
+		}
+
+		return $document_id;
 	}
 
 	/**

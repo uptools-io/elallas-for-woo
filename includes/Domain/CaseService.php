@@ -15,6 +15,7 @@ use LightweightPlugins\Elallas\Database\EventRepository;
 use LightweightPlugins\Elallas\Models\CaseStatus;
 use LightweightPlugins\Elallas\Models\DeadlineStatus;
 use LightweightPlugins\Elallas\Woo\OrderAdapter;
+use LightweightPlugins\Elallas\Support\Logger;
 
 /**
  * Creates withdrawal cases and manages their lifecycle.
@@ -59,6 +60,13 @@ final class CaseService {
 		);
 
 		if ( 0 === $case_id ) {
+			Logger::error(
+				'Elállási ügy létrehozása sikertelen (adatbázis-beszúrás).',
+				[
+					'order_id'     => $order->get_id(),
+					'order_number' => $order->get_order_number(),
+				]
+			);
 			return 0;
 		}
 
@@ -73,6 +81,17 @@ final class CaseService {
 		 * @param int $order_id Order ID.
 		 */
 		do_action( 'elallas_case_created', $case_id, $order->get_id() );
+
+		Logger::info(
+			'Elállási ügy létrehozva.',
+			[
+				'case_id'      => $case_id,
+				'order_id'     => $order->get_id(),
+				'order_number' => $order->get_order_number(),
+				'type'         => (string) ( $context['withdrawal_type'] ?? 'full' ),
+				'deadline'     => $deadline_status,
+			]
+		);
 
 		return $case_id;
 	}
@@ -104,6 +123,8 @@ final class CaseService {
 		 */
 		do_action( 'elallas_case_confirmed', $case_id );
 
+		Logger::info( 'Elállási ügy megerősítve.', [ 'case_id' => $case_id, 'status' => $status ] );
+
 		return true;
 	}
 
@@ -113,9 +134,10 @@ final class CaseService {
 	 * @param int      $case_id    Case ID.
 	 * @param string   $new_status New status.
 	 * @param int|null $actor_id   Acting admin user ID.
+	 * @param string   $message    Optional note to the customer, included in the status e-mail.
 	 * @return bool
 	 */
-	public function change_status( int $case_id, string $new_status, ?int $actor_id = null ): bool {
+	public function change_status( int $case_id, string $new_status, ?int $actor_id = null, string $message = '' ): bool {
 		if ( ! CaseStatus::is_valid( $new_status ) ) {
 			return false;
 		}
@@ -129,17 +151,24 @@ final class CaseService {
 		$old_status = $case->status;
 		CaseRepository::update_status( $case_id, $new_status );
 
+		$log = sprintf(
+			/* translators: 1: old status label, 2: new status label. */
+			__( 'Státusz módosítva: %1$s → %2$s', 'elallas-for-woo' ),
+			CaseStatus::label( $old_status ),
+			CaseStatus::label( $new_status )
+		);
+
+		if ( '' !== $message ) {
+			/* translators: %s: admin note sent to the customer. */
+			$log .= ' — ' . sprintf( __( 'Üzenet a vásárlónak: %s', 'elallas-for-woo' ), $message );
+		}
+
 		EventRepository::log(
 			$case_id,
 			'status_changed',
 			null === $actor_id ? 'system' : 'admin',
 			$actor_id,
-			sprintf(
-				/* translators: 1: old status label, 2: new status label. */
-				__( 'Státusz módosítva: %1$s → %2$s', 'elallas-for-woo' ),
-				CaseStatus::label( $old_status ),
-				CaseStatus::label( $new_status )
-			)
+			$log
 		);
 
 		/**
@@ -148,8 +177,19 @@ final class CaseService {
 		 * @param int    $case_id    Case ID.
 		 * @param string $old_status Previous status.
 		 * @param string $new_status New status.
+		 * @param string $message    Optional note to the customer.
 		 */
-		do_action( 'elallas_case_status_changed', $case_id, $old_status, $new_status );
+		do_action( 'elallas_case_status_changed', $case_id, $old_status, $new_status, $message );
+
+		Logger::info(
+			'Elállási ügy státusza módosítva.',
+			[
+				'case_id'  => $case_id,
+				'from'     => $old_status,
+				'to'       => $new_status,
+				'actor_id' => $actor_id,
+			]
+		);
 
 		return true;
 	}

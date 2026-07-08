@@ -14,6 +14,7 @@ use LightweightPlugins\Elallas\Data\DefaultTexts;
 use LightweightPlugins\Elallas\Domain\EligibilityChecker;
 use LightweightPlugins\Elallas\Domain\EligibilityResult;
 use LightweightPlugins\Elallas\Security\RateLimiter;
+use LightweightPlugins\Elallas\Support\Logger;
 use LightweightPlugins\Elallas\Woo\OrderAdapter;
 use WP_REST_Request;
 use WP_REST_Response;
@@ -54,6 +55,17 @@ final class IdentifyController {
 		$result = $order ? ( new EligibilityChecker() )->check( $order, $email ) : null;
 
 		if ( null === $order || ! $result instanceof EligibilityResult || ! $result->eligible ) {
+			// Non-PII diagnostic: helps support see why a customer could not identify
+			// their order (e.g. wrong/renumbered order, expired deadline).
+			Logger::debug(
+				'Azonosítás elutasítva.',
+				[
+					'order_number'  => $order_number,
+					'order_found'   => null !== $order,
+					'reasons'       => $result instanceof EligibilityResult ? $result->reasons : [],
+				]
+			);
+
 			return $this->neutral();
 		}
 

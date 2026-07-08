@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace LightweightPlugins\Elallas\Pdf;
 
+use LightweightPlugins\Elallas\Support\Logger;
+
 /**
  * Renders an HTML string to a PDF binary string via Dompdf.
  */
@@ -25,6 +27,7 @@ final class PdfRenderer {
 		$dompdf_class = self::dompdf_class();
 
 		if ( '' === $dompdf_class ) {
+			Logger::error( 'PDF renderelés kihagyva: a Dompdf nem érhető el.', $context );
 			return '';
 		}
 
@@ -36,12 +39,22 @@ final class PdfRenderer {
 		 */
 		$html = (string) apply_filters( 'elallas_pdf_html', $html, $context );
 
-		$dompdf = new $dompdf_class();
-		$dompdf->loadHtml( $html );
-		$dompdf->setPaper( 'A4' );
-		$dompdf->render();
+		try {
+			$dompdf = new $dompdf_class();
+			$dompdf->loadHtml( $html );
+			$dompdf->setPaper( 'A4' );
+			$dompdf->render();
 
-		return (string) $dompdf->output();
+			return (string) $dompdf->output();
+		} catch ( \Throwable $e ) {
+			// A PDF failure must never break case creation or e-mail sending.
+			Logger::error(
+				'PDF renderelési hiba: ' . $e->getMessage(),
+				array_merge( $context, [ 'exception' => get_class( $e ) ] )
+			);
+
+			return '';
+		}
 	}
 
 	/**

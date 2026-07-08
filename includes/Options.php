@@ -39,12 +39,17 @@ final class Options {
 	 * @return array<string, mixed>
 	 */
 	public static function get_defaults(): array {
+		// Note: user-facing string defaults are intentionally raw (no __()) so
+		// this can run before init/textdomain load (Options::get() is called
+		// from module constructors on plugins_loaded). These values are the
+		// Hungarian source strings; translation happens at output time through
+		// the multilingual string mechanism (see Integrations\Multilingual).
 		return [
 			// General.
 			'enabled'                 => true,
 			'withdrawal_page_id'      => 0,
-			'button_label'            => __( 'Elállás a szerződéstől', 'elallas-for-woo' ),
-			'confirm_label'           => __( 'Elállás megerősítése', 'elallas-for-woo' ),
+			'button_label'            => 'Elállás a szerződéstől',
+			'confirm_label'           => 'Elállás megerősítése',
 			'display_account'         => true,
 			'display_order_details'   => true,
 			'display_order_email'     => true,
@@ -72,11 +77,16 @@ final class Options {
 			'email_admin_enabled'     => true,
 			'email_status_enabled'    => true,
 			'email_admin_recipient'   => '',
+			'email_from_name'         => '',
+			'email_from_address'      => '',
 			'email_customer_extra'    => '',
 
 			// Legal texts.
 			'legal_declaration'       => DefaultTexts::declaration(),
 			'legal_confirmation'      => DefaultTexts::confirmation(),
+
+			// Diagnostics.
+			'logging_enabled'         => false,
 
 			// Uninstall.
 			'uninstall_remove_data'   => false,

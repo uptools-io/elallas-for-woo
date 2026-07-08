@@ -82,7 +82,7 @@ do_action( 'woocommerce_email_header', $email_heading, $email );
 <p><?php esc_html_e( 'Kérjük, őrizze meg ezt az e-mailt, amely az elállás visszaigazolásaként szolgál.', 'elallas-for-woo' ); ?></p>
 
 <?php
-$elallas_extra = (string) \LightweightPlugins\Elallas\Options::get( 'email_customer_extra', '' );
+$elallas_extra = \LightweightPlugins\Elallas\Integrations\Multilingual::translate_option_string( 'email_customer_extra' );
 if ( '' !== trim( $elallas_extra ) ) {
 	echo wp_kses_post( wpautop( $elallas_extra ) );
 }

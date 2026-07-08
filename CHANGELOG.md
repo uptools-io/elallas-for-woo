@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.0.12] - 2026-07-07
+
+### Fixed
+- **WPML/Polylang: dynamic strings are now translated on every output path.** The admin-entered strings (`button_label`, `confirm_label`, `legal_declaration`, `legal_confirmation`, `email_customer_extra`) were registered for translation but printed raw from the database, so the `[elallas_button]` label, the confirmation button, the withdrawal declaration, and the extra e-mail text always appeared in the source language. A single `Integrations\Multilingual::translate_option_string()` helper (WPML `wpml_translate_single_string` / Polylang `pll__`, graceful passthrough when neither is active) is now used by the shortcode, the WooCommerce order/e-mail button, the confirm step, the customer e-mail (HTML + plain) and the PDF.
+- **WPML: the stored `withdrawal_page_id` is resolved to the translated page.** The `[elallas_button]`/order button link and the front-end asset loading (`is_page()`) now run the page ID through `wpml_object_id`, so on a translated page the button points to the right language's withdrawal page and the CSS/JS still loads.
+- **WPML: e-mails and the PDF now render in the case's language.** The submission language is stored as the WPML/Polylang language code (was `determine_locale()`), and the customer confirmation + status-update e-mails and the withdrawal-statement PDF switch to that language while rendering (the admin notification renders in the shop's default language). The PDF `<html lang>` is no longer hard-coded to `hu`.
+- **`confirm_label` option is now actually used** — the confirmation step button rendered a hard-coded gettext string and ignored the configured (and translatable) label.
+- **Early-translation notice fixed.** `Options::get_defaults()` (read from module constructors on `plugins_loaded`) no longer calls `__()`, which triggered WordPress 6.7's "translation loading was triggered too early" notice for the `elallas-for-woo` text domain.
+- **WooCommerce Sequential Order Numbers (Pro) compatibility** (issue #19). The customer sees and types the plugin's sequential order number (e.g. `1436`), which is *not* the WooCommerce order ID — so identifying the order by the typed value always failed. `OrderAdapter::get_order_by_number()` now resolves the entered number via `wc_seq_order_number_pro()->find_order_by_order_number()` (also handles the free plugin and a new `elallas_resolve_order_number` filter for other numbering plugins), and only falls back to the native order ID when no numbering plugin is active. The value is no longer digit-stripped, so prefixes/suffixes in the order number are preserved.
+
+- **Admin case detail now surfaces the full context** (issue #22). The eligibility flag is shown translated ("Kizárt – ellenőrizendő" / "Jogosult") instead of the raw `excepted`/`eligible`, together with the exclusion reason; the customer note is shown under a clear heading; and each product name links to the product editor.
+- **The plugin action link label** is now Hungarian ("Beállítások" instead of "Settings").
+
+### Added
+- `wpml-config.xml` declaring the product/category/tag withdrawal-exception meta as `copy` and the `[elallas_button]` `label` attribute as translatable.
+- JavaScript translation support for the block editor script (`editor.asset.php` dependency manifest + `wp_set_script_translations()`).
+- **Admin notification e-mail warning** (issue #22): a prominent banner and per-item flag when the case contains products excluded from withdrawal, with the reason for each.
+- **Sender e-mail settings** (issue #22): "Feladó neve" / "Feladó e-mail címe" (`email_from_name`, `email_from_address`) so the plugin's e-mails can be sent from — and replied to at — a monitored mailbox.
+- **Status-change note to the customer** (issue #22): an optional message field on the admin decision form that is logged and included in the status-update e-mail (e.g. the reason for a rejection).
+- **Order-screen withdrawal panel** (issue #22): a prominent panel on the WooCommerce order edit screen (legacy + HPOS) listing the order's withdrawal case(s), status, date, a link to the case, and an excluded-item flag.
+- **Excluded-items listing** on the Exceptions settings tab (issue #21): the products, categories and tags currently excluded from withdrawal, each with its reason and an edit link.
+- **WooCommerce-native logging** (issue #20): a new `Support\Logger` writes to WooCommerce → Status → Logs under the `elallas-for-woo` source. Warnings/errors (failed case insert, failed/exception PDF render, unavailable Dompdf) are always recorded; verbose info/debug (case created/confirmed, status changed, e-mails triggered, rejected identification) are gated behind a new "Debug naplózás" option (default off). Context is scrubbed of PII. `PdfRenderer` now also catches Dompdf exceptions so a PDF failure can no longer break case creation or e-mail sending.
+- Regenerated `languages/elallas-for-woo.pot` with all new strings.
+
 ## [1.0.11] - 2026-06-26
 
 ### Fixed

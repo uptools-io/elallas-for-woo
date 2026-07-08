@@ -15,6 +15,7 @@ use LightweightPlugins\Elallas\Pdf\DocumentService;
 use LightweightPlugins\Elallas\Security\Encryption;
 use LightweightPlugins\Elallas\Database\EventRepository;
 use LightweightPlugins\Elallas\Models\CaseStatus;
+use LightweightPlugins\Elallas\Models\CaseItem;
 use LightweightPlugins\Elallas\Models\WithdrawalCase;
 
 /**
@@ -58,7 +59,9 @@ final class CaseDetailSections {
 		echo '<h2>' . esc_html__( 'Vásárlói nyilatkozat és tételek', 'elallas-for-woo' ) . '</h2>';
 
 		if ( null !== $case->customer_note && '' !== $case->customer_note ) {
-			echo '<p>' . esc_html( $case->customer_note ) . '</p>';
+			echo '<p><strong>' . esc_html__( 'Vásárló megjegyzése:', 'elallas-for-woo' ) . '</strong></p>';
+			echo '<blockquote style="margin:0 0 16px;padding:8px 12px;border-left:4px solid #c3c4c7;background:#f6f7f7;">'
+				. esc_html( $case->customer_note ) . '</blockquote>';
 		}
 
 		echo '<table class="widefat striped"><thead><tr><th>' . esc_html__( 'Termék', 'elallas-for-woo' )
@@ -68,17 +71,53 @@ final class CaseDetailSections {
 			. '</th><th>' . esc_html__( 'Jogosultság', 'elallas-for-woo' ) . '</th></tr></thead><tbody>';
 
 		foreach ( CaseItemRepository::for_case( $case->id ) as $item ) {
-			printf(
-				'<tr><td>%s</td><td>%s</td><td>%d</td><td>%d</td><td>%s</td></tr>',
-				esc_html( $item->product_name_snapshot ),
-				esc_html( $item->sku_snapshot ),
-				(int) $item->qty_ordered,
-				(int) $item->qty_withdrawn,
-				esc_html( $item->eligibility_flag )
-			);
+			echo '<tr><td>' . wp_kses_post( self::product_cell( $item ) ) . '</td>'
+				. '<td>' . esc_html( $item->sku_snapshot ) . '</td>'
+				. '<td>' . (int) $item->qty_ordered . '</td>'
+				. '<td>' . (int) $item->qty_withdrawn . '</td>'
+				. '<td>' . wp_kses_post( self::eligibility_cell( $item ) ) . '</td></tr>';
 		}
 
 		echo '</tbody></table>';
+	}
+
+	/**
+	 * Product name cell, linked to the product editor when possible.
+	 *
+	 * @param CaseItem $item Case item.
+	 * @return string Escaped HTML.
+	 */
+	private static function product_cell( CaseItem $item ): string {
+		$name = esc_html( $item->product_name_snapshot );
+		$edit = $item->product_id > 0 ? get_edit_post_link( $item->product_id ) : null;
+
+		if ( null !== $edit && '' !== $edit ) {
+			return '<a href="' . esc_url( $edit ) . '" target="_blank" rel="noopener">' . $name . '</a>';
+		}
+
+		return $name;
+	}
+
+	/**
+	 * Eligibility cell: translated flag, with the exclusion reason when excepted.
+	 *
+	 * @param CaseItem $item Case item.
+	 * @return string Escaped HTML.
+	 */
+	private static function eligibility_cell( CaseItem $item ): string {
+		$label = esc_html( $item->eligibility_label() );
+
+		if ( ! $item->is_excepted() ) {
+			return $label;
+		}
+
+		$out = '<span style="color:#b32d2e;font-weight:600;">' . $label . '</span>';
+
+		if ( '' !== $item->eligibility_note ) {
+			$out .= '<br /><span class="description">' . esc_html( $item->eligibility_note ) . '</span>';
+		}
+
+		return $out;
 	}
 
 	/**
@@ -117,7 +156,8 @@ final class CaseDetailSections {
 		wp_nonce_field( 'elallas_change_status' );
 		echo '<input type="hidden" name="action" value="elallas_change_status" />';
 		echo '<input type="hidden" name="case_id" value="' . esc_attr( (string) $case->id ) . '" />';
-		echo '<select name="new_status">';
+		echo '<p><label for="elallas-new-status"><strong>' . esc_html__( 'Új státusz', 'elallas-for-woo' ) . '</strong></label><br />';
+		echo '<select name="new_status" id="elallas-new-status">';
 		foreach ( CaseStatus::labels() as $key => $label ) {
 			printf(
 				'<option value="%s" %s>%s</option>',
@@ -126,7 +166,12 @@ final class CaseDetailSections {
 				esc_html( $label )
 			);
 		}
-		echo '</select> ';
+		echo '</select></p>';
+
+		echo '<p><label for="elallas-status-message"><strong>' . esc_html__( 'Üzenet a vásárlónak (opcionális)', 'elallas-for-woo' ) . '</strong></label><br />';
+		echo '<textarea name="status_message" id="elallas-status-message" rows="3" class="large-text" style="max-width:600px;"></textarea><br />';
+		echo '<span class="description">' . esc_html__( 'Ha kitöltöd, bekerül a vásárlónak küldött státusz e-mailbe (pl. az elutasítás indoka).', 'elallas-for-woo' ) . '</span></p>';
+
 		submit_button( __( 'Státusz mentése', 'elallas-for-woo' ), 'primary', 'submit', false );
 		echo '</form>';
 	}

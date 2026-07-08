@@ -19,8 +19,8 @@ use LightweightPlugins\Elallas\Domain\OrderSnapshotBuilder;
 use LightweightPlugins\Elallas\Database\CaseRepository;
 use LightweightPlugins\Elallas\Security\RateLimiter;
 use LightweightPlugins\Elallas\Woo\OrderAdapter;
-use LightweightPlugins\Elallas\Options;
 use LightweightPlugins\Elallas\Data\DefaultTexts;
+use LightweightPlugins\Elallas\Integrations\Multilingual;
 
 /**
  * Builds the view descriptor for each step of the flow.
@@ -168,7 +168,8 @@ final class StepProcessor {
 			'selected'        => $selected,
 			'withdrawal_type' => count( $rows ) === count( OrderAdapter::items( $order ) ) ? 'full' : 'partial',
 			'deadline_status' => $deadline_status,
-			'declaration'     => (string) Options::get( 'legal_declaration', DefaultTexts::declaration() ),
+			'declaration'     => Multilingual::translate_option_string( 'legal_declaration' ),
+			'confirm_label'   => Multilingual::translate_option_string( 'confirm_label' ),
 		];
 	}
 

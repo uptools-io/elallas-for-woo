@@ -11,6 +11,7 @@ namespace LightweightPlugins\Elallas\Woo;
 
 use LightweightPlugins\Elallas\Options;
 use LightweightPlugins\Elallas\Frontend\Shortcodes;
+use LightweightPlugins\Elallas\Integrations\Multilingual;
 use LightweightPlugins\Elallas\Domain\EligibilityChecker;
 
 /**
@@ -51,7 +52,7 @@ final class Hooks {
 		printf(
 			'<p class="elallas-order-action"><a class="button elallas-button" href="%1$s">%2$s</a></p>',
 			esc_url( add_query_arg( 'order', $order->get_id(), $url ) ),
-			esc_html( (string) Options::get( 'button_label' ) )
+			esc_html( Multilingual::translate_option_string( 'button_label' ) )
 		);
 	}
 
@@ -75,7 +76,7 @@ final class Hooks {
 		printf(
 			'<p style="margin-top:16px;"><a href="%1$s">%2$s</a></p>',
 			esc_url( $url ),
-			esc_html( (string) Options::get( 'button_label' ) )
+			esc_html( Multilingual::translate_option_string( 'button_label' ) )
 		);
 	}
 

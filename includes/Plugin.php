@@ -30,6 +30,7 @@ use LightweightPlugins\Elallas\Admin\AdminMenu;
 use LightweightPlugins\Elallas\Admin\ProductFields;
 use LightweightPlugins\Elallas\Admin\TermFields;
 use LightweightPlugins\Elallas\Admin\NoticeManager;
+use LightweightPlugins\Elallas\Admin\OrderWithdrawalNotice;
 use LightweightPlugins\Elallas\SiteManager\Integration as SiteManagerIntegration;
 use LightweightPlugins\Elallas\CLI\Commands as CliCommands;
 
@@ -137,6 +138,7 @@ final class Plugin {
 		new ProductFields();
 		new TermFields();
 		new NoticeManager();
+		new OrderWithdrawalNotice();
 	}
 
 	/**
@@ -172,7 +174,7 @@ final class Plugin {
 	 */
 	public function add_settings_link( array $links ): array {
 		$url  = admin_url( 'admin.php?page=elallas-for-woo-settings' );
-		$link = '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Settings', 'elallas-for-woo' ) . '</a>';
+		$link = '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Beállítások', 'elallas-for-woo' ) . '</a>';
 		array_unshift( $links, $link );
 		return $links;
 	}

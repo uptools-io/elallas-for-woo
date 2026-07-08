@@ -34,14 +34,59 @@ final class OrderAdapter {
 	}
 
 	/**
-	 * Get the order by its display number (falls back to ID).
+	 * Resolve an order from the number the customer sees and types.
+	 *
+	 * With an order-numbering plugin such as WooCommerce Sequential Order
+	 * Numbers (Pro), the visible order number is NOT the WooCommerce order ID
+	 * (e.g. the customer sees "5" while the order's WP ID is 30). Resolving the
+	 * typed value straight to an ID would then never find the order, so we ask
+	 * the numbering plugin to map the number to its order first, and only fall
+	 * back to treating the value as the native order ID.
 	 *
 	 * @param string $number Order number as entered by the customer.
 	 * @return \WC_Order|null
 	 */
 	public static function get_order_by_number( string $number ): ?\WC_Order {
-		$number = trim( $number );
-		$id     = (int) preg_replace( '/[^0-9]/', '', $number );
+		$number = ltrim( trim( $number ), '#' );
+
+		if ( '' === $number ) {
+			return null;
+		}
+
+		/**
+		 * Resolve a customer-entered order number to a WooCommerce order ID.
+		 *
+		 * Lets any order-numbering plugin provide the lookup. Return 0 to fall
+		 * through to the built-in resolution.
+		 *
+		 * @param int    $order_id Resolved order ID (0 = unresolved).
+		 * @param string $number   The order number as entered by the customer.
+		 */
+		$order_id = (int) apply_filters( 'elallas_resolve_order_number', 0, $number );
+
+		if ( $order_id > 0 ) {
+			return self::get_order( $order_id );
+		}
+
+		// WooCommerce Sequential Order Numbers (Pro / free): map the visible
+		// number to its order. The helper also falls back to a native order ID
+		// for legacy orders created while the plugin was inactive.
+		foreach ( [ 'wc_seq_order_number_pro', 'wc_seq_order_number' ] as $resolver ) {
+			if ( ! function_exists( $resolver ) ) {
+				continue;
+			}
+
+			$instance = $resolver();
+
+			if ( is_object( $instance ) && method_exists( $instance, 'find_order_by_order_number' ) ) {
+				$order_id = (int) $instance->find_order_by_order_number( $number );
+
+				return $order_id > 0 ? self::get_order( $order_id ) : null;
+			}
+		}
+
+		// No numbering plugin: the entered value is the native WooCommerce order ID.
+		$id = (int) preg_replace( '/[^0-9]/', '', $number );
 
 		return $id > 0 ? self::get_order( $id ) : null;
 	}

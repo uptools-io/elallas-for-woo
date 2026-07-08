@@ -48,6 +48,7 @@ final class TabGeneral implements TabInterface {
 			'display_order_details' => 'bool',
 			'display_order_email'   => 'bool',
 			'withdrawal_page_id'    => 'int',
+			'logging_enabled'       => 'bool',
 		];
 	}
 
@@ -95,6 +96,13 @@ final class TabGeneral implements TabInterface {
 					<?php $this->render_checkbox( 'display_account', __( 'Fiók oldalon', 'elallas-for-woo' ) ); ?><br />
 					<?php $this->render_checkbox( 'display_order_details', __( 'Rendelés részleteinél', 'elallas-for-woo' ) ); ?><br />
 					<?php $this->render_checkbox( 'display_order_email', __( 'Rendelési e-mailben', 'elallas-for-woo' ) ); ?>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><?php esc_html_e( 'Debug naplózás', 'elallas-for-woo' ); ?></th>
+				<td>
+					<?php $this->render_checkbox( 'logging_enabled', __( 'Részletes naplózás a WooCommerce → Állapot → Naplók alá (forrás: elallas-for-woo)', 'elallas-for-woo' ) ); ?>
+					<p class="description"><?php esc_html_e( 'Hibák és figyelmeztetések bekapcsolás nélkül is naplózódnak. Bekapcsolva a részletes (info/debug) események is bekerülnek. Nem tartalmaz személyes adatot.', 'elallas-for-woo' ); ?></p>
 				</td>
 			</tr>
 		</table>

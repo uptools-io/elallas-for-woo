@@ -51,6 +51,36 @@ final class CaseItem {
 	}
 
 	/**
+	 * Eligibility flag labels (translatable).
+	 *
+	 * @return array<string, string>
+	 */
+	public static function eligibility_labels(): array {
+		return [
+			'eligible' => __( 'Jogosult', 'elallas-for-woo' ),
+			'excepted' => __( 'Kizárt – ellenőrizendő', 'elallas-for-woo' ),
+		];
+	}
+
+	/**
+	 * Human, translated label for this item's eligibility flag.
+	 *
+	 * @return string
+	 */
+	public function eligibility_label(): string {
+		return self::eligibility_labels()[ $this->eligibility_flag ] ?? $this->eligibility_flag;
+	}
+
+	/**
+	 * Whether the item is flagged as an exception (excluded from withdrawal).
+	 *
+	 * @return bool
+	 */
+	public function is_excepted(): bool {
+		return 'excepted' === $this->eligibility_flag;
+	}
+
+	/**
 	 * Sample item with placeholder data for the WooCommerce email preview.
 	 *
 	 * @return self

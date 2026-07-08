@@ -20,19 +20,27 @@ final class DefaultTexts {
 	/**
 	 * Default consumer-facing withdrawal declaration text.
 	 *
+	 * Raw (untranslated) Hungarian source string: it is used as the default of
+	 * the `legal_declaration` option, which is read from module constructors on
+	 * plugins_loaded — before the textdomain is loaded. Translation is applied
+	 * at output time via the multilingual string mechanism (the option is
+	 * registered under {@see Integrations\Multilingual}).
+	 *
 	 * @return string
 	 */
 	public static function declaration(): string {
-		return __( 'Alulírott fogyasztó kijelentem, hogy a megjelölt rendelésben szereplő termékek / szolgáltatások vonatkozásában elállási jogomat gyakorlom.', 'elallas-for-woo' );
+		return 'Alulírott fogyasztó kijelentem, hogy a megjelölt rendelésben szereplő termékek / szolgáltatások vonatkozásában elállási jogomat gyakorlom.';
 	}
 
 	/**
 	 * Default submission acknowledgement text. Placeholders: {submitted_at}, {case_number}.
 	 *
+	 * Raw (untranslated) source string — see {@see declaration()} for why.
+	 *
 	 * @return string
 	 */
 	public static function confirmation(): string {
-		return __( 'Elállási nyilatkozatát rendszerünk rögzítette. A nyilatkozat beérkezésének időpontja: {submitted_at}. Az ügy azonosítója: {case_number}.', 'elallas-for-woo' );
+		return 'Elállási nyilatkozatát rendszerünk rögzítette. A nyilatkozat beérkezésének időpontja: {submitted_at}. Az ügy azonosítója: {case_number}.';
 	}
 
 	/**

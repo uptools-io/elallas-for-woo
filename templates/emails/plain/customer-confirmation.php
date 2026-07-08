@@ -47,7 +47,7 @@ echo esc_html__( 'Az elállás feldolgozásáról és a visszatérítésről a k
 
 echo esc_html__( 'Kérjük, őrizze meg ezt az e-mailt, amely az elállás visszaigazolásaként szolgál.', 'elallas-for-woo' ) . "\n\n";
 
-$elallas_extra = (string) \LightweightPlugins\Elallas\Options::get( 'email_customer_extra', '' );
+$elallas_extra = \LightweightPlugins\Elallas\Integrations\Multilingual::translate_option_string( 'email_customer_extra' );
 if ( '' !== trim( $elallas_extra ) ) {
 	echo esc_html( wp_strip_all_tags( $elallas_extra ) ) . "\n\n";
 }

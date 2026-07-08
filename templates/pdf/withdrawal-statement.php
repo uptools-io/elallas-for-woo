@@ -13,6 +13,7 @@ defined( 'ABSPATH' ) || exit;
 
 use LightweightPlugins\Elallas\Options;
 use LightweightPlugins\Elallas\Data\DefaultTexts;
+use LightweightPlugins\Elallas\Integrations\Multilingual;
 
 $elallas_case          = ( isset( $case ) && $case ) ? $case : null;
 $elallas_items         = ( isset( $items ) && is_array( $items ) ) ? $items : [];
@@ -26,8 +27,9 @@ $elallas_order_number  = $elallas_order ? (string) $elallas_order->get_order_num
 $elallas_order_date    = ( $elallas_order && $elallas_order->get_date_created() ) ? $elallas_order->get_date_created()->date( 'Y-m-d H:i' ) : '';
 $elallas_customer_name = $elallas_order ? trim( $elallas_order->get_formatted_billing_full_name() ) : '';
 $elallas_customer_mail = $elallas_order ? (string) $elallas_order->get_billing_email() : '';
-$elallas_declaration   = (string) Options::get( 'legal_declaration' );
+$elallas_declaration   = Multilingual::translate_option_string( 'legal_declaration' );
 $elallas_declaration   = '' !== $elallas_declaration ? $elallas_declaration : DefaultTexts::declaration();
+$elallas_lang          = str_replace( '_', '-', get_bloginfo( 'language' ) );
 $elallas_generated     = current_time( 'Y-m-d H:i:s' );
 $elallas_hash          = '________________________________________________________________';
 $elallas_bank          = ( $elallas_case && ! empty( $elallas_case->bank_account_encrypted ) )
@@ -35,7 +37,7 @@ $elallas_bank          = ( $elallas_case && ! empty( $elallas_case->bank_account
 	: '';
 ?>
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="<?php echo esc_attr( '' !== $elallas_lang ? $elallas_lang : 'hu' ); ?>">
 <head>
 	<meta charset="utf-8">
 	<title><?php echo esc_html__( 'Elállási nyilatkozat', 'elallas-for-woo' ); ?></title>
