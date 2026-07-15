@@ -31,7 +31,10 @@ final class OrderStatusManager {
 
 		add_action( 'init', [ $this, 'register_statuses' ] );
 		add_filter( 'wc_order_statuses', [ $this, 'add_statuses' ] );
-		add_action( 'elallas_case_created', [ $this, 'on_created' ], 20, 2 );
+		// Move the order only once the case is CONFIRMED — a case that is created and
+		// then immediately refused (e.g. the exclusion backstop) must not park the
+		// order in "withdrawal requested".
+		add_action( 'elallas_case_confirmed', [ $this, 'on_confirmed' ], 20, 1 );
 		add_action( 'elallas_case_status_changed', [ $this, 'on_status_changed' ], 20, 3 );
 	}
 
@@ -82,14 +85,25 @@ final class OrderStatusManager {
 	}
 
 	/**
-	 * When a case is created, move the order to "withdrawal requested".
+	 * When a case is confirmed, reflect its status on the order (requested/review).
+	 * Cases that never reach confirmation (the exclusion backstop rejects them)
+	 * leave the order status untouched.
 	 *
-	 * @param int $case_id  Case ID.
-	 * @param int $order_id Order ID.
+	 * @param int $case_id Case ID.
 	 * @return void
 	 */
-	public function on_created( int $case_id, int $order_id ): void {
-		$this->set_order_status( $order_id, 'wc-withdrawal-requested' );
+	public function on_confirmed( int $case_id ): void {
+		$case = CaseRepository::find( $case_id );
+
+		if ( null === $case ) {
+			return;
+		}
+
+		$target = $this->map( $case->status );
+
+		if ( '' !== $target ) {
+			$this->set_order_status( $case->order_id, $target );
+		}
 	}
 
 	/**
@@ -120,7 +134,7 @@ final class OrderStatusManager {
 			CaseStatus::RECEIVED, CaseStatus::AUTO_CONFIRMED                                                  => 'wc-withdrawal-requested',
 			CaseStatus::MANUAL_REVIEW                                                                         => 'wc-withdrawal-review',
 			CaseStatus::ACCEPTED, CaseStatus::AWAITING_RETURN, CaseStatus::GOODS_RECEIVED, CaseStatus::REFUND_PENDING => 'wc-withdrawal-accepted',
-			CaseStatus::CLOSED                                                                                => 'wc-withdrawal-closed',
+			CaseStatus::CLOSED, CaseStatus::REJECTED, CaseStatus::CANCELLED                                    => 'wc-withdrawal-closed',
 			default                                                                                           => '',
 		};
 	}

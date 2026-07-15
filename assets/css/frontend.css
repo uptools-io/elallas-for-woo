@@ -82,7 +82,12 @@
 .elallas-consent label {
 	display: flex;
 	gap: .5em;
-	align-items: flex-start;
+	align-items: center;
+}
+
+.elallas-consent .required {
+	color: #d63638;
+	font-weight: 700;
 }
 
 .elallas-notice {
@@ -109,4 +114,73 @@
 
 .elallas-confirm {
 	font-weight: 700;
+}
+
+.elallas-hint {
+	color: #646970;
+	font-size: .9em;
+}
+
+.elallas-hint-excluded {
+	padding: .5em .75em;
+	border-left: 4px solid #dba617;
+	background: #fcf9e8;
+	color: #674e00;
+}
+
+.elallas-item-excluded th,
+.elallas-item-excluded td {
+	/* Tint the row instead of dimming with opacity, which would drop the badge /
+	   reason text below the WCAG AA contrast minimum. */
+	background: #faf7ee;
+}
+
+.screen-reader-text {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.elallas-badge {
+	display: inline-block;
+	margin-left: .5em;
+	padding: .05em .5em;
+	border-radius: 3px;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 1.6;
+	white-space: nowrap;
+}
+
+.elallas-badge-excluded {
+	background: #f6e7c1;
+	color: #674e00;
+}
+
+.elallas-excluded-reason {
+	display: block;
+	margin-top: .2em;
+	color: #674e00;
+	font-size: .9em;
+}
+
+.elallas-not-available {
+	color: #999;
+}
+
+.elallas-excluded-list {
+	margin: 0 0 1.25em;
+	padding: 1em 1em 1em 2.25em;
+	background: #fcf9e8;
+	border-radius: 6px;
+}
+
+.elallas-excluded-list li {
+	margin: 0 0 .35em;
 }

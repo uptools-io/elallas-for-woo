@@ -1,10 +1,11 @@
 === Elállás for WooCommerce ===
 Contributors: uptools
-Tags: woocommerce, withdrawal, refund, gdpr, compliance
+Tags: woocommerce, withdrawal, refund, gdpr, compliance, multilingual
+Languages: Hungarian (hu_HU, source), English (en_US), Romanian (ro_RO), Czech (cs_CZ), Slovak (sk_SK)
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 1.0.12
+Stable tag: 1.0.13
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 8.0
@@ -40,7 +41,7 @@ The function implements the requirements introduced by **Directive (EU) 2023/267
 * **Neutral identification** — a wrong order number or email returns the same neutral message, so order numbers cannot be brute-forced to reveal customer data.
 * **Privacy controls** — IP and user agent stored as full / hash / off, email hashed for lookup and optionally encrypted, bank account encrypted at rest, configurable retention with scheduled anonymization, and WordPress export/erasure friendly storage.
 * **B2B detection** — likely-B2B orders (company name / VAT number) are flagged so the consumer-only right is applied correctly.
-* **Exceptions by product, category and tag** — exclude individual products (on the product), or whole product categories / tags (on the category/tag edit screen) from withdrawal, with a reason and a legal-risk warning; matching items are flagged in the case (per-product setting wins, and it flags for review rather than auto-blocking).
+* **Exceptions by product, category and tag** — exclude individual products (on the product), or whole product categories / tags (on the category/tag edit screen) from withdrawal, with a reason and a legal-risk warning; an excluded item cannot be withdrawn (the reason is shown to the customer and the per-product setting wins), while the order's other, eligible items still can — and if such an item slips through it is auto-rejected with the reason.
 * **Onboarding wizard** — shop data, automatic creation of the `/elallas/` page, display toggles, deadline and a test step.
 * **Gutenberg block & Elementor widget** — drop the withdrawal form into any page or template; the `[elallas_form]` shortcode is the universal fallback.
 * **Multilingual ready** — WPML, Polylang and TranslatePress integration; legal texts are manageable per language so the declaration can be accepted in the customer's chosen language.
@@ -107,6 +108,17 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 6. Onboarding wizard
 
 == Changelog ==
+
+= 1.0.13 =
+* New: full localization — English, Romanian, Czech and Slovak translations shipped in /languages (alongside the Hungarian source), covering all admin and front-end strings; block-editor JS translations included.
+* Fix: the admin notification e-mail now reaches every configured recipient. The "Admin recipient" field only worked with commas; a semicolon- or space-separated list silently resolved to no recipient. Commas, semicolons, spaces and newlines are now all accepted (addresses validated, duplicates removed), on save and when sending.
+* Change: products excluded from withdrawal are now blocked instead of only flagged. Excluded items are not selectable on the form (with the reason shown), the order's other items can still be withdrawn, an all-excluded order is blocked up front, and a submission that still slips through with only excluded items is auto-rejected with the reason in the status e-mail (no auto-confirmation). Deadline handling still only flags.
+* New: opt-in policy / terms link (opening in a new tab) at the foot of every withdrawal e-mail; configurable URL + label, falling back to the WooCommerce Terms & Conditions page when the URL is left empty.
+* New: editable withdrawal text + smart link in WooCommerce order e-mails ("Rendelési e-mail elállási szövege"); a {link} placeholder becomes a link to the configured withdrawal page (pre-filled with the order), otherwise the link is appended after the text.
+* New: the cases list "Customer" column links to the user's WordPress profile (registered customers) instead of showing the raw user id.
+* New: a status & e-mail guide (docs/statuszok-es-emailek.md) explaining what each case status means and which e-mail fires when.
+* Fix: remaining English UI strings (autoloader/WooCommerce-required notices, honeypot label, Site Manager ability labels/messages) translated to Hungarian.
+* i18n: consent checkboxes marked required with an asterisk; regenerated the translation template.
 
 = 1.0.12 =
 * New: WPML/Polylang compatibility — admin-entered dynamic strings (button label, confirm label, withdrawal declaration, extra e-mail text) are now translated on every output path, the withdrawal page ID resolves to the translated page, and e-mails/PDF render in the case's language.

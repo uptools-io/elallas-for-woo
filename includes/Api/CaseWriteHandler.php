@@ -16,6 +16,7 @@ use LightweightPlugins\Elallas\Domain\CaseService;
 use LightweightPlugins\Elallas\Domain\EligibilityChecker;
 use LightweightPlugins\Elallas\Domain\EligibilityResult;
 use LightweightPlugins\Elallas\Domain\OrderSnapshotBuilder;
+use LightweightPlugins\Elallas\Domain\ProductExclusion;
 use LightweightPlugins\Elallas\Frontend\SubmissionContext;
 use LightweightPlugins\Elallas\Security\RateLimiter;
 use LightweightPlugins\Elallas\Woo\OrderAdapter;
@@ -37,7 +38,7 @@ final class CaseWriteHandler {
 	public function create( WP_REST_Request $request ): WP_REST_Response {
 		$order_number = sanitize_text_field( (string) $request->get_param( 'order_number' ) );
 
-		if ( ! Options::get( 'enabled' ) || RateLimiter::too_many( 'rest_cases_create' ) || RateLimiter::too_many_global( 'order_' . $order_number ) ) {
+		if ( ! Options::get( 'enabled' ) || RateLimiter::too_many( 'rest_cases_create' ) ) {
 			return $this->neutral();
 		}
 
@@ -46,6 +47,11 @@ final class CaseWriteHandler {
 		$result = $order ? ( new EligibilityChecker() )->check( $order, $email ) : null;
 
 		if ( null === $order || ! $result instanceof EligibilityResult || ! $result->eligible ) {
+			return $this->neutral();
+		}
+
+		// Throttle per resolved order ID (not the raw, spoofable number string).
+		if ( RateLimiter::too_many_global( 'order_' . $order->get_id() ) ) {
 			return $this->neutral();
 		}
 
@@ -59,7 +65,76 @@ final class CaseWriteHandler {
 			return $this->neutral();
 		}
 
-		return $this->persist( $request, $order, $result, $rows );
+		$enforce  = ProductExclusion::is_enforced( $order );
+		$parts    = OrderSnapshotBuilder::partition( $rows );
+		$eligible = $enforce ? $parts['eligible'] : $rows;
+		$excepted = $enforce ? $parts['excepted'] : [];
+
+		// Excepted-only submission: create + refuse with the reason, never
+		// auto-confirm. Mirrors the front-end exclusion backstop.
+		if ( empty( $eligible ) ) {
+			if ( ! empty( $excepted ) ) {
+				return $this->reject_excluded( $request, $order, $result, $excepted );
+			}
+
+			return $this->neutral();
+		}
+
+		return $this->persist( $request, $order, $result, $eligible );
+	}
+
+	/**
+	 * Record and immediately refuse a submission whose items are all excepted.
+	 *
+	 * @param WP_REST_Request                 $request  Request object.
+	 * @param \WC_Order                        $order    Order.
+	 * @param EligibilityResult                $result   Eligibility result.
+	 * @param array<int, array<string, mixed>> $excepted Excepted snapshot rows.
+	 * @return WP_REST_Response
+	 */
+	private function reject_excluded( WP_REST_Request $request, \WC_Order $order, EligibilityResult $result, array $excepted ): WP_REST_Response {
+		$summary = ProductExclusion::summarize( $excepted );
+
+		// Bound the backstop: record + notify at most once per order (a rejected
+		// case is terminal, so it would otherwise re-fire on every repeat submission).
+		if ( ! empty( CaseRepository::find_by_order( $order->get_id() ) ) ) {
+			return new WP_REST_Response(
+				[
+					'success'  => false,
+					'excluded' => true,
+					'message'  => $summary,
+				],
+				422
+			);
+		}
+
+		$email   = sanitize_email( (string) $request->get_param( 'email' ) );
+		$note    = sanitize_textarea_field( (string) $request->get_param( 'customer_note' ) );
+		$bank    = sanitize_text_field( (string) $request->get_param( 'bank_account' ) );
+		$context = SubmissionContext::build( $email, 'full', $result->deadline_status, $note, $bank );
+		$service = new CaseService();
+		$case_id = $service->create( $order, $excepted, $context );
+
+		if ( $case_id > 0 ) {
+			$message = trim(
+				__( 'Az elállási kérelmét nem tudjuk teljesíteni, mert az érintett termék(ek)re a jogszabály szerint nem gyakorolható elállási jog:', 'elallas-for-woo' )
+				. "\n\n" . $summary
+			);
+
+			/** This filter is documented in includes/Frontend/StepProcessor.php */
+			$message = (string) apply_filters( 'elallas_exclusion_reason_message', $message, $excepted, $order );
+
+			$service->reject( $case_id, $message );
+		}
+
+		return new WP_REST_Response(
+			[
+				'success'  => false,
+				'excluded' => true,
+				'message'  => $summary,
+			],
+			422
+		);
 	}
 
 	/**
@@ -72,7 +147,7 @@ final class CaseWriteHandler {
 	 * @return WP_REST_Response
 	 */
 	private function persist( WP_REST_Request $request, \WC_Order $order, EligibilityResult $result, array $rows ): WP_REST_Response {
-		$type    = count( $rows ) === count( OrderAdapter::items( $order ) ) ? 'full' : 'partial';
+		$type    = OrderSnapshotBuilder::is_full( $rows, $order ) ? 'full' : 'partial';
 		$email   = sanitize_email( (string) $request->get_param( 'email' ) );
 		$note    = sanitize_textarea_field( (string) $request->get_param( 'customer_note' ) );
 		$bank    = sanitize_text_field( (string) $request->get_param( 'bank_account' ) );

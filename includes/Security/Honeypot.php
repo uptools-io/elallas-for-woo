@@ -46,7 +46,7 @@ final class Honeypot {
 
 		return sprintf(
 			'<div style="position:absolute;left:-9999px;" aria-hidden="true"><label>%1$s<input type="text" name="%2$s" value="" tabindex="-1" autocomplete="off" /></label><input type="hidden" name="%3$s" value="%4$s" /></div>',
-			esc_html__( 'Leave this field empty', 'elallas-for-woo' ),
+			esc_html__( 'Hagyd üresen ezt a mezőt', 'elallas-for-woo' ),
 			esc_attr( self::field_name() ),
 			esc_attr( self::TS_FIELD ),
 			esc_attr( $ts . '.' . self::ts_sig( $ts ) )

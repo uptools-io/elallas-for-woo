@@ -48,6 +48,8 @@ final class Multilingual {
 		'button_label',
 		'confirm_label',
 		'email_customer_extra',
+		'email_order_text',
+		'email_policy_label',
 	];
 
 	/**
@@ -259,6 +261,52 @@ final class Multilingual {
 		}
 
 		return $object_id;
+	}
+
+	/**
+	 * Resolve a post/term ID to its DEFAULT-language original.
+	 *
+	 * Used before reading configuration meta (e.g. withdrawal exclusions) so a
+	 * setting made on the source product/term applies to every translation. WPML
+	 * keeps this meta in sync via wpml-config.xml `copy`, but Polylang has no such
+	 * mechanism — canonicalizing the ID on read makes the lookup language-agnostic
+	 * under both without relying on custom-field synchronization.
+	 *
+	 * @param int    $object_id Stored object ID.
+	 * @param string $type      Post type (e.g. 'product') or taxonomy ('product_cat'|'product_tag').
+	 * @return int Default-language ID, or the original when it cannot be resolved.
+	 */
+	public static function default_object_id( int $object_id, string $type ): int {
+		if ( $object_id <= 0 ) {
+			return $object_id;
+		}
+
+		$default = self::default_language();
+
+		if ( '' === $default ) {
+			return $object_id;
+		}
+
+		$is_term = in_array( $type, [ 'product_cat', 'product_tag' ], true );
+
+		if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
+			// WPML element type: the post type for posts, the taxonomy for terms.
+			$translated = apply_filters( 'wpml_object_id', $object_id, $type, true, $default );
+
+			if ( is_numeric( $translated ) && (int) $translated > 0 ) {
+				return (int) $translated;
+			}
+		}
+
+		if ( $is_term && function_exists( 'pll_get_term' ) ) {
+			$translated = pll_get_term( $object_id, $default );
+		} elseif ( ! $is_term && function_exists( 'pll_get_post' ) ) {
+			$translated = pll_get_post( $object_id, $default );
+		} else {
+			$translated = 0;
+		}
+
+		return ( is_numeric( $translated ) && (int) $translated > 0 ) ? (int) $translated : $object_id;
 	}
 
 	/**

@@ -47,33 +47,59 @@ $elallas_error = isset( $error ) ? (string) $error : '';
 
 	<p class="elallas-hint"><?php esc_html_e( 'Teljes elálláshoz hagyja minden terméknél a teljes mennyiséget. Részleges elálláshoz csökkentse a mennyiséget, a kihagyott termékeknél állítsa 0-ra.', 'elallas-for-woo' ); ?></p>
 
+	<?php
+	$elallas_has_excluded = false;
+	foreach ( $items as $elallas_check ) {
+		if ( ! empty( $elallas_check['excluded'] ) ) {
+			$elallas_has_excluded = true;
+			break;
+		}
+	}
+	?>
+	<?php if ( $elallas_has_excluded ) : ?>
+		<p class="elallas-hint elallas-hint-excluded"><?php esc_html_e( 'A megjelölt termék(ek)re nem gyakorolható elállás, ezért nem választhatók ki. A rendelés többi termékére az elállás továbbra is kezdeményezhető.', 'elallas-for-woo' ); ?></p>
+	<?php endif; ?>
+
 	<table class="elallas-items">
 		<thead>
 			<tr>
-				<th><?php esc_html_e( 'Termék', 'elallas-for-woo' ); ?></th>
-				<th><?php esc_html_e( 'Rendelt', 'elallas-for-woo' ); ?></th>
-				<th><?php esc_html_e( 'Elállás mennyiség', 'elallas-for-woo' ); ?></th>
+				<th scope="col"><?php esc_html_e( 'Termék', 'elallas-for-woo' ); ?></th>
+				<th scope="col"><?php esc_html_e( 'Rendelt', 'elallas-for-woo' ); ?></th>
+				<th scope="col"><?php esc_html_e( 'Elállás mennyiség', 'elallas-for-woo' ); ?></th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php foreach ( $items as $elallas_item ) : ?>
-				<tr>
-					<td>
+				<?php $elallas_excluded = ! empty( $elallas_item['excluded'] ); ?>
+				<tr class="<?php echo $elallas_excluded ? 'elallas-item-excluded' : ''; ?>">
+					<th scope="row">
 						<?php echo esc_html( $elallas_item['product_name_snapshot'] ); ?>
 						<?php if ( '' !== $elallas_item['sku_snapshot'] ) : ?>
 							<span class="elallas-sku">(<?php echo esc_html( $elallas_item['sku_snapshot'] ); ?>)</span>
 						<?php endif; ?>
-					</td>
+						<?php if ( $elallas_excluded ) : ?>
+							<span class="elallas-badge elallas-badge-excluded"><?php esc_html_e( 'Elállásból kizárva', 'elallas-for-woo' ); ?></span>
+							<?php if ( '' !== trim( (string) ( $elallas_item['exclusion_reason'] ?? '' ) ) ) : ?>
+								<span class="elallas-excluded-reason"><?php echo esc_html( (string) $elallas_item['exclusion_reason'] ); ?></span>
+							<?php endif; ?>
+						<?php endif; ?>
+					</th>
 					<td><?php echo esc_html( (string) $elallas_item['qty_ordered'] ); ?></td>
 					<td>
-						<input
-							type="number"
-							name="items[<?php echo esc_attr( (string) $elallas_item['order_item_id'] ); ?>]"
-							value="<?php echo esc_attr( (string) $elallas_item['qty_ordered'] ); ?>"
-							min="0"
-							max="<?php echo esc_attr( (string) $elallas_item['qty_ordered'] ); ?>"
-							step="1"
-						/>
+						<?php if ( $elallas_excluded ) : ?>
+							<span class="elallas-not-available"><span class="screen-reader-text"><?php esc_html_e( 'Nem választható', 'elallas-for-woo' ); ?></span><span aria-hidden="true">—</span></span>
+						<?php else : ?>
+							<input
+								type="number"
+								id="elallas-qty-<?php echo esc_attr( (string) $elallas_item['order_item_id'] ); ?>"
+								aria-label="<?php echo esc_attr( sprintf( /* translators: %s: product name. */ __( 'Elállás mennyiség – %s', 'elallas-for-woo' ), $elallas_item['product_name_snapshot'] ) ); ?>"
+								name="items[<?php echo esc_attr( (string) $elallas_item['order_item_id'] ); ?>]"
+								value="<?php echo esc_attr( (string) $elallas_item['qty_ordered'] ); ?>"
+								min="0"
+								max="<?php echo esc_attr( (string) $elallas_item['qty_ordered'] ); ?>"
+								step="1"
+							/>
+						<?php endif; ?>
 					</td>
 				</tr>
 			<?php endforeach; ?>

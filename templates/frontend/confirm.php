@@ -44,14 +44,14 @@ $elallas_confirm_label = ( isset( $confirm_label ) && '' !== (string) $confirm_l
 <table class="elallas-items">
 	<thead>
 		<tr>
-			<th><?php esc_html_e( 'Termék', 'elallas-for-woo' ); ?></th>
-			<th><?php esc_html_e( 'Mennyiség', 'elallas-for-woo' ); ?></th>
+			<th scope="col"><?php esc_html_e( 'Termék', 'elallas-for-woo' ); ?></th>
+			<th scope="col"><?php esc_html_e( 'Mennyiség', 'elallas-for-woo' ); ?></th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php foreach ( $rows as $elallas_row ) : ?>
 			<tr>
-				<td><?php echo esc_html( $elallas_row['product_name_snapshot'] ); ?></td>
+				<th scope="row"><?php echo esc_html( $elallas_row['product_name_snapshot'] ); ?></th>
 				<td><?php echo esc_html( (string) $elallas_row['qty_withdrawn'] ); ?></td>
 			</tr>
 		<?php endforeach; ?>
@@ -88,14 +88,15 @@ $elallas_confirm_label = ( isset( $confirm_label ) && '' !== (string) $confirm_l
 	</p>
 
 	<p class="elallas-consent">
-		<label><input type="checkbox" name="consent_data" value="1" required /> <?php esc_html_e( 'Kijelentem, hogy a megadott adatok valósak.', 'elallas-for-woo' ); ?></label>
+		<label><input type="checkbox" name="consent_data" value="1" required /> <?php esc_html_e( 'Kijelentem, hogy a megadott adatok valósak.', 'elallas-for-woo' ); ?> <span class="required" aria-hidden="true">*</span></label>
 	</p>
 	<p class="elallas-consent">
-		<label><input type="checkbox" name="consent_intent" value="1" required /> <?php esc_html_e( 'Tudomásul veszem, hogy a nyilatkozat beküldésével elállási igényt jelentek be.', 'elallas-for-woo' ); ?></label>
+		<label><input type="checkbox" name="consent_intent" value="1" required /> <?php esc_html_e( 'Tudomásul veszem, hogy a nyilatkozat beküldésével elállási igényt jelentek be.', 'elallas-for-woo' ); ?> <span class="required" aria-hidden="true">*</span></label>
 	</p>
 	<p class="elallas-consent">
-		<label><input type="checkbox" name="consent_processing" value="1" required /> <?php esc_html_e( 'Elfogadom, hogy a webshop a nyilatkozat feldolgozásához kezelje az itt megadott adatokat.', 'elallas-for-woo' ); ?></label>
+		<label><input type="checkbox" name="consent_processing" value="1" required /> <?php esc_html_e( 'Elfogadom, hogy a webshop a nyilatkozat feldolgozásához kezelje az itt megadott adatokat.', 'elallas-for-woo' ); ?> <span class="required" aria-hidden="true">*</span></label>
 	</p>
+	<p class="elallas-hint"><?php esc_html_e( '* A megerősítéshez mindhárom jelölőnégyzet bejelölése kötelező.', 'elallas-for-woo' ); ?></p>
 
 	<p class="elallas-actions">
 		<button type="submit" class="button elallas-button elallas-confirm"><?php echo esc_html( $elallas_confirm_label ); ?></button>

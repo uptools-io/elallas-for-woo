@@ -58,7 +58,7 @@ final class CaseService {
 		$case = CaseRepository::find( (int) ( $input['case_id'] ?? 0 ) );
 
 		if ( ! $case ) {
-			return new \WP_Error( 'not_found', __( 'Case not found.', 'elallas-for-woo' ), [ 'status' => 404 ] );
+			return new \WP_Error( 'not_found', __( 'Az ügy nem található.', 'elallas-for-woo' ), [ 'status' => 404 ] );
 		}
 
 		return [
@@ -78,20 +78,21 @@ final class CaseService {
 	public static function update_status( array $input ): array|\WP_Error {
 		$case_id = (int) ( $input['case_id'] ?? 0 );
 		$status  = sanitize_key( (string) ( $input['status'] ?? '' ) );
+		$message = sanitize_textarea_field( (string) ( $input['message'] ?? '' ) );
 
 		if ( ! CaseStatus::is_valid( $status ) ) {
-			return new \WP_Error( 'invalid_status', __( 'Invalid status value.', 'elallas-for-woo' ), [ 'status' => 400 ] );
+			return new \WP_Error( 'invalid_status', __( 'Érvénytelen státuszérték.', 'elallas-for-woo' ), [ 'status' => 400 ] );
 		}
 
-		$changed = ( new DomainCaseService() )->change_status( $case_id, $status, get_current_user_id() );
+		$changed = ( new DomainCaseService() )->change_status( $case_id, $status, get_current_user_id(), $message );
 
 		if ( ! $changed ) {
-			return new \WP_Error( 'update_failed', __( 'Could not update the case status.', 'elallas-for-woo' ), [ 'status' => 400 ] );
+			return new \WP_Error( 'update_failed', __( 'Az ügy státusza nem frissíthető.', 'elallas-for-woo' ), [ 'status' => 400 ] );
 		}
 
 		return [
 			'success' => true,
-			'message' => __( 'Case status updated.', 'elallas-for-woo' ),
+			'message' => __( 'Az ügy státusza frissítve.', 'elallas-for-woo' ),
 		];
 	}
 

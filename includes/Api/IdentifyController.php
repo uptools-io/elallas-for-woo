@@ -13,6 +13,7 @@ use LightweightPlugins\Elallas\Options;
 use LightweightPlugins\Elallas\Data\DefaultTexts;
 use LightweightPlugins\Elallas\Domain\EligibilityChecker;
 use LightweightPlugins\Elallas\Domain\EligibilityResult;
+use LightweightPlugins\Elallas\Domain\ProductExclusion;
 use LightweightPlugins\Elallas\Security\RateLimiter;
 use LightweightPlugins\Elallas\Support\Logger;
 use LightweightPlugins\Elallas\Woo\OrderAdapter;
@@ -45,7 +46,7 @@ final class IdentifyController {
 	public function handle( WP_REST_Request $request ): WP_REST_Response {
 		$order_number = sanitize_text_field( (string) $request->get_param( 'order_number' ) );
 
-		if ( ! Options::get( 'enabled' ) || RateLimiter::too_many( 'rest_identify' ) || RateLimiter::too_many_global( 'order_' . $order_number ) ) {
+		if ( ! Options::get( 'enabled' ) || RateLimiter::too_many( 'rest_identify' ) ) {
 			return $this->neutral();
 		}
 
@@ -53,6 +54,11 @@ final class IdentifyController {
 
 		$order  = OrderAdapter::get_order_by_number( $order_number );
 		$result = $order ? ( new EligibilityChecker() )->check( $order, $email ) : null;
+
+		// Throttle per resolved order ID (not the raw, spoofable number string).
+		if ( $order instanceof \WC_Order && RateLimiter::too_many_global( 'order_' . $order->get_id() ) ) {
+			return $this->neutral();
+		}
 
 		if ( null === $order || ! $result instanceof EligibilityResult || ! $result->eligible ) {
 			// Non-PII diagnostic: helps support see why a customer could not identify
@@ -88,10 +94,14 @@ final class IdentifyController {
 		$items = [];
 
 		foreach ( OrderAdapter::items( $order ) as $item ) {
+			[ $excluded, $reason ] = ProductExclusion::evaluate( (int) $item['product_id'] );
+
 			$items[] = [
-				'order_item_id' => (int) $item['order_item_id'],
-				'name'          => (string) $item['product_name_snapshot'],
-				'qty'           => (int) $item['qty_ordered'],
+				'order_item_id'    => (int) $item['order_item_id'],
+				'name'             => (string) $item['product_name_snapshot'],
+				'qty'              => (int) $item['qty_ordered'],
+				'excluded'         => $excluded,
+				'exclusion_reason' => $reason,
 			];
 		}
 

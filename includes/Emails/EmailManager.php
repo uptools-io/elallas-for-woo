@@ -153,6 +153,63 @@ final class EmailManager {
 	}
 
 	/**
+	 * Build the optional "policy / terms" link block shown at the foot of every
+	 * withdrawal e-mail. Uses the configured URL, or falls back to the store's
+	 * WooCommerce Terms &amp; Conditions page. Returns '' when disabled or when no
+	 * URL can be resolved.
+	 *
+	 * @param bool $plain Whether the plain-text variant is requested.
+	 * @return string
+	 */
+	public static function policy_link( bool $plain = false ): string {
+		if ( ! Options::get( 'email_policy_enabled' ) ) {
+			return '';
+		}
+
+		$url = trim( (string) Options::get( 'email_policy_url', '' ) );
+
+		if ( '' === $url && function_exists( 'wc_terms_and_conditions_page_id' ) ) {
+			$tc_id = (int) wc_terms_and_conditions_page_id();
+
+			if ( $tc_id > 0 ) {
+				$url = (string) get_permalink( $tc_id );
+			}
+		}
+
+		/**
+		 * Filter the resolved policy / terms link URL used in withdrawal e-mails.
+		 *
+		 * Handy for a per-language target (e.g. a translated ÁSZF page).
+		 *
+		 * @since 1.0.13
+		 * @param string $url Resolved URL (custom option value, else the WooCommerce T&C page).
+		 */
+		$url = (string) apply_filters( 'elallas_policy_url', $url );
+
+		if ( '' === $url ) {
+			return '';
+		}
+
+		$label = Multilingual::translate_option_string( 'email_policy_label' );
+
+		if ( '' === trim( $label ) ) {
+			$label = __( 'Általános Szerződési Feltételek (ÁSZF)', 'elallas-for-woo' );
+		}
+
+		if ( $plain ) {
+			// Plain-text channel: strip any markup from the label and raw-escape the
+			// URL (no HTML entity-encoding, which would garble query-arg URLs).
+			return wp_strip_all_tags( $label ) . ': ' . esc_url_raw( $url );
+		}
+
+		return sprintf(
+			'<p style="margin-top:16px;"><a href="%1$s" target="_blank" rel="noopener noreferrer">%2$s</a></p>',
+			esc_url( $url ),
+			esc_html( $label )
+		);
+	}
+
+	/**
 	 * Language the case was submitted in, or '' when unknown.
 	 *
 	 * @param int $case_id Case ID.

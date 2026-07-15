@@ -53,8 +53,8 @@ final class CaseAbilities {
 
 		return [
 			'elallas/list-cases'         => [
-				'label'               => __( 'List Withdrawal Cases', 'elallas-for-woo' ),
-				'description'         => __( 'List elállás cases, optionally filtered by status and paged.', 'elallas-for-woo' ),
+				'label'               => __( 'Elállási ügyek listázása', 'elallas-for-woo' ),
+				'description'         => __( 'Elállási ügyek listázása, opcionálisan státusz szerint szűrve és lapozva.', 'elallas-for-woo' ),
 				'category'            => 'elallas',
 				'execute_callback'    => [ CaseService::class, 'list_cases' ],
 				'permission_callback' => self::permission(),
@@ -78,8 +78,8 @@ final class CaseAbilities {
 				'meta'                => self::readonly_meta(),
 			],
 			'elallas/get-case'           => [
-				'label'               => __( 'Get Withdrawal Case', 'elallas-for-woo' ),
-				'description'         => __( 'Get a case with its items and audit events.', 'elallas-for-woo' ),
+				'label'               => __( 'Elállási ügy lekérése', 'elallas-for-woo' ),
+				'description'         => __( 'Egy ügy lekérése a tételeivel és audit eseményeivel együtt.', 'elallas-for-woo' ),
 				'category'            => 'elallas',
 				'execute_callback'    => [ CaseService::class, 'get_case' ],
 				'permission_callback' => self::permission(),
@@ -94,8 +94,8 @@ final class CaseAbilities {
 				'meta'                => self::readonly_meta(),
 			],
 			'elallas/update-case-status' => [
-				'label'               => __( 'Update Case Status', 'elallas-for-woo' ),
-				'description'         => __( 'Change the status of a withdrawal case.', 'elallas-for-woo' ),
+				'label'               => __( 'Ügy státuszának módosítása', 'elallas-for-woo' ),
+				'description'         => __( 'Egy elállási ügy státuszának megváltoztatása.', 'elallas-for-woo' ),
 				'category'            => 'elallas',
 				'execute_callback'    => [ CaseService::class, 'update_status' ],
 				'permission_callback' => self::permission(),
@@ -105,14 +105,15 @@ final class CaseAbilities {
 					'properties' => [
 						'case_id' => [ 'type' => 'integer' ],
 						'status'  => [ 'type' => 'string' ],
+						'message' => [ 'type' => 'string' ],
 					],
 				],
 				'output_schema'       => self::object_schema( [ 'message' => [ 'type' => 'string' ] ] ),
 				'meta'                => self::write_meta(),
 			],
 			'elallas/get-audit-log'      => [
-				'label'               => __( 'Get Case Audit Log', 'elallas-for-woo' ),
-				'description'         => __( 'Get the audit event log for a withdrawal case.', 'elallas-for-woo' ),
+				'label'               => __( 'Ügy audit naplójának lekérése', 'elallas-for-woo' ),
+				'description'         => __( 'Egy elállási ügy audit eseménynaplójának lekérése.', 'elallas-for-woo' ),
 				'category'            => 'elallas',
 				'execute_callback'    => [ CaseService::class, 'get_audit_log' ],
 				'permission_callback' => self::permission(),

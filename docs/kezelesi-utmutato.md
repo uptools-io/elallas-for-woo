@@ -78,8 +78,14 @@ csomagolás).
 (Termékek → Kategóriák) vagy **termékcímkét** (Termékek → Címkék), és jelöld be az
 „Elállásból kizárt" lehetőséget az indokkal. Az adott kategóriába/címkébe tartozó termékek
 automatikusan „kizárt"-ként jelölődnek. A termékszintű beállítás elsőbbséget élvez (a saját
-indokával). A jelölés az ügy-pillanatképben és az admin ügynézetben jelenik meg — a kizárás
-**jelöl, nem blokkol** (a végső döntés a kereskedőé).
+indokával).
+
+A kizárt termékre a vásárló **nem tud elállást igényelni**: az űrlapon a tétel nem választható,
+mellette az indok olvasható, a rendelés többi (jogosult) tételére viszont az elállás továbbra is
+kezdeményezhető. Ha a rendelés **minden** tétele kizárt, az egész kérelem blokkolva van, az okok
+kilistázva. Védőhálóként, ha egy kizárt tétel mégis eljut a beküldésig (pl. manipulált kérés), az
+ügy azonnal **„Elutasítva"** lesz, és a státusz-e-mail kimegy az indokkal — automatikus
+visszaigazolás nélkül. Részletek: [Ügy-státuszok és e-mailek](statuszok-es-emailek.md).
 
 ### Dokumentumok
 - **PDF generálás** – elállási nyilatkozat PDF (dompdf), SHA-256 hash-sel, védett könyvtárban.
@@ -96,10 +102,21 @@ indokával). A jelölés az ügy-pillanatképben és az admin ügynézetben jele
 
 ### E-mailek
 - Vásárlói visszaigazoló (tartós adathordozó), admin értesítő, státusz-frissítés – külön
-  ki/bekapcsolható; az admin értesítő címe megadható.
+  ki/bekapcsolható; az admin értesítő címzettje megadható (**több cím is**, vesszővel,
+  pontosvesszővel vagy szóközzel elválasztva).
 - **Vásárlói e-mail extra szöveg** – a visszaigazoló e-mail aljához fűzött szabad szöveg (pl.
   visszaküldési cím, ügyfélszolgálat). A tárgyat/fejlécet a WooCommerce → Beállítások → E-mailek
   alatt, a teljes sablont a témád `elallas-for-woo/` mappájában szabhatod testre.
+- **Rendelési e-mail elállási szövege** – a WooCommerce rendelési e-mailekbe fűzött szöveg az
+  elállási link köré (csak ha az Általános fülön a „Rendelési e-mailben" megjelenítés be van
+  kapcsolva). A `{link}` helyőrző helyére a beállított elállási oldalra mutató hivatkozás kerül
+  (az adott rendelésre előtöltve); ha nincs `{link}` a szövegben, a hivatkozás a szöveg után
+  kerül. Üresen hagyva csak a hivatkozás jelenik meg.
+- **Tájékoztató / ÁSZF link** – bekapcsolva minden elállási e-mail (vásárlói visszaigazoló,
+  státusz-frissítés, admin értesítő) aljára egy **új lapon nyíló** hivatkozás kerül. A cél URL és
+  a felirat szabadon megadható; ha az URL-t üresen hagyod, a **WooCommerce → Beállítások →
+  Speciális** alatt beállított ÁSZF oldal érvényes. Hasznos pl. az elutasítás indokának/feltételek
+  elolvastatásához.
 
 ### Jogi szövegek
 - **Nyilatkozat szövege** és **visszaigazoló szöveg** – szabadon szerkeszthető; a beállítások
@@ -118,7 +135,8 @@ A `/elallas/` oldal **regisztráció nélkül** is működik (a vendég vásárl
      mindig kézzel is megadható – így egy vendégként, más e-mail címmel leadott rendelés is
      azonosítható. Másik regisztrált fiók rendelése viszont nem indítható.
    - A `?order=ID` paraméterrel megnyitott űrlap automatikusan előválasztja az adott rendelést.
-2. **Tételek kiválasztása** – teljes vagy részleges elállás, mennyiség szerint.
+2. **Tételek kiválasztása** – teljes vagy részleges elállás, mennyiség szerint. Az elállásból
+   **kizárt** termékek nem választhatók, mellettük az indok olvasható.
 3. **Megerősítés** – összefoglaló + 3 nyilatkozat-pipa + **„Elállás megerősítése"** gomb.
    Opcionálisan megadható a **visszatérítési bankszámla/IBAN** is (titkosítva tárolódik, lásd
    Adatvédelem), valamint egy szabad szöveges megjegyzés.
@@ -138,6 +156,8 @@ PDF — token-védett linken **le is töltheti a saját elállási nyilatkozatá
 
 - **Ügylista** – ügyszám, rendelés, vásárló, státusz, típus, beérkezés, határidő-státusz, tételek.
   Szűrhető státusz/határidő/típus szerint és kereshető. Tömeges műveletek: státuszváltás, CSV export.
+  A **Vásárló** oszlop regisztrált vásárlónál a felhasználó WordPress-profiljára hivatkozik
+  (vendég rendelésnél „Vendég").
 - **Ügy részletei** – összefoglaló (a megadott visszatérítési bankszámlával, ha van),
   vásárlói nyilatkozat, **rendelés-pillanatkép** (a beküldéskori adatok, akkor is, ha a termék/ár
   később változik; a kizárt tételek „kizárt"-ként jelölve), **audit log** (ki, mikor, mit), admin
@@ -147,6 +167,10 @@ PDF — token-védett linken **le is töltheti a saját elállási nyilatkozatá
 `Beérkezett` → `Automatikusan visszaigazolva` / `Manuális ellenőrzés alatt` → `Elfogadva` /
 `Elutasítva` → `Visszaküldésre vár` → `Áru beérkezett` → `Visszatérítés folyamatban` → `Lezárva`
 (+ `Törölve / hibás beküldés`).
+
+Az egyes státuszok **pontos jelentése, tartalma és a hozzájuk tartozó e-mail-triggerek**
+(beleértve, hogy az „Automatikusan visszaigazolva" **nem** kereskedői elfogadás):
+**[Ügy-státuszok és e-mailek](statuszok-es-emailek.md)**.
 
 ### Határidő-státusz (jelölés, sosem blokkol alapból)
 `Határidőn belül` / `Határidőn túl – manuális ellenőrzést igényel` / `Nem megállapítható`.

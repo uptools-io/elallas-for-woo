@@ -23,10 +23,10 @@ A funkció a **Directive (EU) 2023/2673** irányelv (amely a 2011/83/EU fogyaszt
 - **CSV export** és **PDF elállási nyilatkozat** (dompdf, SHA-256 hash, védett, token-védett letöltés).
 - **Semleges azonosítás** — hibás rendelésszám vagy e-mail ugyanazt a semleges üzenetet adja, megakadályozva a próbálgatást.
 - **Adatvédelmi vezérlők** — IP/UA teljes/hash/kikapcsolva, e-mail hash-elés és opcionális titkosítás, titkosított bankszámla, állítható megőrzés ütemezett anonimizálással.
-- **B2B-felismerés** és **elállási kivételek termék, kategória és címke szerint** (terméken, vagy a kategória/címke szerkesztő oldalán állítva; jelöl, sosem blokkol automatikusan).
+- **B2B-felismerés** és **elállási kivételek termék, kategória és címke szerint** (terméken, vagy a kategória/címke szerkesztő oldalán állítva). A kizárt termékre a vásárló **nem indíthat elállást** (az ok megjelenik; a rendelés többi tétele továbbra is igényelhető), és ha minden tétel kizárt, az egész kérelem blokkolva van. A viselkedés az `elallas_enforce_exclusion` filterrel kikapcsolható (visszaáll a korábbi „csak jelöl" módra).
 - **Beüzemelő varázsló** — webshop-adatok, a `/elallas/` oldal automatikus létrehozása, megjelenítési kapcsolók, határidő és egy teszt lépés.
 - **Gutenberg blokk és Elementor widget** — az elállási űrlap bárhova beilleszthető; az `[elallas_form]` shortcode az univerzális tartalék.
-- **Többnyelvű** — WPML / Polylang / TranslatePress integráció; a jogi szövegek nyelvenként kezelhetők.
+- **Többnyelvű** — beépített fordítások: **magyar** (forrás), **angol**, **román**, **cseh**, **szlovák** (admin + frontend, `.po`/`.mo` a `/languages` alatt). Ezen felül WPML / Polylang / TranslatePress integráció az adminból mentett dinamikus szövegekhez (futásidejű fordítás).
 - **REST API** — `elallas-for-woo/v1` végpontok (azonosítás, ügyek, megerősítés, státusz, dokumentum) nonce-szal + rate limittel a publikus, és `manage_woocommerce` ellenőrzéssel az admin útvonalakon.
 - **Számlázási és szállítási integrációk** — Számlázz.hu / Billingo / NAV ÁFA-felismerés (rendelés-jegyzetek + hookok, automatikus storno nélkül) és futár kézbesítési dátum (GLS, Packeta/Foxpost, MPL, DPD, Shipment Tracking).
 - **LW Site Manager abilities** — ügyek listázása/lekérése, státuszváltás és az audit log olvasása a WordPress Abilities API-n keresztül (AI/REST ügynököknek).
@@ -56,7 +56,7 @@ Vagy töltsd le a release ZIP-et, és telepítsd a **Bővítmények → Új hozz
 |------|-------------|-------|
 | `elallas_case_created` | `$case_id`, `$order_id` | Egy elállási ügy létrejött |
 | `elallas_case_confirmed` | `$case_id` | Egy ügyet megerősítettek a kétlépcsős flow-ban |
-| `elallas_case_status_changed` | `$case_id`, `$old_status`, `$new_status` | Egy ügy státusza megváltozik |
+| `elallas_case_status_changed` | `$case_id`, `$old_status`, `$new_status`, `$message` | Egy ügy státusza megváltozik (`$message` = opcionális, vevőnek szóló üzenet) |
 
 ### Filterek
 
@@ -67,6 +67,10 @@ Vagy töltsd le a release ZIP-et, és telepítsd a **Bővítmények → Új hozz
 | `elallas_pdf_html` | `($html, $context)` | A PDF-nyilatkozat HTML-jének szűrése |
 | `elallas_delivery_date` | `($date, $order)` | Futár kézbesítési dátum megadása (a beépített szállítási integráció a gyakori futárokból / Shipment Trackingből oldja fel) |
 | `elallas_is_order_b2b` | `($is_b2b, $order)` | A B2B-felismerés felülbírálása |
+| `elallas_enforce_exclusion` | `($enforced, $order)` | Kizárt tétel blokkoljon (alap `true`), vagy csak jelöljön (`false`) |
+| `elallas_product_exclusion` | `([$excluded, $reason], $product_id)` | Per-termék kizárás felülbírálása (dinamikus) |
+| `elallas_exclusion_reason_message` | `($message, $excepted, $order)` | Az automatikus elutasító e-mail szövege |
+| `elallas_policy_url` | `($url)` | A tájékoztató/ÁSZF link URL-je (pl. nyelvenként) |
 
 A határidő kezdetét a kézbesítési dátum is vezérelheti. A beépített szállítási
 integráció ezt az `elallas_delivery_date` filteren keresztül oldja fel (a GLS /
@@ -87,6 +91,7 @@ wp elallas cleanup
 ## Dokumentáció
 
 - [Kezelési útmutató](docs/kezelesi-utmutato.md) — telepítés, beüzemelés, beállítások, vásárlói és admin folyamatok.
+- [Ügy-státuszok és e-mailek](docs/statuszok-es-emailek.md) — melyik státusz mit jelent, mit tartalmaz, és melyik e-mail mikor megy ki.
 - [Fejlesztői referencia](docs/fejlesztoi-referencia.md) — hookok, REST API, WP-CLI, abilities, sablonok, adatmodell.
 
 ## Beüzemelési checklist (új telepítés)
@@ -109,7 +114,7 @@ Friss oldalon az aktiválás után egyszer érdemes végigmenni rajta.
 - [ ] **Adatvédelem** — IP/UA tárolás (teljes / hash / kikapcsolva), e-mail titkosítás és megőrzési idő (a napi cron anonimizálja a régebbi ügyeket)
 - [ ] **E-mailek** — engedélyezd a vásárlói / admin / státusz e-maileket, és add meg az admin címzettet
 - [ ] **Jogi szövegek** — nézd át a nyilatkozat és visszaigazoló szövegeket, és **validáltasd jogásszal** (lásd lent)
-- [ ] **Kivételek** — a nem visszaküldhető termékeknél jelöld be az *Elállásból kizárt* opciót a termék **Általános** fülén; egész csoport kizárásához szerkessz egy termék**kategóriát** vagy **címkét**, és ott jelöld be az *Elállásból kizárt*-ot (a termékszintű beállítás elsőbbséget élvez; jelöl, sosem blokkol automatikusan)
+- [ ] **Kivételek** — a nem visszaküldhető termékeknél jelöld be az *Elállásból kizárt* opciót a termék **Általános** fülén; egész csoport kizárásához szerkessz egy termék**kategóriát** vagy **címkét**, és ott jelöld be az *Elállásból kizárt*-ot (a termékszintű beállítás elsőbbséget élvez; a kizárt termékre a vásárló nem tud elállást igényelni, a rendelés többi tételére viszont igen)
 
 **Elérhetőség ellenőrzése (jogszabályi követelmény)**
 - [ ] Az elállási funkció **≤ 2 kattintással** elérhető a vásárló fiók / rendelés oldaláról

@@ -187,7 +187,7 @@ final class Plugin {
 	public function woocommerce_missing_notice(): void {
 		printf(
 			'<div class="notice notice-error"><p><strong>Elállás for WooCommerce:</strong> %s</p></div>',
-			esc_html__( 'WooCommerce must be installed and active for this plugin to work.', 'elallas-for-woo' )
+			esc_html__( 'A plugin működéséhez a WooCommerce telepítése és aktiválása szükséges.', 'elallas-for-woo' )
 		);
 	}
 

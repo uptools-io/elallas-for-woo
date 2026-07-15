@@ -29,7 +29,7 @@ rendelés-hozzáférés WooCommerce CRUD-on keresztül megy, az `OrderAdapter`-b
 |---|---|---|
 | `elallas_case_created` | `$case_id, $order_id` | Ügy létrejött |
 | `elallas_case_confirmed` | `$case_id` | A vásárló megerősítette (kétlépcsős flow) |
-| `elallas_case_status_changed` | `$case_id, $old_status, $new_status` | Státuszváltás |
+| `elallas_case_status_changed` | `$case_id, $old_status, $new_status, $message` | Státuszváltás (a `$message` az opcionális, vevőnek szóló üzenet) |
 | `elallas_invoicing_case_created` | `$case_id, $order_id` | Számlázó-integrációs kapaszkodó |
 | `elallas_boot` | `$plugin` | A bővítmény elindult (WooCommerce aktív) |
 
@@ -42,6 +42,10 @@ rendelés-hozzáférés WooCommerce CRUD-on keresztül megy, az `OrderAdapter`-b
 | `elallas_is_order_b2b` | `($is_b2b, $order)` | B2B-felismerés felülbírálása |
 | `elallas_delivery_date` | `($date, $order)` | Kézbesítési dátum a határidőhöz (a Shipping integráció ezen át tölti) |
 | `elallas_pdf_html` | `($html, $context)` | A PDF HTML-jének szűrése |
+| `elallas_enforce_exclusion` | `($enforced, $order)` | Kizárt tétel **blokkoljon** (alap `true`), vagy csak **jelöljön** (`false` = 1.0.13 előtti viselkedés) |
+| `elallas_product_exclusion` | `([$excluded, $reason], $product_id)` | Per-termék kizárás felülbírálása (dinamikus kizárás/feloldás) |
+| `elallas_exclusion_reason_message` | `($message, $excepted, $order)` | Az automatikus elutasító e-mail szövegének testreszabása |
+| `elallas_policy_url` | `($url)` | A tájékoztató/ÁSZF link URL-jének felülbírálása (pl. nyelvenként) |
 
 Példa:
 

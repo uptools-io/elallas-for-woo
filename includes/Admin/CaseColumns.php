@@ -12,6 +12,7 @@ namespace LightweightPlugins\Elallas\Admin;
 use LightweightPlugins\Elallas\Database\CaseItemRepository;
 use LightweightPlugins\Elallas\Database\EventRepository;
 use LightweightPlugins\Elallas\Models\WithdrawalCase;
+use LightweightPlugins\Elallas\Woo\OrderAdapter;
 
 /**
  * Renders individual list-table cells. Keeps CasesListTable lean.
@@ -44,8 +45,15 @@ final class CaseColumns {
 	 * @return string
 	 */
 	public static function order( WithdrawalCase $case ): string {
-		$url = admin_url( 'post.php?post=' . $case->order_id . '&action=edit' );
-		return sprintf( '<a href="%s">#%s</a>', esc_url( $url ), esc_html( $case->order_number ) );
+		// HPOS-safe: get_edit_order_url() resolves to the correct order screen under
+		// both legacy CPT and High-Performance Order Storage (a hand-built post.php
+		// link points at a non-existent post when HPOS is authoritative).
+		$order = OrderAdapter::get_order( $case->order_id );
+		$url   = $order ? $order->get_edit_order_url() : '';
+
+		return '' !== $url
+			? sprintf( '<a href="%s">#%s</a>', esc_url( $url ), esc_html( $case->order_number ) )
+			: sprintf( '#%s', esc_html( $case->order_number ) );
 	}
 
 	/**
@@ -58,9 +66,7 @@ final class CaseColumns {
 	public static function cell( WithdrawalCase $case, string $column ): string {
 		switch ( $column ) {
 			case 'customer':
-				return $case->customer_id > 0
-					? esc_html( '#' . $case->customer_id )
-					: esc_html__( 'Vendég', 'elallas-for-woo' );
+				return self::customer( $case );
 			case 'status':
 				return esc_html( $case->status_label() );
 			case 'type':
@@ -76,6 +82,36 @@ final class CaseColumns {
 			default:
 				return '';
 		}
+	}
+
+	/**
+	 * Customer cell: a linked username to the user profile for registered
+	 * customers (falling back to the raw name / id when not editable or the
+	 * user was deleted), or "Vendég" for guest orders.
+	 *
+	 * @param WithdrawalCase $case Case row.
+	 * @return string
+	 */
+	private static function customer( WithdrawalCase $case ): string {
+		$customer_id = (int) $case->customer_id;
+
+		if ( $customer_id <= 0 ) {
+			return esc_html__( 'Vendég', 'elallas-for-woo' );
+		}
+
+		$user = get_userdata( $customer_id );
+
+		if ( ! $user ) {
+			// Account was deleted since the case was filed.
+			return esc_html( '#' . $customer_id );
+		}
+
+		$name = '' !== $user->display_name ? $user->display_name : $user->user_login;
+		$link = get_edit_user_link( $customer_id );
+
+		return '' !== $link
+			? sprintf( '<a href="%s">%s</a>', esc_url( $link ), esc_html( $name ) )
+			: esc_html( $name );
 	}
 
 	/**

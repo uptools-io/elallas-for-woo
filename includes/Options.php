@@ -80,6 +80,10 @@ final class Options {
 			'email_from_name'         => '',
 			'email_from_address'      => '',
 			'email_customer_extra'    => '',
+			'email_order_text'        => 'Ha elektronikusan szeretne elállni a vásárlástól, azt az alábbi oldalon teheti meg: {link}',
+			'email_policy_enabled'    => false,
+			'email_policy_url'        => '',
+			'email_policy_label'      => 'Általános Szerződési Feltételek (ÁSZF)',
 
 			// Legal texts.
 			'legal_declaration'       => DefaultTexts::declaration(),
@@ -147,6 +151,38 @@ final class Options {
 	public static function save( array $options ): bool {
 		self::$options = $options;
 		return update_option( self::OPTION_NAME, $options );
+	}
+
+	/**
+	 * Normalize a free-form recipient string into a validated, comma-separated list.
+	 *
+	 * Accepts commas, semicolons, spaces and newlines as separators, so merchants
+	 * can paste addresses in any common format (WooCommerce itself only understands
+	 * comma-separated recipients — a semicolon- or space-separated value would
+	 * otherwise silently fail to reach anyone). Invalid addresses are dropped and
+	 * duplicates are removed (case-insensitively).
+	 *
+	 * @param string $raw Raw recipient string.
+	 * @return string Comma-separated list of valid e-mail addresses ('' if none).
+	 */
+	public static function sanitize_email_list( string $raw ): string {
+		$parts = preg_split( '/[\s,;]+/', $raw, -1, PREG_SPLIT_NO_EMPTY );
+
+		if ( ! is_array( $parts ) ) {
+			return '';
+		}
+
+		$valid = [];
+
+		foreach ( $parts as $part ) {
+			$email = sanitize_email( $part );
+
+			if ( '' !== $email && is_email( $email ) ) {
+				$valid[ strtolower( $email ) ] = $email;
+			}
+		}
+
+		return implode( ', ', array_values( $valid ) );
 	}
 
 	/**

@@ -52,4 +52,10 @@ if ( '' !== trim( $elallas_extra ) ) {
 	echo esc_html( wp_strip_all_tags( $elallas_extra ) ) . "\n\n";
 }
 
+$elallas_policy = \LightweightPlugins\Elallas\Emails\EmailManager::policy_link( true );
+if ( '' !== $elallas_policy ) {
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- label tag-stripped + URL esc_url_raw'd in policy_link().
+	echo $elallas_policy . "\n\n";
+}
+
 echo esc_html( apply_filters( 'woocommerce_email_footer_text', get_option( 'woocommerce_email_footer_text' ) ) );

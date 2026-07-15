@@ -119,8 +119,8 @@ jogászod) felelősséged:
 - **Jogi szövegek véglegesítése** — a nyilatkozat és a visszaigazoló szövegek mintaszövegek;
   a saját ÁSZF-eddel összhangban kell véglegesíteni.
 - **ÁSZF és adatkezelési tájékoztató** frissítése az új funkcióra hivatkozva.
-- **A konkrét elállási döntések** — az elfogadás/elutasítás, a határidőn túli vagy kivételes esetek
-  elbírálása emberi döntés marad (a bővítmény ezért jelöl, és alapból nem blokkol).
+- **A konkrét elállási döntések** — az elfogadás/elutasítás, a határidőn túli esetek elbírálása
+  emberi döntés marad (a határidőt a bővítmény ezért jelöli, és alapból nem blokkolja).
 - **A visszatérítés tényleges teljesítése** a 14 napos határidőn belül.
 - **A kivételek helyes beállítása** — mely termékek esnek az elállási jog alóli kivételek alá
   (pl. higiéniai, romlandó, egyedi, digitális termékek); ezt jogi mérlegelés alapján kell megadni.

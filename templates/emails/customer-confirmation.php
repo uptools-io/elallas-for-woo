@@ -87,4 +87,7 @@ if ( '' !== trim( $elallas_extra ) ) {
 	echo wp_kses_post( wpautop( $elallas_extra ) );
 }
 
+// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built from esc_url() + esc_html().
+echo \LightweightPlugins\Elallas\Emails\EmailManager::policy_link();
+
 do_action( 'woocommerce_email_footer', $email );

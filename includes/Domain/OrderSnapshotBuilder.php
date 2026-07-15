@@ -20,6 +20,63 @@ use LightweightPlugins\Elallas\Woo\OrderAdapter;
 final class OrderSnapshotBuilder {
 
 	/**
+	 * Eligibility flag: the item may be withdrawn.
+	 */
+	public const FLAG_ELIGIBLE = 'eligible';
+
+	/**
+	 * Eligibility flag: the item is excepted from withdrawal (merchant exclusion).
+	 */
+	public const FLAG_EXCEPTED = 'excepted';
+
+	/**
+	 * Split snapshot rows into withdrawable and excepted sets.
+	 *
+	 * @param array<int, array<string, mixed>> $rows Snapshot rows from build().
+	 * @return array{eligible: array<int, array<string, mixed>>, excepted: array<int, array<string, mixed>>}
+	 */
+	public static function partition( array $rows ): array {
+		$eligible = [];
+		$excepted = [];
+
+		foreach ( $rows as $row ) {
+			if ( self::FLAG_EXCEPTED === ( $row['eligibility_flag'] ?? self::FLAG_ELIGIBLE ) ) {
+				$excepted[] = $row;
+			} else {
+				$eligible[] = $row;
+			}
+		}
+
+		return [
+			'eligible' => $eligible,
+			'excepted' => $excepted,
+		];
+	}
+
+	/**
+	 * Whether the given withdrawable rows represent a FULL withdrawal: every order
+	 * line is present AND each line's withdrawn quantity equals the ordered quantity.
+	 * A reduced quantity — or a missing line — makes it a partial withdrawal.
+	 *
+	 * @param array<int, array<string, mixed>> $rows  Withdrawable snapshot rows.
+	 * @param \WC_Order                        $order Order.
+	 * @return bool
+	 */
+	public static function is_full( array $rows, \WC_Order $order ): bool {
+		if ( count( $rows ) !== count( OrderAdapter::items( $order ) ) ) {
+			return false;
+		}
+
+		foreach ( $rows as $row ) {
+			if ( (int) ( $row['qty_withdrawn'] ?? 0 ) < (int) ( $row['qty_ordered'] ?? 0 ) ) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
 	 * Build snapshot rows for the selected items.
 	 *
 	 * @param \WC_Order              $order    Order.
@@ -70,10 +127,10 @@ final class OrderSnapshotBuilder {
 			[ $excluded, $label ] = ProductExclusion::evaluate( $product_id );
 
 			if ( $excluded ) {
-				return [ 'excepted', $label ];
+				return [ self::FLAG_EXCEPTED, $label ];
 			}
 		}
 
-		return [ 'eligible', '' ];
+		return [ self::FLAG_ELIGIBLE, '' ];
 	}
 }

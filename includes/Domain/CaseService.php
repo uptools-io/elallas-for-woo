@@ -129,6 +129,22 @@ final class CaseService {
 	}
 
 	/**
+	 * Reject a case with a reason, notifying the customer.
+	 *
+	 * Convenience wrapper over change_status() used by the exclusion backstop:
+	 * when an excepted item slips through to submission, the case is created and
+	 * then immediately refused with a human-readable reason (carried into the
+	 * status e-mail) instead of being auto-confirmed.
+	 *
+	 * @param int    $case_id Case ID.
+	 * @param string $reason  Reason shown to the customer in the status e-mail.
+	 * @return bool
+	 */
+	public function reject( int $case_id, string $reason = '' ): bool {
+		return $this->change_status( $case_id, CaseStatus::REJECTED, null, $reason );
+	}
+
+	/**
 	 * Change a case's status (admin action).
 	 *
 	 * @param int      $case_id    Case ID.

@@ -55,4 +55,7 @@ do_action( 'woocommerce_email_header', $email_heading, $email );
 <p><?php esc_html_e( 'Ha kérdése van az elállási ügyével kapcsolatban, kérjük, válaszoljon erre az e-mailre, vagy vegye fel a kapcsolatot ügyfélszolgálatunkkal. A vételárat legkésőbb az elállás kézhezvételétől számított 14 napon belül visszatérítjük.', 'elallas-for-woo' ); ?></p>
 
 <?php
+// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built from esc_url() + esc_html().
+echo \LightweightPlugins\Elallas\Emails\EmailManager::policy_link();
+
 do_action( 'woocommerce_email_footer', $email );

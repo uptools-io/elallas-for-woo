@@ -45,7 +45,7 @@ class AdminNotification extends \WC_Email {
 	 * @return string
 	 */
 	public function get_default_recipient(): string {
-		$recipient = (string) Options::get( 'email_admin_recipient', '' );
+		$recipient = Options::sanitize_email_list( (string) Options::get( 'email_admin_recipient', '' ) );
 
 		return '' !== $recipient ? $recipient : (string) get_option( 'admin_email' );
 	}
