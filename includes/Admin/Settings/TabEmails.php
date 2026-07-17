@@ -44,7 +44,7 @@ final class TabEmails implements TabInterface {
 			'email_customer_enabled' => 'bool',
 			'email_admin_enabled'    => 'bool',
 			'email_status_enabled'   => 'bool',
-			'email_admin_recipient'  => 'text',
+			'email_admin_recipient'  => 'email_list',
 			'email_from_name'        => 'text',
 			'email_from_address'     => 'text',
 			'email_customer_extra'   => 'textarea',
@@ -74,7 +74,7 @@ final class TabEmails implements TabInterface {
 			</tr>
 			<tr>
 				<th scope="row"><label for="email_admin_recipient"><?php esc_html_e( 'Admin címzett', 'elallas-for-woo' ); ?></label></th>
-				<td><?php $this->render_text( 'email_admin_recipient', __( 'Üresen hagyva az oldal adminisztrátori e-mail címe.', 'elallas-for-woo' ) ); ?></td>
+				<td><?php $this->render_text( 'email_admin_recipient', __( 'Több címzett is megadható vesszővel, pontosvesszővel vagy szóközzel elválasztva. Üresen hagyva az oldal adminisztrátori e-mail címe.', 'elallas-for-woo' ) ); ?></td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="email_customer_extra"><?php esc_html_e( 'Vásárlói e-mail extra szöveg', 'elallas-for-woo' ); ?></label></th>

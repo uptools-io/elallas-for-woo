@@ -170,6 +170,37 @@ final class Options {
 	}
 
 	/**
+	 * Normalise a raw address list into a validated, comma-separated string.
+	 *
+	 * Accepts comma, semicolon and/or whitespace separators, drops anything
+	 * that is not a valid e-mail, and removes case-insensitive duplicates —
+	 * so every configured admin recipient is notified, not only the first.
+	 *
+	 * @param string $raw Raw list as entered by the merchant.
+	 * @return string Comma-separated list of valid, unique addresses (may be empty).
+	 */
+	public static function sanitize_email_list( string $raw ): string {
+		$parts = preg_split( '/[\s,;]+/', $raw, -1, PREG_SPLIT_NO_EMPTY );
+
+		if ( ! is_array( $parts ) ) {
+			return '';
+		}
+
+		$valid = array();
+
+		foreach ( $parts as $part ) {
+			$email = sanitize_email( $part );
+			$key   = strtolower( $email );
+
+			if ( '' !== $email && is_email( $email ) && ! isset( $valid[ $key ] ) ) {
+				$valid[ $key ] = $email;
+			}
+		}
+
+		return implode( ', ', $valid );
+	}
+
+	/**
 	 * Clear options cache.
 	 *
 	 * @return void

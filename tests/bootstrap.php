@@ -54,4 +54,30 @@ if ( ! function_exists( 'apply_filters' ) ) {
 	}
 }
 
+if ( ! function_exists( 'sanitize_email' ) ) {
+	/**
+	 * sanitize_email polyfill: strip characters WordPress disallows in e-mails.
+	 *
+	 * @param string $email Raw address.
+	 * @return string
+	 */
+	function sanitize_email( string $email ): string {
+		$clean = preg_replace( '/[^a-zA-Z0-9.!#$%&\'*+\/=?^_`{|}~@-]/', '', trim( $email ) );
+
+		return is_string( $clean ) ? $clean : '';
+	}
+}
+
+if ( ! function_exists( 'is_email' ) ) {
+	/**
+	 * is_email polyfill: return the address if it validates, false otherwise.
+	 *
+	 * @param string $email Address to validate.
+	 * @return string|false
+	 */
+	function is_email( string $email ) {
+		return filter_var( $email, FILTER_VALIDATE_EMAIL ) ? $email : false;
+	}
+}
+
 require_once dirname( __DIR__ ) . '/vendor/autoload.php';

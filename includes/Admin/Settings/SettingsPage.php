@@ -157,6 +157,8 @@ final class SettingsPage {
 				return sanitize_textarea_field( (string) $value );
 			case 'array_key':
 				return array_map( 'sanitize_key', (array) $value );
+			case 'email_list':
+				return Options::sanitize_email_list( (string) $value );
 			case 'text':
 			default:
 				return sanitize_text_field( (string) $value );
