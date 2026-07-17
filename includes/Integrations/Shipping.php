@@ -45,7 +45,7 @@ final class Shipping {
 	 * Resolve a delivery date from carrier meta, falling back to the passed value.
 	 *
 	 * @param string|null $date  Currently resolved date (may be null).
-	 * @param \WC_Order    $order Order to inspect.
+	 * @param \WC_Order   $order Order to inspect.
 	 * @return string|null A 'Y-m-d H:i:s' date when found, otherwise the passed value.
 	 */
 	public function resolve_delivery_date( ?string $date, \WC_Order $order ): ?string {

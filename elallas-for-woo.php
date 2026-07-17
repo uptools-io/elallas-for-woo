@@ -87,4 +87,9 @@ function elallas_for_woo(): Plugin {
 }
 
 // Initialize the plugin.
-add_action( 'plugins_loaded', __NAMESPACE__ . '\\elallas_for_woo' );
+add_action(
+	'plugins_loaded',
+	static function (): void {
+		elallas_for_woo();
+	}
+);

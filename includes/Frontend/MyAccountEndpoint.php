@@ -99,7 +99,7 @@ final class MyAccountEndpoint {
 			}
 		}
 
-		echo TemplateLoader::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		$output = TemplateLoader::render(
 			'frontend/my-account.php',
 			[
 				'cases'     => $cases,
@@ -107,5 +107,8 @@ final class MyAccountEndpoint {
 				'form_url'  => Shortcodes::page_url(),
 			]
 		);
+
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Pre-rendered template HTML; each value is escaped inside the template.
+		echo $output;
 	}
 }

@@ -28,22 +28,23 @@ final class SubmissionContext {
 	 * @param string $withdrawal_type full|partial.
 	 * @param string $deadline_status DeadlineStatus constant.
 	 * @param string $note            Optional customer note.
+	 * @param string $bank_account    Optional bank account number for the refund.
 	 * @return array<string, mixed>
 	 */
 	public static function build( string $email, string $withdrawal_type, string $deadline_status, string $note = '', string $bank_account = '' ): array {
 		return [
-			'email_hash'       => Encryption::hash( $email ),
-			'email_encrypted'  => Options::get( 'encrypt_email' ) ? Encryption::encrypt( $email ) : null,
+			'email_hash'             => Encryption::hash( $email ),
+			'email_encrypted'        => Options::get( 'encrypt_email' ) ? Encryption::encrypt( $email ) : null,
 			'bank_account_encrypted' => '' !== $bank_account ? Encryption::encrypt( $bank_account ) : null,
-			'ip_hash'          => self::process( RateLimiter::client_ip(), (string) Options::get( 'store_ip', 'hash' ) ),
-			'user_agent_hash'  => self::process( self::user_agent(), (string) Options::get( 'store_user_agent', 'hash' ) ),
-			'source_url'       => self::current_url(),
+			'ip_hash'                => self::process( RateLimiter::client_ip(), (string) Options::get( 'store_ip', 'hash' ) ),
+			'user_agent_hash'        => self::process( self::user_agent(), (string) Options::get( 'store_user_agent', 'hash' ) ),
+			'source_url'             => self::current_url(),
 			// Store the WPML/Polylang language code (falls back to the locale) so
 			// emails and PDFs can later be rendered in the submission language.
-			'language'         => Multilingual::current_language(),
-			'withdrawal_type'  => $withdrawal_type,
-			'deadline_status'  => $deadline_status,
-			'customer_note'    => '' !== $note ? $note : null,
+			'language'               => Multilingual::current_language(),
+			'withdrawal_type'        => $withdrawal_type,
+			'deadline_status'        => $deadline_status,
+			'customer_note'          => '' !== $note ? $note : null,
 		];
 	}
 

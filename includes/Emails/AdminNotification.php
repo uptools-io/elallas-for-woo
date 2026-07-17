@@ -25,7 +25,7 @@ class AdminNotification extends \WC_Email {
 	public function __construct() {
 		$this->id          = 'elallas_admin_notification';
 		$this->title       = __( 'Új elállási nyilatkozat (admin)', 'elallas-for-woo' );
-		$this->description  = __( 'Értesítés a kereskedő felé, ha új elállási nyilatkozat érkezik.', 'elallas-for-woo' );
+		$this->description = __( 'Értesítés a kereskedő felé, ha új elállási nyilatkozat érkezik.', 'elallas-for-woo' );
 
 		$this->template_base  = ELALLAS_FOR_WOO_PATH . 'templates/';
 		$this->template_html  = 'emails/admin-notification.php';
@@ -81,8 +81,8 @@ class AdminNotification extends \WC_Email {
 			return;
 		}
 
-		$this->object                       = $case;
-		$this->recipient                    = $this->get_default_recipient();
+		$this->object                         = $case;
+		$this->recipient                      = $this->get_default_recipient();
 		$this->placeholders['{case_number}']  = $case->case_number;
 		$this->placeholders['{order_number}'] = $case->order_number;
 

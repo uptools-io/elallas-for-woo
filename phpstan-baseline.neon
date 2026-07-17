@@ -1,0 +1,6 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Parameter \\#1 \\$args of function wp_dropdown_pages expects array\\{depth\\?\\: int, child_of\\?\\: int, selected\\?\\: int\\|string, echo\\?\\: bool\\|int, name\\?\\: string, id\\?\\: string, class\\?\\: string, show_option_none\\?\\: string, \\.\\.\\.\\}, array\\{name\\: string, id\\: 'withdrawal_page_id', selected\\: int, show_option_none\\: string, option_none_value\\: 0\\} given\\.$#"
+			count: 1
+			path: includes/Admin/Settings/TabGeneral.php

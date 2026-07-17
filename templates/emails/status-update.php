@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
 
 $elallas_status_message = isset( $status_message ) ? trim( (string) $status_message ) : '';
 
-do_action( 'woocommerce_email_header', $email_heading, $email );
+do_action( 'woocommerce_email_header', $email_heading, $email ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce core email template hook.
 ?>
 
 <p><?php esc_html_e( 'Tisztelt Vásárlónk!', 'elallas-for-woo' ); ?></p>
@@ -55,4 +55,4 @@ do_action( 'woocommerce_email_header', $email_heading, $email );
 <p><?php esc_html_e( 'Ha kérdése van az elállási ügyével kapcsolatban, kérjük, válaszoljon erre az e-mailre, vagy vegye fel a kapcsolatot ügyfélszolgálatunkkal. A vételárat legkésőbb az elállás kézhezvételétől számított 14 napon belül visszatérítjük.', 'elallas-for-woo' ); ?></p>
 
 <?php
-do_action( 'woocommerce_email_footer', $email );
+do_action( 'woocommerce_email_footer', $email ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce core email template hook.

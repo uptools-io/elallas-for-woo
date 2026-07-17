@@ -50,8 +50,8 @@ final class Shortcodes {
 
 		// Default to the raw (untranslated) option value; the label is translated
 		// exactly once below, whether it comes from the option or the attribute.
-		$atts  = shortcode_atts( [ 'label' => (string) Options::get( 'button_label' ) ], (array) $atts, 'elallas_button' );
-		$url   = self::page_url();
+		$atts = shortcode_atts( [ 'label' => (string) Options::get( 'button_label' ) ], (array) $atts, 'elallas_button' );
+		$url  = self::page_url();
 
 		$label = (string) $atts['label'];
 		$label = '' !== $label

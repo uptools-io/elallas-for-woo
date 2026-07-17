@@ -36,10 +36,10 @@ final class WithdrawalForm {
 			$data += self::identify_prefill();
 		}
 
-		$data['atts']          = $atts;
-		$data['form_action']   = esc_url( remove_query_arg( [ 'elallas_done' ] ) );
-		$data['nonce_field']   = wp_nonce_field( 'elallas_form', 'elallas_nonce', true, false );
-		$data['honeypot']      = Honeypot::field();
+		$data['atts']        = $atts;
+		$data['form_action'] = esc_url( remove_query_arg( [ 'elallas_done' ] ) );
+		$data['nonce_field'] = wp_nonce_field( 'elallas_form', 'elallas_nonce', true, false );
+		$data['honeypot']    = Honeypot::field();
 
 		$html = TemplateLoader::render( 'frontend/' . $view . '.php', $data );
 

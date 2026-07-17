@@ -72,7 +72,7 @@ final class CaseService {
 
 		CaseItemRepository::bulk_insert( $case_id, $items );
 		$this->update_order_meta( $order, $case_id, $deadline_status );
-		EventRepository::log( $case_id, 'case_created', 'customer', $order->get_customer_id() ?: null, __( 'Elállási nyilatkozat beérkezett.', 'elallas-for-woo' ) );
+		EventRepository::log( $case_id, 'case_created', 'customer', $order->get_customer_id() ? $order->get_customer_id() : null, __( 'Elállási nyilatkozat beérkezett.', 'elallas-for-woo' ) );
 
 		/**
 		 * Fires after a withdrawal case is created.
@@ -113,8 +113,14 @@ final class CaseService {
 			? CaseStatus::AUTO_CONFIRMED
 			: CaseStatus::MANUAL_REVIEW;
 
-		CaseRepository::update( $case_id, [ 'status' => $status, 'confirmed_at' => current_time( 'mysql' ) ] );
-		EventRepository::log( $case_id, 'case_confirmed', 'customer', $case->customer_id ?: null, __( 'A fogyasztó megerősítette a nyilatkozatot.', 'elallas-for-woo' ) );
+		CaseRepository::update(
+			$case_id,
+			[
+				'status'       => $status,
+				'confirmed_at' => current_time( 'mysql' ),
+			]
+		);
+		EventRepository::log( $case_id, 'case_confirmed', 'customer', $case->customer_id ? $case->customer_id : null, __( 'A fogyasztó megerősítette a nyilatkozatot.', 'elallas-for-woo' ) );
 
 		/**
 		 * Fires after a case is confirmed by the customer.
@@ -123,7 +129,13 @@ final class CaseService {
 		 */
 		do_action( 'elallas_case_confirmed', $case_id );
 
-		Logger::info( 'Elállási ügy megerősítve.', [ 'case_id' => $case_id, 'status' => $status ] );
+		Logger::info(
+			'Elállási ügy megerősítve.',
+			[
+				'case_id' => $case_id,
+				'status'  => $status,
+			]
+		);
 
 		return true;
 	}

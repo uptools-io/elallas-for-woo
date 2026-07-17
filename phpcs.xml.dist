@@ -10,6 +10,10 @@
     <exclude-pattern>/vendor-prefixed/*</exclude-pattern>
     <exclude-pattern>/node_modules/*</exclude-pattern>
     <exclude-pattern>/tests/*</exclude-pattern>
+    <!-- Build-time Strauss post-processing helper, not shipped runtime code -->
+    <exclude-pattern>/bin/*</exclude-pattern>
+    <!-- JavaScript is linted by JS tooling, not PHPCS -->
+    <exclude-pattern>*.js</exclude-pattern>
 
     <!-- Show progress -->
     <arg value="ps"/>
@@ -34,6 +38,15 @@
 
     <!-- WordPress minimum version -->
     <config name="minimum_wp_version" value="6.4"/>
+
+    <!-- manage_woocommerce is a real WooCommerce capability the WP sniff doesn't know. -->
+    <rule ref="WordPress.WP.Capabilities">
+        <properties>
+            <property name="custom_capabilities" type="array">
+                <element value="manage_woocommerce"/>
+            </property>
+        </properties>
+    </rule>
 
     <!-- Text domain -->
     <rule ref="WordPress.WP.I18n">

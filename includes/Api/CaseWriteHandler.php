@@ -65,7 +65,7 @@ final class CaseWriteHandler {
 	/**
 	 * Build the context, create + confirm the case, and shape the response.
 	 *
-	 * @param WP_REST_Request                 $request Request object.
+	 * @param WP_REST_Request                  $request Request object.
 	 * @param \WC_Order                        $order   Order.
 	 * @param EligibilityResult                $result  Eligibility result.
 	 * @param array<int, array<string, mixed>> $rows    Snapshot rows.

@@ -26,7 +26,7 @@ final class CaseRepository {
 	public static function insert( array $data ): int {
 		global $wpdb;
 
-		$now              = current_time( 'mysql' );
+		$now                = current_time( 'mysql' );
 		$data['created_at'] = $data['created_at'] ?? $now;
 		$data['updated_at'] = $now;
 
@@ -73,7 +73,8 @@ final class CaseRepository {
 		global $wpdb;
 
 		$table = Schema::cases_table();
-		$row   = $wpdb->get_row(
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Direct query on the plugin's custom table; results are not object-cached.
+		$row = $wpdb->get_row(
 			$wpdb->prepare( "SELECT * FROM {$table} WHERE id = %d", $id ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
 		);
 
@@ -90,7 +91,8 @@ final class CaseRepository {
 		global $wpdb;
 
 		$table = Schema::cases_table();
-		$row   = $wpdb->get_row(
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Direct query on the plugin's custom table; results are not object-cached.
+		$row = $wpdb->get_row(
 			$wpdb->prepare( "SELECT * FROM {$table} WHERE case_number = %s", $number ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
 		);
 
@@ -106,7 +108,8 @@ final class CaseRepository {
 	public static function find_by_order( int $order_id ): array {
 		global $wpdb;
 
-		$table   = Schema::cases_table();
+		$table = Schema::cases_table();
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Direct query on the plugin's custom table; results are not object-cached.
 		$results = $wpdb->get_results(
 			$wpdb->prepare( "SELECT * FROM {$table} WHERE order_id = %d ORDER BY created_at DESC", $order_id ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
 		);
@@ -123,7 +126,8 @@ final class CaseRepository {
 	public static function find_by_customer( int $customer_id ): array {
 		global $wpdb;
 
-		$table   = Schema::cases_table();
+		$table = Schema::cases_table();
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Direct query on the plugin's custom table; results are not object-cached.
 		$results = $wpdb->get_results(
 			$wpdb->prepare( "SELECT * FROM {$table} WHERE customer_id = %d ORDER BY created_at DESC", $customer_id ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
 		);
@@ -181,8 +185,9 @@ final class CaseRepository {
 	public static function ids_older_than( int $days ): array {
 		global $wpdb;
 
-		$table   = Schema::cases_table();
-		$cutoff  = gmdate( 'Y-m-d H:i:s', time() - ( $days * DAY_IN_SECONDS ) );
+		$table  = Schema::cases_table();
+		$cutoff = gmdate( 'Y-m-d H:i:s', time() - ( $days * DAY_IN_SECONDS ) );
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Direct query on the plugin's custom table; results are not object-cached.
 		$results = $wpdb->get_col(
 			$wpdb->prepare( "SELECT id FROM {$table} WHERE created_at < %s AND customer_email_hash <> ''", $cutoff ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
 		);

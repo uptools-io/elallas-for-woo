@@ -200,7 +200,7 @@ final class TabExceptions implements TabInterface {
 
 				echo '<tr><td>' . esc_html( $term->name ) . '</td>';
 				echo '<td>' . esc_html( '' !== $reason ? $reason : '—' ) . '</td><td>';
-				if ( ! is_wp_error( $edit ) && null !== $edit && '' !== $edit ) {
+				if ( null !== $edit && '' !== $edit ) {
 					echo '<a href="' . esc_url( $edit ) . '">' . esc_html__( 'Szerkesztés', 'elallas-for-woo' ) . '</a>';
 				}
 				echo '</td></tr>';

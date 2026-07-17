@@ -113,6 +113,6 @@ final class CaseActions {
 			);
 		}
 
-		fclose( $out );
+		fclose( $out ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- Closing the php://output stream used to stream the CSV export; WP_Filesystem cannot write to output.
 	}
 }

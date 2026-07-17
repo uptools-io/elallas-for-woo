@@ -11,10 +11,10 @@ use LightweightPlugins\Elallas\Options;
 use LightweightPlugins\Elallas\Database\CaseRepository;
 use LightweightPlugins\Elallas\Models\WithdrawalCase;
 
-// Prevent direct access.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+// No ABSPATH guard here: this file is eagerly loaded via Composer's `files`
+// autoload, so guarding it with `exit` also terminates CLI tools (phpcs,
+// phpunit, phpstan) that boot through the same autoloader. The file only
+// declares functions — loading it directly has no side effects.
 
 /**
  * Get a plugin option.

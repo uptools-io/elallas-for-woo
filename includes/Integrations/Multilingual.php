@@ -111,6 +111,7 @@ final class Multilingual {
 
 		if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
 			// Handled by the WPML String Translation add-on; a silent no-op without it.
+			// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML integration hook (third-party name, cannot be prefixed).
 			do_action( 'wpml_register_single_string', self::CONTEXT, $name, $value );
 		}
 	}
@@ -156,6 +157,7 @@ final class Multilingual {
 		}
 
 		if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
+			// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML integration hook (third-party name, cannot be prefixed).
 			$translated = apply_filters( 'wpml_translate_single_string', $value, self::CONTEXT, $name );
 
 			if ( is_string( $translated ) && '' !== $translated ) {
@@ -187,6 +189,7 @@ final class Multilingual {
 	 */
 	public static function current_language(): string {
 		if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
+			// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML integration hook (third-party name, cannot be prefixed).
 			$code = apply_filters( 'wpml_current_language', '' );
 
 			if ( is_string( $code ) && '' !== $code ) {
@@ -212,6 +215,7 @@ final class Multilingual {
 	 */
 	public static function default_language(): string {
 		if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
+			// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML integration hook (third-party name, cannot be prefixed).
 			$code = apply_filters( 'wpml_default_language', null );
 
 			if ( is_string( $code ) && '' !== $code ) {
@@ -243,6 +247,7 @@ final class Multilingual {
 		}
 
 		if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
+			// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML integration hook (third-party name, cannot be prefixed).
 			$translated = apply_filters( 'wpml_object_id', $object_id, $type, true );
 
 			if ( is_numeric( $translated ) ) {
@@ -279,9 +284,11 @@ final class Multilingual {
 			return;
 		}
 
-		$current = apply_filters( 'wpml_current_language', '' );
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML integration hook (third-party name, cannot be prefixed).
+		$current                = apply_filters( 'wpml_current_language', '' );
 		self::$language_stack[] = is_string( $current ) ? $current : null;
 
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML integration hook (third-party name, cannot be prefixed).
 		do_action( 'wpml_switch_language', $code );
 	}
 
@@ -301,6 +308,7 @@ final class Multilingual {
 			return;
 		}
 
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML integration hook (third-party name, cannot be prefixed).
 		do_action( 'wpml_switch_language', $previous );
 	}
 
@@ -322,6 +330,7 @@ final class Multilingual {
 			return $stored;
 		}
 
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML integration hook (third-party name, cannot be prefixed).
 		$languages = apply_filters( 'wpml_active_languages', null, [ 'skip_missing' => 0 ] );
 
 		if ( ! is_array( $languages ) || empty( $languages ) ) {

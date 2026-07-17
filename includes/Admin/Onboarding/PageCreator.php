@@ -73,7 +73,7 @@ final class PageCreator {
 			]
 		);
 
-		if ( is_wp_error( $page_id ) || 0 === $page_id ) {
+		if ( 0 === $page_id ) {
 			return 0;
 		}
 

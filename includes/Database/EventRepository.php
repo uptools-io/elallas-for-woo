@@ -55,6 +55,7 @@ final class EventRepository {
 
 		$table = Schema::events_table();
 
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Direct query on the plugin's custom table; results are not object-cached.
 		return (array) $wpdb->get_results(
 			$wpdb->prepare( "SELECT * FROM {$table} WHERE case_id = %d ORDER BY created_at ASC, id ASC", $case_id ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
 		);

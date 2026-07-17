@@ -20,7 +20,7 @@ trait CaseResponseTrait {
 	/**
 	 * Prepare a case (with its items) for an admin response.
 	 *
-	 * @param WithdrawalCase  $case  Case object.
+	 * @param WithdrawalCase       $case  Case object.
 	 * @param array<int, CaseItem> $items Case items.
 	 * @return array<string, mixed>
 	 */

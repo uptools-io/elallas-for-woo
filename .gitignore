@@ -26,3 +26,6 @@ Thumbs.db
 # Build
 /build/
 /dist/
+
+# PHPUnit
+.phpunit.result.cache

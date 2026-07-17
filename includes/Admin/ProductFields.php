@@ -42,13 +42,13 @@ final class ProductFields {
 	 */
 	public static function reasons(): array {
 		return [
-			'unsealed'  => __( 'Bontatlan állapot szükséges', 'elallas-for-woo' ),
-			'custom'    => __( 'Egyedi / személyre szabott termék', 'elallas-for-woo' ),
-			'digital'   => __( 'Digitális tartalom', 'elallas-for-woo' ),
-			'service'   => __( 'Szolgáltatás', 'elallas-for-woo' ),
-			'hygiene'   => __( 'Higiéniai ok', 'elallas-for-woo' ),
+			'unsealed'   => __( 'Bontatlan állapot szükséges', 'elallas-for-woo' ),
+			'custom'     => __( 'Egyedi / személyre szabott termék', 'elallas-for-woo' ),
+			'digital'    => __( 'Digitális tartalom', 'elallas-for-woo' ),
+			'service'    => __( 'Szolgáltatás', 'elallas-for-woo' ),
+			'hygiene'    => __( 'Higiéniai ok', 'elallas-for-woo' ),
 			'perishable' => __( 'Romlandó termék', 'elallas-for-woo' ),
-			'sealed'    => __( 'Zárt csomagolás felbontva', 'elallas-for-woo' ),
+			'sealed'     => __( 'Zárt csomagolás felbontva', 'elallas-for-woo' ),
 		];
 	}
 

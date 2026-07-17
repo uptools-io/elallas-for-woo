@@ -22,8 +22,8 @@ final class OrderSnapshotBuilder {
 	/**
 	 * Build snapshot rows for the selected items.
 	 *
-	 * @param \WC_Order              $order    Order.
-	 * @param array<int, int>        $selected Map of order_item_id => qty_withdrawn (empty = all items, full qty).
+	 * @param \WC_Order       $order    Order.
+	 * @param array<int, int> $selected Map of order_item_id => qty_withdrawn (empty = all items, full qty).
 	 * @return array<int, array<string, mixed>>
 	 */
 	public static function build( \WC_Order $order, array $selected = [] ): array {

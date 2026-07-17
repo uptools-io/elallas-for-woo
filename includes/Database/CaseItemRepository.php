@@ -33,7 +33,7 @@ final class CaseItemRepository {
 	/**
 	 * Insert multiple items for a case.
 	 *
-	 * @param int                        $case_id Case ID.
+	 * @param int                              $case_id Case ID.
 	 * @param array<int, array<string, mixed>> $items   Item rows (without case_id).
 	 * @return void
 	 */
@@ -53,7 +53,8 @@ final class CaseItemRepository {
 	public static function for_case( int $case_id ): array {
 		global $wpdb;
 
-		$table   = Schema::case_items_table();
+		$table = Schema::case_items_table();
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Direct query on the plugin's custom table; results are not object-cached.
 		$results = $wpdb->get_results(
 			$wpdb->prepare( "SELECT * FROM {$table} WHERE case_id = %d ORDER BY id ASC", $case_id ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
 		);

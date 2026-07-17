@@ -33,7 +33,11 @@ final class CaseQuery {
 		$where  = [ '1=1' ];
 		$params = [];
 
-		foreach ( [ 'status' => 'status', 'deadline_status' => 'deadline_status', 'withdrawal_type' => 'withdrawal_type' ] as $key => $column ) {
+		foreach ( [
+			'status'          => 'status',
+			'deadline_status' => 'deadline_status',
+			'withdrawal_type' => 'withdrawal_type',
+		] as $key => $column ) {
 			if ( ! empty( $filters[ $key ] ) ) {
 				$where[]  = "{$column} = %s";
 				$params[] = (string) $filters[ $key ];
@@ -63,7 +67,11 @@ final class CaseQuery {
 		$order          = 'ASC' === strtoupper( $order ) ? 'ASC' : 'DESC';
 		$offset         = max( 0, ( $paged - 1 ) * $per_page );
 
-		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.NotPrepared
+		// Dynamic WHERE/ORDER are built only from whitelisted columns ($allowed_orders)
+		// and ASC/DESC; every value is bound through $wpdb->prepare(). The %s/%d
+		// placeholders live inside $where_sql, so the placeholder-count sniffs cannot
+		// see them and misfire.
+		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
 		$total = (int) $wpdb->get_var(
 			empty( $params )
 				? "SELECT COUNT(*) FROM {$table} WHERE {$where_sql}"

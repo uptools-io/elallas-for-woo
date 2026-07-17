@@ -40,11 +40,12 @@ final class DocumentRepository {
 		global $wpdb;
 
 		$table = Schema::documents_table();
-		$row   = $wpdb->get_row(
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Direct query on the plugin's custom table; results are not object-cached.
+		$row = $wpdb->get_row(
 			$wpdb->prepare( "SELECT * FROM {$table} WHERE id = %d", $id ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
 		);
 
-		return $row ?: null;
+		return $row ? $row : null;
 	}
 
 	/**
@@ -58,6 +59,7 @@ final class DocumentRepository {
 
 		$table = Schema::documents_table();
 
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Direct query on the plugin's custom table; results are not object-cached.
 		return (array) $wpdb->get_results(
 			$wpdb->prepare( "SELECT * FROM {$table} WHERE case_id = %d ORDER BY created_at DESC", $case_id ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
 		);

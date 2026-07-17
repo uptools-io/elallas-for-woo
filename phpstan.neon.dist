@@ -1,15 +1,44 @@
 includes:
+	- phpstan-baseline.neon
 	- vendor/szepeviktor/phpstan-wordpress/extension.neon
 
 parameters:
 	level: 5
+
 	paths:
 		- includes
 		- elallas-for-woo.php
+
+	excludePaths:
+		- tests/
+		- vendor/
+		- vendor-prefixed/
+		# Extends Elementor\Widget_Base, which is absent at analysis time and
+		# only loaded when Elementor is active.
+		- includes/Integrations/ElallasElementorWidget.php
+
+	# Declare the plugin's runtime-defined constants for static analysis.
 	bootstrapFiles:
-		- elallas-for-woo.php
-	scanDirectories:
-		- vendor/woocommerce
+		- phpstan-bootstrap.php
+
+	# Third-party APIs the plugin integrates with. WordPress core stubs come
+	# from the szepeviktor/phpstan-wordpress extension above.
+	scanFiles:
+		- vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
+		- vendor/php-stubs/wp-cli-stubs/wp-cli-stubs.php
+
+	# The WooCommerce/WordPress stub symbol tables are large; a single worker
+	# keeps peak memory deterministic under the `analyse` script's limit.
+	parallel:
+		maximumNumberOfProcesses: 1
+
 	ignoreErrors:
-		# WooCommerce / third-party classes are not always present at analysis time.
-		- '#Call to method [a-zA-Z0-9_]+\(\) on an unknown class (WC_Email|WC_Order|WC_Order_Item)#'
+		# Optional integrations whose classes/functions are absent from the
+		# stubs but exist at runtime when the host plugin is active.
+		# WooCommerce Sequential Order Numbers Pro (guarded by function_exists):
+		- '#function_exists\(\) with .wc_seq_order_number.* will always evaluate to false#'
+		# The plugin''s WC_Email subclasses define trigger(); the WC stub base
+		# class does not, so calls resolve to the base type at analysis time.
+		-
+			message: '#Call to an undefined method WC_Email::trigger\(\)#'
+			path: includes/Emails/EmailManager.php

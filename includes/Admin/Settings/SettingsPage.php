@@ -67,7 +67,19 @@ final class SettingsPage {
 			<h2 class="nav-tab-wrapper">
 				<?php foreach ( $tabs as $tab ) : ?>
 					<a
-						href="<?php echo esc_url( add_query_arg( [ 'page' => self::SLUG, 'tab' => $tab->id() ], admin_url( 'admin.php' ) ) ); ?>"
+						href="
+						<?php
+						echo esc_url(
+							add_query_arg(
+								[
+									'page' => self::SLUG,
+									'tab'  => $tab->id(),
+								],
+								admin_url( 'admin.php' )
+							)
+						);
+						?>
+								"
 						class="nav-tab <?php echo $tab->id() === $current ? 'nav-tab-active' : ''; ?>">
 						<?php echo esc_html( $tab->label() ); ?>
 					</a>
@@ -99,7 +111,7 @@ final class SettingsPage {
 	 * @return bool Whether a save occurred.
 	 */
 	private static function maybe_save( array $tabs ): bool {
-		if ( 'POST' !== ( $_SERVER['REQUEST_METHOD'] ?? '' ) ) {
+		if ( 'POST' !== sanitize_text_field( wp_unslash( $_SERVER['REQUEST_METHOD'] ?? '' ) ) ) {
 			return false;
 		}
 
@@ -110,7 +122,8 @@ final class SettingsPage {
 		}
 
 		$active = isset( $_POST['elallas_tab'] ) ? sanitize_key( wp_unslash( $_POST['elallas_tab'] ) ) : '';
-		$raw    = isset( $_POST[ Options::OPTION_NAME ] ) ? (array) wp_unslash( $_POST[ Options::OPTION_NAME ] ) : [];
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Each field is sanitized per-type by self::sanitize() in the loop below.
+		$raw = isset( $_POST[ Options::OPTION_NAME ] ) ? (array) wp_unslash( $_POST[ Options::OPTION_NAME ] ) : [];
 
 		foreach ( $tabs as $tab ) {
 			if ( $tab->id() !== $active ) {

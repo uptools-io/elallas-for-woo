@@ -28,7 +28,7 @@ class CustomerConfirmation extends \WC_Email {
 		$this->id             = 'elallas_customer_confirmation';
 		$this->customer_email = true;
 		$this->title          = __( 'Elállás visszaigazolása (vevő)', 'elallas-for-woo' );
-		$this->description     = __( 'Tartós adathordozón küldött visszaigazolás a vevőnek az elállási nyilatkozat rögzítéséről.', 'elallas-for-woo' );
+		$this->description    = __( 'Tartós adathordozón küldött visszaigazolás a vevőnek az elállási nyilatkozat rögzítéséről.', 'elallas-for-woo' );
 
 		$this->template_base  = ELALLAS_FOR_WOO_PATH . 'templates/';
 		$this->template_html  = 'emails/customer-confirmation.php';
@@ -79,8 +79,8 @@ class CustomerConfirmation extends \WC_Email {
 			return;
 		}
 
-		$this->object                       = $case;
-		$this->recipient                    = $order->get_billing_email();
+		$this->object                         = $case;
+		$this->recipient                      = $order->get_billing_email();
 		$this->placeholders['{case_number}']  = $case->case_number;
 		$this->placeholders['{order_number}'] = $case->order_number;
 

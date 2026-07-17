@@ -14,19 +14,96 @@ namespace LightweightPlugins\Elallas\Models;
  */
 final class CaseItem {
 
-	public int $id                     = 0;
-	public int $case_id                = 0;
-	public int $order_item_id          = 0;
-	public int $product_id             = 0;
-	public int $variation_id           = 0;
+	/**
+	 * Case item row primary key.
+	 *
+	 * @var int
+	 */
+	public int $id = 0;
+
+	/**
+	 * Parent case ID.
+	 *
+	 * @var int
+	 */
+	public int $case_id = 0;
+
+	/**
+	 * Related WooCommerce order item ID.
+	 *
+	 * @var int
+	 */
+	public int $order_item_id = 0;
+
+	/**
+	 * Product ID.
+	 *
+	 * @var int
+	 */
+	public int $product_id = 0;
+
+	/**
+	 * Product variation ID.
+	 *
+	 * @var int
+	 */
+	public int $variation_id = 0;
+
+	/**
+	 * Product name captured at order time.
+	 *
+	 * @var string
+	 */
 	public string $product_name_snapshot = '';
-	public string $sku_snapshot        = '';
-	public int $qty_ordered            = 0;
-	public int $qty_withdrawn          = 0;
+
+	/**
+	 * Product SKU captured at order time.
+	 *
+	 * @var string
+	 */
+	public string $sku_snapshot = '';
+
+	/**
+	 * Quantity ordered.
+	 *
+	 * @var int
+	 */
+	public int $qty_ordered = 0;
+
+	/**
+	 * Quantity withdrawn.
+	 *
+	 * @var int
+	 */
+	public int $qty_withdrawn = 0;
+
+	/**
+	 * Line total captured at order time.
+	 *
+	 * @var string
+	 */
 	public string $line_total_snapshot = '0';
-	public string $tax_total_snapshot  = '0';
-	public string $eligibility_flag    = 'eligible';
-	public string $eligibility_note    = '';
+
+	/**
+	 * Tax total captured at order time.
+	 *
+	 * @var string
+	 */
+	public string $tax_total_snapshot = '0';
+
+	/**
+	 * Withdrawal eligibility flag.
+	 *
+	 * @var string
+	 */
+	public string $eligibility_flag = 'eligible';
+
+	/**
+	 * Note explaining the eligibility flag.
+	 *
+	 * @var string
+	 */
+	public string $eligibility_note = '';
 
 	/**
 	 * Build from a DB row.

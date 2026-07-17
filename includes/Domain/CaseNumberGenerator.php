@@ -29,7 +29,7 @@ final class CaseNumberGenerator {
 		$counter = get_option( self::OPTION, [] );
 		$counter = is_array( $counter ) ? $counter : [];
 
-		$seq                 = (int) ( $counter[ $year ] ?? 0 ) + 1;
+		$seq                       = (int) ( $counter[ $year ] ?? 0 ) + 1;
 		$counter[ (string) $year ] = $seq;
 
 		update_option( self::OPTION, $counter );

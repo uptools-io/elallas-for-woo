@@ -78,7 +78,7 @@ final class NoticeManager {
 			update_user_meta( get_current_user_id(), self::DISMISS_KEY, 1 );
 		}
 
-		wp_safe_redirect( wp_get_referer() ?: admin_url() );
+		wp_safe_redirect( wp_get_referer() ? wp_get_referer() : admin_url() );
 		exit;
 	}
 }

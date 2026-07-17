@@ -46,50 +46,50 @@ final class Options {
 		// the multilingual string mechanism (see Integrations\Multilingual).
 		return [
 			// General.
-			'enabled'                 => true,
-			'withdrawal_page_id'      => 0,
-			'button_label'            => 'Elállás a szerződéstől',
-			'confirm_label'           => 'Elállás megerősítése',
-			'display_account'         => true,
-			'display_order_details'   => true,
-			'display_order_email'     => true,
+			'enabled'                => true,
+			'withdrawal_page_id'     => 0,
+			'button_label'           => 'Elállás a szerződéstől',
+			'confirm_label'          => 'Elállás megerősítése',
+			'display_account'        => true,
+			'display_order_details'  => true,
+			'display_order_email'    => true,
 
 			// Deadline.
-			'deadline_days'           => 14,
-			'deadline_start'          => 'order_completed', // order_created|order_completed|delivery|manual.
-			'expired_handling'        => 'allow_with_warning', // allow_with_warning|block|require_approval.
+			'deadline_days'          => 14,
+			'deadline_start'         => 'order_completed', // order_created|order_completed|delivery|manual.
+			'expired_handling'       => 'allow_with_warning', // allow_with_warning|block|require_approval.
 
 			// Order statuses eligible for withdrawal.
-			'eligible_statuses'       => [ 'processing', 'completed' ],
-			'use_wc_statuses'         => false,
+			'eligible_statuses'      => [ 'processing', 'completed' ],
+			'use_wc_statuses'        => false,
 
 			// Privacy.
-			'store_ip'                => 'hash', // full|hash|off.
-			'store_user_agent'        => 'hash', // full|hash|off.
-			'encrypt_email'           => true,
-			'retention_days'          => 0, // 0 = keep forever.
+			'store_ip'               => 'hash', // full|hash|off.
+			'store_user_agent'       => 'hash', // full|hash|off.
+			'encrypt_email'          => true,
+			'retention_days'         => 0, // 0 = keep forever.
 
 			// Documents.
-			'pdf_enabled'             => true,
+			'pdf_enabled'            => true,
 
 			// Emails.
-			'email_customer_enabled'  => true,
-			'email_admin_enabled'     => true,
-			'email_status_enabled'    => true,
-			'email_admin_recipient'   => '',
-			'email_from_name'         => '',
-			'email_from_address'      => '',
-			'email_customer_extra'    => '',
+			'email_customer_enabled' => true,
+			'email_admin_enabled'    => true,
+			'email_status_enabled'   => true,
+			'email_admin_recipient'  => '',
+			'email_from_name'        => '',
+			'email_from_address'     => '',
+			'email_customer_extra'   => '',
 
 			// Legal texts.
-			'legal_declaration'       => DefaultTexts::declaration(),
-			'legal_confirmation'      => DefaultTexts::confirmation(),
+			'legal_declaration'      => DefaultTexts::declaration(),
+			'legal_confirmation'     => DefaultTexts::confirmation(),
 
 			// Diagnostics.
-			'logging_enabled'         => false,
+			'logging_enabled'        => false,
 
 			// Uninstall.
-			'uninstall_remove_data'   => false,
+			'uninstall_remove_data'  => false,
 		];
 	}
 

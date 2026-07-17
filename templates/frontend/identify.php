@@ -19,10 +19,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$elallas_error    = isset( $error ) ? (string) $error : '';
-$elallas_p_order  = isset( $prefill_order ) ? (string) $prefill_order : '';
-$elallas_p_email  = isset( $prefill_email ) ? (string) $prefill_email : '';
-$elallas_orders   = ( isset( $user_orders ) && is_array( $user_orders ) ) ? $user_orders : [];
+$elallas_error   = isset( $error ) ? (string) $error : '';
+$elallas_p_order = isset( $prefill_order ) ? (string) $prefill_order : '';
+$elallas_p_email = isset( $prefill_email ) ? (string) $prefill_email : '';
+$elallas_orders  = ( isset( $user_orders ) && is_array( $user_orders ) ) ? $user_orders : [];
 ?>
 <div class="elallas-intro">
 	<h2><?php esc_html_e( 'Online elállási nyilatkozat', 'elallas-for-woo' ); ?></h2>

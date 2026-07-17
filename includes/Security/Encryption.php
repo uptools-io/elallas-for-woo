@@ -44,7 +44,7 @@ final class Encryption {
 		$tag    = '';
 		$cipher = openssl_encrypt( $value, 'aes-256-gcm', self::cipher_key(), OPENSSL_RAW_DATA, $iv, $tag );
 
-		return false === $cipher ? '' : base64_encode( $iv . $tag . $cipher );
+		return false === $cipher ? '' : base64_encode( $iv . $tag . $cipher ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode -- Base64 encoding of ciphertext, not obfuscation.
 	}
 
 	/**
@@ -58,7 +58,7 @@ final class Encryption {
 			return '';
 		}
 
-		$raw = base64_decode( $payload, true );
+		$raw = base64_decode( $payload, true ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode -- Base64 decoding of ciphertext, not obfuscation.
 
 		if ( false === $raw || strlen( $raw ) <= 28 ) {
 			return '';

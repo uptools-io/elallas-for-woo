@@ -33,7 +33,7 @@ class StatusUpdate extends \WC_Email {
 		$this->id             = 'elallas_status_update';
 		$this->customer_email = true;
 		$this->title          = __( 'Elállási ügy státusz frissítés (vevő)', 'elallas-for-woo' );
-		$this->description     = __( 'Értesítés a vevőnek, ha elállási ügyének státusza megváltozik.', 'elallas-for-woo' );
+		$this->description    = __( 'Értesítés a vevőnek, ha elállási ügyének státusza megváltozik.', 'elallas-for-woo' );
 
 		$this->template_base  = ELALLAS_FOR_WOO_PATH . 'templates/';
 		$this->template_html  = 'emails/status-update.php';
@@ -85,9 +85,9 @@ class StatusUpdate extends \WC_Email {
 			return;
 		}
 
-		$this->status_message               = $message;
-		$this->object                       = $case;
-		$this->recipient                    = $order->get_billing_email();
+		$this->status_message                 = $message;
+		$this->object                         = $case;
+		$this->recipient                      = $order->get_billing_email();
 		$this->placeholders['{case_number}']  = $case->case_number;
 		$this->placeholders['{order_number}'] = $case->order_number;
 

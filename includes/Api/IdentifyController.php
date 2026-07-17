@@ -60,9 +60,9 @@ final class IdentifyController {
 			Logger::debug(
 				'Azonosítás elutasítva.',
 				[
-					'order_number'  => $order_number,
-					'order_found'   => null !== $order,
-					'reasons'       => $result instanceof EligibilityResult ? $result->reasons : [],
+					'order_number' => $order_number,
+					'order_found'  => null !== $order,
+					'reasons'      => $result instanceof EligibilityResult ? $result->reasons : [],
 				]
 			);
 

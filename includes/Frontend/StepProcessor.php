@@ -190,6 +190,9 @@ final class StepProcessor {
 	 * @return array{view: string, data: array<string, mixed>}
 	 */
 	private function view( string $view, array $data = [] ): array {
-		return [ 'view' => $view, 'data' => $data ];
+		return [
+			'view' => $view,
+			'data' => $data,
+		];
 	}
 }

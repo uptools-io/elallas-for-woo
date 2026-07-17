@@ -52,4 +52,4 @@ if ( ! empty( $items ) ) {
 
 echo esc_html__( 'Ügy megnyitása az adminban', 'elallas-for-woo' ) . ': ' . esc_url_raw( $elallas_case_url ) . "\n\n";
 
-echo esc_html( apply_filters( 'woocommerce_email_footer_text', get_option( 'woocommerce_email_footer_text' ) ) );
+echo esc_html( apply_filters( 'woocommerce_email_footer_text', get_option( 'woocommerce_email_footer_text' ) ) ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce core email template hook.

@@ -16,7 +16,7 @@ declare(strict_types=1);
 
 defined( 'ABSPATH' ) || exit;
 
-do_action( 'woocommerce_email_header', $email_heading, $email );
+do_action( 'woocommerce_email_header', $email_heading, $email ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce core email template hook.
 ?>
 
 <p><?php esc_html_e( 'Tisztelt Vásárlónk!', 'elallas-for-woo' ); ?></p>
@@ -87,4 +87,4 @@ if ( '' !== trim( $elallas_extra ) ) {
 	echo wp_kses_post( wpautop( $elallas_extra ) );
 }
 
-do_action( 'woocommerce_email_footer', $email );
+do_action( 'woocommerce_email_footer', $email ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce core email template hook.

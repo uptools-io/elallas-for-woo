@@ -79,10 +79,10 @@ final class TabGeneral implements TabInterface {
 					<?php
 					wp_dropdown_pages(
 						[
-							'name'              => \LightweightPlugins\Elallas\Options::OPTION_NAME . '[withdrawal_page_id]',
+							'name'              => esc_attr( \LightweightPlugins\Elallas\Options::OPTION_NAME . '[withdrawal_page_id]' ),
 							'id'                => 'withdrawal_page_id',
 							'selected'          => (int) \LightweightPlugins\Elallas\Options::get( 'withdrawal_page_id' ),
-							'show_option_none'  => __( '— Válassz oldalt —', 'elallas-for-woo' ),
+							'show_option_none'  => esc_html__( '— Válassz oldalt —', 'elallas-for-woo' ),
 							'option_none_value' => 0,
 						]
 					);

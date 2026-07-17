@@ -21,7 +21,7 @@ $elallas_case_url  = admin_url( 'admin.php?page=elallas-for-woo&view=case&case_i
 
 $elallas_excepted = array_filter( $items, static fn ( $elallas_i ) => 'excepted' === $elallas_i->eligibility_flag );
 
-do_action( 'woocommerce_email_header', $email_heading, $email );
+do_action( 'woocommerce_email_header', $email_heading, $email ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce core email template hook.
 ?>
 
 <p><?php esc_html_e( 'Új elállási nyilatkozat érkezett az alábbi rendeléshez.', 'elallas-for-woo' ); ?></p>
@@ -99,4 +99,4 @@ do_action( 'woocommerce_email_header', $email_heading, $email );
 </p>
 
 <?php
-do_action( 'woocommerce_email_footer', $email );
+do_action( 'woocommerce_email_footer', $email ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce core email template hook.

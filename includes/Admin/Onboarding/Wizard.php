@@ -131,7 +131,7 @@ final class Wizard {
 
 		if ( $page > 0 ) {
 			echo '<p>' . esc_html__( 'Az elállási oldal már létezik.', 'elallas-for-woo' ) . '</p>';
-			self::link( get_edit_post_link( $page ) ?: '#', __( 'Oldal szerkesztése', 'elallas-for-woo' ) );
+			self::link( get_edit_post_link( $page ) ? get_edit_post_link( $page ) : '#', __( 'Oldal szerkesztése', 'elallas-for-woo' ) );
 			return;
 		}
 

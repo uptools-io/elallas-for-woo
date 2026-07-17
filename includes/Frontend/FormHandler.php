@@ -24,7 +24,10 @@ final class FormHandler {
 	 */
 	public function handle(): array {
 		if ( ! FormRequest::is_submission() ) {
-			return [ 'view' => 'identify', 'data' => [] ];
+			return [
+				'view' => 'identify',
+				'data' => [],
+			];
 		}
 
 		if ( ! FormRequest::verify_nonce() ) {
@@ -35,7 +38,10 @@ final class FormHandler {
 		}
 
 		if ( FormRequest::is_bot() ) {
-			return [ 'view' => 'identify', 'data' => [] ];
+			return [
+				'view' => 'identify',
+				'data' => [],
+			];
 		}
 
 		$processor = new StepProcessor();
@@ -44,7 +50,10 @@ final class FormHandler {
 			'identify' => $processor->identify(),
 			'select'   => $processor->select(),
 			'confirm'  => $processor->confirm(),
-			default    => [ 'view' => 'identify', 'data' => [] ],
+			default    => [
+				'view' => 'identify',
+				'data' => [],
+			],
 		};
 	}
 }

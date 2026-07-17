@@ -31,12 +31,17 @@ final class DownloadHandler {
 	 * @return void
 	 */
 	public function maybe_download(): void {
+		// This is a shareable GET download link authorized by a per-document
+		// token (is_authorised() below), not by a nonce — a nonce would expire
+		// and break saved/e-mailed links.
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
 		if ( ! isset( $_GET['elallas_doc'] ) ) {
 			return;
 		}
 
 		$document_id = absint( wp_unslash( $_GET['elallas_doc'] ) );
 		$token       = isset( $_GET['token'] ) ? sanitize_text_field( wp_unslash( $_GET['token'] ) ) : '';
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
 		if ( ! $this->is_authorised( $document_id, $token ) ) {
 			$this->forbidden();

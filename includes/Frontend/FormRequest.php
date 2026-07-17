@@ -107,7 +107,7 @@ final class FormRequest {
 	 * @return array<int, int>
 	 */
 	public static function selected_items(): array {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verified in FormHandler::handle() before this runs; each element is cast to int in the loop below.
 		$raw      = isset( $_POST['items'] ) && is_array( $_POST['items'] ) ? wp_unslash( $_POST['items'] ) : [];
 		$selected = [];
 

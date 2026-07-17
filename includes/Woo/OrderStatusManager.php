@@ -65,7 +65,7 @@ final class OrderStatusManager {
 					'show_in_admin_all_list'    => true,
 					'show_in_admin_status_list' => true,
 					/* translators: %s: number of orders. */
-					'label_count'               => _n_noop( $label . ' <span class="count">(%s)</span>', $label . ' <span class="count">(%s)</span>', 'elallas-for-woo' ),
+					'label_count'               => _n_noop( $label . ' <span class="count">(%s)</span>', $label . ' <span class="count">(%s)</span>', 'elallas-for-woo' ), // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralSingular,WordPress.WP.I18n.NonSingularStringLiteralPlural -- $label is an already-translated status label; only the count markup is appended at runtime.
 				]
 			);
 		}

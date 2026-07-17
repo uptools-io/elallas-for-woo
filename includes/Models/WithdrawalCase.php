@@ -14,30 +14,173 @@ namespace LightweightPlugins\Elallas\Models;
  */
 final class WithdrawalCase {
 
-	public int $id                      = 0;
-	public string $case_number          = '';
-	public int $order_id                = 0;
-	public string $order_number         = '';
-	public int $customer_id             = 0;
-	public string $customer_email_hash  = '';
+	/**
+	 * Case row primary key.
+	 *
+	 * @var int
+	 */
+	public int $id = 0;
+
+	/**
+	 * Human-readable case number.
+	 *
+	 * @var string
+	 */
+	public string $case_number = '';
+
+	/**
+	 * Related WooCommerce order ID.
+	 *
+	 * @var int
+	 */
+	public int $order_id = 0;
+
+	/**
+	 * Related WooCommerce order number.
+	 *
+	 * @var string
+	 */
+	public string $order_number = '';
+
+	/**
+	 * Related customer user ID.
+	 *
+	 * @var int
+	 */
+	public int $customer_id = 0;
+
+	/**
+	 * Hash of the customer email address.
+	 *
+	 * @var string
+	 */
+	public string $customer_email_hash = '';
+
+	/**
+	 * Encrypted customer email address, if stored.
+	 *
+	 * @var string|null
+	 */
 	public ?string $customer_email_encrypted = null;
-	public string $status               = CaseStatus::RECEIVED;
-	public string $withdrawal_type      = 'full';
-	public ?string $submitted_at        = null;
-	public ?string $confirmed_at        = null;
-	public string $deadline_status      = DeadlineStatus::UNKNOWN;
-	public ?string $order_created_at    = null;
-	public ?string $order_completed_at  = null;
-	public ?string $delivery_date       = null;
-	public string $ip_hash              = '';
-	public string $user_agent_hash      = '';
-	public string $source_url           = '';
-	public string $language             = '';
-	public int $assigned_admin_id       = 0;
-	public ?string $customer_note       = null;
+
+	/**
+	 * Current case status.
+	 *
+	 * @var string
+	 */
+	public string $status = CaseStatus::RECEIVED;
+
+	/**
+	 * Withdrawal type (full or partial).
+	 *
+	 * @var string
+	 */
+	public string $withdrawal_type = 'full';
+
+	/**
+	 * Timestamp when the case was submitted.
+	 *
+	 * @var string|null
+	 */
+	public ?string $submitted_at = null;
+
+	/**
+	 * Timestamp when the case was confirmed.
+	 *
+	 * @var string|null
+	 */
+	public ?string $confirmed_at = null;
+
+	/**
+	 * Deadline status of the case.
+	 *
+	 * @var string
+	 */
+	public string $deadline_status = DeadlineStatus::UNKNOWN;
+
+	/**
+	 * Timestamp when the related order was created.
+	 *
+	 * @var string|null
+	 */
+	public ?string $order_created_at = null;
+
+	/**
+	 * Timestamp when the related order was completed.
+	 *
+	 * @var string|null
+	 */
+	public ?string $order_completed_at = null;
+
+	/**
+	 * Delivery date of the related order.
+	 *
+	 * @var string|null
+	 */
+	public ?string $delivery_date = null;
+
+	/**
+	 * Hash of the submitter IP address.
+	 *
+	 * @var string
+	 */
+	public string $ip_hash = '';
+
+	/**
+	 * Hash of the submitter user agent.
+	 *
+	 * @var string
+	 */
+	public string $user_agent_hash = '';
+
+	/**
+	 * URL the case was submitted from.
+	 *
+	 * @var string
+	 */
+	public string $source_url = '';
+
+	/**
+	 * Language code of the submission.
+	 *
+	 * @var string
+	 */
+	public string $language = '';
+
+	/**
+	 * ID of the admin assigned to the case.
+	 *
+	 * @var int
+	 */
+	public int $assigned_admin_id = 0;
+
+	/**
+	 * Note left by the customer.
+	 *
+	 * @var string|null
+	 */
+	public ?string $customer_note = null;
+
+	/**
+	 * Encrypted bank account details, if stored.
+	 *
+	 * @var string|null
+	 */
 	public ?string $bank_account_encrypted = null;
-	public string $created_at           = '';
-	public string $updated_at           = '';
+
+	/**
+	 * Timestamp when the case row was created.
+	 *
+	 * @var string
+	 */
+	public string $created_at = '';
+
+	/**
+	 * Timestamp when the case row was last updated.
+	 *
+	 * @var string
+	 */
+	public string $updated_at = '';
 
 	/**
 	 * Build from a DB row.

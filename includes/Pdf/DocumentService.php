@@ -24,7 +24,7 @@ use LightweightPlugins\Elallas\Woo\OrderAdapter;
 final class DocumentService {
 
 	private const DOC_TYPE = 'withdrawal_statement';
-	private const DIR       = 'elallas-docs/';
+	private const DIR      = 'elallas-docs/';
 
 	/**
 	 * Generate (and persist) a withdrawal-statement PDF for a case.
@@ -76,7 +76,13 @@ final class DocumentService {
 		if ( 0 === $document_id ) {
 			Logger::error( 'PDF mentése sikertelen.', [ 'case_id' => $case_id ] );
 		} else {
-			Logger::debug( 'PDF generálva.', [ 'case_id' => $case_id, 'document_id' => $document_id ] );
+			Logger::debug(
+				'PDF generálva.',
+				[
+					'case_id'     => $case_id,
+					'document_id' => $document_id,
+				]
+			);
 		}
 
 		return $document_id;

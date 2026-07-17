@@ -27,7 +27,7 @@ final class DeadlineCalculator {
 	 * Resolve the deadline start date string from available order dates.
 	 *
 	 * @param array{created: ?string, completed: ?string, delivery: ?string} $dates  Order dates.
-	 * @param string                                                          $source order_created|order_completed|delivery|manual.
+	 * @param string                                                         $source order_created|order_completed|delivery|manual.
 	 * @return string|null
 	 */
 	public static function resolve_start( array $dates, string $source ): ?string {
