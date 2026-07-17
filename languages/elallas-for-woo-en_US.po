@@ -1496,3 +1496,7 @@ msgstr "Withdrawal form"
 msgctxt "block description"
 msgid "Online elállási nyilatkozat űrlap megjelenítése a látogatók számára."
 msgstr "Display an online withdrawal declaration form to visitors."
+
+#: includes/Admin/Settings/AccountEndpointSetting.php:56
+msgid "Az „Elállás\" fiók-végpont URL-részlete (pl. elallasaim). Mentés után a fiók menü hivatkozása automatikusan az új címre mutat."
+msgstr "URL slug for the “Withdrawal” account endpoint (e.g. withdrawals). After saving, the My account menu link automatically points to the new address."

@@ -36,7 +36,9 @@ foreach ( $lw_elallas_tables as $lw_elallas_table ) {
 // Delete options.
 delete_option( 'lw_elallas_options' );
 delete_option( 'lw_elallas_db_version' );
+delete_option( 'lw_elallas_version' );
 delete_option( 'lw_elallas_case_counter' );
+delete_option( 'woocommerce_myaccount_withdrawals_endpoint' );
 
 // Delete transients.
 delete_transient( 'lw_elallas_flush_rewrite' );

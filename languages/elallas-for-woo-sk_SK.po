@@ -1496,3 +1496,7 @@ msgstr "Formulár na odstúpenie od zmluvy"
 msgctxt "block description"
 msgid "Online elállási nyilatkozat űrlap megjelenítése a látogatók számára."
 msgstr "Zobrazenie formulára online vyhlásenia o odstúpení od zmluvy pre návštevníkov."
+
+#: includes/Admin/Settings/AccountEndpointSetting.php:56
+msgid "Az „Elállás\" fiók-végpont URL-részlete (pl. elallasaim). Mentés után a fiók menü hivatkozása automatikusan az új címre mutat."
+msgstr "URL slug účtového koncového bodu „Odstúpenie od zmluvy” (napr. odstupenie). Po uložení odkaz v ponuke účtu automaticky smeruje na novú adresu."

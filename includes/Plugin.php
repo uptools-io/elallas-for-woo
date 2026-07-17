@@ -27,6 +27,7 @@ use LightweightPlugins\Elallas\Integrations\Shipping;
 use LightweightPlugins\Elallas\Integrations\Multilingual;
 use LightweightPlugins\Elallas\Integrations\Elementor;
 use LightweightPlugins\Elallas\Admin\AdminMenu;
+use LightweightPlugins\Elallas\Admin\Settings\AccountEndpointSetting;
 use LightweightPlugins\Elallas\Admin\ProductFields;
 use LightweightPlugins\Elallas\Admin\TermFields;
 use LightweightPlugins\Elallas\Admin\NoticeManager;
@@ -139,6 +140,7 @@ final class Plugin {
 		new TermFields();
 		new NoticeManager();
 		new OrderWithdrawalNotice();
+		new AccountEndpointSetting();
 	}
 
 	/**
@@ -155,11 +157,27 @@ final class Plugin {
 	}
 
 	/**
-	 * Flush rewrite rules once after activation.
+	 * Flush rewrite rules when needed — runs at init priority 20, i.e. after the
+	 * endpoint registers at init:10, so a rebuild always includes the current slug.
+	 *
+	 * Two triggers:
+	 *  1. Plugin update — a plugin update does NOT re-run activation, so any
+	 *     endpoint/rewrite added or renamed in the new version would 404 until a
+	 *     reactivation. Flushing once per version bump closes that gap without a
+	 *     per-request cost (the version is stored, so it fires at most once).
+	 *  2. A queued flush transient — set on activation and on an endpoint-slug
+	 *     change made outside the WooCommerce settings screen (WP-CLI, code).
 	 *
 	 * @return void
 	 */
 	public function maybe_flush_rewrite(): void {
+		if ( get_option( 'lw_elallas_version' ) !== ELALLAS_FOR_WOO_VERSION ) {
+			update_option( 'lw_elallas_version', ELALLAS_FOR_WOO_VERSION );
+			flush_rewrite_rules();
+			delete_transient( 'lw_elallas_flush_rewrite' );
+			return;
+		}
+
 		if ( get_transient( 'lw_elallas_flush_rewrite' ) ) {
 			flush_rewrite_rules();
 			delete_transient( 'lw_elallas_flush_rewrite' );

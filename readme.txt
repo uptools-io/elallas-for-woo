@@ -119,6 +119,8 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 * New: a status & e-mail guide (docs/statuszok-es-emailek.md) explaining what each case status means and which e-mail fires when.
 * Fix: remaining English UI strings (autoloader/WooCommerce-required notices, honeypot label, Site Manager ability labels/messages) translated to Hungarian.
 * i18n: consent checkboxes marked required with an asterisk; regenerated the translation template.
+* New: the "My account" withdrawal endpoint slug is now editable in WooCommerce → Settings → Advanced → Account endpoints (default "withdrawals"), so it can be localized (e.g. "elallasaim"); only the public URL changes — the internal routing is unchanged, so renaming never breaks the endpoint or its account-menu link.
+* Improved: rewrite rules are re-flushed once after a plugin update (not only on activation), so endpoint changes take effect without a manual reactivation.
 
 = 1.0.12 =
 * New: WPML/Polylang compatibility — admin-entered dynamic strings (button label, confirm label, withdrawal declaration, extra e-mail text) are now translated on every output path, the withdrawal page ID resolves to the translated page, and e-mails/PDF render in the case's language.

@@ -1496,3 +1496,7 @@ msgstr "Formular de retragere"
 msgctxt "block description"
 msgid "Online elállási nyilatkozat űrlap megjelenítése a látogatók számára."
 msgstr "Afișarea formularului de declarație de retragere online pentru vizitatori."
+
+#: includes/Admin/Settings/AccountEndpointSetting.php:56
+msgid "Az „Elállás\" fiók-végpont URL-részlete (pl. elallasaim). Mentés után a fiók menü hivatkozása automatikusan az új címre mutat."
+msgstr "Fragmentul de URL (slug) al punctului final de cont „Retragere” (ex. retrageri). După salvare, linkul din meniul contului indică automat noua adresă."

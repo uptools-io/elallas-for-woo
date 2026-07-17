@@ -42,7 +42,11 @@ final class Activator {
 		self::create_documents_dir();
 		self::schedule_cron();
 
-		set_transient( 'lw_elallas_flush_rewrite', 1, 60 );
+		// Record the version so the init:20 flush treats this as up-to-date and
+		// relies on the transient below (rather than firing an extra version flush).
+		update_option( 'lw_elallas_version', ELALLAS_FOR_WOO_VERSION );
+
+		set_transient( 'lw_elallas_flush_rewrite', 1, MINUTE_IN_SECONDS );
 	}
 
 	/**
