@@ -2,6 +2,9 @@
 
 ## [1.0.13] - 2026-07-18
 
+### Added
+- English (`en_US`), Romanian (`ro_RO`), Czech (`cs_CZ`) and Slovak (`sk_SK`) translations (~342 strings each, PHP + block-editor JS), plus a regenerated `.pot`.
+
 ### Fixed
 - **Admin notification e-mail now reaches every recipient, not just the first** (issue #25). The admin-recipient option was handed to WooCommerce verbatim; `WC_Email` only splits on commas and drops anything that fails `is_email()`, so a list separated by semicolons/spaces — or one containing a malformed entry — silently collapsed to the first (or no) address. A new `Options::sanitize_email_list()` normalises comma/semicolon/space separated input into a validated, de-duplicated, comma-separated list, applied both when the admin recipient is saved and when the notification is sent.
 

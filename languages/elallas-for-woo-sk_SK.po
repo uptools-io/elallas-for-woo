@@ -4,14 +4,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Elállás for WooCommerce 1.0.13\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/elallas-for-woo\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: uptools.io <hello@uptools.io>\n"
+"Language-Team: Slovak <sk_SK@li.org>\n"
+"Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-18T04:04:17+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.12.0\n"
+"POT-Creation-Date: 2026-07-15T16:09:37+00:00\n"
+"PO-Revision-Date: 2026-07-15 16:09+0000\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Domain: elallas-for-woo\n"
 
 #. Plugin Name of the plugin
@@ -27,7 +29,7 @@ msgstr ""
 #. Description of the plugin
 #: elallas-for-woo.php
 msgid "Online withdrawal (elállás) button and case management for WooCommerce — compliant with Directive (EU) 2023/2673 and 415/2025. (XII. 23.) Korm. rendelet."
-msgstr ""
+msgstr "Online tlačidlo odstúpenia od zmluvy (elállás) a správa prípadov pre WooCommerce — v súlade so smernicou (EÚ) 2023/2673 a maďarským nariadením vlády 415/2025. (XII. 23.)."
 
 #. Author of the plugin
 #: elallas-for-woo.php
@@ -40,75 +42,76 @@ msgid "https://uptools.io"
 msgstr ""
 
 #: elallas-for-woo.php:45
-msgid "Autoloader not found. Please run \"composer install\" in the plugin directory, or re-install the plugin from a release ZIP."
-msgstr ""
+msgid "Az automatikus betöltő (autoloader) nem található. Futtasd a „composer install” parancsot a plugin könyvtárában, vagy telepítsd újra a plugint egy kiadási ZIP-ből."
+msgstr "Automatický zavádzač (autoloader) sa nenašiel. Spustite príkaz „composer install” v priečinku pluginu alebo plugin nainštalujte znova z vydaného ZIP súboru."
 
 #: includes/Admin/AdminMenu.php:41
 #: includes/Admin/AdminMenu.php:42
 #: includes/Admin/AdminMenu.php:100
 msgid "Elállási ügyek"
-msgstr ""
+msgstr "Prípady odstúpenia od zmluvy"
 
 #: includes/Admin/AdminMenu.php:50
 msgid "Elállás beállítások"
-msgstr ""
+msgstr "Nastavenia odstúpenia od zmluvy"
 
 #: includes/Admin/AdminMenu.php:51
 #: includes/Admin/Settings/SettingsPage.php:62
 msgid "Elállás – beállítások"
-msgstr ""
+msgstr "Odstúpenie od zmluvy – nastavenia"
 
 #: includes/Admin/AdminMenu.php:59
 #: includes/Admin/Onboarding/Wizard.php:37
 msgid "Elállás beüzemelése"
-msgstr ""
+msgstr "Sprevádzkovanie odstúpenia od zmluvy"
 
 #: includes/Admin/AdminMenu.php:74
 #: includes/Admin/CaseDetailPage.php:27
 #: includes/Admin/Onboarding/Wizard.php:27
 #: includes/Admin/Settings/SettingsPage.php:54
 msgid "Nincs jogosultságod ehhez az oldalhoz."
-msgstr ""
+msgstr "Na túto stránku nemáte oprávnenie."
 
 #: includes/Admin/AdminMenu.php:105
 msgid "Keresés"
-msgstr ""
+msgstr "Hľadať"
 
 #: includes/Admin/CaseActions.php:38
 #: includes/Admin/CaseActions.php:72
 msgid "Nincs jogosultságod."
-msgstr ""
+msgstr "Nemáte oprávnenie."
 
-#: includes/Admin/CaseColumns.php:63
+#: includes/Admin/CaseColumns.php:91
 msgid "Vendég"
-msgstr ""
+msgstr "Hosť"
 
 #: includes/Admin/CaseDetailPage.php:34
+#: includes/SiteManager/CaseService.php:61
 msgid "Az ügy nem található."
-msgstr ""
+msgstr "Prípad sa nenašiel."
 
 #. translators: %s: case number.
 #: includes/Admin/CaseDetailPage.php:46
-#, php-format
 msgid "Elállási ügy: %s"
-msgstr ""
+msgstr "Prípad odstúpenia od zmluvy: %s"
 
 #: includes/Admin/CaseDetailPage.php:52
 msgid "Vissza a listához"
-msgstr ""
+msgstr "Späť na zoznam"
 
 #: includes/Admin/CaseDetailPage.php:60
+#: includes/SiteManager/CaseService.php:94
 msgid "Az ügy státusza frissítve."
-msgstr ""
+msgstr "Stav prípadu bol aktualizovaný."
 
 #: includes/Admin/CaseDetailSections.php:34
 msgid "Összefoglaló"
-msgstr ""
+msgstr "Súhrn"
 
 #: includes/Admin/CaseDetailSections.php:36
 #: includes/Admin/CasesListTable.php:46
 msgid "Ügyszám"
-msgstr ""
+msgstr "Číslo prípadu"
 
 #: includes/Admin/CaseDetailSections.php:37
 #: includes/Admin/CasesListTable.php:47
@@ -116,997 +119,1028 @@ msgstr ""
 #: templates/emails/plain/admin-notification.php:37
 #: templates/frontend/my-account.php:27
 msgid "Rendelés"
-msgstr ""
+msgstr "Objednávka"
 
 #: includes/Admin/CaseDetailSections.php:38
 #: includes/Admin/CasesListTable.php:49
 #: templates/frontend/my-account.php:29
 msgid "Státusz"
-msgstr ""
+msgstr "Stav"
 
 #: includes/Admin/CaseDetailSections.php:39
 #: includes/Admin/CasesListTable.php:51
 #: includes/Models/CaseStatus.php:55
 msgid "Beérkezett"
-msgstr ""
+msgstr "Prijaté"
 
 #: includes/Admin/CaseDetailSections.php:40
 #: includes/Admin/CasesListTable.php:52
 #: includes/Admin/Onboarding/Wizard.php:84
 #: includes/Admin/Settings/TabDeadline.php:34
 msgid "Határidő"
-msgstr ""
+msgstr "Lehota"
 
 #: includes/Admin/CaseDetailSections.php:46
 msgid "Bankszámlaszám"
-msgstr ""
+msgstr "Číslo bankového účtu"
 
 #: includes/Admin/CaseDetailSections.php:59
 msgid "Vásárlói nyilatkozat és tételek"
-msgstr ""
+msgstr "Vyhlásenie zákazníka a položky"
 
 #: includes/Admin/CaseDetailSections.php:62
 msgid "Vásárló megjegyzése:"
-msgstr ""
+msgstr "Poznámka zákazníka:"
 
 #: includes/Admin/CaseDetailSections.php:67
 #: includes/Admin/Settings/TabExceptions.php:141
 #: templates/emails/admin-notification.php:73
 #: templates/emails/customer-confirmation.php:55
 #: templates/frontend/confirm.php:47
-#: templates/frontend/select.php:53
+#: templates/frontend/select.php:66
 #: templates/pdf/withdrawal-statement.php:109
 msgid "Termék"
-msgstr ""
+msgstr "Produkt"
 
 #: includes/Admin/CaseDetailSections.php:68
 msgid "SKU"
 msgstr ""
 
 #: includes/Admin/CaseDetailSections.php:69
-#: templates/frontend/select.php:54
+#: templates/frontend/select.php:67
 msgid "Rendelt"
-msgstr ""
+msgstr "Objednané"
 
 #: includes/Admin/CaseDetailSections.php:70
 msgid "Elállt"
-msgstr ""
+msgstr "Odstúpené"
 
 #: includes/Admin/CaseDetailSections.php:71
 #: templates/emails/admin-notification.php:75
 msgid "Jogosultság"
-msgstr ""
+msgstr "Oprávnenie"
 
 #: includes/Admin/CaseDetailSections.php:130
 msgid "Eseménynapló"
-msgstr ""
+msgstr "Záznam udalostí"
 
 #: includes/Admin/CaseDetailSections.php:131
 msgid "Időpont"
-msgstr ""
+msgstr "Dátum a čas"
 
 #: includes/Admin/CaseDetailSections.php:132
 #: includes/Admin/CasesListTable.php:50
 msgid "Típus"
-msgstr ""
+msgstr "Typ"
 
 #: includes/Admin/CaseDetailSections.php:133
 msgid "Üzenet"
-msgstr ""
+msgstr "Správa"
 
 #: includes/Admin/CaseDetailSections.php:154
 msgid "Admin döntés"
-msgstr ""
+msgstr "Rozhodnutie administrátora"
 
 #: includes/Admin/CaseDetailSections.php:159
 msgid "Új státusz"
-msgstr ""
+msgstr "Nový stav"
 
 #: includes/Admin/CaseDetailSections.php:171
 msgid "Üzenet a vásárlónak (opcionális)"
-msgstr ""
+msgstr "Správa pre zákazníka (voliteľné)"
 
 #: includes/Admin/CaseDetailSections.php:173
 msgid "Ha kitöltöd, bekerül a vásárlónak küldött státusz e-mailbe (pl. az elutasítás indoka)."
-msgstr ""
+msgstr "Ak ho vyplníte, pridá sa do stavového e-mailu odoslaného zákazníkovi (napr. dôvod zamietnutia)."
 
 #: includes/Admin/CaseDetailSections.php:175
 msgid "Státusz mentése"
-msgstr ""
+msgstr "Uložiť stav"
 
 #: includes/Admin/CaseDetailSections.php:186
 #: includes/Admin/Settings/TabDocuments.php:34
 #: includes/Admin/Settings/TabDocuments.php:56
 msgid "Dokumentumok"
-msgstr ""
+msgstr "Dokumenty"
 
 #: includes/Admin/CasesListTable.php:48
 msgid "Vásárló"
-msgstr ""
+msgstr "Zákazník"
 
 #: includes/Admin/CasesListTable.php:53
 msgid "Tételek"
-msgstr ""
+msgstr "Položky"
 
 #: includes/Admin/CasesListTable.php:54
 msgid "Utolsó esemény"
-msgstr ""
+msgstr "Posledná udalosť"
 
 #: includes/Admin/CasesListTable.php:106
 msgid "Manuális ellenőrzésre"
-msgstr ""
+msgstr "Na manuálnu kontrolu"
 
 #: includes/Admin/CasesListTable.php:107
 msgid "Elfogadás"
-msgstr ""
+msgstr "Schváliť"
 
 #: includes/Admin/CasesListTable.php:108
 msgid "Elutasítás"
-msgstr ""
+msgstr "Zamietnuť"
 
 #: includes/Admin/CasesListTable.php:109
 msgid "Lezárás"
-msgstr ""
+msgstr "Uzavrieť"
 
 #: includes/Admin/CasesListTable.php:110
 msgid "Törlés"
-msgstr ""
+msgstr "Odstrániť"
 
 #: includes/Admin/CasesListTable.php:127
 msgid "Minden státusz"
-msgstr ""
+msgstr "Všetky stavy"
 
 #: includes/Admin/CasesListTable.php:137
 msgid "Szűrés"
-msgstr ""
+msgstr "Filtrovať"
 
 #: includes/Admin/NoticeManager.php:58
 msgid "Elállás for WooCommerce:"
-msgstr ""
+msgstr "Elállás for WooCommerce:"
 
 #: includes/Admin/NoticeManager.php:59
 msgid "Még nincs beállítva elállási oldal. Indítsd el a beüzemelést."
-msgstr ""
+msgstr "Zatiaľ nie je nastavená stránka odstúpenia od zmluvy. Spustite sprevádzkovanie."
 
 #: includes/Admin/NoticeManager.php:61
 msgid "Beüzemelés indítása"
-msgstr ""
+msgstr "Spustiť sprevádzkovanie"
 
 #: includes/Admin/NoticeManager.php:63
 msgid "Elrejtés"
-msgstr ""
+msgstr "Skryť"
 
 #: includes/Admin/Onboarding/PageCreator.php:69
 #: includes/Frontend/MyAccountEndpoint.php:71
 #: includes/Frontend/MyAccountEndpoint.php:76
 msgid "Elállás"
-msgstr ""
+msgstr "Odstúpenie od zmluvy"
 
 #: includes/Admin/Onboarding/Wizard.php:81
 msgid "Bolt adatai"
-msgstr ""
+msgstr "Údaje obchodu"
 
 #: includes/Admin/Onboarding/Wizard.php:82
 #: includes/Admin/Settings/TabGeneral.php:77
 msgid "Elállási oldal"
-msgstr ""
+msgstr "Stránka odstúpenia od zmluvy"
 
 #: includes/Admin/Onboarding/Wizard.php:83
 msgid "Megjelenítés"
-msgstr ""
+msgstr "Zobrazenie"
 
 #: includes/Admin/Onboarding/Wizard.php:85
 msgid "Teszt"
-msgstr ""
+msgstr "Test"
 
 #: includes/Admin/Onboarding/Wizard.php:100
 msgid "Ellenőrizd a bolt nevét, címét és elérhetőségeit a WooCommerce beállításokban."
-msgstr ""
+msgstr "Skontrolujte názov, adresu a kontaktné údaje obchodu v nastaveniach WooCommerce."
 
 #: includes/Admin/Onboarding/Wizard.php:101
 msgid "WooCommerce beállítások"
-msgstr ""
+msgstr "Nastavenia WooCommerce"
 
 #: includes/Admin/Onboarding/Wizard.php:107
 msgid "Állítsd be, hol jelenjen meg az elállási link (lábléc, fiók, rendelés)."
-msgstr ""
+msgstr "Nastavte, kde sa má zobraziť odkaz na odstúpenie od zmluvy (päta, účet, objednávka)."
 
 #: includes/Admin/Onboarding/Wizard.php:108
 msgid "Megjelenítés beállítása"
-msgstr ""
+msgstr "Nastavenie zobrazenia"
 
 #: includes/Admin/Onboarding/Wizard.php:111
 msgid "Add meg az elállási határidőt és annak kezdő időpontját."
-msgstr ""
+msgstr "Zadajte lehotu na odstúpenie od zmluvy a jej začiatok."
 
 #: includes/Admin/Onboarding/Wizard.php:112
 msgid "Határidő beállítása"
-msgstr ""
+msgstr "Nastavenie lehoty"
 
 #: includes/Admin/Onboarding/Wizard.php:115
 msgid "Nyisd meg az elállási oldalt, és próbáld ki a folyamatot egy teszt rendeléssel."
-msgstr ""
+msgstr "Otvorte stránku odstúpenia od zmluvy a vyskúšajte proces s testovacou objednávkou."
 
 #: includes/Admin/Onboarding/Wizard.php:118
 msgid "Elállási oldal megnyitása"
-msgstr ""
+msgstr "Otvoriť stránku odstúpenia od zmluvy"
 
 #: includes/Admin/Onboarding/Wizard.php:133
 msgid "Az elállási oldal már létezik."
-msgstr ""
+msgstr "Stránka odstúpenia od zmluvy už existuje."
 
 #: includes/Admin/Onboarding/Wizard.php:134
 msgid "Oldal szerkesztése"
-msgstr ""
+msgstr "Upraviť stránku"
 
 #: includes/Admin/Onboarding/Wizard.php:138
 msgid "Létrehozunk egy \"Elállás\" oldalt az [elallas_form] rövidkóddal."
-msgstr ""
+msgstr "Vytvoríme stránku \"Odstúpenie od zmluvy\" so skráteným kódom [elallas_form]."
 
 #: includes/Admin/Onboarding/Wizard.php:142
 msgid "Elállási oldal létrehozása"
-msgstr ""
+msgstr "Vytvoriť stránku odstúpenia od zmluvy"
 
 #: includes/Admin/OrderWithdrawalNotice.php:47
 msgid "Elállási igény"
-msgstr ""
+msgstr "Žiadosť o odstúpenie od zmluvy"
 
 #: includes/Admin/OrderWithdrawalNotice.php:60
 msgid "kizárt tételt tartalmaz"
-msgstr ""
+msgstr "obsahuje vylúčenú položku"
 
 #: includes/Admin/ProductFields.php:45
 msgid "Bontatlan állapot szükséges"
-msgstr ""
+msgstr "Vyžaduje sa neotvorený stav"
 
 #: includes/Admin/ProductFields.php:46
 msgid "Egyedi / személyre szabott termék"
-msgstr ""
+msgstr "Individuálny / personalizovaný produkt"
 
 #: includes/Admin/ProductFields.php:47
 msgid "Digitális tartalom"
-msgstr ""
+msgstr "Digitálny obsah"
 
 #: includes/Admin/ProductFields.php:48
 msgid "Szolgáltatás"
-msgstr ""
+msgstr "Služba"
 
 #: includes/Admin/ProductFields.php:49
 msgid "Higiéniai ok"
-msgstr ""
+msgstr "Hygienický dôvod"
 
 #: includes/Admin/ProductFields.php:50
 msgid "Romlandó termék"
-msgstr ""
+msgstr "Produkt podliehajúci skaze"
 
 #: includes/Admin/ProductFields.php:51
 msgid "Zárt csomagolás felbontva"
-msgstr ""
+msgstr "Rozbalené zapečatené balenie"
 
 #: includes/Admin/ProductFields.php:68
 #: includes/Admin/TermFields.php:88
 #: includes/Admin/TermFields.php:108
 msgid "Elállásból kizárt"
-msgstr ""
+msgstr "Vylúčené z odstúpenia od zmluvy"
 
 #: includes/Admin/ProductFields.php:69
 msgid "A termék nem küldhető be online elállásra."
-msgstr ""
+msgstr "Produkt nie je možné odoslať na online odstúpenie od zmluvy."
 
 #: includes/Admin/ProductFields.php:77
 #: includes/Admin/Settings/TabExceptions.php:142
 #: includes/Admin/Settings/TabExceptions.php:195
 msgid "Kizárás indoka"
-msgstr ""
+msgstr "Dôvod vylúčenia"
 
 #: includes/Admin/ProductFields.php:78
 #: includes/Admin/TermFields.php:152
 msgid "— Válassz indokot —"
-msgstr ""
+msgstr "— Vyberte dôvod —"
 
 #: includes/Admin/Settings/SettingsPage.php:64
 msgid "Beállítások elmentve."
-msgstr ""
+msgstr "Nastavenia boli uložené."
 
 #: includes/Admin/Settings/TabDeadline.php:57
 msgid "Elállási határidő"
-msgstr ""
+msgstr "Lehota na odstúpenie od zmluvy"
 
 #: includes/Admin/Settings/TabDeadline.php:59
 msgid "A határidő csak jelzés (flag), soha nem blokkolja automatikusan a beküldést."
-msgstr ""
+msgstr "Lehota je len indikátor (flag), nikdy automaticky neblokuje odoslanie."
 
 #: includes/Admin/Settings/TabDeadline.php:63
 msgid "Határidő (nap)"
-msgstr ""
+msgstr "Lehota (dni)"
 
 #: includes/Admin/Settings/TabDeadline.php:75
 msgid "Határidő kezdete"
-msgstr ""
+msgstr "Začiatok lehoty"
 
 #: includes/Admin/Settings/TabDeadline.php:81
 msgid "Rendelés létrehozása"
-msgstr ""
+msgstr "Vytvorenie objednávky"
 
 #: includes/Admin/Settings/TabDeadline.php:82
 msgid "Rendelés teljesítése"
-msgstr ""
+msgstr "Splnenie objednávky"
 
 #: includes/Admin/Settings/TabDeadline.php:83
 msgid "Kézbesítés napja"
-msgstr ""
+msgstr "Deň doručenia"
 
 #: includes/Admin/Settings/TabDeadline.php:84
 msgid "Manuális (ellenőrzést igényel)"
-msgstr ""
+msgstr "Manuálne (vyžaduje kontrolu)"
 
 #: includes/Admin/Settings/TabDeadline.php:91
 msgid "Lejárt határidő kezelése"
-msgstr ""
+msgstr "Spracovanie uplynutej lehoty"
 
 #: includes/Admin/Settings/TabDeadline.php:97
 msgid "Engedélyezés figyelmeztetéssel (ajánlott)"
-msgstr ""
+msgstr "Povoliť s upozornením (odporúčané)"
 
 #: includes/Admin/Settings/TabDeadline.php:98
 msgid "Manuális jóváhagyás szükséges"
-msgstr ""
+msgstr "Vyžaduje sa manuálne schválenie"
 
 #: includes/Admin/Settings/TabDeadline.php:99
 msgid "Blokkolás (jogi kockázat!)"
-msgstr ""
+msgstr "Blokovanie (právne riziko!)"
 
 #: includes/Admin/Settings/TabDocuments.php:59
 msgid "PDF dokumentum"
-msgstr ""
+msgstr "PDF dokument"
 
 #: includes/Admin/Settings/TabDocuments.php:60
 msgid "PDF nyilatkozat generálása (tartós adathordozó)"
-msgstr ""
+msgstr "Generovanie vyhlásenia vo formáte PDF (trvanlivý nosič)"
 
 #: includes/Admin/Settings/TabDocuments.php:63
 msgid "Megőrzési idő (nap)"
-msgstr ""
+msgstr "Doba uchovávania (dni)"
 
 #: includes/Admin/Settings/TabDocuments.php:72
 #: includes/Admin/Settings/TabPrivacy.php:87
 msgid "0 = korlátlan megőrzés."
-msgstr ""
+msgstr "0 = neobmedzené uchovávanie."
 
 #: includes/Admin/Settings/TabEmails.php:34
 msgid "E-mailek"
-msgstr ""
-
-#: includes/Admin/Settings/TabEmails.php:61
-msgid "E-mail értesítések"
-msgstr ""
-
-#: includes/Admin/Settings/TabEmails.php:64
-msgid "Vásárlói visszaigazolás"
-msgstr ""
+msgstr "E-maily"
 
 #: includes/Admin/Settings/TabEmails.php:65
-msgid "Visszaigazoló e-mail a vásárlónak (tartós adathordozó)"
-msgstr ""
+msgid "E-mail értesítések"
+msgstr "E-mailové upozornenia"
 
 #: includes/Admin/Settings/TabEmails.php:68
-msgid "Admin értesítés"
-msgstr ""
+msgid "Vásárlói visszaigazolás"
+msgstr "Potvrdenie pre zákazníka"
 
 #: includes/Admin/Settings/TabEmails.php:69
-msgid "Értesítés az adminisztrátornak új elállásról"
-msgstr ""
+msgid "Visszaigazoló e-mail a vásárlónak (tartós adathordozó)"
+msgstr "Potvrdzujúci e-mail pre zákazníka (trvanlivý nosič)"
 
 #: includes/Admin/Settings/TabEmails.php:72
-msgid "Státusz e-mail"
-msgstr ""
+msgid "Admin értesítés"
+msgstr "Upozornenie pre administrátora"
 
 #: includes/Admin/Settings/TabEmails.php:73
-msgid "Vásárló értesítése státuszváltozáskor"
-msgstr ""
+msgid "Értesítés az adminisztrátornak új elállásról"
+msgstr "Upozornenie administrátorovi o novom odstúpení od zmluvy"
 
 #: includes/Admin/Settings/TabEmails.php:76
-msgid "Admin címzett"
-msgstr ""
+msgid "Státusz e-mail"
+msgstr "Stavový e-mail"
 
 #: includes/Admin/Settings/TabEmails.php:77
-msgid "Több címzett is megadható vesszővel, pontosvesszővel vagy szóközzel elválasztva. Üresen hagyva az oldal adminisztrátori e-mail címe."
-msgstr ""
+msgid "Vásárló értesítése státuszváltozáskor"
+msgstr "Upozornenie zákazníka pri zmene stavu"
 
 #: includes/Admin/Settings/TabEmails.php:80
-msgid "Vásárlói e-mail extra szöveg"
-msgstr ""
+msgid "Admin címzett"
+msgstr "Príjemca (administrátor)"
 
 #: includes/Admin/Settings/TabEmails.php:81
-msgid "A visszaigazoló e-mail aljához fűzött szöveg (pl. visszaküldési cím, ügyfélszolgálat). A tárgyat és a fejlécet a WooCommerce → Beállítások → E-mailek alatt szabhatod testre, a teljes sablont pedig a témád elallas-for-woo/emails/ mappájában írhatod felül."
-msgstr ""
+msgid "Több címzett is megadható, vesszővel, pontosvesszővel vagy szóközzel elválasztva. Üresen hagyva az oldal adminisztrátori e-mail címe."
+msgstr "Môžete zadať aj viac príjemcov oddelených čiarkou, bodkočiarkou alebo medzerou. Ak necháte prázdne, použije sa e-mailová adresa administrátora stránky."
 
 #: includes/Admin/Settings/TabEmails.php:84
-msgid "Feladó neve"
-msgstr ""
+msgid "Vásárlói e-mail extra szöveg"
+msgstr "Doplnkový text zákazníckeho e-mailu"
 
 #: includes/Admin/Settings/TabEmails.php:85
-msgid "A plugin e-mailjeinek feladó neve. Üresen hagyva a WooCommerce beállítás érvényes."
-msgstr ""
+msgid "A visszaigazoló e-mail aljához fűzött szöveg (pl. visszaküldési cím, ügyfélszolgálat). A tárgyat és a fejlécet a WooCommerce → Beállítások → E-mailek alatt szabhatod testre, a teljes sablont pedig a témád elallas-for-woo/emails/ mappájában írhatod felül."
+msgstr "Text pripojený na koniec potvrdzujúceho e-mailu (napr. adresa na vrátenie tovaru, zákaznícka podpora). Predmet a hlavičku môžete prispôsobiť v časti WooCommerce → Nastavenia → E-maily a celú šablónu môžete prepísať v priečinku elallas-for-woo/emails/ vašej šablóny."
 
 #: includes/Admin/Settings/TabEmails.php:88
-msgid "Feladó e-mail címe"
-msgstr ""
+msgid "Rendelési e-mail elállási szövege"
+msgstr "Text o odstúpení od zmluvy v e-maile s objednávkou"
 
-#: includes/Admin/Settings/TabEmails.php:89
+#: includes/Admin/Settings/TabEmails.php:90
+msgid "A WooCommerce rendelési e-mailekbe fűzött szöveg az elállási link köré (csak akkor jelenik meg, ha az Általános fülön a „Rendelési e-mailben\" megjelenítés be van kapcsolva). A {link} helyőrző helyére a beállított elállási oldalra mutató hivatkozás kerül; ha nincs {link} a szövegben, a hivatkozás a szöveg után kerül. Üresen hagyva csak a hivatkozás jelenik meg."
+msgstr "Text vložený do e-mailov s objednávkou od WooCommerce okolo odkazu na odstúpenie od zmluvy (zobrazí sa iba vtedy, ak je na karte Všeobecné zapnuté zobrazenie „V e-maile s objednávkou\"). Na miesto zástupného symbolu {link} sa vloží odkaz na nastavenú stránku odstúpenia od zmluvy; ak sa v texte nenachádza {link}, odkaz sa vloží za text. Ak necháte prázdne, zobrazí sa iba odkaz."
+
+#: includes/Admin/Settings/TabEmails.php:94
+msgid "Tájékoztató / ÁSZF link"
+msgstr "Odkaz na informácie / obchodné podmienky"
+
+#: includes/Admin/Settings/TabEmails.php:95
+msgid "Hivatkozás elhelyezése minden elállási e-mail alján (új lapon nyílik)"
+msgstr "Umiestnenie odkazu v päte každého e-mailu o odstúpení od zmluvy (otvorí sa na novej karte)"
+
+#: includes/Admin/Settings/TabEmails.php:98
+msgid "Tájékoztató URL"
+msgstr "URL informácií"
+
+#: includes/Admin/Settings/TabEmails.php:99
+msgid "A hivatkozott oldal címe (pl. ÁSZF, elállási vagy adatkezelési tájékoztató). Üresen hagyva a WooCommerce → Beállítások → Speciális alatt beállított ÁSZF oldal érvényes."
+msgstr "Adresa odkazovanej stránky (napr. obchodné podmienky, informácie o odstúpení od zmluvy alebo o spracúvaní údajov). Ak necháte prázdne, použije sa stránka s obchodnými podmienkami nastavená v časti WooCommerce → Nastavenia → Pokročilé."
+
+#: includes/Admin/Settings/TabEmails.php:102
+msgid "Tájékoztató link felirata"
+msgstr "Text odkazu na informácie"
+
+#: includes/Admin/Settings/TabEmails.php:103
+msgid "A hivatkozás megjelenő szövege az e-mailekben."
+msgstr "Zobrazený text odkazu v e-mailoch."
+
+#: includes/Admin/Settings/TabEmails.php:106
+msgid "Feladó neve"
+msgstr "Meno odosielateľa"
+
+#: includes/Admin/Settings/TabEmails.php:107
+msgid "A plugin e-mailjeinek feladó neve. Üresen hagyva a WooCommerce beállítás érvényes."
+msgstr "Meno odosielateľa e-mailov pluginu. Ak necháte prázdne, použije sa nastavenie WooCommerce."
+
+#: includes/Admin/Settings/TabEmails.php:110
+msgid "Feladó e-mail címe"
+msgstr "E-mailová adresa odosielateľa"
+
+#: includes/Admin/Settings/TabEmails.php:111
 msgid "A plugin e-mailjeinek feladó (From) címe. Állítsd egy figyelt postafiókra, hogy a vásárlói válaszok is megérkezzenek. Üresen hagyva a WooCommerce alapértelmezett feladó címe."
-msgstr ""
+msgstr "Adresa odosielateľa (From) e-mailov pluginu. Nastavte ju na sledovanú schránku, aby prišli aj odpovede zákazníkov. Ak necháte prázdne, použije sa predvolená adresa odosielateľa WooCommerce."
 
 #: includes/Admin/Settings/TabExceptions.php:39
 msgid "Kivételek"
-msgstr ""
+msgstr "Výnimky"
 
 #: includes/Admin/Settings/TabExceptions.php:58
 msgid "Elállásból kizárt termékek"
-msgstr ""
+msgstr "Produkty vylúčené z odstúpenia od zmluvy"
 
 #: includes/Admin/Settings/TabExceptions.php:67
 msgid "Termék szinten"
-msgstr ""
+msgstr "Na úrovni produktu"
 
 #: includes/Admin/Settings/TabExceptions.php:70
 msgid "Nyisd meg a kívánt terméket, és a \"Termékadatok → Általános\" fülön jelöld be az \"Elállásból kizárt\" lehetőséget, valamint válaszd ki a kizárás indokát."
-msgstr ""
+msgstr "Otvorte požadovaný produkt a na karte \"Údaje produktu → Všeobecné\" začiarknite možnosť \"Vylúčené z odstúpenia od zmluvy\" a vyberte dôvod vylúčenia."
 
 #: includes/Admin/Settings/TabExceptions.php:78
 msgid "Termékek megnyitása"
-msgstr ""
+msgstr "Otvoriť produkty"
 
 #: includes/Admin/Settings/TabExceptions.php:82
 msgid "Kategória vagy címke szinten"
-msgstr ""
+msgstr "Na úrovni kategórie alebo štítka"
 
 #: includes/Admin/Settings/TabExceptions.php:85
 msgid "Nyiss meg egy termékkategóriát vagy -címkét szerkesztésre, és jelöld be az \"Elállásból kizárt\" lehetőséget az indokkal. Az adott kategóriába/címkébe tartozó termékek automatikusan \"kizárt\"-ként jelölődnek az elállási ügyekben. A termék szintű beállítás elsőbbséget élvez. A kizárás jelöl, nem automatikusan tilt."
-msgstr ""
+msgstr "Otvorte kategóriu alebo štítok produktu na úpravu a začiarknite možnosť \"Vylúčené z odstúpenia od zmluvy\" spolu s dôvodom. Produkty patriace do danej kategórie/štítka sa v prípadoch odstúpenia od zmluvy automaticky označia ako \"vylúčené\". Nastavenie na úrovni produktu má prednosť. Vylúčenie iba označuje, automaticky nezakazuje."
 
 #: includes/Admin/Settings/TabExceptions.php:93
 msgid "Kategóriák megnyitása"
-msgstr ""
+msgstr "Otvoriť kategórie"
 
 #: includes/Admin/Settings/TabExceptions.php:96
 msgid "Címkék megnyitása"
-msgstr ""
+msgstr "Otvoriť štítky"
 
 #: includes/Admin/Settings/TabExceptions.php:133
 msgid "Kizárt termékek (termék szinten)"
-msgstr ""
+msgstr "Vylúčené produkty (na úrovni produktu)"
 
 #: includes/Admin/Settings/TabExceptions.php:136
 msgid "Jelenleg egyetlen termék sincs termék szinten kizárva."
-msgstr ""
+msgstr "Momentálne nie je na úrovni produktu vylúčený žiadny produkt."
 
 #: includes/Admin/Settings/TabExceptions.php:152
 #: includes/Admin/Settings/TabExceptions.php:204
 msgid "Szerkesztés"
-msgstr ""
+msgstr "Upraviť"
 
 #: includes/Admin/Settings/TabExceptions.php:158
 msgid "Legfeljebb 100 termék jelenik meg."
-msgstr ""
+msgstr "Zobrazí sa najviac 100 produktov."
 
 #: includes/Admin/Settings/TabExceptions.php:168
 msgid "Kizárt kategóriák"
-msgstr ""
+msgstr "Vylúčené kategórie"
 
 #: includes/Admin/Settings/TabExceptions.php:169
 msgid "Kizárt címkék"
-msgstr ""
+msgstr "Vylúčené štítky"
 
 #: includes/Admin/Settings/TabExceptions.php:189
 msgid "Nincs kizárt elem."
-msgstr ""
+msgstr "Žiadne vylúčené položky."
 
 #: includes/Admin/Settings/TabExceptions.php:194
 msgid "Név"
-msgstr ""
+msgstr "Názov"
 
 #: includes/Admin/Settings/TabGeneral.php:34
 msgid "Általános"
-msgstr ""
+msgstr "Všeobecné"
 
 #: includes/Admin/Settings/TabGeneral.php:62
 msgid "Általános beállítások"
-msgstr ""
+msgstr "Všeobecné nastavenia"
 
 #: includes/Admin/Settings/TabGeneral.php:65
 msgid "Bekapcsolás"
-msgstr ""
+msgstr "Zapnutie"
 
 #: includes/Admin/Settings/TabGeneral.php:66
 msgid "Online elállási nyilatkozat engedélyezése"
-msgstr ""
+msgstr "Povoliť online vyhlásenie o odstúpení od zmluvy"
 
 #: includes/Admin/Settings/TabGeneral.php:69
 msgid "Gomb felirata"
-msgstr ""
+msgstr "Text tlačidla"
 
 #: includes/Admin/Settings/TabGeneral.php:73
 msgid "Megerősítés gomb felirata"
-msgstr ""
+msgstr "Text potvrdzovacieho tlačidla"
 
 #: includes/Admin/Settings/TabGeneral.php:85
 msgid "— Válassz oldalt —"
-msgstr ""
+msgstr "— Vyberte stránku —"
 
 #: includes/Admin/Settings/TabGeneral.php:90
 msgid "Az az oldal, amely tartalmazza az [elallas_form] rövidkódot."
-msgstr ""
+msgstr "Stránka, ktorá obsahuje skrátený kód [elallas_form]."
 
 #: includes/Admin/Settings/TabGeneral.php:94
 msgid "Megjelenítési helyek"
-msgstr ""
+msgstr "Miesta zobrazenia"
 
 #: includes/Admin/Settings/TabGeneral.php:96
 msgid "Fiók oldalon"
-msgstr ""
+msgstr "Na stránke účtu"
 
 #: includes/Admin/Settings/TabGeneral.php:97
 msgid "Rendelés részleteinél"
-msgstr ""
+msgstr "Pri detailoch objednávky"
 
 #: includes/Admin/Settings/TabGeneral.php:98
 msgid "Rendelési e-mailben"
-msgstr ""
+msgstr "V e-maile s objednávkou"
 
 #: includes/Admin/Settings/TabGeneral.php:102
 msgid "Debug naplózás"
-msgstr ""
+msgstr "Ladiace zaznamenávanie (debug)"
 
 #: includes/Admin/Settings/TabGeneral.php:104
 msgid "Részletes naplózás a WooCommerce → Állapot → Naplók alá (forrás: elallas-for-woo)"
-msgstr ""
+msgstr "Podrobné zaznamenávanie do WooCommerce → Stav → Záznamy (zdroj: elallas-for-woo)"
 
 #: includes/Admin/Settings/TabGeneral.php:105
 msgid "Hibák és figyelmeztetések bekapcsolás nélkül is naplózódnak. Bekapcsolva a részletes (info/debug) események is bekerülnek. Nem tartalmaz személyes adatot."
-msgstr ""
+msgstr "Chyby a upozornenia sa zaznamenávajú aj bez zapnutia. Po zapnutí sa zaznamenajú aj podrobné (info/debug) udalosti. Neobsahuje osobné údaje."
 
 #: includes/Admin/Settings/TabLegal.php:36
 #: includes/Admin/Settings/TabLegal.php:58
 msgid "Jogi szövegek"
-msgstr ""
+msgstr "Právne texty"
 
 #: includes/Admin/Settings/TabLegal.php:64
 msgid "Elállási nyilatkozat szövege"
-msgstr ""
+msgstr "Text vyhlásenia o odstúpení od zmluvy"
 
 #: includes/Admin/Settings/TabLegal.php:68
 msgid "Visszaigazolás szövege"
-msgstr ""
+msgstr "Text potvrdenia"
 
 #: includes/Admin/Settings/TabLegal.php:73
 msgid "Helyettesítők: {submitted_at}, {case_number}."
-msgstr ""
+msgstr "Zástupné symboly: {submitted_at}, {case_number}."
 
 #: includes/Admin/Settings/TabPrivacy.php:34
 msgid "Adatvédelem"
-msgstr ""
+msgstr "Ochrana osobných údajov"
 
 #: includes/Admin/Settings/TabPrivacy.php:58
 msgid "Ne tárolja"
-msgstr ""
+msgstr "Neukladať"
 
 #: includes/Admin/Settings/TabPrivacy.php:59
 msgid "Hash (ajánlott)"
-msgstr ""
+msgstr "Hash (odporúčané)"
 
 #: includes/Admin/Settings/TabPrivacy.php:60
 msgid "Teljes érték"
-msgstr ""
+msgstr "Úplná hodnota"
 
 #: includes/Admin/Settings/TabPrivacy.php:63
 msgid "Adatvédelem és adatmegőrzés"
-msgstr ""
+msgstr "Ochrana osobných údajov a ich uchovávanie"
 
 #: includes/Admin/Settings/TabPrivacy.php:66
 msgid "IP cím tárolása"
-msgstr ""
+msgstr "Ukladanie IP adresy"
 
 #: includes/Admin/Settings/TabPrivacy.php:70
 msgid "User agent tárolása"
-msgstr ""
+msgstr "Ukladanie user agenta"
 
 #: includes/Admin/Settings/TabPrivacy.php:74
 msgid "E-mail titkosítás"
-msgstr ""
+msgstr "Šifrovanie e-mailu"
 
 #: includes/Admin/Settings/TabPrivacy.php:75
 msgid "Vásárlói e-mail cím titkosított tárolása"
-msgstr ""
+msgstr "Šifrované ukladanie e-mailovej adresy zákazníka"
 
 #: includes/Admin/Settings/TabPrivacy.php:78
 msgid "Adatmegőrzés (nap)"
-msgstr ""
+msgstr "Uchovávanie údajov (dni)"
 
 #: includes/Admin/Settings/TabStatuses.php:36
 msgid "Rendelési státuszok"
-msgstr ""
+msgstr "Stavy objednávok"
 
 #: includes/Admin/Settings/TabStatuses.php:60
 msgid "Elállásra jogosult rendelési státuszok"
-msgstr ""
+msgstr "Stavy objednávok oprávnené na odstúpenie od zmluvy"
 
 #: includes/Admin/Settings/TabStatuses.php:62
 msgid "Mely rendelési státuszú rendelésekhez engedélyezett az online elállás."
-msgstr ""
+msgstr "Pri objednávkach s ktorými stavmi je povolené online odstúpenie od zmluvy."
 
 #: includes/Admin/Settings/TabStatuses.php:66
 msgid "Jogosult státuszok"
-msgstr ""
+msgstr "Oprávnené stavy"
 
 #: includes/Admin/Settings/TabStatuses.php:80
 msgid "A WooCommerce nem érhető el a státuszok lekéréséhez."
-msgstr ""
+msgstr "WooCommerce nie je dostupné na načítanie stavov."
 
 #: includes/Admin/Settings/TabStatuses.php:85
 msgid "Saját WooCommerce státuszok"
-msgstr ""
+msgstr "Vlastné stavy WooCommerce"
 
 #: includes/Admin/Settings/TabStatuses.php:86
 msgid "Egyedi elállási rendelési státuszok használata"
-msgstr ""
+msgstr "Používať vlastné stavy objednávok pre odstúpenie od zmluvy"
 
 #: includes/Admin/TermFields.php:90
 msgid "Az ebbe a kategóriába/címkébe tartozó termékek \"kizárt\"-ként jelölődnek az elállási ügyekben."
-msgstr ""
+msgstr "Produkty patriace do tejto kategórie/štítka sa v prípadoch odstúpenia od zmluvy označia ako \"vylúčené\"."
 
 #: includes/Admin/TermFields.php:112
 msgid "A kategóriába/címkébe tartozó termékek kizárása az online elállásból"
-msgstr ""
+msgstr "Vylúčenie produktov patriacich do kategórie/štítka z online odstúpenia od zmluvy"
 
 #: includes/Admin/TermFields.php:114
 msgid "Az érintett tételek \"kizárt\"-ként jelölődnek az elállási ügyekben (jelölés, nem automatikus tiltás)."
-msgstr ""
+msgstr "Dotknuté položky sa v prípadoch odstúpenia od zmluvy označia ako \"vylúčené\" (označenie, nie automatický zákaz)."
 
 #: includes/Admin/TermFields.php:150
 msgid "Kizárás indoka:"
-msgstr ""
+msgstr "Dôvod vylúčenia:"
 
 #: includes/Api/CasesController.php:107
 msgid "A státusz nem módosítható (érvénytelen vagy azonos állapot)."
-msgstr ""
+msgstr "Stav nie je možné zmeniť (neplatný alebo rovnaký stav)."
 
 #: includes/Api/CasesController.php:130
 msgid "Az elállási ügy nem található."
-msgstr ""
+msgstr "Prípad odstúpenia od zmluvy sa nenašiel."
+
+#: includes/Api/CaseWriteHandler.php:100
+#: includes/Frontend/StepProcessor.php:295
+msgid "Az elállási kérelmét nem tudjuk teljesíteni, mert az érintett termék(ek)re a jogszabály szerint nem gyakorolható elállási jog:"
+msgstr "Vašu žiadosť o odstúpenie od zmluvy nemôžeme vybaviť, pretože pri dotknutom produkte (produktoch) nie je podľa právnych predpisov možné uplatniť právo na odstúpenie od zmluvy:"
 
 #: includes/Api/DocumentController.php:85
 msgid "A dokumentum nem található."
-msgstr ""
+msgstr "Dokument sa nenašiel."
 
 #: includes/Cron/RetentionCleaner.php:63
 msgid "Az ügy személyes adatai a megőrzési idő lejárta miatt anonimizálva lettek."
-msgstr ""
+msgstr "Osobné údaje prípadu boli z dôvodu uplynutia doby uchovávania anonymizované."
 
 #: includes/Data/DefaultTexts.php:52
 msgid "A szövegminta nem minősül jogi tanácsadásnak. Használat előtt ellenőriztesd a webshopodra vonatkozó ÁSZF-fel és jogi szakértővel."
-msgstr ""
+msgstr "Vzorový text nepredstavuje právne poradenstvo. Pred použitím ho dajte skontrolovať podľa obchodných podmienok vášho e-shopu a právnym odborníkom."
 
 #: includes/Data/DefaultTexts.php:61
 msgid "A megadott adatok alapján nem található elállásra alkalmas rendelés, vagy a rendelés nem jogosult online elállási nyilatkozat beküldésére."
-msgstr ""
+msgstr "Na základe zadaných údajov sa nenašla objednávka vhodná na odstúpenie od zmluvy, alebo objednávka nie je oprávnená na odoslanie online vyhlásenia o odstúpení od zmluvy."
 
 #: includes/Data/DefaultTexts.php:70
 msgid "A rendszer számítása szerint az elállási nyilatkozat a beállított határidőn túl érkezett. Kérjük, manuálisan ellenőrizze a teljesítés, átadás vagy kézbesítés időpontját, valamint az ÁSZF és a vonatkozó jogszabályok alapján alkalmazandó szabályokat."
-msgstr ""
+msgstr "Podľa výpočtu systému bolo vyhlásenie o odstúpení od zmluvy doručené po uplynutí nastavenej lehoty. Skontrolujte manuálne dátum splnenia, odovzdania alebo doručenia, ako aj pravidlá uplatniteľné podľa obchodných podmienok a príslušných právnych predpisov."
 
 #: includes/Data/DefaultTexts.php:79
 msgid "A kivétel beállítása jogi kockázatot hordozhat. Ellenőriztesd az ÁSZF-fel és jogásszal."
-msgstr ""
+msgstr "Nastavenie výnimky môže predstavovať právne riziko. Dajte ho skontrolovať podľa obchodných podmienok a právnikom."
 
 #: includes/Domain/B2BDetector.php:51
 msgid "Adószám mező kitöltve"
-msgstr ""
+msgstr "Vyplnené pole daňového čísla"
 
 #: includes/Domain/B2BDetector.php:55
 msgid "Cégnév megadva"
-msgstr ""
+msgstr "Zadaný názov firmy"
 
 #: includes/Domain/B2BDetector.php:58
 msgid "Nincs B2B jelző"
-msgstr ""
+msgstr "Žiadny B2B indikátor"
 
 #: includes/Domain/CaseService.php:75
 msgid "Elállási nyilatkozat beérkezett."
-msgstr ""
+msgstr "Vyhlásenie o odstúpení od zmluvy bolo prijaté."
 
-#: includes/Domain/CaseService.php:123
+#: includes/Domain/CaseService.php:117
 msgid "A fogyasztó megerősítette a nyilatkozatot."
-msgstr ""
+msgstr "Spotrebiteľ potvrdil vyhlásenie."
 
 #. translators: 1: old status label, 2: new status label.
-#: includes/Domain/CaseService.php:168
-#, php-format
+#: includes/Domain/CaseService.php:172
 msgid "Státusz módosítva: %1$s → %2$s"
-msgstr ""
+msgstr "Stav zmenený: %1$s → %2$s"
 
 #. translators: %s: admin note sent to the customer.
-#: includes/Domain/CaseService.php:175
-#, php-format
+#: includes/Domain/CaseService.php:179
 msgid "Üzenet a vásárlónak: %s"
-msgstr ""
+msgstr "Správa pre zákazníka: %s"
 
-#: includes/Domain/CaseService.php:224
+#: includes/Domain/CaseService.php:228
 msgid "Elállási nyilatkozat érkezett (Elállás for WooCommerce)."
-msgstr ""
+msgstr "Bolo prijaté vyhlásenie o odstúpení od zmluvy (Elállás for WooCommerce)."
 
 #: includes/Domain/EligibilityChecker.php:38
 msgid "Az e-mail cím nem egyezik a rendeléssel."
-msgstr ""
+msgstr "E-mailová adresa sa nezhoduje s objednávkou."
 
 #: includes/Domain/EligibilityChecker.php:42
 msgid "A rendelés státusza nem alkalmas elállásra."
-msgstr ""
+msgstr "Stav objednávky nie je vhodný na odstúpenie od zmluvy."
 
 #: includes/Domain/EligibilityChecker.php:46
 msgid "A rendeléshez már tartozik folyamatban lévő elállási ügy."
-msgstr ""
+msgstr "K objednávke už existuje prebiehajúci prípad odstúpenia od zmluvy."
 
 #: includes/Domain/EligibilityChecker.php:51
 msgid "A rendelés másik fiókhoz tartozik."
-msgstr ""
+msgstr "Objednávka patrí k inému účtu."
 
 #: includes/Domain/EligibilityChecker.php:56
 msgid "Az elállási határidő lejárt."
-msgstr ""
+msgstr "Lehota na odstúpenie od zmluvy uplynula."
 
 #: includes/Emails/AdminNotification.php:27
 msgid "Új elállási nyilatkozat (admin)"
-msgstr ""
+msgstr "Nové vyhlásenie o odstúpení od zmluvy (administrátor)"
 
 #: includes/Emails/AdminNotification.php:28
 msgid "Értesítés a kereskedő felé, ha új elállási nyilatkozat érkezik."
-msgstr ""
+msgstr "Upozornenie pre predávajúceho pri prijatí nového vyhlásenia o odstúpení od zmluvy."
 
 #: includes/Emails/AdminNotification.php:59
 msgid "Új elállási nyilatkozat érkezett – #{order_number}"
-msgstr ""
+msgstr "Prijaté nové vyhlásenie o odstúpení od zmluvy – #{order_number}"
 
 #: includes/Emails/AdminNotification.php:68
 #: templates/frontend/my-account.php:56
 msgid "Új elállási nyilatkozat"
-msgstr ""
+msgstr "Nové vyhlásenie o odstúpení od zmluvy"
 
 #: includes/Emails/CustomerConfirmation.php:30
 msgid "Elállás visszaigazolása (vevő)"
-msgstr ""
+msgstr "Potvrdenie odstúpenia od zmluvy (kupujúci)"
 
 #: includes/Emails/CustomerConfirmation.php:31
 msgid "Tartós adathordozón küldött visszaigazolás a vevőnek az elállási nyilatkozat rögzítéséről."
-msgstr ""
+msgstr "Potvrdenie odoslané kupujúcemu na trvanlivom nosiči o zaznamenaní vyhlásenia o odstúpení od zmluvy."
 
 #: includes/Emails/CustomerConfirmation.php:51
 msgid "Elállási nyilatkozatának visszaigazolása – #{order_number}"
-msgstr ""
+msgstr "Potvrdenie vášho vyhlásenia o odstúpení od zmluvy – #{order_number}"
 
 #: includes/Emails/CustomerConfirmation.php:60
 msgid "Elállási nyilatkozatának visszaigazolása"
-msgstr ""
+msgstr "Potvrdenie vášho vyhlásenia o odstúpení od zmluvy"
+
+#: includes/Emails/EmailManager.php:186
+msgid "Általános Szerződési Feltételek (ÁSZF)"
+msgstr "Všeobecné obchodné podmienky (VOP)"
 
 #: includes/Emails/StatusUpdate.php:35
 msgid "Elállási ügy státusz frissítés (vevő)"
-msgstr ""
+msgstr "Aktualizácia stavu prípadu odstúpenia od zmluvy (kupujúci)"
 
 #: includes/Emails/StatusUpdate.php:36
 msgid "Értesítés a vevőnek, ha elállási ügyének státusza megváltozik."
-msgstr ""
+msgstr "Upozornenie pre kupujúceho pri zmene stavu jeho prípadu odstúpenia od zmluvy."
 
 #: includes/Emails/StatusUpdate.php:56
 msgid "Elállási ügyének státusza frissült – #{case_number}"
-msgstr ""
+msgstr "Stav vášho prípadu odstúpenia od zmluvy sa aktualizoval – #{case_number}"
 
 #: includes/Emails/StatusUpdate.php:65
 msgid "Elállási ügyének státusza frissült"
-msgstr ""
+msgstr "Stav vášho prípadu odstúpenia od zmluvy sa aktualizoval"
 
-#: includes/Frontend/FormHandler.php:36
+#: includes/Frontend/FormHandler.php:33
 msgid "A munkamenet lejárt. Kérjük, próbálja újra."
-msgstr ""
+msgstr "Relácia vypršala. Skúste to znova, prosím."
 
 #: includes/Frontend/Shortcodes.php:59
 msgid "Elállás a szerződéstől"
-msgstr ""
+msgstr "Odstúpenie od zmluvy"
 
-#: includes/Frontend/StepProcessor.php:82
-msgid "Kérjük, válasszon legalább egy terméket."
-msgstr ""
+#: includes/Frontend/StepProcessor.php:94
+msgid "Kérjük, válasszon legalább egy elállásra jogosult terméket."
+msgstr "Vyberte aspoň jeden produkt oprávnený na odstúpenie od zmluvy, prosím."
 
-#: includes/Frontend/StepProcessor.php:115
+#: includes/Frontend/StepProcessor.php:137
 msgid "A folytatáshoz minden nyilatkozatot el kell fogadnia."
-msgstr ""
+msgstr "Na pokračovanie musíte prijať všetky vyhlásenia."
 
 #: includes/Frontend/WithdrawalForm.php:28
 msgid "Az online elállási funkció jelenleg nem érhető el."
-msgstr ""
+msgstr "Funkcia online odstúpenia od zmluvy momentálne nie je dostupná."
 
 #: includes/Integrations/ElallasElementorWidget.php:37
 #: blocks/withdrawal-form/editor.js:31
 msgid "Elállási űrlap"
-msgstr ""
+msgstr "Formulár na odstúpenie od zmluvy"
 
 #: includes/Integrations/Invoicing.php:48
 msgid "Elállási kérelem érkezett. Számlázó bővítmény észlelve: a sztornó/módosító számlát manuálisan kell kezelni, automatikus sztornó nem történik."
-msgstr ""
+msgstr "Bola prijatá žiadosť o odstúpenie od zmluvy. Zistený fakturačný plugin: dobropis/opravnú faktúru je potrebné spracovať manuálne, automatické stornovanie sa nevykoná."
 
 #: includes/Integrations/Invoicing.php:52
 msgid "Elállási kérelem érkezett. Kérjük, a számla kezelését (sztornó/módosítás) végezze el manuálisan."
-msgstr ""
+msgstr "Bola prijatá žiadosť o odstúpenie od zmluvy. Spracovanie faktúry (dobropis/oprava) vykonajte manuálne, prosím."
 
-#: includes/Models/CaseItem.php:137
+#: includes/Models/CaseItem.php:60
 msgid "Jogosult"
-msgstr ""
+msgstr "Oprávnený"
 
-#: includes/Models/CaseItem.php:138
+#: includes/Models/CaseItem.php:61
 msgid "Kizárt – ellenőrizendő"
-msgstr ""
+msgstr "Vylúčený – na kontrolu"
 
-#: includes/Models/CaseItem.php:167
+#: includes/Models/CaseItem.php:90
 msgid "Mintatermék"
-msgstr ""
+msgstr "Vzorový produkt"
 
 #: includes/Models/CaseStatus.php:56
 msgid "Automatikusan visszaigazolva"
-msgstr ""
+msgstr "Automaticky potvrdené"
 
 #: includes/Models/CaseStatus.php:57
 msgid "Manuális ellenőrzés alatt"
-msgstr ""
+msgstr "V manuálnej kontrole"
 
 #: includes/Models/CaseStatus.php:58
 msgid "Elfogadva"
-msgstr ""
+msgstr "Schválené"
 
 #: includes/Models/CaseStatus.php:59
 msgid "Elutasítva"
-msgstr ""
+msgstr "Zamietnuté"
 
 #: includes/Models/CaseStatus.php:60
 msgid "Visszaküldésre vár"
-msgstr ""
+msgstr "Čaká na vrátenie tovaru"
 
 #: includes/Models/CaseStatus.php:61
 msgid "Áru beérkezett"
-msgstr ""
+msgstr "Tovar bol prijatý"
 
 #: includes/Models/CaseStatus.php:62
 msgid "Visszatérítés folyamatban"
-msgstr ""
+msgstr "Vrátenie peňazí prebieha"
 
 #: includes/Models/CaseStatus.php:63
 msgid "Lezárva"
-msgstr ""
+msgstr "Uzavreté"
 
 #: includes/Models/CaseStatus.php:64
 msgid "Törölve / hibás beküldés"
-msgstr ""
+msgstr "Zrušené / chybné odoslanie"
 
 #: includes/Models/DeadlineStatus.php:28
 msgid "Határidőn belül"
-msgstr ""
+msgstr "V rámci lehoty"
 
 #: includes/Models/DeadlineStatus.php:29
 msgid "Határidőn túl – manuális ellenőrzést igényel"
-msgstr ""
+msgstr "Po lehote – vyžaduje manuálnu kontrolu"
 
 #: includes/Models/DeadlineStatus.php:30
 msgid "Nem megállapítható – manuális ellenőrzést igényel"
-msgstr ""
+msgstr "Nedá sa určiť – vyžaduje manuálnu kontrolu"
 
-#: includes/Pdf/DocumentService.php:178
+#: includes/Pdf/DocumentService.php:172
 #: templates/pdf/withdrawal-statement.php:43
 #: templates/pdf/withdrawal-statement.php:61
 msgid "Elállási nyilatkozat"
-msgstr ""
+msgstr "Vyhlásenie o odstúpení od zmluvy"
 
-#: includes/Pdf/DownloadHandler.php:117
+#: includes/Pdf/DownloadHandler.php:112
 msgid "A dokumentum nem érhető el."
-msgstr ""
+msgstr "Dokument nie je dostupný."
 
-#: includes/Pdf/DownloadHandler.php:118
+#: includes/Pdf/DownloadHandler.php:113
 msgid "Hozzáférés megtagadva"
-msgstr ""
+msgstr "Prístup zamietnutý"
 
 #: includes/Plugin.php:177
 msgid "Beállítások"
-msgstr ""
+msgstr "Nastavenia"
 
 #: includes/Plugin.php:190
-msgid "WooCommerce must be installed and active for this plugin to work."
-msgstr ""
+msgid "A plugin működéséhez a WooCommerce telepítése és aktiválása szükséges."
+msgstr "Na fungovanie pluginu je potrebná inštalácia a aktivácia WooCommerce."
 
 #: includes/Security/Honeypot.php:49
-msgid "Leave this field empty"
-msgstr ""
+msgid "Hagyd üresen ezt a mezőt"
+msgstr "Toto pole nechajte prázdne"
 
 #: includes/SiteManager/CaseAbilities.php:56
-msgid "List Withdrawal Cases"
-msgstr ""
+msgid "Elállási ügyek listázása"
+msgstr "Zoznam prípadov odstúpenia od zmluvy"
 
 #: includes/SiteManager/CaseAbilities.php:57
-msgid "List elállás cases, optionally filtered by status and paged."
-msgstr ""
+msgid "Elállási ügyek listázása, opcionálisan státusz szerint szűrve és lapozva."
+msgstr "Zoznam prípadov odstúpenia od zmluvy, voliteľne filtrovaný podľa stavu a stránkovaný."
 
 #: includes/SiteManager/CaseAbilities.php:81
-msgid "Get Withdrawal Case"
-msgstr ""
+msgid "Elállási ügy lekérése"
+msgstr "Načítanie prípadu odstúpenia od zmluvy"
 
 #: includes/SiteManager/CaseAbilities.php:82
-msgid "Get a case with its items and audit events."
-msgstr ""
+msgid "Egy ügy lekérése a tételeivel és audit eseményeivel együtt."
+msgstr "Načítanie prípadu spolu s jeho položkami a audítnymi udalosťami."
 
 #: includes/SiteManager/CaseAbilities.php:97
-msgid "Update Case Status"
-msgstr ""
+msgid "Ügy státuszának módosítása"
+msgstr "Zmena stavu prípadu"
 
 #: includes/SiteManager/CaseAbilities.php:98
-msgid "Change the status of a withdrawal case."
-msgstr ""
+msgid "Egy elállási ügy státuszának megváltoztatása."
+msgstr "Zmena stavu prípadu odstúpenia od zmluvy."
 
 #: includes/SiteManager/CaseAbilities.php:114
-msgid "Get Case Audit Log"
-msgstr ""
+msgid "Ügy audit naplójának lekérése"
+msgstr "Načítanie audítneho záznamu prípadu"
 
 #: includes/SiteManager/CaseAbilities.php:115
-msgid "Get the audit event log for a withdrawal case."
-msgstr ""
-
-#: includes/SiteManager/CaseService.php:61
-msgid "Case not found."
-msgstr ""
+msgid "Egy elállási ügy audit eseménynaplójának lekérése."
+msgstr "Načítanie audítneho záznamu udalostí prípadu odstúpenia od zmluvy."
 
 #: includes/SiteManager/CaseService.php:83
-msgid "Invalid status value."
-msgstr ""
+msgid "Érvénytelen státuszérték."
+msgstr "Neplatná hodnota stavu."
 
 #: includes/SiteManager/CaseService.php:89
-msgid "Could not update the case status."
-msgstr ""
-
-#: includes/SiteManager/CaseService.php:94
-msgid "Case status updated."
-msgstr ""
+msgid "Az ügy státusza nem frissíthető."
+msgstr "Stav prípadu nie je možné aktualizovať."
 
 #: includes/SiteManager/Integration.php:55
 msgid "Elállás (Withdrawal)"
-msgstr ""
+msgstr "Odstúpenie od zmluvy (Withdrawal)"
 
 #: includes/SiteManager/Integration.php:56
 msgid "WooCommerce withdrawal/elállás case management abilities."
-msgstr ""
+msgstr "Schopnosti správy prípadov odstúpenia od zmluvy (withdrawal) pre WooCommerce."
 
 #: includes/Woo/OrderStatusManager.php:45
 msgid "Elállás kérve"
-msgstr ""
+msgstr "Odstúpenie požadované"
 
 #: includes/Woo/OrderStatusManager.php:46
 msgid "Elállás – ellenőrzés alatt"
-msgstr ""
+msgstr "Odstúpenie – v kontrole"
 
 #: includes/Woo/OrderStatusManager.php:47
 msgid "Elállás elfogadva"
-msgstr ""
+msgstr "Odstúpenie prijaté"
 
 #: includes/Woo/OrderStatusManager.php:48
 msgid "Elállás lezárva"
-msgstr ""
+msgstr "Odstúpenie uzavreté"
 
 #: includes/Woo/OrderStatusManager.php:142
 msgid "Elállási ügy státusz-szinkron."
-msgstr ""
+msgstr "Synchronizácia stavu prípadu odstúpenia od zmluvy."
 
 #: templates/emails/admin-notification.php:27
 #: templates/emails/plain/admin-notification.php:24
 msgid "Új elállási nyilatkozat érkezett az alábbi rendeléshez."
-msgstr ""
+msgstr "K nasledujúcej objednávke bolo prijaté nové vyhlásenie o odstúpení od zmluvy."
 
 #: templates/emails/admin-notification.php:32
 msgid "⚠ Figyelem: a nyilatkozat elállásból kizártként megjelölt terméke(ke)t tartalmaz. Kérjük, fokozott figyelemmel ellenőrizze a rendelést."
-msgstr ""
+msgstr "⚠ Upozornenie: vyhlásenie obsahuje produkt(y) označené ako vylúčené z odstúpenia od zmluvy. Skontrolujte objednávku so zvýšenou pozornosťou, prosím."
 
 #: templates/emails/admin-notification.php:49
 #: templates/emails/customer-confirmation.php:37
@@ -1117,7 +1151,7 @@ msgstr ""
 #: templates/frontend/my-account.php:26
 #: templates/pdf/withdrawal-statement.php:70
 msgid "Ügyazonosító"
-msgstr ""
+msgstr "Identifikátor prípadu"
 
 #: templates/emails/admin-notification.php:59
 #: templates/emails/customer-confirmation.php:41
@@ -1125,318 +1159,344 @@ msgstr ""
 #: templates/emails/plain/customer-confirmation.php:26
 #: templates/pdf/withdrawal-statement.php:74
 msgid "Beérkezés időpontja"
-msgstr ""
+msgstr "Dátum prijatia"
 
 #: templates/emails/admin-notification.php:63
 #: templates/emails/plain/admin-notification.php:40
 msgid "Határidő státusza"
-msgstr ""
+msgstr "Stav lehoty"
 
 #: templates/emails/admin-notification.php:69
 #: templates/emails/customer-confirmation.php:51
 #: templates/emails/plain/admin-notification.php:43
 #: templates/emails/plain/customer-confirmation.php:30
 msgid "Az elállással érintett termékek"
-msgstr ""
+msgstr "Produkty dotknuté odstúpením od zmluvy"
 
 #: templates/emails/admin-notification.php:74
 #: templates/emails/customer-confirmation.php:56
 #: templates/frontend/confirm.php:48
 #: templates/pdf/withdrawal-statement.php:111
 msgid "Mennyiség"
-msgstr ""
+msgstr "Množstvo"
 
 #: templates/emails/admin-notification.php:98
 #: templates/emails/plain/admin-notification.php:53
 msgid "Ügy megnyitása az adminban"
-msgstr ""
+msgstr "Otvoriť prípad v administrácii"
 
 #: templates/emails/customer-confirmation.php:22
 #: templates/emails/plain/customer-confirmation.php:21
 #: templates/emails/plain/status-update.php:21
 #: templates/emails/status-update.php:25
 msgid "Tisztelt Vásárlónk!"
-msgstr ""
+msgstr "Vážený zákazník,"
 
 #. translators: 1: case number, 2: order number
 #: templates/emails/customer-confirmation.php:28
-#, php-format
 msgid "Megerősítjük, hogy elállási nyilatkozatát tartós adathordozón rögzítettük. Ügyazonosító: %1$s, rendelés: #%2$s."
-msgstr ""
+msgstr "Potvrdzujeme, že vaše vyhlásenie o odstúpení od zmluvy sme zaznamenali na trvanlivom nosiči. Identifikátor prípadu: %1$s, objednávka: #%2$s."
 
 #: templates/emails/customer-confirmation.php:45
 #: templates/emails/plain/customer-confirmation.php:27
 #: templates/pdf/withdrawal-statement.php:90
 msgid "Rendelésszám"
-msgstr ""
+msgstr "Číslo objednávky"
 
 #. translators: %s: shop name
 #: templates/emails/customer-confirmation.php:74
 #: templates/emails/plain/customer-confirmation.php:41
-#, php-format
 msgid "A nyilatkozatot a következő kereskedő felé tette meg: %s."
-msgstr ""
+msgstr "Vyhlásenie ste podali voči tomuto predávajúcemu: %s."
 
 #: templates/emails/customer-confirmation.php:80
 #: templates/emails/plain/customer-confirmation.php:46
 msgid "Az elállás feldolgozásáról és a visszatérítésről a kereskedő külön értesíti Önt. A vételárat legkésőbb az elállás kézhezvételétől számított 14 napon belül visszatérítjük."
-msgstr ""
+msgstr "O spracovaní odstúpenia od zmluvy a o vrátení peňazí vás predávajúci osobitne informuje. Kúpnu cenu vám vrátime najneskôr do 14 dní od doručenia odstúpenia od zmluvy."
 
 #: templates/emails/customer-confirmation.php:82
 #: templates/emails/plain/customer-confirmation.php:48
 msgid "Kérjük, őrizze meg ezt az e-mailt, amely az elállás visszaigazolásaként szolgál."
-msgstr ""
+msgstr "Uschovajte si tento e-mail, ktorý slúži ako potvrdenie odstúpenia od zmluvy, prosím."
 
 #: templates/emails/plain/admin-notification.php:28
 msgid "FIGYELEM: a nyilatkozat elállásból kizártként megjelölt terméke(ke)t tartalmaz. Kérjük, fokozott figyelemmel ellenőrizze a rendelést."
-msgstr ""
+msgstr "UPOZORNENIE: vyhlásenie obsahuje produkt(y) označené ako vylúčené z odstúpenia od zmluvy. Skontrolujte objednávku so zvýšenou pozornosťou, prosím."
 
 #: templates/emails/plain/admin-notification.php:38
 msgid "Rendelés szerkesztése"
-msgstr ""
+msgstr "Upraviť objednávku"
 
 #: templates/emails/plain/customer-confirmation.php:23
 msgid "Megerősítjük, hogy elállási nyilatkozatát tartós adathordozón rögzítettük."
-msgstr ""
+msgstr "Potvrdzujeme, že vaše vyhlásenie o odstúpení od zmluvy sme zaznamenali na trvanlivom nosiči."
 
 #. translators: %s: case number
 #: templates/emails/plain/status-update.php:25
 #: templates/emails/status-update.php:31
-#, php-format
 msgid "Tájékoztatjuk, hogy %s azonosítójú elállási ügyének állapota megváltozott."
-msgstr ""
+msgstr "Informujeme vás, že stav vášho prípadu odstúpenia od zmluvy s identifikátorom %s sa zmenil."
 
 #: templates/emails/plain/status-update.php:31
 #: templates/emails/status-update.php:43
 msgid "Jelenlegi státusz"
-msgstr ""
+msgstr "Aktuálny stav"
 
 #: templates/emails/plain/status-update.php:35
 #: templates/emails/status-update.php:49
 msgid "A kereskedő üzenete"
-msgstr ""
+msgstr "Správa od predávajúceho"
 
 #: templates/emails/plain/status-update.php:38
 #: templates/emails/status-update.php:55
 msgid "Ha kérdése van az elállási ügyével kapcsolatban, kérjük, válaszoljon erre az e-mailre, vagy vegye fel a kapcsolatot ügyfélszolgálatunkkal. A vételárat legkésőbb az elállás kézhezvételétől számított 14 napon belül visszatérítjük."
-msgstr ""
+msgstr "Ak máte otázky týkajúce sa vášho prípadu odstúpenia od zmluvy, odpovedzte na tento e-mail alebo kontaktujte našu zákaznícku podporu, prosím. Kúpnu cenu vám vrátime najneskôr do 14 dní od doručenia odstúpenia od zmluvy."
 
 #: templates/frontend/confirm.php:31
 msgid "Elállás megerősítése"
-msgstr ""
+msgstr "Potvrdenie odstúpenia od zmluvy"
 
 #: templates/frontend/confirm.php:33
 msgid "Elállási nyilatkozat megerősítése"
-msgstr ""
+msgstr "Potvrdenie vyhlásenia o odstúpení od zmluvy"
 
 #: templates/frontend/confirm.php:35
 msgid "Ön az alábbi rendelésre vonatkozóan elállási nyilatkozatot kíván tenni."
-msgstr ""
+msgstr "Chcete podať vyhlásenie o odstúpení od zmluvy k nasledujúcej objednávke."
 
 #: templates/frontend/confirm.php:38
 #: templates/frontend/select.php:29
 msgid "Rendelés:"
-msgstr ""
+msgstr "Objednávka:"
 
 #: templates/frontend/confirm.php:39
 msgid "Típus:"
-msgstr ""
+msgstr "Typ:"
 
 #: templates/frontend/confirm.php:40
 msgid "Teljes elállás"
-msgstr ""
+msgstr "Úplné odstúpenie od zmluvy"
 
 #: templates/frontend/confirm.php:40
 msgid "Részleges elállás"
-msgstr ""
+msgstr "Čiastočné odstúpenie od zmluvy"
 
 #: templates/frontend/confirm.php:80
 msgid "Bankszámlaszám / IBAN (opcionális)"
-msgstr ""
+msgstr "Číslo bankového účtu / IBAN (voliteľné)"
 
 #: templates/frontend/confirm.php:82
 msgid "Ha megadod, erre a számlaszámra utaljuk vissza az összeget."
-msgstr ""
+msgstr "Ak ho zadáte, sumu vám vrátime na toto číslo účtu."
 
 #: templates/frontend/confirm.php:86
 msgid "Megjegyzés (opcionális)"
-msgstr ""
+msgstr "Poznámka (voliteľné)"
 
 #: templates/frontend/confirm.php:91
 msgid "Kijelentem, hogy a megadott adatok valósak."
-msgstr ""
+msgstr "Vyhlasujem, že uvedené údaje sú pravdivé."
 
 #: templates/frontend/confirm.php:94
 msgid "Tudomásul veszem, hogy a nyilatkozat beküldésével elállási igényt jelentek be."
-msgstr ""
+msgstr "Beriem na vedomie, že odoslaním vyhlásenia uplatňujem právo na odstúpenie od zmluvy."
 
 #: templates/frontend/confirm.php:97
 msgid "Elfogadom, hogy a webshop a nyilatkozat feldolgozásához kezelje az itt megadott adatokat."
-msgstr ""
+msgstr "Súhlasím, aby e-shop na spracovanie vyhlásenia spracúval tu uvedené údaje."
+
+#: templates/frontend/confirm.php:99
+msgid "* A megerősítéshez mindhárom jelölőnégyzet bejelölése kötelező."
+msgstr "* Na potvrdenie je povinné začiarknuť všetky tri políčka."
 
 #: templates/frontend/denied.php:27
+#: templates/frontend/excluded.php:50
 msgid "Új keresés"
-msgstr ""
+msgstr "Nové vyhľadávanie"
+
+#: templates/frontend/excluded.php:26
+msgid "Ehhez a rendeléshez nem gyakorolható online elállás, mert az érintett termék(ek)re a jogszabály szerint nem illeti meg elállási jog:"
+msgstr "Pri tejto objednávke nie je možné uplatniť online odstúpenie od zmluvy, pretože pri dotknutom produkte (produktoch) podľa právnych predpisov nevzniká právo na odstúpenie od zmluvy:"
+
+#: templates/frontend/excluded.php:43
+msgid "A kérelméről és az elutasítás okáról e-mailben is tájékoztattuk."
+msgstr "O vašej žiadosti a o dôvode zamietnutia sme vás informovali aj e-mailom."
+
+#: templates/frontend/excluded.php:46
+msgid "Ha úgy gondolja, hogy tévedés történt, kérjük, vegye fel a kapcsolatot ügyfélszolgálatunkkal."
+msgstr "Ak si myslíte, že došlo k omylu, kontaktujte našu zákaznícku podporu, prosím."
 
 #: templates/frontend/identify.php:28
 msgid "Online elállási nyilatkozat"
-msgstr ""
+msgstr "Online vyhlásenie o odstúpení od zmluvy"
 
 #: templates/frontend/identify.php:29
 msgid "Az alábbi űrlapon online bejelentheti elállási szándékát egy korábbi rendeléssel kapcsolatban. A rendelés azonosításához adja meg a rendelési számát és a rendeléshez tartozó e-mail címet."
-msgstr ""
+msgstr "Prostredníctvom nasledujúceho formulára môžete online oznámiť svoj zámer odstúpiť od zmluvy v súvislosti s predchádzajúcou objednávkou. Na identifikáciu objednávky zadajte jej číslo a e-mailovú adresu priradenú k objednávke."
 
 #: templates/frontend/identify.php:45
 msgid "Válassz a rendeléseid közül"
-msgstr ""
+msgstr "Vyberte z vašich objednávok"
 
 #: templates/frontend/identify.php:47
 msgid "— Válassz a rendeléseid közül —"
-msgstr ""
+msgstr "— Vyberte z vašich objednávok —"
 
 #: templates/frontend/identify.php:58
 msgid "Rendelési szám"
-msgstr ""
+msgstr "Číslo objednávky"
 
 #: templates/frontend/identify.php:61
 msgid "Ha vendégként, a fiókod e-mail címétől eltérő címmel adtad le a rendelést, ide kézzel is beírhatod a rendelési számot."
-msgstr ""
+msgstr "Ak ste objednávku zadali ako hosť s inou adresou, než je e-mailová adresa vášho účtu, číslo objednávky sem môžete zadať aj ručne."
 
 #: templates/frontend/identify.php:66
 #: templates/pdf/withdrawal-statement.php:86
 msgid "E-mail cím"
-msgstr ""
+msgstr "E-mailová adresa"
 
 #: templates/frontend/identify.php:71
 msgid "Rendelés keresése"
-msgstr ""
+msgstr "Vyhľadať objednávku"
 
 #: templates/frontend/my-account.php:18
 msgid "Elállási ügyeim"
-msgstr ""
+msgstr "Moje prípady odstúpenia od zmluvy"
 
 #: templates/frontend/my-account.php:21
 msgid "Még nincs rögzített elállási ügye."
-msgstr ""
+msgstr "Zatiaľ nemáte žiadny zaznamenaný prípad odstúpenia od zmluvy."
 
 #: templates/frontend/my-account.php:28
 msgid "Beküldve"
-msgstr ""
+msgstr "Odoslané"
 
 #: templates/frontend/my-account.php:30
 msgid "Dokumentum"
-msgstr ""
+msgstr "Dokument"
 
 #: templates/frontend/my-account.php:42
 msgid "Elállási nyilatkozat (PDF)"
-msgstr ""
+msgstr "Vyhlásenie o odstúpení od zmluvy (PDF)"
 
 #: templates/frontend/select.php:26
 msgid "Elállással érintett termékek kiválasztása"
-msgstr ""
+msgstr "Výber produktov dotknutých odstúpením od zmluvy"
 
 #: templates/frontend/select.php:30
 msgid "Rendelés dátuma:"
-msgstr ""
+msgstr "Dátum objednávky:"
 
 #: templates/frontend/select.php:31
 msgid "Fizetési mód:"
-msgstr ""
+msgstr "Spôsob platby:"
 
 #: templates/frontend/select.php:32
 msgid "Határidő státusz:"
-msgstr ""
+msgstr "Stav lehoty:"
 
 #: templates/frontend/select.php:48
 msgid "Teljes elálláshoz hagyja minden terméknél a teljes mennyiséget. Részleges elálláshoz csökkentse a mennyiséget, a kihagyott termékeknél állítsa 0-ra."
-msgstr ""
+msgstr "Pri úplnom odstúpení od zmluvy ponechajte pri každom produkte celé množstvo. Pri čiastočnom odstúpení množstvo znížte a pri vynechaných produktoch ho nastavte na 0."
 
-#: templates/frontend/select.php:55
+#: templates/frontend/select.php:60
+msgid "A megjelölt termék(ek)re nem gyakorolható elállás, ezért nem választhatók ki. A rendelés többi termékére az elállás továbbra is kezdeményezhető."
+msgstr "Pri označenom produkte (produktoch) nie je možné uplatniť odstúpenie od zmluvy, preto ich nie je možné vybrať. Pri ostatných produktoch objednávky je odstúpenie od zmluvy naďalej možné."
+
+#: templates/frontend/select.php:68
 msgid "Elállás mennyiség"
-msgstr ""
+msgstr "Množstvo na odstúpenie"
 
-#: templates/frontend/select.php:84
+#: templates/frontend/select.php:81
+msgid "Elállásból kizárva"
+msgstr "Vylúčené z odstúpenia od zmluvy"
+
+#: templates/frontend/select.php:108
 msgid "Tovább a megerősítéshez"
-msgstr ""
+msgstr "Pokračovať na potvrdenie"
 
 #: templates/frontend/success.php:20
 msgid "Elállási nyilatkozatát rögzítettük"
-msgstr ""
+msgstr "Vaše vyhlásenie o odstúpení od zmluvy sme zaznamenali"
 
 #: templates/frontend/success.php:22
 msgid "Köszönjük. Elállási nyilatkozatát rendszerünk rögzítette, és a visszaigazolást elküldtük a megadott e-mail címre (tartós adathordozó)."
-msgstr ""
+msgstr "Ďakujeme. Vaše vyhlásenie o odstúpení od zmluvy náš systém zaznamenal a potvrdenie sme odoslali na zadanú e-mailovú adresu (trvanlivý nosič)."
 
 #: templates/frontend/success.php:25
 msgid "Ügyazonosító:"
-msgstr ""
+msgstr "Identifikátor prípadu:"
 
 #: templates/frontend/success.php:26
 msgid "Beérkezés időpontja:"
-msgstr ""
+msgstr "Dátum prijatia:"
 
 #: templates/frontend/success.php:29
 msgid "A nyilatkozat feldolgozásáról a kereskedő külön értesíti Önt."
-msgstr ""
+msgstr "O spracovaní vyhlásenia vás predávajúci osobitne informuje."
 
 #: templates/pdf/withdrawal-statement.php:67
 msgid "Ügy adatai"
-msgstr ""
+msgstr "Údaje prípadu"
 
 #: templates/pdf/withdrawal-statement.php:79
 msgid "Fogyasztó és rendelés"
-msgstr ""
+msgstr "Spotrebiteľ a objednávka"
 
 #: templates/pdf/withdrawal-statement.php:82
 msgid "Fogyasztó neve"
-msgstr ""
+msgstr "Meno spotrebiteľa"
 
 #: templates/pdf/withdrawal-statement.php:94
 msgid "Rendelés dátuma"
-msgstr ""
+msgstr "Dátum objednávky"
 
 #: templates/pdf/withdrawal-statement.php:99
 msgid "Visszatérítési bankszámla"
-msgstr ""
+msgstr "Bankový účet na vrátenie peňazí"
 
 #: templates/pdf/withdrawal-statement.php:105
 msgid "Érintett termékek"
-msgstr ""
+msgstr "Dotknuté produkty"
 
 #: templates/pdf/withdrawal-statement.php:110
 msgid "Cikkszám"
-msgstr ""
+msgstr "Katalógové číslo"
 
 #: templates/pdf/withdrawal-statement.php:117
 msgid "Nincs megadott tétel."
-msgstr ""
+msgstr "Nie sú zadané žiadne položky."
 
 #: templates/pdf/withdrawal-statement.php:131
 msgid "Nyilatkozat"
-msgstr ""
+msgstr "Vyhlásenie"
 
 #: templates/pdf/withdrawal-statement.php:138
 msgid "Ügy azonosító (belső):"
-msgstr ""
+msgstr "Identifikátor prípadu (interný):"
 
 #: templates/pdf/withdrawal-statement.php:142
 msgid "Dokumentum lenyomata (SHA-256):"
-msgstr ""
+msgstr "Odtlačok dokumentu (SHA-256):"
 
 #: templates/pdf/withdrawal-statement.php:146
 msgid "Dokumentum generálva:"
-msgstr ""
+msgstr "Dokument vygenerovaný:"
 
 #: blocks/withdrawal-form/editor.js:33
 msgid "Az elállási nyilatkozat űrlap a webhely látogatói oldalán jelenik meg."
-msgstr ""
+msgstr "Formulár vyhlásenia o odstúpení od zmluvy sa zobrazuje na verejnej (návštevníckej) strane webu."
 
 #: blocks/withdrawal-form/block.json
 msgctxt "block title"
 msgid "Elállási űrlap"
-msgstr ""
+msgstr "Formulár na odstúpenie od zmluvy"
 
 #: blocks/withdrawal-form/block.json
 msgctxt "block description"
 msgid "Online elállási nyilatkozat űrlap megjelenítése a látogatók számára."
-msgstr ""
+msgstr "Zobrazenie formulára online vyhlásenia o odstúpení od zmluvy pre návštevníkov."
+
+#: includes/Admin/Settings/AccountEndpointSetting.php:56
+msgid "Az „Elállás\" fiók-végpont URL-részlete (pl. elallasaim). Mentés után a fiók menü hivatkozása automatikusan az új címre mutat."
+msgstr "URL slug účtového koncového bodu „Odstúpenie od zmluvy” (napr. odstupenie). Po uložení odkaz v ponuke účtu automaticky smeruje na novú adresu."

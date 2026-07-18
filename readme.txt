@@ -109,6 +109,7 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 == Changelog ==
 
 = 1.0.13 =
+* New: English, Romanian, Czech and Slovak translations.
 * Fix: Admin notification e-mail now goes to every configured recipient, not only the first (issue #25) — comma, semicolon or space separated lists are all supported; invalid and duplicate addresses are dropped.
 * Update: Internal quality gates (PHPCS, PHPUnit, PHPStan level 5) now run in CI. No functional change beyond the fix above.
 
