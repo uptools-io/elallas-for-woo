@@ -14,7 +14,7 @@
 
 declare(strict_types=1);
 
-define( 'ELALLAS_FOR_WOO_VERSION', '1.0.12' );
+define( 'ELALLAS_FOR_WOO_VERSION', '1.0.13' );
 define( 'ELALLAS_FOR_WOO_FILE', __DIR__ . '/elallas-for-woo.php' );
 define( 'ELALLAS_FOR_WOO_PATH', __DIR__ . '/' );
 define( 'ELALLAS_FOR_WOO_URL', 'https://example.test/wp-content/plugins/elallas-for-woo/' );

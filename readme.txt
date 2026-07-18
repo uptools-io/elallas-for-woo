@@ -4,7 +4,7 @@ Tags: woocommerce, withdrawal, refund, gdpr, compliance
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 1.0.12
+Stable tag: 1.0.13
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 8.0
@@ -107,6 +107,10 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 6. Onboarding wizard
 
 == Changelog ==
+
+= 1.0.13 =
+* Fix: Admin notification e-mail now goes to every configured recipient, not only the first (issue #25) — comma, semicolon or space separated lists are all supported; invalid and duplicate addresses are dropped.
+* Update: Internal quality gates (PHPCS, PHPUnit, PHPStan level 5) now run in CI. No functional change beyond the fix above.
 
 = 1.0.12 =
 * New: WPML/Polylang compatibility — admin-entered dynamic strings (button label, confirm label, withdrawal declaration, extra e-mail text) are now translated on every output path, the withdrawal page ID resolves to the translated page, and e-mails/PDF render in the case's language.

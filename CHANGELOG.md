@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.13] - 2026-07-18
+
+### Fixed
+- **Admin notification e-mail now reaches every recipient, not just the first** (issue #25). The admin-recipient option was handed to WooCommerce verbatim; `WC_Email` only splits on commas and drops anything that fails `is_email()`, so a list separated by semicolons/spaces — or one containing a malformed entry — silently collapsed to the first (or no) address. A new `Options::sanitize_email_list()` normalises comma/semicolon/space separated input into a validated, de-duplicated, comma-separated list, applied both when the admin recipient is saved and when the notification is sent.
+
+### Changed
+- **Quality gates now actually run.** `includes/functions.php` (loaded via Composer's `files` autoload) carried an `if ( ! defined( ABSPATH ) ) exit;` guard that silently terminated phpcs/phpunit/phpstan at their bootstrap — so CI's "green" checks executed nothing. The guard is removed (the file only declares functions), PHPStan is wired into CI with WooCommerce/WP-CLI stubs and a `composer analyse` script, and the codebase was brought to a clean PHPCS + PHPStan level 5 pass. No runtime behaviour change beyond the fix above.
+
 ## [1.0.12] - 2026-07-07
 
 ### Fixed
