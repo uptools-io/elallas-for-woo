@@ -15,7 +15,7 @@
         "dompdf/dompdf": "^3.0"
     },
     "require-dev": {
-        "php-stubs/woocommerce-stubs": "^9.0",
+        "php-stubs/woocommerce-stubs": "^10.9",
         "php-stubs/wp-cli-stubs": "^2.10",
         "phpcompatibility/phpcompatibility-wp": "^2.1",
         "phpstan/phpstan": "^1.11",
