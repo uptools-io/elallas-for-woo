@@ -91,11 +91,13 @@ jobs:
           VERSION: ${{ steps.get_version.outputs.version }}
         run: |
           mkdir -p dist/elallas-for-woo
-          rsync -av --exclude='.git' --exclude='.github' --exclude='dist' \
-            --exclude='builds' --exclude='composer.json' --exclude='composer.lock' \
-            --exclude='phpcs.xml.dist' --exclude='phpstan.neon.dist' --exclude='phpunit.xml.dist' \
-            --exclude='docs' --exclude='tests' --exclude='node_modules' --exclude='.gitignore' \
-            --exclude='bin' --exclude='strauss.phar' --exclude='*.log' . dist/elallas-for-woo/
+          rsync -av --exclude='.git' --exclude='.github' --exclude='dist' --exclude='builds' \
+            --exclude='composer.json' --exclude='composer.lock' --exclude='phpcs.xml.dist' \
+            --exclude='node_modules' --exclude='.gitignore' --exclude='.gitattributes' \
+            --exclude='tests' --exclude='docs' --exclude='.claude' --exclude='.superpowers' \
+            --exclude='phpstan.neon.dist' --exclude='phpstan-baseline.neon' \
+            --exclude='phpstan-bootstrap.php' --exclude='phpunit.xml.dist' --exclude='bin' \
+            --exclude='strauss.phar' --exclude='*.log' . dist/elallas-for-woo/
           cd dist && zip -r "elallas-for-woo-${VERSION}.zip" elallas-for-woo/
 
       - name: Create tag and release
