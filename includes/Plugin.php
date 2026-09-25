@@ -33,6 +33,7 @@ use LightweightPlugins\Elallas\Admin\NoticeManager;
 use LightweightPlugins\Elallas\Admin\OrderWithdrawalNotice;
 use LightweightPlugins\Elallas\SiteManager\Integration as SiteManagerIntegration;
 use LightweightPlugins\Elallas\CLI\Commands as CliCommands;
+use LightweightPlugins\Elallas\Compliance\Bootstrap as ComplianceBootstrap;
 
 /**
  * Main plugin class.
@@ -53,6 +54,7 @@ final class Plugin {
 		$this->init_frontend();
 		$this->init_services();
 		$this->init_integrations();
+		ComplianceBootstrap::boot();
 
 		if ( is_admin() ) {
 			$this->init_admin();
@@ -139,6 +141,7 @@ final class Plugin {
 		new TermFields();
 		new NoticeManager();
 		new OrderWithdrawalNotice();
+		ComplianceBootstrap::boot_admin();
 	}
 
 	/**

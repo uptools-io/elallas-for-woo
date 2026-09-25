@@ -48,6 +48,7 @@ final class Multilingual {
 		'button_label',
 		'confirm_label',
 		'email_customer_extra',
+		'notice_label',
 	];
 
 	/**

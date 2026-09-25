@@ -44,6 +44,35 @@ final class DefaultTexts {
 	}
 
 	/**
+	 * Default label of the harmonised legal-guarantee notice toggle.
+	 *
+	 * Raw (untranslated) source string — see {@see declaration()} for why.
+	 *
+	 * @return string
+	 */
+	public static function notice_label(): string {
+		return 'Az Ön jogszabályi szavatossági jogai';
+	}
+
+	/**
+	 * Warning next to the GARAN product fields (who may use the label).
+	 *
+	 * @return string
+	 */
+	public static function garan_warning(): string {
+		return __( 'A GARAN címke kizárólag a gyártó által vállalt, térítésmentes, az egész termékre kiterjedő, 2 évnél hosszabb tartóssági jótállás jelölésére használható. A bolti garancia, a kötelező jótállás (151/2003. Korm. rendelet) és a fizetős kiterjesztett garancia nem jelölhető vele.', 'elallas-for-woo' );
+	}
+
+	/**
+	 * Intro of the "Szavatosság és GARAN" settings tab.
+	 *
+	 * @return string
+	 */
+	public static function compliance_intro(): string {
+		return __( '2026. szeptember 27-től kötelező (45/2014. Korm. rendelet 11. § (1a), 15. § (1)). A hivatalos értesítés és címke grafikája nem módosítható; a plugin változatlanul jeleníti meg őket. Az ÁSZF frissítése a bolt feladata, az értesítés azt nem helyettesíti.', 'elallas-for-woo' );
+	}
+
+	/**
 	 * Legal disclaimer shown in admin next to editable legal texts.
 	 *
 	 * @return string

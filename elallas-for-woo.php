@@ -57,12 +57,13 @@ if ( file_exists( ELALLAS_FOR_WOO_PATH . 'vendor-prefixed/autoload.php' ) ) {
 	require_once ELALLAS_FOR_WOO_PATH . 'vendor-prefixed/autoload.php';
 }
 
-// Declare HPOS (High-Performance Order Storage) compatibility.
+// Declare HPOS (High-Performance Order Storage) and Cart/Checkout blocks compatibility.
 add_action(
 	'before_woocommerce_init',
 	static function (): void {
 		if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
 			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'cart_checkout_blocks', __FILE__, true );
 		}
 	}
 );

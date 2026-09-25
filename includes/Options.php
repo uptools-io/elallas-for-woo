@@ -46,50 +46,75 @@ final class Options {
 		// the multilingual string mechanism (see Integrations\Multilingual).
 		return [
 			// General.
-			'enabled'                => true,
-			'withdrawal_page_id'     => 0,
-			'button_label'           => 'Elállás a szerződéstől',
-			'confirm_label'          => 'Elállás megerősítése',
-			'display_account'        => true,
-			'display_order_details'  => true,
-			'display_order_email'    => true,
+			'enabled'                    => true,
+			'withdrawal_page_id'         => 0,
+			'button_label'               => 'Elállás a szerződéstől',
+			'confirm_label'              => 'Elállás megerősítése',
+			'display_account'            => true,
+			'display_order_details'      => true,
+			'display_order_email'        => true,
 
 			// Deadline.
-			'deadline_days'          => 14,
-			'deadline_start'         => 'order_completed', // order_created|order_completed|delivery|manual.
-			'expired_handling'       => 'allow_with_warning', // allow_with_warning|block|require_approval.
+			'deadline_days'              => 14,
+			'deadline_start'             => 'order_completed', // order_created|order_completed|delivery|manual.
+			'expired_handling'           => 'allow_with_warning', // allow_with_warning|block|require_approval.
 
 			// Order statuses eligible for withdrawal.
-			'eligible_statuses'      => [ 'processing', 'completed' ],
-			'use_wc_statuses'        => false,
+			'eligible_statuses'          => [ 'processing', 'completed' ],
+			'use_wc_statuses'            => false,
 
 			// Privacy.
-			'store_ip'               => 'hash', // full|hash|off.
-			'store_user_agent'       => 'hash', // full|hash|off.
-			'encrypt_email'          => true,
-			'retention_days'         => 0, // 0 = keep forever.
+			'store_ip'                   => 'hash', // full|hash|off.
+			'store_user_agent'           => 'hash', // full|hash|off.
+			'encrypt_email'              => true,
+			'retention_days'             => 0, // 0 = keep forever.
 
 			// Documents.
-			'pdf_enabled'            => true,
+			'pdf_enabled'                => true,
 
 			// Emails.
-			'email_customer_enabled' => true,
-			'email_admin_enabled'    => true,
-			'email_status_enabled'   => true,
-			'email_admin_recipient'  => '',
-			'email_from_name'        => '',
-			'email_from_address'     => '',
-			'email_customer_extra'   => '',
+			'email_customer_enabled'     => true,
+			'email_admin_enabled'        => true,
+			'email_status_enabled'       => true,
+			'email_admin_recipient'      => '',
+			'email_from_name'            => '',
+			'email_from_address'         => '',
+			'email_customer_extra'       => '',
 
 			// Legal texts.
-			'legal_declaration'      => DefaultTexts::declaration(),
-			'legal_confirmation'     => DefaultTexts::confirmation(),
+			'legal_declaration'          => DefaultTexts::declaration(),
+			'legal_confirmation'         => DefaultTexts::confirmation(),
+
+			// Compliance – harmonised legal-guarantee notice (raw strings, no __()).
+			'notice_enabled'             => true,
+			'notice_label'               => DefaultTexts::notice_label(),
+			'notice_display_product'     => true,
+			'notice_display_header'      => false,
+			'notice_display_footer'      => false,
+			'notice_display_checkout'    => true, // Classic + block checkout + order-pay + order view.
+			'notice_display_email'       => true,
+			'notice_email_mode'          => 'image', // image|attachment|both (attachment/both: P1).
+			'notice_page_id'             => 0,
+
+			// Compliance – GARAN durability label.
+			'garan_enabled'              => true,
+			'garan_product_mode'         => 'nested', // nested|full|description|gallery (description: P1, gallery: 1.1.1).
+			'garan_display_archive'      => false, // P1.
+			'garan_display_cart'         => true, // Classic cart, before the express-pay and checkout buttons.
+			'garan_display_email'        => true,
+			// No garan_display_checkout: the GARAN before the order button is mandatory (filter: elallas_garan_checkout_visible).
+
+			// Compliance – common.
+			'compliance_hide_b2b'        => false,
+			'compliance_exclude_virtual' => true,
+			'compliance_reviewed'        => false, // Set to true by the tab's hidden input on save.
+			'product_info_enabled'       => true, // 1.1.1.
 
 			// Diagnostics.
-			'logging_enabled'        => false,
+			'logging_enabled'            => false,
 
 			// Uninstall.
-			'uninstall_remove_data'  => false,
+			'uninstall_remove_data'      => false,
 		];
 	}
 

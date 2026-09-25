@@ -40,6 +40,7 @@ final class SettingsPage {
 			new TabDocuments(),
 			new TabPrivacy(),
 			new TabEmails(),
+			new TabCompliance(),
 			new TabLegal(),
 		];
 	}
