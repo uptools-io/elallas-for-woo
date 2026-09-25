@@ -8,7 +8,7 @@ harmonizált szavatossági tájékoztatót és GARAN címkét** is kezeli (lásd
 [kezelési útmutatót](kezelesi-utmutato.md); a technikai részletekhez a
 [fejlesztői referenciát](fejlesztoi-referencia.md).
 
-> ⚠️ **Ez nem jogi tanácsadás.** A bővítmény mintaszövegeket és egy megfelelés-orientált folyamatot
+> **Ez nem jogi tanácsadás.** A bővítmény mintaszövegeket és egy megfelelés-orientált folyamatot
 > ad, de a végleges szövegeket (nyilatkozat, ÁSZF, adatkezelési tájékoztató) a saját
 > dokumentumaiddal összhangban, magyar e-commerce jogásszal kell validáltatnod, mielőtt élesíted.
 
