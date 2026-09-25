@@ -13,7 +13,8 @@ namespace LightweightPlugins\Elallas\Compliance;
  * Places compliance output under the add-to-cart form on the product page.
  *
  * Classic theme: `woocommerce_single_product_summary` at the given priority.
- * Block theme: after the server-rendered `woocommerce/add-to-cart-form` block
+ * Block theme: after the server-rendered `woocommerce/add-to-cart-form` or
+ * `woocommerce/add-to-cart-with-options` block
  * (on block themes WooCommerce runs every summary callback in one place, before
  * the excerpt, so the classic hook would put the output above it). A block
  * theme that renders the product through the `woocommerce/legacy-template`
@@ -27,6 +28,14 @@ namespace LightweightPlugins\Elallas\Compliance;
 final class ProductPlacement {
 
 	/**
+	 * Add-to-cart blocks the output follows on block themes (classic form and
+	 * the newer "Add to Cart + Options" block).
+	 *
+	 * @var string[]
+	 */
+	private const ADD_TO_CART_BLOCKS = [ 'woocommerce/add-to-cart-form', 'woocommerce/add-to-cart-with-options' ];
+
+	/**
 	 * "key:product_id" pairs already printed in this request.
 	 *
 	 * @var array<string, bool>
@@ -38,7 +47,7 @@ final class ProductPlacement {
 	 *
 	 * @param string   $key              Unique key ('notice', 'garan', …).
 	 * @param int      $classic_priority Priority on woocommerce_single_product_summary.
-	 * @param int      $block_priority   Priority on render_block_woocommerce/add-to-cart-form.
+	 * @param int      $block_priority   Priority on the add-to-cart block render filters.
 	 * @param callable $render           fn( \WC_Product $product ): string — returns HTML ('' = nothing).
 	 * @return void
 	 */
@@ -62,20 +71,20 @@ final class ProductPlacement {
 			$classic_priority
 		);
 
-		add_filter(
-			'render_block_woocommerce/add-to-cart-form',
-			static function ( $html, $block = null, $instance = null ) use ( $key, $render ) {
-				if ( ! self::is_block_theme() ) {
-					return $html;
-				}
+		$append = static function ( $html, $block = null, $instance = null ) use ( $key, $render ) {
+			if ( ! self::is_block_theme() ) {
+				return $html;
+			}
 
-				$product = self::block_product( $instance );
+			$product = self::block_product( $instance );
 
-				return null === $product ? $html : (string) $html . self::once( $key, $render, $product );
-			},
-			$block_priority,
-			3
-		);
+			return null === $product ? $html : (string) $html . self::once( $key, $render, $product );
+		};
+
+		// Whichever add-to-cart block renders first gets the output (once per product).
+		foreach ( self::ADD_TO_CART_BLOCKS as $block_name ) {
+			add_filter( 'render_block_' . $block_name, $append, $block_priority, 3 );
+		}
 	}
 
 	/**
@@ -158,7 +167,7 @@ final class ProductPlacement {
 	}
 
 	/**
-	 * Product of an add-to-cart-form block instance (block context, then the global).
+	 * Product of an add-to-cart block instance (block context, then the global).
 	 *
 	 * @param mixed $instance WP_Block instance.
 	 * @return \WC_Product|null
