@@ -82,7 +82,7 @@ final class ComplianceGaranSection {
 		echo '<p>' . esc_html(
 			GaranRaster::can_render()
 				? __( 'E-mail címke képként: elérhető (a kitöltött címke PNG-ként kerül a vevői e-mailbe, alatta a szöveges tájékoztatás és a linkek).', 'elallas-for-woo' )
-				: __( 'E-mail címke képként: nem elérhető (a tárhelyen nincs GD FreeType-támogatással) – az e-mailben szöveges tájékoztatás megy (évek, gyártó, modell, Your Europe link, termékoldal-link).', 'elallas-for-woo' )
+				: __( 'E-mail címke képként: nem elérhető (a tárhelyen nincs GD FreeType-támogatás) – az e-mailben szöveges tájékoztatás megy (évek, gyártó, modell, Your Europe link, termékoldal-link).', 'elallas-for-woo' )
 		) . '</p>';
 		printf(
 			'<p>%1$s <strong style="color:%2$s">%3$s</strong></p>',
