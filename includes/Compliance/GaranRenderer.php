@@ -218,14 +218,14 @@ final class GaranRenderer {
 		}
 
 		$on_own_page = function_exists( 'is_product' ) && is_product() && (int) get_queried_object_id() === (int) $product->get_id();
-		if ( $on_own_page && ProductPlacement::rendered( 'garan' ) ) {
+		if ( $on_own_page && ProductPlacement::rendered( 'garan', (int) $product->get_id() ) ) {
 			return '';
 		}
 
 		$mode = sanitize_key( (string) $atts['mode'] );
 		$html = self::product_label( $product, in_array( $mode, [ 'nested', 'full' ], true ) ? $mode : '' );
 		if ( '' !== $html && $on_own_page ) {
-			ProductPlacement::mark( 'garan' );
+			ProductPlacement::mark( 'garan', (int) $product->get_id() );
 		}
 
 		return $html;

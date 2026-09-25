@@ -18,15 +18,16 @@ namespace LightweightPlugins\Elallas\Compliance;
  * the excerpt, so the classic hook would put the output above it). A block
  * theme that renders the product through the `woocommerce/legacy-template`
  * block runs the classic templates, so there the classic hook is used (see
- * LegacyTemplateScope). Each key is printed at most once per request; a
- * shortcode may claim a key with mark().
+ * LegacyTemplateScope). Each key is printed at most once per product per
+ * request (two products on one page each get theirs); a shortcode may claim a
+ * key for a product with mark().
  *
  * Usage: ProductPlacement::add( 'notice', 35, 20, static fn ( \WC_Product $p ): string => '…' );
  */
 final class ProductPlacement {
 
 	/**
-	 * Keys already printed in this request.
+	 * "key:product_id" pairs already printed in this request.
 	 *
 	 * @var array<string, bool>
 	 */
@@ -78,23 +79,35 @@ final class ProductPlacement {
 	}
 
 	/**
-	 * Claim a key (e.g. from a shortcode) so the automatic placement is skipped.
+	 * Claim a key for a product (e.g. from a shortcode) so the automatic
+	 * placement of that product is skipped.
 	 *
-	 * @param string $key Key.
+	 * @param string $key        Key.
+	 * @param int    $product_id Product id.
 	 * @return void
 	 */
-	public static function mark( string $key ): void {
-		self::$rendered[ $key ] = true;
+	public static function mark( string $key, int $product_id ): void {
+		self::$rendered[ $key . ':' . $product_id ] = true;
 	}
 
 	/**
-	 * Whether a key was already printed in this request.
+	 * Whether a key was already printed for a product in this request.
 	 *
-	 * @param string $key Key.
+	 * @param string $key        Key.
+	 * @param int    $product_id Product id.
 	 * @return bool
 	 */
-	public static function rendered( string $key ): bool {
-		return ! empty( self::$rendered[ $key ] );
+	public static function rendered( string $key, int $product_id ): bool {
+		return ! empty( self::$rendered[ $key . ':' . $product_id ] );
+	}
+
+	/**
+	 * Forget every claim (tests).
+	 *
+	 * @return void
+	 */
+	public static function reset(): void {
+		self::$rendered = [];
 	}
 
 	/**
@@ -129,14 +142,16 @@ final class ProductPlacement {
 	 * @return string
 	 */
 	private static function once( string $key, callable $render, \WC_Product $product ): string {
-		if ( self::rendered( $key ) ) {
+		$product_id = (int) $product->get_id();
+
+		if ( self::rendered( $key, $product_id ) ) {
 			return '';
 		}
 
 		$html = (string) $render( $product );
 
 		if ( '' !== $html ) {
-			self::mark( $key );
+			self::mark( $key, $product_id );
 		}
 
 		return $html;
