@@ -1,0 +1,96 @@
+/* Elállás for WooCommerce — harmonised legal-guarantee notice.
+ * The official EU image is shown unchanged; only the frame is styled here.
+ */
+.elallas-notice {
+	margin: 1em 0;
+	max-width: 720px;
+}
+
+.elallas-notice__label {
+	cursor: pointer;
+	font-weight: 600;
+	text-decoration: underline;
+	text-underline-offset: 0.15em;
+}
+
+.elallas-notice__label:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+.elallas-notice__title {
+	margin: 0 0 0.5em;
+	font-weight: 600;
+}
+
+.elallas-notice__panel {
+	margin-top: 0.5em;
+}
+
+.elallas-notice__scroller {
+	overflow: auto;
+	max-width: 100%;
+}
+
+.elallas-notice__scroller:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+.elallas-notice__zoom {
+	display: block;
+}
+
+.elallas-notice .elallas-notice__image {
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+	border: 0;
+	background: #fff;
+}
+
+.elallas-notice__link {
+	margin: 0.5em 0 0;
+	font-size: 0.9em;
+	overflow-wrap: anywhere;
+}
+
+/* Legibility at default size (≥ 12 CSS px body text): on narrow screens the
+ * notice keeps a readable width and pans horizontally instead of shrinking. */
+@media (max-width: 599px) {
+	.elallas-notice__scroller {
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.elallas-notice .elallas-notice__image {
+		width: max(600px, 170vw);
+		max-width: none;
+	}
+}
+
+/* Header / footer bars: static, scoped, theme-neutral. */
+.elallas-notice-bar {
+	position: static;
+	box-sizing: border-box;
+	padding: 0.5em 16px;
+	font-size: 0.9em;
+}
+
+.elallas-notice-bar .elallas-notice {
+	margin: 0 auto;
+}
+
+/* Fallback for themes without a screen-reader-text rule. */
+.elallas-notice .screen-reader-text {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
