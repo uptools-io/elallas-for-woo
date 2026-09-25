@@ -20,12 +20,12 @@ msgstr ""
 #. Plugin Name of the plugin
 #: elallas-for-woo.php
 msgid "Elállás for WooCommerce"
-msgstr ""
+msgstr "Elállás for WooCommerce"
 
 #. Plugin URI of the plugin
 #: elallas-for-woo.php
 msgid "https://github.com/uptools-io/elallas-for-woo"
-msgstr ""
+msgstr "https://github.com/uptools-io/elallas-for-woo"
 
 #. Description of the plugin
 #: elallas-for-woo.php
@@ -41,18 +41,20 @@ msgstr ""
 #. Author of the plugin
 #: elallas-for-woo.php
 msgid "uptools.io"
-msgstr ""
+msgstr "uptools.io"
 
 #. Author URI of the plugin
 #: elallas-for-woo.php
 msgid "https://uptools.io"
-msgstr ""
+msgstr "https://uptools.io"
 
 #: elallas-for-woo.php:45
 msgid ""
 "Autoloader not found. Please run \"composer install\" in the plugin "
 "directory, or re-install the plugin from a release ZIP."
 msgstr ""
+"Autoloaderul nu a fost găsit. Rulați „composer install” în directorul "
+"pluginului sau reinstalați pluginul dintr-o arhivă ZIP de versiune."
 
 #: includes/Admin/AdminMenu.php:41 includes/Admin/AdminMenu.php:42
 #: includes/Admin/AdminMenu.php:100
@@ -163,7 +165,7 @@ msgstr "Produs"
 
 #: includes/Admin/CaseDetailSections.php:68
 msgid "SKU"
-msgstr ""
+msgstr "SKU"
 
 #: includes/Admin/CaseDetailSections.php:69 templates/frontend/select.php:54
 msgid "Rendelt"
@@ -270,41 +272,53 @@ msgid ""
 "2026. szeptember 27-től kötelező a harmonizált szavatossági tájékoztató és "
 "(érintett termékeknél) a GARAN címke. Ellenőrizd a beállításokat."
 msgstr ""
+"Începând cu 27 septembrie 2026 sunt obligatorii notificarea armonizată "
+"privind garanția legală de conformitate și (pentru produsele vizate) "
+"eticheta GARAN. Vă rugăm să verificați setările."
 
 #: includes/Admin/ComplianceCheck.php:97
 msgid ""
 "A harmonizált szavatossági tájékoztató 2026. szeptember 27. óta kötelező."
 msgstr ""
+"Notificarea armonizată privind garanția legală de conformitate este "
+"obligatorie din 27 septembrie 2026."
 
 #: includes/Admin/ComplianceCheck.php:114
 msgid "Jelenleg nem jelenik meg."
-msgstr ""
+msgstr "În prezent nu este afișată."
 
 #: includes/Admin/ComplianceCheck.php:116
 msgid "A pénztári megjelenítés ki van kapcsolva."
-msgstr ""
+msgstr "Afișarea la finalizarea comenzii este dezactivată."
 
 #: includes/Admin/ComplianceCheck.php:118
 msgid ""
 "Egy bővítmény vagy a téma szűrővel (elallas_garan_checkout_visible) "
 "elrejtheti a rendelés gomb előtti GARAN címkét."
 msgstr ""
+"Un plugin sau tema poate ascunde eticheta GARAN dinaintea butonului de "
+"comandă printr-un filtru (elallas_garan_checkout_visible)."
 
 #: includes/Admin/ComplianceCheck.php:120
 msgid "A beállítások még nincsenek átnézve."
-msgstr ""
+msgstr "Setările nu au fost încă verificate."
 
 #: includes/Admin/ComplianceNotice.php:50
 msgid ""
 "A hivatalos GARAN címkefájl sérült vagy módosult; a címke nem jelenik meg. "
 "Telepítsd újra a plugint."
 msgstr ""
+"Fișierul oficial al etichetei GARAN este deteriorat sau modificat; eticheta "
+"nu este afișată. Vă rugăm să reinstalați pluginul."
 
 #: includes/Admin/ComplianceNotice.php:54
 msgid ""
 "A GARAN és az értesítés a blokkos pénztárban nem a rendelés gomb előtt "
 "jelenik meg. Lásd a hibaelhárítási útmutatót."
 msgstr ""
+"În pagina de finalizare a comenzii bazată pe blocuri, eticheta GARAN și "
+"notificarea nu sunt afișate înaintea butonului de comandă. Consultați ghidul "
+"de depanare."
 
 #: includes/Admin/ComplianceNotice.php:67
 #: includes/Admin/ComplianceNotice.php:163 includes/Admin/NoticeManager.php:58
@@ -313,25 +327,26 @@ msgstr "Elállás for WooCommerce:"
 
 #: includes/Admin/ComplianceNotice.php:71
 msgid "Beállítások megnyitása"
-msgstr ""
+msgstr "Deschideți setările"
 
 #: includes/Admin/ComplianceNotice.php:72
 msgid "Elrejtés 30 napra"
-msgstr ""
+msgstr "Ascundeți pentru 30 de zile"
 
 #: includes/Admin/ComplianceNotice.php:103
 msgid "Nincs jogosultságod ehhez a művelethez."
-msgstr ""
+msgstr "Nu aveți permisiunea de a efectua această acțiune."
 
 #: includes/Admin/ComplianceNotice.php:108
 msgid "Szavatosság"
-msgstr ""
+msgstr "Garanția legală de conformitate"
 
 #: includes/Admin/GaranProductFields.php:65
 msgid ""
 "A GARAN modul jelenleg ki van kapcsolva a beállításokban; a címke nem "
 "jelenik meg."
 msgstr ""
+"Modulul GARAN este în prezent dezactivat în setări; eticheta nu este afișată."
 
 #: includes/Admin/GaranProductFields.php:72
 msgid ""
@@ -339,54 +354,65 @@ msgid ""
 "modellazonosítónál vagy jótállásnál a variáció „GARAN címke” beállításában "
 "adj meg saját adatot (vagy kapcsold ki)."
 msgstr ""
+"Produs variabil: variantele moștenesc implicit aceste date. Dacă o variantă "
+"are alt identificator de model sau altă garanție comercială, introduceți "
+"datele proprii în setarea „Eticheta GARAN” a variantei (sau dezactivați "
+"eticheta)."
 
 #: includes/Admin/GaranProductFields.php:79
 msgid "Gyártói tartóssági jótállás (GARAN címke)"
-msgstr ""
+msgstr "Garanția comercială de durabilitate a producătorului (eticheta GARAN)"
 
 #: includes/Admin/GaranProductFields.php:224
 msgid "Előnézet (a mentett adatokkal)"
-msgstr ""
+msgstr "Previzualizare (cu datele salvate)"
 
 #: includes/Admin/GaranProductFields.php:227
 msgid ""
 "Fél éves érték: ellenőrizd, hogy a szám nem ér a naptár-ikonhoz (a fél éves "
 "értékek jogi/grafikai megítélése nyitott kérdés)."
 msgstr ""
+"Valoare de jumătate de an: verificați ca cifra să nu atingă pictograma "
+"calendarului (evaluarea juridică/grafică a valorilor de jumătate de an este "
+"o chestiune deschisă)."
 
 #: includes/Admin/GaranProductFields.php:251
 msgid "Időtartam (év)"
-msgstr ""
+msgstr "Durată (ani)"
 
 #: includes/Admin/GaranProductFields.php:253
 msgid ""
 "Csak 2 évnél hosszabb, egész év (pl. 3); a rendszer ellenőrzi, hogy a címkén "
 "elfér-e."
 msgstr ""
+"Doar ani întregi, mai mult de 2 ani (de ex. 3); pluginul verifică dacă "
+"valoarea încape pe etichetă."
 
 #: includes/Admin/GaranProductFields.php:261
 msgid "Gyártó (Brand/Trademark)"
-msgstr ""
+msgstr "Producător (marcă/marcă comercială)"
 
 #: includes/Admin/GaranProductFields.php:262
 msgid "A gyártó által megadott név, a gyártó által a címkén használt formában."
 msgstr ""
+"Numele indicat de producător, în forma pe care producătorul o folosește pe "
+"etichetă."
 
 #: includes/Admin/GaranProductFields.php:267
 msgid "Modellazonosító"
-msgstr ""
+msgstr "Identificatorul modelului"
 
 #: includes/Admin/GaranProductFields.php:281
 msgid "időtartam"
-msgstr ""
+msgstr "durată"
 
 #: includes/Admin/GaranProductFields.php:282
 msgid "gyártó"
-msgstr ""
+msgstr "producător"
 
 #: includes/Admin/GaranProductFields.php:283
 msgid "modellazonosító"
-msgstr ""
+msgstr "identificatorul modelului"
 
 #. translators: %s: comma-separated list of the invalid fields.
 #: includes/Admin/GaranProductFields.php:289
@@ -397,29 +423,34 @@ msgid ""
 "kötelező, és a címke fix mezőszélességén el kell férniük (a betűméret nem "
 "csökkenthető). Hibás vagy túl hosszú: %s."
 msgstr ""
+"Eticheta GARAN nu a fost activată: durata trebuie să fie un număr întreg de "
+"ani mai mare de 2 care încape pe etichetă, producătorul și identificatorul "
+"modelului sunt obligatorii și trebuie să încapă în lățimea fixă a câmpurilor "
+"etichetei (dimensiunea fontului nu poate fi redusă). Invalid sau prea lung: "
+"%s."
 
 #: includes/Admin/GaranVariationFields.php:60
 #: includes/Admin/Settings/ComplianceGaranSection.php:31
 msgid "GARAN címke"
-msgstr ""
+msgstr "Eticheta GARAN"
 
 #: includes/Admin/GaranVariationFields.php:65
 msgid "Öröklés a szülőtől"
-msgstr ""
+msgstr "Moștenire de la produsul părinte"
 
 #: includes/Admin/GaranVariationFields.php:66
 msgid "Saját adat"
-msgstr ""
+msgstr "Date proprii"
 
 #: includes/Admin/GaranVariationFields.php:67
 msgid "Nincs GARAN címke"
-msgstr ""
+msgstr "Fără etichetă GARAN"
 
 #. translators: 1: variation id, 2: validation message
 #: includes/Admin/GaranVariationFields.php:120
 #, php-format
 msgid "#%1$d variáció: %2$s A variáció a szülő adatait örökli."
-msgstr ""
+msgstr "Varianta #%1$d: %2$s Varianta moștenește datele produsului părinte."
 
 #: includes/Admin/NoticeManager.php:59
 msgid "Még nincs beállítva elállási oldal. Indítsd el a beüzemelést."
@@ -575,34 +606,36 @@ msgstr "Activare"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:36
 msgid "GARAN címke megjelenítése"
-msgstr ""
+msgstr "Afișați eticheta GARAN"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:37
 msgid ""
 "Bekapcsolva a címke a rendelés gomb előtt mindig megjelenik (45/2014. 15. § "
 "(1), kötelező)."
 msgstr ""
+"Dacă este activată, eticheta este afișată întotdeauna înaintea butonului de "
+"comandă (45/2014. Korm. rendelet 15. § (1), obligatoriu)."
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:41
 #: includes/Admin/Settings/TabCompliance.php:103
 msgid "Termékoldal"
-msgstr ""
+msgstr "Pagina produsului"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:47
 msgid "Beágyazott, kattintásra teljes"
-msgstr ""
+msgstr "Încorporată, eticheta completă la clic"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:48
 msgid "Teljes címke a kosárgomb alatt"
-msgstr ""
+msgstr "Eticheta completă sub butonul de adăugare în coș"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:49
 msgid "Teljes címke a leírás alatt"
-msgstr ""
+msgstr "Eticheta completă sub descriere"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:50
 msgid "Galériában"
-msgstr ""
+msgstr "În galerie"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:58
 #: includes/Admin/Settings/TabCompliance.php:101
@@ -613,15 +646,17 @@ msgstr "Locuri de afișare"
 #: includes/Admin/Settings/ComplianceGaranSection.php:60
 msgid "Kosároldal, az expressz fizetés és a pénztár gombok előtt"
 msgstr ""
+"Pagina coșului, înaintea butoanelor de plată expresă și de finalizare a "
+"comenzii"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:61
 #: includes/Admin/Settings/TabCompliance.php:107
 msgid "Rendelési e-mail"
-msgstr ""
+msgstr "E-mail de comandă"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:62
 msgid "Terméklista (listaoldal)"
-msgstr ""
+msgstr "Lista de produse (pagina de arhivă)"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:63
 msgid ""
@@ -630,16 +665,23 @@ msgid ""
 "blokksablon, helyezd el az [elallas_garan_label] shortcode-ot a kosárgomb "
 "alá."
 msgstr ""
+"Eticheta apare doar la produsele la care este activată în editorul de "
+"produs. Dacă pagina produsului este un șablon Elementor Pro sau un șablon de "
+"blocuri personalizat, plasați shortcode-ul [elallas_garan_label] sub butonul "
+"de adăugare în coș."
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:67
 msgid "Állapot"
-msgstr ""
+msgstr "Stare"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:84
 msgid ""
 "E-mail címke képként: elérhető (a kitöltött címke PNG-ként kerül a vevői e-"
 "mailbe, alatta a szöveges tájékoztatás és a linkek)."
 msgstr ""
+"Eticheta în e-mail ca imagine: disponibilă (eticheta completată este "
+"adăugată în e-mailul către client ca PNG, urmată de informațiile text și de "
+"linkuri)."
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:85
 msgid ""
@@ -647,28 +689,33 @@ msgid ""
 "– az e-mailben szöveges tájékoztatás megy (évek, gyártó, modell, Your Europe "
 "link, termékoldal-link)."
 msgstr ""
+"Eticheta în e-mail ca imagine: indisponibilă (serverul nu are suport GD "
+"FreeType) – e-mailul conține în schimb informații text (ani, producător, "
+"model, link Your Europe, link către pagina produsului)."
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:89
 msgid "Hivatalos GARAN fájlok sértetlensége:"
-msgstr ""
+msgstr "Integritatea fișierelor oficiale GARAN:"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:91
 msgid "rendben"
-msgstr ""
+msgstr "în regulă"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:91
 msgid "HIBA – a címke nem jelenik meg, telepítsd újra a plugint"
-msgstr ""
+msgstr "EROARE – eticheta nu este afișată, vă rugăm să reinstalați pluginul"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:98
 msgid "Blokkos pénztár ellenőrzése"
-msgstr ""
+msgstr "Verificați pagina de finalizare a comenzii bazată pe blocuri"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:99
 msgid ""
 "(tegyél egy terméket a kosárba; az oldal alján megjelenő sáv jelzi, hogy az "
 "értesítés és a GARAN a rendelés gomb előtt van-e)"
 msgstr ""
+"(adăugați un produs în coș; bara din partea de jos a paginii arată dacă "
+"notificarea și eticheta GARAN se află înaintea butonului de comandă)"
 
 #: includes/Admin/Settings/SettingsPage.php:65
 msgid "Beállítások elmentve."
@@ -677,11 +724,11 @@ msgstr "Setările au fost salvate."
 #: includes/Admin/Settings/TabCompliance.php:37
 #: includes/Admin/Settings/TabCompliance.php:75
 msgid "Szavatosság és GARAN"
-msgstr ""
+msgstr "Garanția legală și GARAN"
 
 #: includes/Admin/Settings/TabCompliance.php:80
 msgid "Ismert korlátok ebben a verzióban:"
-msgstr ""
+msgstr "Limitări cunoscute în această versiune:"
 
 #: includes/Admin/Settings/TabCompliance.php:82
 msgid ""
@@ -689,6 +736,8 @@ msgid ""
 "van GD FreeType-támogatás; enélkül szövegként (évek, gyártó, modell) és "
 "linkként."
 msgstr ""
+"Eticheta GARAN apare ca imagine în e-mailuri doar dacă serverul are suport "
+"GD FreeType; în caz contrar, ca text (ani, producător, model) și link."
 
 #: includes/Admin/Settings/TabCompliance.php:83
 msgid ""
@@ -696,56 +745,69 @@ msgid ""
 "működik; blokktémánál a termékoldalon, a kosárban és a pénztárban jelenik "
 "meg."
 msgstr ""
+"Eticheta GARAN din listele de produse (arhive) funcționează doar cu teme "
+"clasice; cu teme bazate pe blocuri apare pe pagina produsului, în coș și la "
+"finalizarea comenzii."
 
 #: includes/Admin/Settings/TabCompliance.php:84
 msgid ""
 "A szoftverfrissítési és javíthatósági információt 1.1.1-ig a termékleírásban "
 "tüntesd fel."
 msgstr ""
+"Până la versiunea 1.1.1, menționați informațiile despre actualizările de "
+"software și reparabilitate în descrierea produsului."
 
 #: includes/Admin/Settings/TabCompliance.php:85
 msgid ""
 "Gutenberg-blokk és Elementor-widget 1.1.1-től; addig a Shortcode blokkal / "
 "widgettel helyezd el a shortcode-okat."
 msgstr ""
+"Bloc Gutenberg și widget Elementor începând cu versiunea 1.1.1; până atunci "
+"plasați shortcode-urile cu blocul / widgetul Shortcode."
 
 #: includes/Admin/Settings/TabCompliance.php:86
 msgid ""
 "A blokkos kosár expressz fizetési gombjai előtt a GARAN címke nem jelenik "
 "meg (a klasszikus kosárban igen)."
 msgstr ""
+"Eticheta GARAN nu este afișată înaintea butoanelor de plată expresă din "
+"coșul bazat pe blocuri (în coșul clasic, da)."
 
 #: includes/Admin/Settings/TabCompliance.php:90
 msgid "Jogszabályi szavatosság tájékoztató"
-msgstr ""
+msgstr "Notificare privind garanția legală de conformitate"
 
 #: includes/Admin/Settings/TabCompliance.php:94
 msgid "Harmonizált szavatossági értesítés megjelenítése"
-msgstr ""
+msgstr "Afișați notificarea armonizată privind garanția legală de conformitate"
 
 #: includes/Admin/Settings/TabCompliance.php:97
 msgid "Felirat"
-msgstr ""
+msgstr "Text"
 
 #: includes/Admin/Settings/TabCompliance.php:98
 msgid ""
 "A felirat, amelyre kattintva/rámutatva a teljes hivatalos értesítés "
 "megjelenik. Üresen hagyva az alapértelmezett felirat jelenik meg."
 msgstr ""
+"Textul pe care, la clic/trecerea cursorului, se afișează notificarea "
+"oficială completă. Lăsați gol pentru a folosi textul implicit."
 
 #: includes/Admin/Settings/TabCompliance.php:104
 msgid "Fejléc"
-msgstr ""
+msgstr "Antet"
 
 #: includes/Admin/Settings/TabCompliance.php:105
 msgid "Lábléc"
-msgstr ""
+msgstr "Subsol"
 
 #: includes/Admin/Settings/TabCompliance.php:106
 msgid ""
 "Pénztár (a rendelés gomb előtt: klasszikus, blokkos és „Rendelés kifizetése” "
 "oldal)"
 msgstr ""
+"Finalizarea comenzii (înaintea butonului de comandă: pagina clasică, cea "
+"bazată pe blocuri și pagina „Plătiți comanda”)"
 
 #: includes/Admin/Settings/TabCompliance.php:108
 msgid ""
@@ -754,22 +816,27 @@ msgid ""
 "Elementor Shortcode widget) teheted. A pénztári megjelenítés a "
 "rendelésnézetre (köszönőoldal, Fiókom) is vonatkozik."
 msgstr ""
+"Amplasarea în antet funcționează doar cu teme care acceptă hook-ul "
+"wp_body_open. În alt loc o puteți plasa cu shortcode-ul "
+"[elallas_guarantee_notice] (blocul Shortcode / widgetul Elementor "
+"Shortcode). Setarea pentru finalizarea comenzii se aplică și vizualizării "
+"comenzii (pagina de mulțumire, Contul meu)."
 
 #: includes/Admin/Settings/TabCompliance.php:112
 msgid "E-mail mód"
-msgstr ""
+msgstr "Mod e-mail"
 
 #: includes/Admin/Settings/TabCompliance.php:118
 msgid "Kép"
-msgstr ""
+msgstr "Imagine"
 
 #: includes/Admin/Settings/TabCompliance.php:119
 msgid "Színes PNG-melléklet"
-msgstr ""
+msgstr "Atașament PNG color"
 
 #: includes/Admin/Settings/TabCompliance.php:120
 msgid "Mindkettő"
-msgstr ""
+msgstr "Ambele"
 
 #: includes/Admin/Settings/TabCompliance.php:125
 msgid ""
@@ -778,10 +845,14 @@ msgid ""
 "mellékletként is csatolódik. Az angol nyelvű értesítéshez nincs hivatalos "
 "PNG, ott szöveg és link jelenik meg."
 msgstr ""
+"În e-mailurile de comandă către clienți (în procesare, finalizată, în "
+"așteptare, factură). E-mailurile în text simplu primesc întotdeauna și "
+"PNG-ul oficial color ca atașament. Pentru notificarea în limba engleză nu "
+"există PNG oficial; în schimb se afișează text și un link."
 
 #: includes/Admin/Settings/TabCompliance.php:129
 msgid "Szavatossági oldal"
-msgstr ""
+msgstr "Pagina garanției legale"
 
 #: includes/Admin/Settings/TabCompliance.php:137
 #: includes/Admin/Settings/TabGeneral.php:85
@@ -794,6 +865,10 @@ msgid ""
 "[elallas_guarantee_notice mode=\"inline\"] (azonnal látható). Kiválasztott "
 "oldal esetén az értesítés alatt „Megnyitás külön oldalon” link jelenik meg."
 msgstr ""
+"Shortcode: [elallas_guarantee_notice] (se deschide la clic) sau "
+"[elallas_guarantee_notice mode=\"inline\"] (afișat imediat). Dacă este "
+"selectată o pagină, sub notificare apare linkul „Deschideți pe o pagină "
+"separată”."
 
 #: includes/Admin/Settings/TabCompliance.php:150
 #: includes/Admin/Settings/TabGeneral.php:34
@@ -802,11 +877,11 @@ msgstr "General"
 
 #: includes/Admin/Settings/TabCompliance.php:153
 msgid "B2B"
-msgstr ""
+msgstr "B2B"
 
 #: includes/Admin/Settings/TabCompliance.php:155
 msgid "Elrejtés céges (B2B) rendeléseknél"
-msgstr ""
+msgstr "Ascundeți pentru comenzile companiilor (B2B)"
 
 #: includes/Admin/Settings/TabCompliance.php:156
 msgid ""
@@ -814,28 +889,34 @@ msgid ""
 "cégnév/adószám alapján; termékoldalon, kosárban és pénztárban csak az "
 "elallas_compliance_is_b2b szűrővel."
 msgstr ""
+"În vizualizarea comenzii, pe pagina Plătiți comanda și în e-mailuri, pe baza "
+"numelui companiei / codului de TVA din datele de facturare; pe pagina "
+"produsului, în coș și la finalizarea comenzii doar prin filtrul "
+"elallas_compliance_is_b2b."
 
 #: includes/Admin/Settings/TabCompliance.php:160
 msgid "Digitális termékek"
-msgstr ""
+msgstr "Produse digitale"
 
 #: includes/Admin/Settings/TabCompliance.php:162
 msgid "Tisztán virtuális (digitális) termékeknél ne jelenjen meg"
-msgstr ""
+msgstr "Nu afișați pentru produsele pur virtuale (digitale)"
 
 #: includes/Admin/Settings/TabCompliance.php:163
 msgid ""
 "Virtuálisnak jelölt (nem szállítandó) termékeknél nem jelenik meg; ha "
 "virtuálisként kezelt fizikai árut árulsz, kapcsold ki ezt az opciót."
 msgstr ""
+"Nu se afișează pentru produsele marcate ca virtuale (fără livrare); dacă "
+"vindeți bunuri fizice gestionate ca virtuale, dezactivați această opțiune."
 
 #: includes/Admin/Settings/TabCompliance.php:167
 msgid "Termékinformációk"
-msgstr ""
+msgstr "Informații despre produs"
 
 #: includes/Admin/Settings/TabCompliance.php:168
 msgid "Opcionális termékinformációk (1.1.1-től)"
-msgstr ""
+msgstr "Informații opționale despre produs (începând cu versiunea 1.1.1)"
 
 #: includes/Admin/Settings/TabCompliance.php:171
 msgid ""
@@ -843,22 +924,25 @@ msgid ""
 "nyelv). Polylang esetén a GARAN termékadatok szinkronizálását a Polylang "
 "(for WooCommerce) beállításaiban kapcsold be."
 msgstr ""
+"Magazin multilingv: limba notificării urmează limba paginii (24 de limbi "
+"oficiale). Cu Polylang, activați sincronizarea datelor de produs GARAN în "
+"setările Polylang (for WooCommerce)."
 
 #: includes/Admin/Settings/TabCompliance.php:192
 msgid "Oldal létrehozása (/szavatossag/)"
-msgstr ""
+msgstr "Creați pagina (/szavatossag/)"
 
 #: includes/Admin/Settings/TabCompliance.php:209
 msgid "A szavatossági oldal elkészült."
-msgstr ""
+msgstr "Pagina garanției legale a fost creată."
 
 #: includes/Admin/Settings/TabCompliance.php:211
 msgid "Megtekintés"
-msgstr ""
+msgstr "Vizualizați"
 
 #: includes/Admin/Settings/TabCompliance.php:214
 msgid "Az oldal létrehozása nem sikerült."
-msgstr ""
+msgstr "Pagina nu a putut fi creată."
 
 #: includes/Admin/Settings/TabDeadline.php:57
 msgid "Elállási határidő"
@@ -969,6 +1053,9 @@ msgid ""
 "Több címzett is megadható vesszővel, pontosvesszővel vagy szóközzel "
 "elválasztva. Üresen hagyva az oldal adminisztrátori e-mail címe."
 msgstr ""
+"Puteți introduce mai mulți destinatari, separați prin virgule, punct și "
+"virgulă sau spații. Dacă lăsați câmpul gol, se folosește adresa de e-mail a "
+"administratorului site-ului."
 
 #: includes/Admin/Settings/TabEmails.php:80
 msgid "Vásárlói e-mail extra szöveg"
@@ -1277,18 +1364,23 @@ msgid ""
 "Elállás: az értesítés és a GARAN a blokkos pénztárban a rendelés gomb előtt "
 "jelenik meg."
 msgstr ""
+"Elállás: notificarea și eticheta GARAN sunt afișate înaintea butonului de "
+"comandă în pagina de finalizare a comenzii bazată pe blocuri."
 
 #: includes/Compliance/CheckoutSlot.php:217
 msgid ""
 "Elállás: a rendelés gomb horgonya nem található, tartalék-hely lépett "
 "életbe. Ellenőrizd az elallas_checkout_block_anchors szelektorait."
 msgstr ""
+"Elállás: ancora butonului de comandă nu a fost găsită, se folosește o "
+"poziție de rezervă. Verificați selectorii elallas_checkout_block_anchors."
 
 #. translators: 1: years, 2: brand, 3: model identifier
 #: includes/Compliance/GaranRenderer.php:45
 #, php-format
 msgid "Gyártói tartóssági jótállás: %1$s év (%2$s, %3$s)"
 msgstr ""
+"Garanția comercială de durabilitate a producătorului: %1$s ani (%2$s, %3$s)"
 
 #. translators: %s: Your Europe URL
 #: includes/Compliance/GaranRenderer.php:287
@@ -1297,19 +1389,21 @@ msgid ""
 "Az Európai Unió hivatalos GARAN címkéje a gyártói tartóssági jótállásról. A "
 "QR-kód a %s oldalra mutat."
 msgstr ""
+"Eticheta oficială GARAN a UE pentru garanția comercială de durabilitate a "
+"producătorului. Codul QR trimite la pagina %s."
 
 #: includes/Compliance/GaranVariations.php:81
 #: templates/frontend/garan-label.php:36
 msgid "a teljes címke megnyitása"
-msgstr ""
+msgstr "deschideți eticheta completă"
 
 #: includes/Compliance/NoticeRenderer.php:89
 msgid "Az Ön jogszabályi szavatossági jogai"
-msgstr ""
+msgstr "Drepturile dumneavoastră privind garanția legală de conformitate"
 
 #: includes/Compliance/NoticeSource.php:115
 msgid "Hivatalos EU-tájékoztató a jogszabályi szavatosságról"
-msgstr ""
+msgstr "Notificarea oficială a UE privind garanția legală de conformitate"
 
 #: includes/Cron/RetentionCleaner.php:63
 msgid ""
@@ -1325,6 +1419,11 @@ msgid ""
 "használható. A bolti garancia, a kötelező jótállás (151/2003. Korm. "
 "rendelet) és a fizetős kiterjesztett garancia nem jelölhető vele."
 msgstr ""
+"Eticheta GARAN poate fi folosită exclusiv pentru a indica o garanție "
+"comercială de durabilitate gratuită, oferită de producător, care acoperă "
+"întregul produs pe o perioadă mai mare de 2 ani. Garanțiile magazinului, "
+"garanțiile obligatorii (151/2003. Korm. rendelet) și garanțiile extinse "
+"contra cost nu pot fi marcate cu ea."
 
 #: includes/Data/DefaultTexts.php:72
 msgid ""
@@ -1333,6 +1432,11 @@ msgid ""
 "változatlanul jeleníti meg őket. Az ÁSZF frissítése a bolt feladata, az "
 "értesítés azt nem helyettesíti."
 msgstr ""
+"Obligatoriu începând cu 27 septembrie 2026 (45/2014. Korm. rendelet 11. § "
+"(1a), 15. § (1)). Grafica notificării și a etichetei oficiale nu poate fi "
+"modificată; pluginul le afișează neschimbate. Actualizarea termenilor și "
+"condițiilor este responsabilitatea magazinului; notificarea nu îi "
+"înlocuiește."
 
 #: includes/Data/DefaultTexts.php:81
 msgid ""
@@ -1493,7 +1597,7 @@ msgstr "Retragere din contract"
 
 #: includes/Frontend/StepProcessor.php:82
 msgid "Kérjük, válasszon legalább egy terméket."
-msgstr ""
+msgstr "Vă rugăm să selectați cel puțin un produs."
 
 #: includes/Frontend/StepProcessor.php:115
 msgid "A folytatáshoz minden nyilatkozatot el kell fogadnia."
@@ -1606,58 +1710,62 @@ msgstr "Setări"
 #: includes/Plugin.php:193
 msgid "WooCommerce must be installed and active for this plugin to work."
 msgstr ""
+"WooCommerce trebuie să fie instalat și activ pentru ca acest plugin să "
+"funcționeze."
 
 #: includes/Security/Honeypot.php:49
 msgid "Leave this field empty"
-msgstr ""
+msgstr "Lăsați acest câmp gol"
 
 #: includes/SiteManager/CaseAbilities.php:56
 msgid "List Withdrawal Cases"
-msgstr ""
+msgstr "Listați cazurile de retragere"
 
 #: includes/SiteManager/CaseAbilities.php:57
 msgid "List elállás cases, optionally filtered by status and paged."
 msgstr ""
+"Listează cazurile de retragere, opțional filtrate după stare și paginate."
 
 #: includes/SiteManager/CaseAbilities.php:81
 msgid "Get Withdrawal Case"
-msgstr ""
+msgstr "Obțineți cazul de retragere"
 
 #: includes/SiteManager/CaseAbilities.php:82
 msgid "Get a case with its items and audit events."
 msgstr ""
+"Obține un caz împreună cu articolele și evenimentele de audit ale acestuia."
 
 #: includes/SiteManager/CaseAbilities.php:97
 msgid "Update Case Status"
-msgstr ""
+msgstr "Actualizați starea cazului"
 
 #: includes/SiteManager/CaseAbilities.php:98
 msgid "Change the status of a withdrawal case."
-msgstr ""
+msgstr "Modifică starea unui caz de retragere."
 
 #: includes/SiteManager/CaseAbilities.php:114
 msgid "Get Case Audit Log"
-msgstr ""
+msgstr "Obțineți jurnalul de audit al cazului"
 
 #: includes/SiteManager/CaseAbilities.php:115
 msgid "Get the audit event log for a withdrawal case."
-msgstr ""
+msgstr "Obține jurnalul evenimentelor de audit pentru un caz de retragere."
 
 #: includes/SiteManager/CaseService.php:61
 msgid "Case not found."
-msgstr ""
+msgstr "Cazul nu a fost găsit."
 
 #: includes/SiteManager/CaseService.php:83
 msgid "Invalid status value."
-msgstr ""
+msgstr "Valoare de stare invalidă."
 
 #: includes/SiteManager/CaseService.php:89
 msgid "Could not update the case status."
-msgstr ""
+msgstr "Starea cazului nu a putut fi actualizată."
 
 #: includes/SiteManager/CaseService.php:94
 msgid "Case status updated."
-msgstr ""
+msgstr "Starea cazului a fost actualizată."
 
 #: includes/SiteManager/Integration.php:55
 msgid "Elállás (Withdrawal)"
@@ -1796,16 +1904,16 @@ msgstr ""
 
 #: templates/emails/garan-item.php:25
 msgid "A hivatalos címke a termékoldalon"
-msgstr ""
+msgstr "Eticheta oficială pe pagina produsului"
 
 #: templates/emails/guarantee-notice.php:34
 msgid "Teljes méretben"
-msgstr ""
+msgstr "La dimensiune completă"
 
 #: templates/emails/guarantee-notice.php:38
 #: templates/emails/plain/guarantee-notice.php:29
 msgid "A tájékoztatót mellékletben csatoltuk."
-msgstr ""
+msgstr "Notificarea este atașată la acest e-mail."
 
 #: templates/emails/plain/admin-notification.php:28
 msgid ""
@@ -1828,13 +1936,13 @@ msgstr ""
 
 #: templates/emails/plain/garan-item.php:19
 msgid "A hivatalos címke a termékoldalon:"
-msgstr ""
+msgstr "Eticheta oficială pe pagina produsului:"
 
 #. translators: %s: URL of the official notice image.
 #: templates/emails/plain/guarantee-notice.php:25
 #, php-format
 msgid "Teljes méretben: %s"
-msgstr ""
+msgstr "La dimensiune completă: %s"
 
 #. translators: %s: case number
 #: templates/emails/plain/status-update.php:25
@@ -1871,6 +1979,8 @@ msgstr ""
 #: templates/frontend/checkout-garan-list.php:19
 msgid "A következő termékekre a gyártó tartóssági jótállást vállal:"
 msgstr ""
+"Producătorul oferă o garanție comercială de durabilitate pentru următoarele "
+"produse:"
 
 #: templates/frontend/confirm.php:31
 msgid "Elállás megerősítése"
@@ -1940,11 +2050,11 @@ msgstr "Căutare nouă"
 #: templates/frontend/guarantee-notice.php:38
 #: templates/frontend/guarantee-notice.php:42
 msgid "(új lapon nyílik)"
-msgstr ""
+msgstr "(se deschide într-o filă nouă)"
 
 #: templates/frontend/guarantee-notice.php:45
 msgid "Megnyitás külön oldalon"
-msgstr ""
+msgstr "Deschideți pe o pagină separată"
 
 #: templates/frontend/identify.php:28
 msgid "Online elállási nyilatkozat"

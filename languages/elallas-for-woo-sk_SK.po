@@ -19,12 +19,12 @@ msgstr ""
 #. Plugin Name of the plugin
 #: elallas-for-woo.php
 msgid "Elállás for WooCommerce"
-msgstr ""
+msgstr "Elállás for WooCommerce"
 
 #. Plugin URI of the plugin
 #: elallas-for-woo.php
 msgid "https://github.com/uptools-io/elallas-for-woo"
-msgstr ""
+msgstr "https://github.com/uptools-io/elallas-for-woo"
 
 #. Description of the plugin
 #: elallas-for-woo.php
@@ -40,18 +40,20 @@ msgstr ""
 #. Author of the plugin
 #: elallas-for-woo.php
 msgid "uptools.io"
-msgstr ""
+msgstr "uptools.io"
 
 #. Author URI of the plugin
 #: elallas-for-woo.php
 msgid "https://uptools.io"
-msgstr ""
+msgstr "https://uptools.io"
 
 #: elallas-for-woo.php:45
 msgid ""
 "Autoloader not found. Please run \"composer install\" in the plugin "
 "directory, or re-install the plugin from a release ZIP."
 msgstr ""
+"Autoloader sa nenašiel. Spustite, prosím, „composer install“ v priečinku "
+"pluginu alebo plugin znova nainštalujte zo ZIP súboru vydania."
 
 #: includes/Admin/AdminMenu.php:41 includes/Admin/AdminMenu.php:42
 #: includes/Admin/AdminMenu.php:100
@@ -162,7 +164,7 @@ msgstr "Produkt"
 
 #: includes/Admin/CaseDetailSections.php:68
 msgid "SKU"
-msgstr ""
+msgstr "SKU"
 
 #: includes/Admin/CaseDetailSections.php:69 templates/frontend/select.php:54
 msgid "Rendelt"
@@ -269,41 +271,50 @@ msgid ""
 "2026. szeptember 27-től kötelező a harmonizált szavatossági tájékoztató és "
 "(érintett termékeknél) a GARAN címke. Ellenőrizd a beállításokat."
 msgstr ""
+"Od 27. septembra 2026 je povinné harmonizované oznámenie o zákonnej záruke a "
+"(pri dotknutých výrobkoch) označenie GARAN. Skontrolujte, prosím, nastavenia."
 
 #: includes/Admin/ComplianceCheck.php:97
 msgid ""
 "A harmonizált szavatossági tájékoztató 2026. szeptember 27. óta kötelező."
 msgstr ""
+"Harmonizované oznámenie o zákonnej záruke je povinné od 27. septembra 2026."
 
 #: includes/Admin/ComplianceCheck.php:114
 msgid "Jelenleg nem jelenik meg."
-msgstr ""
+msgstr "Momentálne sa nezobrazuje."
 
 #: includes/Admin/ComplianceCheck.php:116
 msgid "A pénztári megjelenítés ki van kapcsolva."
-msgstr ""
+msgstr "Zobrazenie v pokladni je vypnuté."
 
 #: includes/Admin/ComplianceCheck.php:118
 msgid ""
 "Egy bővítmény vagy a téma szűrővel (elallas_garan_checkout_visible) "
 "elrejtheti a rendelés gomb előtti GARAN címkét."
 msgstr ""
+"Plugin alebo téma môže pomocou filtra (elallas_garan_checkout_visible) skryť "
+"označenie GARAN pred tlačidlom objednávky."
 
 #: includes/Admin/ComplianceCheck.php:120
 msgid "A beállítások még nincsenek átnézve."
-msgstr ""
+msgstr "Nastavenia ešte neboli skontrolované."
 
 #: includes/Admin/ComplianceNotice.php:50
 msgid ""
 "A hivatalos GARAN címkefájl sérült vagy módosult; a címke nem jelenik meg. "
 "Telepítsd újra a plugint."
 msgstr ""
+"Oficiálny súbor označenia GARAN je poškodený alebo upravený; označenie sa "
+"nezobrazuje. Nainštalujte, prosím, plugin znova."
 
 #: includes/Admin/ComplianceNotice.php:54
 msgid ""
 "A GARAN és az értesítés a blokkos pénztárban nem a rendelés gomb előtt "
 "jelenik meg. Lásd a hibaelhárítási útmutatót."
 msgstr ""
+"V blokovej pokladni sa označenie GARAN a oznámenie nezobrazujú pred "
+"tlačidlom objednávky. Pozrite si príručku na riešenie problémov."
 
 #: includes/Admin/ComplianceNotice.php:67
 #: includes/Admin/ComplianceNotice.php:163 includes/Admin/NoticeManager.php:58
@@ -312,25 +323,26 @@ msgstr "Elállás for WooCommerce:"
 
 #: includes/Admin/ComplianceNotice.php:71
 msgid "Beállítások megnyitása"
-msgstr ""
+msgstr "Otvoriť nastavenia"
 
 #: includes/Admin/ComplianceNotice.php:72
 msgid "Elrejtés 30 napra"
-msgstr ""
+msgstr "Skryť na 30 dní"
 
 #: includes/Admin/ComplianceNotice.php:103
 msgid "Nincs jogosultságod ehhez a művelethez."
-msgstr ""
+msgstr "Na túto akciu nemáte oprávnenie."
 
 #: includes/Admin/ComplianceNotice.php:108
 msgid "Szavatosság"
-msgstr ""
+msgstr "Zákonná záruka"
 
 #: includes/Admin/GaranProductFields.php:65
 msgid ""
 "A GARAN modul jelenleg ki van kapcsolva a beállításokban; a címke nem "
 "jelenik meg."
 msgstr ""
+"Modul GARAN je v nastaveniach momentálne vypnutý; označenie sa nezobrazuje."
 
 #: includes/Admin/GaranProductFields.php:72
 msgid ""
@@ -338,54 +350,61 @@ msgid ""
 "modellazonosítónál vagy jótállásnál a variáció „GARAN címke” beállításában "
 "adj meg saját adatot (vagy kapcsold ki)."
 msgstr ""
+"Variabilný produkt: varianty tieto údaje predvolene dedia. Ak má varianta "
+"iný identifikátor modelu alebo inú obchodnú záruku, zadajte vlastné údaje v "
+"nastavení „Označenie GARAN“ danej varianty (alebo označenie vypnite)."
 
 #: includes/Admin/GaranProductFields.php:79
 msgid "Gyártói tartóssági jótállás (GARAN címke)"
-msgstr ""
+msgstr "Obchodná záruka životnosti od výrobcu (označenie GARAN)"
 
 #: includes/Admin/GaranProductFields.php:224
 msgid "Előnézet (a mentett adatokkal)"
-msgstr ""
+msgstr "Náhľad (s uloženými údajmi)"
 
 #: includes/Admin/GaranProductFields.php:227
 msgid ""
 "Fél éves érték: ellenőrizd, hogy a szám nem ér a naptár-ikonhoz (a fél éves "
 "értékek jogi/grafikai megítélése nyitott kérdés)."
 msgstr ""
+"Polročná hodnota: skontrolujte, či sa číslo nedotýka ikony kalendára "
+"(právne/grafické posúdenie polročných hodnôt je otvorenou otázkou)."
 
 #: includes/Admin/GaranProductFields.php:251
 msgid "Időtartam (év)"
-msgstr ""
+msgstr "Trvanie (roky)"
 
 #: includes/Admin/GaranProductFields.php:253
 msgid ""
 "Csak 2 évnél hosszabb, egész év (pl. 3); a rendszer ellenőrzi, hogy a címkén "
 "elfér-e."
 msgstr ""
+"Iba celé roky, dlhšie ako 2 roky (napr. 3); plugin overí, či sa hodnota na "
+"označenie zmestí."
 
 #: includes/Admin/GaranProductFields.php:261
 msgid "Gyártó (Brand/Trademark)"
-msgstr ""
+msgstr "Výrobca (značka/ochranná známka)"
 
 #: includes/Admin/GaranProductFields.php:262
 msgid "A gyártó által megadott név, a gyártó által a címkén használt formában."
-msgstr ""
+msgstr "Názov uvedený výrobcom v podobe, ktorú výrobca používa na označení."
 
 #: includes/Admin/GaranProductFields.php:267
 msgid "Modellazonosító"
-msgstr ""
+msgstr "Identifikátor modelu"
 
 #: includes/Admin/GaranProductFields.php:281
 msgid "időtartam"
-msgstr ""
+msgstr "trvanie"
 
 #: includes/Admin/GaranProductFields.php:282
 msgid "gyártó"
-msgstr ""
+msgstr "výrobca"
 
 #: includes/Admin/GaranProductFields.php:283
 msgid "modellazonosító"
-msgstr ""
+msgstr "identifikátor modelu"
 
 #. translators: %s: comma-separated list of the invalid fields.
 #: includes/Admin/GaranProductFields.php:289
@@ -396,29 +415,33 @@ msgid ""
 "kötelező, és a címke fix mezőszélességén el kell férniük (a betűméret nem "
 "csökkenthető). Hibás vagy túl hosszú: %s."
 msgstr ""
+"Označenie GARAN nebolo zapnuté: trvanie musí byť celý počet rokov dlhší ako "
+"2, ktorý sa zmestí na označenie, výrobca a identifikátor modelu sú povinné a "
+"musia sa zmestiť do pevnej šírky polí označenia (veľkosť písma nemožno "
+"zmenšiť). Neplatné alebo príliš dlhé: %s."
 
 #: includes/Admin/GaranVariationFields.php:60
 #: includes/Admin/Settings/ComplianceGaranSection.php:31
 msgid "GARAN címke"
-msgstr ""
+msgstr "Označenie GARAN"
 
 #: includes/Admin/GaranVariationFields.php:65
 msgid "Öröklés a szülőtől"
-msgstr ""
+msgstr "Zdediť od nadradeného produktu"
 
 #: includes/Admin/GaranVariationFields.php:66
 msgid "Saját adat"
-msgstr ""
+msgstr "Vlastné údaje"
 
 #: includes/Admin/GaranVariationFields.php:67
 msgid "Nincs GARAN címke"
-msgstr ""
+msgstr "Bez označenia GARAN"
 
 #. translators: 1: variation id, 2: validation message
 #: includes/Admin/GaranVariationFields.php:120
 #, php-format
 msgid "#%1$d variáció: %2$s A variáció a szülő adatait örökli."
-msgstr ""
+msgstr "Varianta #%1$d: %2$s Varianta dedí údaje nadradeného produktu."
 
 #: includes/Admin/NoticeManager.php:59
 msgid "Még nincs beállítva elállási oldal. Indítsd el a beüzemelést."
@@ -579,34 +602,36 @@ msgstr "Zapnutie"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:36
 msgid "GARAN címke megjelenítése"
-msgstr ""
+msgstr "Zobraziť označenie GARAN"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:37
 msgid ""
 "Bekapcsolva a címke a rendelés gomb előtt mindig megjelenik (45/2014. 15. § "
 "(1), kötelező)."
 msgstr ""
+"Ak je zapnuté, označenie sa vždy zobrazí pred tlačidlom objednávky (45/2014. "
+"Korm. rendelet 15. § (1), povinné)."
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:41
 #: includes/Admin/Settings/TabCompliance.php:103
 msgid "Termékoldal"
-msgstr ""
+msgstr "Stránka produktu"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:47
 msgid "Beágyazott, kattintásra teljes"
-msgstr ""
+msgstr "Vnorené, po kliknutí celé označenie"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:48
 msgid "Teljes címke a kosárgomb alatt"
-msgstr ""
+msgstr "Celé označenie pod tlačidlom pridania do košíka"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:49
 msgid "Teljes címke a leírás alatt"
-msgstr ""
+msgstr "Celé označenie pod popisom"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:50
 msgid "Galériában"
-msgstr ""
+msgstr "V galérii"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:58
 #: includes/Admin/Settings/TabCompliance.php:101
@@ -616,16 +641,16 @@ msgstr "Miesta zobrazenia"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:60
 msgid "Kosároldal, az expressz fizetés és a pénztár gombok előtt"
-msgstr ""
+msgstr "Stránka košíka, pred tlačidlami expresnej platby a pokladne"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:61
 #: includes/Admin/Settings/TabCompliance.php:107
 msgid "Rendelési e-mail"
-msgstr ""
+msgstr "E-mail s objednávkou"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:62
 msgid "Terméklista (listaoldal)"
-msgstr ""
+msgstr "Zoznam produktov (stránka archívu)"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:63
 msgid ""
@@ -634,16 +659,22 @@ msgid ""
 "blokksablon, helyezd el az [elallas_garan_label] shortcode-ot a kosárgomb "
 "alá."
 msgstr ""
+"Označenie sa zobrazuje iba pri produktoch, pri ktorých je zapnuté v editore "
+"produktu. Ak je stránka produktu šablónou Elementor Pro alebo upravenou "
+"blokovou šablónou, vložte shortcode [elallas_garan_label] pod tlačidlo "
+"pridania do košíka."
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:67
 msgid "Állapot"
-msgstr ""
+msgstr "Stav"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:84
 msgid ""
 "E-mail címke képként: elérhető (a kitöltött címke PNG-ként kerül a vevői e-"
 "mailbe, alatta a szöveges tájékoztatás és a linkek)."
 msgstr ""
+"Označenie v e-maile ako obrázok: dostupné (vyplnené označenie sa vloží do "
+"e-mailu pre zákazníka ako PNG, pod ním textové informácie a odkazy)."
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:85
 msgid ""
@@ -651,28 +682,33 @@ msgid ""
 "– az e-mailben szöveges tájékoztatás megy (évek, gyártó, modell, Your Europe "
 "link, termékoldal-link)."
 msgstr ""
+"Označenie v e-maile ako obrázok: nedostupné (server nemá podporu GD "
+"FreeType) – e-mail namiesto toho obsahuje textové informácie (roky, výrobca, "
+"model, odkaz Your Europe, odkaz na stránku produktu)."
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:89
 msgid "Hivatalos GARAN fájlok sértetlensége:"
-msgstr ""
+msgstr "Integrita oficiálnych súborov GARAN:"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:91
 msgid "rendben"
-msgstr ""
+msgstr "v poriadku"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:91
 msgid "HIBA – a címke nem jelenik meg, telepítsd újra a plugint"
-msgstr ""
+msgstr "CHYBA – označenie sa nezobrazuje, nainštalujte, prosím, plugin znova"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:98
 msgid "Blokkos pénztár ellenőrzése"
-msgstr ""
+msgstr "Skontrolovať blokovú pokladňu"
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:99
 msgid ""
 "(tegyél egy terméket a kosárba; az oldal alján megjelenő sáv jelzi, hogy az "
 "értesítés és a GARAN a rendelés gomb előtt van-e)"
 msgstr ""
+"(vložte produkt do košíka; lišta v dolnej časti stránky ukáže, či sú "
+"oznámenie a označenie GARAN pred tlačidlom objednávky)"
 
 #: includes/Admin/Settings/SettingsPage.php:65
 msgid "Beállítások elmentve."
@@ -681,11 +717,11 @@ msgstr "Nastavenia boli uložené."
 #: includes/Admin/Settings/TabCompliance.php:37
 #: includes/Admin/Settings/TabCompliance.php:75
 msgid "Szavatosság és GARAN"
-msgstr ""
+msgstr "Zákonná záruka a GARAN"
 
 #: includes/Admin/Settings/TabCompliance.php:80
 msgid "Ismert korlátok ebben a verzióban:"
-msgstr ""
+msgstr "Známe obmedzenia tejto verzie:"
 
 #: includes/Admin/Settings/TabCompliance.php:82
 msgid ""
@@ -693,6 +729,8 @@ msgid ""
 "van GD FreeType-támogatás; enélkül szövegként (évek, gyártó, modell) és "
 "linkként."
 msgstr ""
+"Označenie GARAN sa v e-mailoch zobrazí ako obrázok iba vtedy, ak má server "
+"podporu GD FreeType; inak ako text (roky, výrobca, model) a odkaz."
 
 #: includes/Admin/Settings/TabCompliance.php:83
 msgid ""
@@ -700,56 +738,69 @@ msgid ""
 "működik; blokktémánál a termékoldalon, a kosárban és a pénztárban jelenik "
 "meg."
 msgstr ""
+"Označenie GARAN v zoznamoch produktov (archívoch) funguje iba s klasickými "
+"témami; pri blokových témach sa zobrazuje na stránke produktu, v košíku a v "
+"pokladni."
 
 #: includes/Admin/Settings/TabCompliance.php:84
 msgid ""
 "A szoftverfrissítési és javíthatósági információt 1.1.1-ig a termékleírásban "
 "tüntesd fel."
 msgstr ""
+"Do verzie 1.1.1 uvádzajte informácie o aktualizáciách softvéru a "
+"opraviteľnosti v popise produktu."
 
 #: includes/Admin/Settings/TabCompliance.php:85
 msgid ""
 "Gutenberg-blokk és Elementor-widget 1.1.1-től; addig a Shortcode blokkal / "
 "widgettel helyezd el a shortcode-okat."
 msgstr ""
+"Blok Gutenberg a widget Elementor od verzie 1.1.1; dovtedy vkladajte "
+"shortcody pomocou bloku / widgetu Shortcode."
 
 #: includes/Admin/Settings/TabCompliance.php:86
 msgid ""
 "A blokkos kosár expressz fizetési gombjai előtt a GARAN címke nem jelenik "
 "meg (a klasszikus kosárban igen)."
 msgstr ""
+"Pred tlačidlami expresnej platby v blokovom košíku sa označenie GARAN "
+"nezobrazuje (v klasickom košíku áno)."
 
 #: includes/Admin/Settings/TabCompliance.php:90
 msgid "Jogszabályi szavatosság tájékoztató"
-msgstr ""
+msgstr "Oznámenie o zákonnej záruke"
 
 #: includes/Admin/Settings/TabCompliance.php:94
 msgid "Harmonizált szavatossági értesítés megjelenítése"
-msgstr ""
+msgstr "Zobraziť harmonizované oznámenie o zákonnej záruke"
 
 #: includes/Admin/Settings/TabCompliance.php:97
 msgid "Felirat"
-msgstr ""
+msgstr "Popis"
 
 #: includes/Admin/Settings/TabCompliance.php:98
 msgid ""
 "A felirat, amelyre kattintva/rámutatva a teljes hivatalos értesítés "
 "megjelenik. Üresen hagyva az alapértelmezett felirat jelenik meg."
 msgstr ""
+"Popis, po kliknutí naň/prejdení myšou sa zobrazí celé oficiálne oznámenie. "
+"Ak ho necháte prázdny, použije sa predvolený popis."
 
 #: includes/Admin/Settings/TabCompliance.php:104
 msgid "Fejléc"
-msgstr ""
+msgstr "Hlavička"
 
 #: includes/Admin/Settings/TabCompliance.php:105
 msgid "Lábléc"
-msgstr ""
+msgstr "Päta"
 
 #: includes/Admin/Settings/TabCompliance.php:106
 msgid ""
 "Pénztár (a rendelés gomb előtt: klasszikus, blokkos és „Rendelés kifizetése” "
 "oldal)"
 msgstr ""
+"Pokladňa (pred tlačidlom objednávky: klasická, bloková a stránka „Zaplatiť "
+"objednávku“)"
 
 #: includes/Admin/Settings/TabCompliance.php:108
 msgid ""
@@ -758,22 +809,26 @@ msgid ""
 "Elementor Shortcode widget) teheted. A pénztári megjelenítés a "
 "rendelésnézetre (köszönőoldal, Fiókom) is vonatkozik."
 msgstr ""
+"Umiestnenie v hlavičke funguje iba pri témach, ktoré podporujú hook "
+"wp_body_open. Inam ho môžete vložiť shortcodom [elallas_guarantee_notice] "
+"(blok Shortcode / widget Elementor Shortcode). Nastavenie pokladne platí aj "
+"pre zobrazenie objednávky (ďakovná stránka, Môj účet)."
 
 #: includes/Admin/Settings/TabCompliance.php:112
 msgid "E-mail mód"
-msgstr ""
+msgstr "Režim e-mailu"
 
 #: includes/Admin/Settings/TabCompliance.php:118
 msgid "Kép"
-msgstr ""
+msgstr "Obrázok"
 
 #: includes/Admin/Settings/TabCompliance.php:119
 msgid "Színes PNG-melléklet"
-msgstr ""
+msgstr "Farebná príloha PNG"
 
 #: includes/Admin/Settings/TabCompliance.php:120
 msgid "Mindkettő"
-msgstr ""
+msgstr "Oboje"
 
 #: includes/Admin/Settings/TabCompliance.php:125
 msgid ""
@@ -782,10 +837,14 @@ msgid ""
 "mellékletként is csatolódik. Az angol nyelvű értesítéshez nincs hivatalos "
 "PNG, ott szöveg és link jelenik meg."
 msgstr ""
+"V e-mailoch s objednávkou pre zákazníkov (spracováva sa, dokončená, čaká na "
+"vybavenie, faktúra). K e-mailom vo formáte čistého textu sa oficiálny "
+"farebný PNG vždy prikladá aj ako príloha. Pre anglické oznámenie neexistuje "
+"oficiálny PNG; namiesto neho sa zobrazí text a odkaz."
 
 #: includes/Admin/Settings/TabCompliance.php:129
 msgid "Szavatossági oldal"
-msgstr ""
+msgstr "Stránka zákonnej záruky"
 
 #: includes/Admin/Settings/TabCompliance.php:137
 #: includes/Admin/Settings/TabGeneral.php:85
@@ -798,6 +857,9 @@ msgid ""
 "[elallas_guarantee_notice mode=\"inline\"] (azonnal látható). Kiválasztott "
 "oldal esetén az értesítés alatt „Megnyitás külön oldalon” link jelenik meg."
 msgstr ""
+"Shortcode: [elallas_guarantee_notice] (otvorí sa po kliknutí) alebo "
+"[elallas_guarantee_notice mode=\"inline\"] (zobrazí sa hneď). Ak je vybraná "
+"stránka, pod oznámením sa zobrazí odkaz „Otvoriť na samostatnej stránke“."
 
 #: includes/Admin/Settings/TabCompliance.php:150
 #: includes/Admin/Settings/TabGeneral.php:34
@@ -806,11 +868,11 @@ msgstr "Všeobecné"
 
 #: includes/Admin/Settings/TabCompliance.php:153
 msgid "B2B"
-msgstr ""
+msgstr "B2B"
 
 #: includes/Admin/Settings/TabCompliance.php:155
 msgid "Elrejtés céges (B2B) rendeléseknél"
-msgstr ""
+msgstr "Skryť pri firemných (B2B) objednávkach"
 
 #: includes/Admin/Settings/TabCompliance.php:156
 msgid ""
@@ -818,28 +880,33 @@ msgid ""
 "cégnév/adószám alapján; termékoldalon, kosárban és pénztárban csak az "
 "elallas_compliance_is_b2b szűrővel."
 msgstr ""
+"V zobrazení objednávky, na stránke Zaplatiť objednávku a v e-mailoch podľa "
+"fakturačného názvu firmy / IČ DPH; na stránke produktu, v košíku a v "
+"pokladni iba pomocou filtra elallas_compliance_is_b2b."
 
 #: includes/Admin/Settings/TabCompliance.php:160
 msgid "Digitális termékek"
-msgstr ""
+msgstr "Digitálne produkty"
 
 #: includes/Admin/Settings/TabCompliance.php:162
 msgid "Tisztán virtuális (digitális) termékeknél ne jelenjen meg"
-msgstr ""
+msgstr "Nezobrazovať pri čisto virtuálnych (digitálnych) produktoch"
 
 #: includes/Admin/Settings/TabCompliance.php:163
 msgid ""
 "Virtuálisnak jelölt (nem szállítandó) termékeknél nem jelenik meg; ha "
 "virtuálisként kezelt fizikai árut árulsz, kapcsold ki ezt az opciót."
 msgstr ""
+"Nezobrazuje sa pri produktoch označených ako virtuálne (bez dopravy); ak "
+"predávate fyzický tovar vedený ako virtuálny, túto možnosť vypnite."
 
 #: includes/Admin/Settings/TabCompliance.php:167
 msgid "Termékinformációk"
-msgstr ""
+msgstr "Informácie o produkte"
 
 #: includes/Admin/Settings/TabCompliance.php:168
 msgid "Opcionális termékinformációk (1.1.1-től)"
-msgstr ""
+msgstr "Voliteľné informácie o produkte (od verzie 1.1.1)"
 
 #: includes/Admin/Settings/TabCompliance.php:171
 msgid ""
@@ -847,22 +914,25 @@ msgid ""
 "nyelv). Polylang esetén a GARAN termékadatok szinkronizálását a Polylang "
 "(for WooCommerce) beállításaiban kapcsold be."
 msgstr ""
+"Viacjazyčný obchod: jazyk oznámenia sa riadi jazykom stránky (24 úradných "
+"jazykov). Pri Polylangu zapnite synchronizáciu produktových údajov GARAN v "
+"nastaveniach Polylang (for WooCommerce)."
 
 #: includes/Admin/Settings/TabCompliance.php:192
 msgid "Oldal létrehozása (/szavatossag/)"
-msgstr ""
+msgstr "Vytvoriť stránku (/szavatossag/)"
 
 #: includes/Admin/Settings/TabCompliance.php:209
 msgid "A szavatossági oldal elkészült."
-msgstr ""
+msgstr "Stránka zákonnej záruky bola vytvorená."
 
 #: includes/Admin/Settings/TabCompliance.php:211
 msgid "Megtekintés"
-msgstr ""
+msgstr "Zobraziť"
 
 #: includes/Admin/Settings/TabCompliance.php:214
 msgid "Az oldal létrehozása nem sikerült."
-msgstr ""
+msgstr "Stránku sa nepodarilo vytvoriť."
 
 #: includes/Admin/Settings/TabDeadline.php:57
 msgid "Elállási határidő"
@@ -971,6 +1041,9 @@ msgid ""
 "Több címzett is megadható vesszővel, pontosvesszővel vagy szóközzel "
 "elválasztva. Üresen hagyva az oldal adminisztrátori e-mail címe."
 msgstr ""
+"Môžete zadať viacerých príjemcov oddelených čiarkami, bodkočiarkami alebo "
+"medzerami. Ak pole necháte prázdne, použije sa e-mailová adresa "
+"administrátora webu."
 
 #: includes/Admin/Settings/TabEmails.php:80
 msgid "Vásárlói e-mail extra szöveg"
@@ -1281,18 +1354,22 @@ msgid ""
 "Elállás: az értesítés és a GARAN a blokkos pénztárban a rendelés gomb előtt "
 "jelenik meg."
 msgstr ""
+"Elállás: oznámenie a označenie GARAN sa v blokovej pokladni zobrazujú pred "
+"tlačidlom objednávky."
 
 #: includes/Compliance/CheckoutSlot.php:217
 msgid ""
 "Elállás: a rendelés gomb horgonya nem található, tartalék-hely lépett "
 "életbe. Ellenőrizd az elallas_checkout_block_anchors szelektorait."
 msgstr ""
+"Elállás: kotva tlačidla objednávky sa nenašla, používa sa náhradné "
+"umiestnenie. Skontrolujte selektory elallas_checkout_block_anchors."
 
 #. translators: 1: years, 2: brand, 3: model identifier
 #: includes/Compliance/GaranRenderer.php:45
 #, php-format
 msgid "Gyártói tartóssági jótállás: %1$s év (%2$s, %3$s)"
-msgstr ""
+msgstr "Obchodná záruka životnosti od výrobcu – počet rokov: %1$s (%2$s, %3$s)"
 
 #. translators: %s: Your Europe URL
 #: includes/Compliance/GaranRenderer.php:287
@@ -1301,19 +1378,21 @@ msgid ""
 "Az Európai Unió hivatalos GARAN címkéje a gyártói tartóssági jótállásról. A "
 "QR-kód a %s oldalra mutat."
 msgstr ""
+"Oficiálne označenie EÚ GARAN pre obchodnú záruku životnosti od výrobcu. QR "
+"kód odkazuje na stránku %s."
 
 #: includes/Compliance/GaranVariations.php:81
 #: templates/frontend/garan-label.php:36
 msgid "a teljes címke megnyitása"
-msgstr ""
+msgstr "otvoriť celé označenie"
 
 #: includes/Compliance/NoticeRenderer.php:89
 msgid "Az Ön jogszabályi szavatossági jogai"
-msgstr ""
+msgstr "Vaše práva zo zákonnej záruky"
 
 #: includes/Compliance/NoticeSource.php:115
 msgid "Hivatalos EU-tájékoztató a jogszabályi szavatosságról"
-msgstr ""
+msgstr "Oficiálne oznámenie EÚ o zákonnej záruke"
 
 #: includes/Cron/RetentionCleaner.php:63
 msgid ""
@@ -1328,6 +1407,10 @@ msgid ""
 "használható. A bolti garancia, a kötelező jótállás (151/2003. Korm. "
 "rendelet) és a fizetős kiterjesztett garancia nem jelölhető vele."
 msgstr ""
+"Označenie GARAN možno použiť výlučne na označenie bezplatnej obchodnej "
+"záruky životnosti poskytovanej výrobcom, ktorá sa vzťahuje na celý výrobok a "
+"trvá dlhšie ako 2 roky. Záruku obchodu, povinnú záruku (151/2003. Korm. "
+"rendelet) ani platenú predĺženú záruku ním označovať nemožno."
 
 #: includes/Data/DefaultTexts.php:72
 msgid ""
@@ -1336,6 +1419,10 @@ msgid ""
 "változatlanul jeleníti meg őket. Az ÁSZF frissítése a bolt feladata, az "
 "értesítés azt nem helyettesíti."
 msgstr ""
+"Povinné od 27. septembra 2026 (45/2014. Korm. rendelet 11. § (1a), 15. § "
+"(1)). Grafiku oficiálneho oznámenia a označenia nemožno upravovať; plugin "
+"ich zobrazuje bez zmeny. Aktualizácia obchodných podmienok je povinnosťou "
+"obchodu; oznámenie ich nenahrádza."
 
 #: includes/Data/DefaultTexts.php:81
 msgid ""
@@ -1498,7 +1585,7 @@ msgstr "Odstúpenie od zmluvy"
 
 #: includes/Frontend/StepProcessor.php:82
 msgid "Kérjük, válasszon legalább egy terméket."
-msgstr ""
+msgstr "Vyberte, prosím, aspoň jeden produkt."
 
 #: includes/Frontend/StepProcessor.php:115
 msgid "A folytatáshoz minden nyilatkozatot el kell fogadnia."
@@ -1611,58 +1698,61 @@ msgstr "Nastavenia"
 #: includes/Plugin.php:193
 msgid "WooCommerce must be installed and active for this plugin to work."
 msgstr ""
+"Aby tento plugin fungoval, musí byť WooCommerce nainštalovaný a aktívny."
 
 #: includes/Security/Honeypot.php:49
 msgid "Leave this field empty"
-msgstr ""
+msgstr "Toto pole nechajte prázdne"
 
 #: includes/SiteManager/CaseAbilities.php:56
 msgid "List Withdrawal Cases"
-msgstr ""
+msgstr "Zoznam prípadov odstúpenia od zmluvy"
 
 #: includes/SiteManager/CaseAbilities.php:57
 msgid "List elállás cases, optionally filtered by status and paged."
 msgstr ""
+"Zoznam prípadov odstúpenia od zmluvy, voliteľne filtrovaný podľa stavu a "
+"stránkovaný."
 
 #: includes/SiteManager/CaseAbilities.php:81
 msgid "Get Withdrawal Case"
-msgstr ""
+msgstr "Získať prípad odstúpenia od zmluvy"
 
 #: includes/SiteManager/CaseAbilities.php:82
 msgid "Get a case with its items and audit events."
-msgstr ""
+msgstr "Získať prípad vrátane jeho položiek a auditných udalostí."
 
 #: includes/SiteManager/CaseAbilities.php:97
 msgid "Update Case Status"
-msgstr ""
+msgstr "Aktualizovať stav prípadu"
 
 #: includes/SiteManager/CaseAbilities.php:98
 msgid "Change the status of a withdrawal case."
-msgstr ""
+msgstr "Zmeniť stav prípadu odstúpenia od zmluvy."
 
 #: includes/SiteManager/CaseAbilities.php:114
 msgid "Get Case Audit Log"
-msgstr ""
+msgstr "Získať auditný záznam prípadu"
 
 #: includes/SiteManager/CaseAbilities.php:115
 msgid "Get the audit event log for a withdrawal case."
-msgstr ""
+msgstr "Získať záznam auditných udalostí prípadu odstúpenia od zmluvy."
 
 #: includes/SiteManager/CaseService.php:61
 msgid "Case not found."
-msgstr ""
+msgstr "Prípad sa nenašiel."
 
 #: includes/SiteManager/CaseService.php:83
 msgid "Invalid status value."
-msgstr ""
+msgstr "Neplatná hodnota stavu."
 
 #: includes/SiteManager/CaseService.php:89
 msgid "Could not update the case status."
-msgstr ""
+msgstr "Stav prípadu sa nepodarilo aktualizovať."
 
 #: includes/SiteManager/CaseService.php:94
 msgid "Case status updated."
-msgstr ""
+msgstr "Stav prípadu bol aktualizovaný."
 
 #: includes/SiteManager/Integration.php:55
 msgid "Elállás (Withdrawal)"
@@ -1801,16 +1891,16 @@ msgstr ""
 
 #: templates/emails/garan-item.php:25
 msgid "A hivatalos címke a termékoldalon"
-msgstr ""
+msgstr "Oficiálne označenie na stránke produktu"
 
 #: templates/emails/guarantee-notice.php:34
 msgid "Teljes méretben"
-msgstr ""
+msgstr "V plnej veľkosti"
 
 #: templates/emails/guarantee-notice.php:38
 #: templates/emails/plain/guarantee-notice.php:29
 msgid "A tájékoztatót mellékletben csatoltuk."
-msgstr ""
+msgstr "Oznámenie je priložené k tomuto e-mailu."
 
 #: templates/emails/plain/admin-notification.php:28
 msgid ""
@@ -1834,13 +1924,13 @@ msgstr ""
 
 #: templates/emails/plain/garan-item.php:19
 msgid "A hivatalos címke a termékoldalon:"
-msgstr ""
+msgstr "Oficiálne označenie na stránke produktu:"
 
 #. translators: %s: URL of the official notice image.
 #: templates/emails/plain/guarantee-notice.php:25
 #, php-format
 msgid "Teljes méretben: %s"
-msgstr ""
+msgstr "V plnej veľkosti: %s"
 
 #. translators: %s: case number
 #: templates/emails/plain/status-update.php:25
@@ -1875,7 +1965,7 @@ msgstr ""
 
 #: templates/frontend/checkout-garan-list.php:19
 msgid "A következő termékekre a gyártó tartóssági jótállást vállal:"
-msgstr ""
+msgstr "Na nasledujúce výrobky poskytuje výrobca obchodnú záruku životnosti:"
 
 #: templates/frontend/confirm.php:31
 msgid "Elállás megerősítése"
@@ -1945,11 +2035,11 @@ msgstr "Nové vyhľadávanie"
 #: templates/frontend/guarantee-notice.php:38
 #: templates/frontend/guarantee-notice.php:42
 msgid "(új lapon nyílik)"
-msgstr ""
+msgstr "(otvorí sa na novej karte)"
 
 #: templates/frontend/guarantee-notice.php:45
 msgid "Megnyitás külön oldalon"
-msgstr ""
+msgstr "Otvoriť na samostatnej stránke"
 
 #: templates/frontend/identify.php:28
 msgid "Online elállási nyilatkozat"
