@@ -97,7 +97,7 @@ final class GaranRenderer {
 		return TemplateLoader::render(
 			'frontend/garan-label.php',
 			[
-				'mode'            => $mode,
+				'mode'            => $args['text_only'] ? 'text' : $mode,
 				'prefix'          => $prefix,
 				'nested_svg'      => $nested,
 				'full_svg'        => $full,
@@ -154,6 +154,21 @@ final class GaranRenderer {
 				'default_json' => $json,
 			]
 		);
+	}
+
+	/**
+	 * Admin preview: the filled nested label (decorative) and the text line.
+	 *
+	 * @param GaranData $data Saved, valid data.
+	 * @return string SVG + escaped text, '' when the official file failed verification.
+	 */
+	public static function preview( GaranData $data ): string {
+		$svg = self::svg( 'nested', $data, wp_unique_id( 'elgpv' ), '' );
+		if ( '' === $svg ) {
+			return '';
+		}
+
+		return '<div class="elallas-garan elallas-garan--preview" style="max-width:368px">' . $svg . '<p class="elallas-garan__text">' . esc_html( self::text( $data ) ) . '</p></div>';
 	}
 
 	/**

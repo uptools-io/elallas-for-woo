@@ -11,6 +11,7 @@ namespace LightweightPlugins\Elallas\Admin;
 
 use LightweightPlugins\Elallas\Compliance\GaranData;
 use LightweightPlugins\Elallas\Compliance\GaranRaster;
+use LightweightPlugins\Elallas\Compliance\GaranRenderer;
 use LightweightPlugins\Elallas\Compliance\GaranResolver;
 use LightweightPlugins\Elallas\Data\DefaultTexts;
 use LightweightPlugins\Elallas\Options;
@@ -33,6 +34,19 @@ final class GaranProductFields {
 	public function __construct() {
 		add_action( 'woocommerce_product_options_general_product_data', [ $this, 'render_fields' ], 20 );
 		add_action( 'woocommerce_process_product_meta', [ $this, 'save_fields' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_preview_style' ] );
+	}
+
+	/**
+	 * Load the label stylesheet (bundled Inter) on the product editor only.
+	 *
+	 * @return void
+	 */
+	public function enqueue_preview_style(): void {
+		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+		if ( $screen && 'product' === $screen->id ) {
+			wp_enqueue_style( GaranRenderer::STYLE_HANDLE, ELALLAS_FOR_WOO_URL . 'assets/css/compliance-garan.css', [], ELALLAS_FOR_WOO_VERSION );
+		}
 	}
 
 	/**
@@ -72,6 +86,7 @@ final class GaranProductFields {
 		}
 
 		printf( '<p class="description elallas-garan-warning" style="padding:0 12px;">%s</p>', esc_html( DefaultTexts::garan_warning() ) );
+		self::render_preview( $raw );
 		echo '</div>';
 	}
 
@@ -191,6 +206,27 @@ final class GaranProductFields {
 			'brand'   => (string) get_post_meta( $id, self::META_BRAND, true ),
 			'model'   => (string) get_post_meta( $id, self::META_MODEL, true ),
 		];
+	}
+
+	/**
+	 * Preview of the saved label (nested, filled) when it is switched on.
+	 *
+	 * @param array{enabled: string, years: string, brand: string, model: string} $raw Saved values.
+	 * @return void
+	 */
+	private static function render_preview( array $raw ): void {
+		$data = 'yes' === $raw['enabled'] ? GaranData::from_input( $raw['years'], $raw['brand'], $raw['model'], true ) : null;
+		if ( null === $data ) {
+			return;
+		}
+
+		echo '<div class="form-field elallas-garan-preview" style="padding:0 12px 12px;">';
+		printf( '<p><strong>%s</strong></p>', esc_html__( 'Előnézet (a mentett adatokkal)', 'elallas-for-woo' ) );
+		echo GaranRenderer::preview( $data ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- GaranSvg output of the verified official file + escaped text.
+		if ( $data->is_half_year() ) {
+			printf( '<p class="description" style="color:#b32d2e">%s</p>', esc_html__( 'Fél éves érték: ellenőrizd, hogy a szám nem ér a naptár-ikonhoz (a fél éves értékek jogi/grafikai megítélése nyitott kérdés).', 'elallas-for-woo' ) );
+		}
+		echo '</div>';
 	}
 
 	/**
