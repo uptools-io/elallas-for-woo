@@ -189,11 +189,40 @@ final class GaranRaster {
 			return false;
 		}
 
-		$ok = imagepng( $small, $path, 6 );
+		$ok = self::store_png( $small, $path );
 		if ( ! $ok ) {
 			Logger::debug( 'GARAN e-mail image could not be written.' );
 		}
 
 		return $ok;
+	}
+
+	/**
+	 * Write a PNG atomically: a temp file in the same directory, then rename()
+	 * onto the final path, so a partial file is never served or cached.
+	 *
+	 * @param \GdImage|resource $im   Image.
+	 * @param string            $path Final file.
+	 * @return bool
+	 */
+	public static function store_png( $im, string $path ): bool {
+		$dir = dirname( $path );
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_is_writable -- Plugin-owned uploads directory, no WP_Filesystem for GD output.
+		if ( ! is_dir( $dir ) || ! is_writable( $dir ) ) {
+			return false;
+		}
+
+		$tmp = $dir . '/.' . basename( $path ) . '.' . bin2hex( random_bytes( 6 ) ) . '.tmp';
+
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.rename_rename -- Atomic replace within the same directory.
+		if ( imagepng( $im, $tmp, 6 ) && rename( $tmp, $path ) ) {
+			return true;
+		}
+
+		if ( is_file( $tmp ) ) {
+			wp_delete_file( $tmp );
+		}
+
+		return false;
 	}
 }

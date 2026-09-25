@@ -73,4 +73,27 @@ final class GaranRasterTest extends TestCase {
 		$this->assertSame( GaranRaster::OUT_WIDTH, imagesx( $small ) );
 		$this->assertSame( (int) round( 1134 * GaranRaster::OUT_WIDTH / 1077 ), imagesy( $small ) );
 	}
+
+	public function test_store_png_writes_atomically_without_leftovers(): void {
+		$dir = sys_get_temp_dir() . '/elallas-raster-' . bin2hex( random_bytes( 4 ) );
+		mkdir( $dir );
+		$path = $dir . '/garan.png';
+		file_put_contents( $path, 'old' );
+
+		$im = imagecreatetruecolor( 4, 4 );
+		$this->assertTrue( GaranRaster::store_png( $im, $path ) );
+
+		$this->assertSame( "\x89PNG", substr( (string) file_get_contents( $path ), 0, 4 ) );
+		$this->assertSame( [ 'garan.png' ], array_values( array_diff( scandir( $dir ), [ '.', '..' ] ) ) );
+
+		unlink( $path );
+		rmdir( $dir );
+	}
+
+	public function test_store_png_fails_cleanly_without_directory(): void {
+		$path = sys_get_temp_dir() . '/elallas-missing-' . bin2hex( random_bytes( 4 ) ) . '/garan.png';
+
+		$this->assertFalse( GaranRaster::store_png( imagecreatetruecolor( 4, 4 ), $path ) );
+		$this->assertFileDoesNotExist( $path );
+	}
 }
