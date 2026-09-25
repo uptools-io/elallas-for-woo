@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace LightweightPlugins\Elallas\Admin\Settings;
 
 use LightweightPlugins\Elallas\Admin\ComplianceNotice;
+use LightweightPlugins\Elallas\Compliance\GaranRaster;
 use LightweightPlugins\Elallas\Options;
 
 /**
@@ -78,7 +79,11 @@ final class ComplianceGaranSection {
 	private static function render_status(): void {
 		$ok = ComplianceNotice::garan_files_intact();
 
-		echo '<p>' . esc_html__( 'E-mail címke képként: 1.1.1-től; addig szöveges tájékoztatás (évek, gyártó, modell, Your Europe link, termékoldal-link).', 'elallas-for-woo' ) . '</p>';
+		echo '<p>' . esc_html(
+			GaranRaster::can_render()
+				? __( 'E-mail címke képként: elérhető (a kitöltött címke PNG-ként kerül a vevői e-mailbe, alatta a szöveges tájékoztatás és a linkek).', 'elallas-for-woo' )
+				: __( 'E-mail címke képként: nem elérhető (a tárhelyen nincs GD FreeType-támogatással) – az e-mailben szöveges tájékoztatás megy (évek, gyártó, modell, Your Europe link, termékoldal-link).', 'elallas-for-woo' )
+		) . '</p>';
 		printf(
 			'<p>%1$s <strong style="color:%2$s">%3$s</strong></p>',
 			esc_html__( 'Hivatalos GARAN fájlok sértetlensége:', 'elallas-for-woo' ),

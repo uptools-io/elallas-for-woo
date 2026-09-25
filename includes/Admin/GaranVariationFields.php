@@ -126,6 +126,7 @@ final class GaranVariationFields {
 		}
 
 		GaranProductFields::store( (int) $variation_id, $enabled, $result['values'] );
+		GaranProductFields::pregenerate( $enabled, $result['values'] );
 	}
 
 	/**

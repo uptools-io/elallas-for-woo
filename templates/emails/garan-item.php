@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <div class="elallas-garan-email" style="margin:8px 0 0;padding:8px 10px;border-left:3px solid #034ea2;background:#f5f8fc;font-size:13px;line-height:1.5;">
 	<?php if ( '' !== $image_url ) : ?>
-		<img src="<?php echo esc_url( $image_url ); ?>" width="270" alt="<?php echo esc_attr( 'EU GARAN – ' . $text ); ?>" style="display:block;max-width:270px;width:100%;height:auto;margin:0 0 6px;border:0;" />
+		<img src="<?php echo esc_url( $image_url ); ?>" width="270" alt="<?php echo esc_attr( 'EU GARAN – ' . $text ); ?>" style="display:block;width:270px;max-width:100%;height:auto;margin:0 0 6px;border:0;" />
 	<?php endif; ?>
 	<strong>EU GARAN</strong> – <?php echo esc_html( $text ); ?>.
 	<a href="<?php echo esc_url( $garan_url ); ?>"><?php echo esc_html( $garan_url_label ); ?></a>

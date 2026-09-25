@@ -15,7 +15,8 @@ use LightweightPlugins\Elallas\Options;
 /**
  * Adds the GARAN line under each covered item of customer order e-mails
  * (never admin e-mails), from the purchase-time snapshot. 1.1.0: text + Your
- * Europe link + product page link. An unfilled official ("XX") image is never
+ * Europe link + product page link, plus the filled label PNG (GaranRaster)
+ * when the host has GD FreeType. An unfilled official ("XX") image is never
  * sent.
  */
 final class GaranEmail {
@@ -57,7 +58,7 @@ final class GaranEmail {
 			'garan_url'       => GaranRenderer::GARAN_URL,
 			'garan_url_label' => GaranRenderer::GARAN_URL_LABEL,
 			'product_url'     => $product instanceof \WC_Product ? (string) get_permalink( $product->get_parent_id() ? $product->get_parent_id() : $product->get_id() ) : '',
-			'image_url'       => (string) apply_filters( 'elallas_garan_email_image_url', '', $data ),
+			'image_url'       => $plain_text ? '' : GaranRaster::png_url( $data ),
 		];
 
 		echo TemplateLoader::render( $plain_text ? 'emails/plain/garan-item.php' : 'emails/garan-item.php', $vars ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped template output.

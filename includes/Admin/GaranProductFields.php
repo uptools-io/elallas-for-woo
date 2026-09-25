@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace LightweightPlugins\Elallas\Admin;
 
 use LightweightPlugins\Elallas\Compliance\GaranData;
+use LightweightPlugins\Elallas\Compliance\GaranRaster;
 use LightweightPlugins\Elallas\Compliance\GaranResolver;
 use LightweightPlugins\Elallas\Data\DefaultTexts;
 use LightweightPlugins\Elallas\Options;
@@ -102,6 +103,25 @@ final class GaranProductFields {
 		}
 
 		self::store( $product_id, $result['enabled'], $result['values'] );
+		self::pregenerate( $result['enabled'], $result['values'] );
+	}
+
+	/**
+	 * Pre-generate the e-mail PNG so the first order e-mail does not wait.
+	 *
+	 * @param string                $enabled Stored flag.
+	 * @param array<string, string> $values  Stored values.
+	 * @return void
+	 */
+	public static function pregenerate( string $enabled, array $values ): void {
+		if ( 'yes' !== $enabled ) {
+			return;
+		}
+
+		$data = GaranData::from_input( $values['years'], $values['brand'], $values['model'], true );
+		if ( null !== $data ) {
+			GaranRaster::png_url( $data );
+		}
 	}
 
 	/**
