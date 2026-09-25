@@ -11,6 +11,8 @@
  * @var string $image_url       Unused in plain text.
  */
 
+declare(strict_types=1);
+
 defined( 'ABSPATH' ) || exit;
 
 echo "\n" . esc_html( 'EU GARAN – ' . $text ) . "\n";

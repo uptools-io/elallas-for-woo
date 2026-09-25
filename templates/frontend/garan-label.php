@@ -25,6 +25,8 @@
  * @var string $default_json    Variable product: parent payload (JSON, 'null' = none), '' otherwise.
  */
 
+declare(strict_types=1);
+
 defined( 'ABSPATH' ) || exit;
 
 // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- $nested_svg / $full_svg are built by GaranSvg::fill() from the bundled, checksum-verified official file; merchant values are inserted as DOM text nodes (XML-escaped). wp_kses_post() would strip the <svg>.

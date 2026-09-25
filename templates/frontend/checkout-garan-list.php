@@ -13,6 +13,8 @@
  * @var string                                        $context  checkout|slot|orderpay|cart.
  */
 
+declare(strict_types=1);
+
 defined( 'ABSPATH' ) || exit;
 ?>
 <div class="elallas-garan-checkout elallas-garan-checkout--<?php echo esc_attr( $context ); ?>" data-elallas-cart-list>

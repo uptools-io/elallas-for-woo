@@ -13,6 +13,8 @@
  * @var string $image_url       Filled label PNG ('' = text only; never an unfilled image).
  */
 
+declare(strict_types=1);
+
 defined( 'ABSPATH' ) || exit;
 ?>
 <div class="elallas-garan-email" style="margin:8px 0 0;padding:8px 10px;border-left:3px solid #034ea2;background:#f5f8fc;font-size:13px;line-height:1.5;">
