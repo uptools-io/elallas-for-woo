@@ -54,7 +54,7 @@ final class GaranProductFields {
 		if ( $product instanceof \WC_Product && $product->is_type( 'variable' ) ) {
 			printf(
 				'<p class="description elallas-garan-variable-warning" style="padding:0 12px;">%s</p>',
-				esc_html__( 'Ha a variációk modellazonosítója vagy jótállása eltér, a címke pontatlan lehet: minden variációnál a szülő adatai jelennek meg.', 'elallas-for-woo' )
+				esc_html__( 'Variálható termék: a variációk alapból ezeket az adatokat öröklik. Eltérő modellazonosítónál vagy jótállásnál a variáció „GARAN címke” beállításában adj meg saját adatot (vagy kapcsold ki).', 'elallas-for-woo' )
 			);
 		}
 
@@ -93,7 +93,7 @@ final class GaranProductFields {
 			'brand' => self::META_BRAND,
 			'model' => self::META_MODEL,
 		] as $key => $meta ) {
-			$values[ $key ] = isset( $_POST[ $meta ] ) ? self::clean( (string) wp_unslash( $_POST[ $meta ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitised in clean().
+			$values[ $key ] = isset( $_POST[ $meta ] ) && is_scalar( $_POST[ $meta ] ) ? self::clean( (string) wp_unslash( $_POST[ $meta ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitised in clean().
 		}
 
 		$result = self::validate( $wants, $values );

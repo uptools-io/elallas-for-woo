@@ -21,17 +21,19 @@
  * @var string $garan_url       Your Europe GARAN URL.
  * @var string $garan_url_label Visible link text.
  * @var bool   $available       Whether the graphic can be shown.
+ * @var bool   $hidden          Initially hidden (variable product: shown for a covered variation).
+ * @var string $default_json    Variable product: parent payload (JSON, 'null' = none), '' otherwise.
  */
 
 defined( 'ABSPATH' ) || exit;
 
 // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- $nested_svg / $full_svg are built by GaranSvg::fill() from the bundled, checksum-verified official file; merchant values are inserted as DOM text nodes (XML-escaped). wp_kses_post() would strip the <svg>.
 ?>
-<div class="elallas-garan elallas-garan--<?php echo esc_attr( $mode ); ?>" data-elallas-garan data-product-id="<?php echo esc_attr( (string) $product_id ); ?>">
+<div class="elallas-garan elallas-garan--<?php echo esc_attr( $mode ); ?>" data-elallas-garan data-product-id="<?php echo esc_attr( (string) $product_id ); ?>"<?php echo '' !== $default_json ? ' data-elallas-garan-default="' . esc_attr( $default_json ) . '"' : ''; ?><?php echo $hidden ? ' hidden' : ''; ?>>
 	<?php if ( $available && 'nested' === $mode ) : ?>
 		<button type="button" class="elallas-garan__toggle" aria-expanded="false" aria-controls="<?php echo esc_attr( $prefix . '-full' ); ?>">
 			<?php echo $nested_svg; ?>
-			<span class="screen-reader-text"><?php echo esc_html( $text . ' – ' . __( 'a teljes címke megnyitása', 'elallas-for-woo' ) ); ?></span>
+			<span class="screen-reader-text" data-elallas-garan-open><?php echo esc_html( $text . ' – ' . __( 'a teljes címke megnyitása', 'elallas-for-woo' ) ); ?></span>
 		</button>
 		<div id="<?php echo esc_attr( $prefix . '-full' ); ?>" class="elallas-garan__full" role="region" aria-label="<?php echo esc_attr( $text ); ?>" hidden<?php echo '' !== $template_ref ? ' data-template-ref="' . esc_attr( $template_ref ) . '"' : ''; ?>>
 			<div class="elallas-garan__scroller" tabindex="0">
@@ -52,7 +54,7 @@ defined( 'ABSPATH' ) || exit;
 		<?php if ( '' !== $product_name ) : ?>
 			<strong class="elallas-garan__product"><?php echo esc_html( $product_name ); ?>:</strong>
 		<?php endif; ?>
-		<?php echo esc_html( $text ); ?> –
+		<span data-elallas-garan-text><?php echo esc_html( $text ); ?></span> –
 		<a href="<?php echo esc_url( $garan_url ); ?>" target="_blank" rel="noopener"><?php echo esc_html( $garan_url_label ); ?><span class="screen-reader-text"> <?php esc_html_e( '(új lapon nyílik)', 'elallas-for-woo' ); ?></span></a>
 	</p>
 </div>

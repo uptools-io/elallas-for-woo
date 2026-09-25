@@ -166,5 +166,75 @@
 		window.jQuery(document.body).on('updated_checkout updated_cart_totals', resync);
 	}
 
-	window.elallasGaran = { setOpen: setOpen, resync: resync };
+	/*
+	 * Variable products: swap the (server-validated) values of the variation
+	 * into the label, or hide it for a variation without a label.
+	 */
+	function eachRoot(label, fn) {
+		fn(label);
+		var tpls = label.querySelectorAll('template[data-elallas-garan-full]');
+		for (var i = 0; i < tpls.length; i++) {
+			fn(tpls[i].content);
+		}
+	}
+
+	function setText(root, selector, value) {
+		var nodes = root.querySelectorAll(selector);
+		for (var i = 0; i < nodes.length; i++) {
+			nodes[i].textContent = value;
+		}
+	}
+
+	function applyPayload(label, data) {
+		if (!data) {
+			label.hidden = true;
+			var region = label.querySelector('.elallas-garan__full');
+			if (region) {
+				setOpen(region, false);
+			}
+			return;
+		}
+		eachRoot(label, function (root) {
+			setText(root, '[data-elallas-field="years"]', data.years);
+			setText(root, '[data-elallas-field="brand"]', data.brand);
+			setText(root, '[data-elallas-field="model"]', data.model);
+			setText(root, 'svg > title', data.title);
+		});
+		setText(label, '[data-elallas-garan-text]', data.text);
+		setText(label, '[data-elallas-garan-open]', data.open);
+		var full = label.querySelector('.elallas-garan__full');
+		if (full) {
+			full.setAttribute('aria-label', data.text);
+		}
+		label.hidden = false;
+	}
+
+	function labelsFor(form) {
+		var id = form.getAttribute('data-product_id');
+		return id ? document.querySelectorAll('[data-elallas-garan][data-product-id="' + id + '"][data-elallas-garan-default]') : [];
+	}
+
+	if (window.jQuery) {
+		window.jQuery(document).on('found_variation', 'form.variations_form', function (e, variation) {
+			var labels = labelsFor(this);
+			var data = variation && 'elallas_garan' in variation ? variation.elallas_garan : null;
+			for (var i = 0; i < labels.length; i++) {
+				applyPayload(labels[i], data);
+			}
+		});
+		window.jQuery(document).on('reset_data', 'form.variations_form', function () {
+			var labels = labelsFor(this);
+			for (var i = 0; i < labels.length; i++) {
+				var def = null;
+				try {
+					def = JSON.parse(labels[i].getAttribute('data-elallas-garan-default'));
+				} catch (err) {
+					def = null;
+				}
+				applyPayload(labels[i], def);
+			}
+		});
+	}
+
+	window.elallasGaran = { setOpen: setOpen, resync: resync, apply: applyPayload };
 })();

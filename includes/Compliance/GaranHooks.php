@@ -25,6 +25,7 @@ final class GaranHooks {
 		$mode = GaranRenderer::product_mode();
 
 		ProductPlacement::add( 'garan', 31, 10, [ $this, 'product_html' ] );
+		new GaranVariations();
 
 		if ( 'description' === $mode ) {
 			add_action( 'woocommerce_after_single_product_summary', [ $this, 'render_product_full' ], 12 );

@@ -73,6 +73,8 @@ final class GaranRenderer {
 				'product_name'  => '',
 				'product_id'    => 0,
 				'text_only'     => false,
+				'hidden'        => false,
+				'default_json'  => '',
 			]
 		);
 
@@ -106,6 +108,8 @@ final class GaranRenderer {
 				'product_id'      => (int) $args['product_id'],
 				'garan_url'       => self::GARAN_URL,
 				'garan_url_label' => self::GARAN_URL_LABEL,
+				'hidden'          => (bool) $args['hidden'],
+				'default_json'    => (string) $args['default_json'],
 				'available'       => ! $args['text_only'] && self::available( $mode, $nested, $full, (bool) $args['lazy'] && ! $args['with_template'] ),
 			]
 		);
@@ -119,8 +123,23 @@ final class GaranRenderer {
 	 * @return string
 	 */
 	public static function product_label( \WC_Product $product, string $mode = '' ): string {
-		$data = GaranResolver::for_wc_product( $product );
-		if ( null === $data || self::hidden_for_b2b( 'product' ) ) {
+		if ( self::hidden_for_b2b( 'product' ) ) {
+			return '';
+		}
+
+		$data   = GaranResolver::for_wc_product( $product );
+		$hidden = false;
+		$json   = '';
+		if ( $product->is_type( 'variable' ) ) {
+			// Variations may override the parent; the script swaps the values on
+			// found_variation. Parent not covered: first covered variation, hidden.
+			$json = (string) wp_json_encode( GaranVariations::payload( $data ) );
+			if ( null === $data ) {
+				$data   = GaranVariations::first_covered( $product );
+				$hidden = true;
+			}
+		}
+		if ( null === $data ) {
 			return '';
 		}
 
@@ -129,8 +148,10 @@ final class GaranRenderer {
 		return self::render(
 			$data,
 			[
-				'mode'       => 'full' === $mode ? 'full' : 'nested',
-				'product_id' => (int) $product->get_id(),
+				'mode'         => 'full' === $mode ? 'full' : 'nested',
+				'product_id'   => (int) $product->get_id(),
+				'hidden'       => $hidden,
+				'default_json' => $json,
 			]
 		);
 	}

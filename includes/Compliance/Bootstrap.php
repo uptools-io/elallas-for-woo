@@ -51,6 +51,6 @@ final class Bootstrap {
 	public static function boot_admin(): void {
 		new \LightweightPlugins\Elallas\Admin\GaranProductFields(); // Independent of garan_enabled.
 		new \LightweightPlugins\Elallas\Admin\ComplianceNotice();
-		// Later: Admin\GaranVariationFields + Admin\ProductInfoFields (P1/1.1.1), Admin\GaranImportExport (1.2.0).
+		new \LightweightPlugins\Elallas\Admin\GaranVariationFields(); // P1; later: Admin\ProductInfoFields (1.1.1), Admin\GaranImportExport (1.2.0).
 	}
 }
