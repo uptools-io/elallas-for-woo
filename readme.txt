@@ -2,13 +2,13 @@
 Contributors: uptools
 Tags: woocommerce, withdrawal, refund, gdpr, compliance
 Requires at least: 6.4
-Tested up to: 6.8
+Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 1.0.14
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 8.0
-WC tested up to: 9.9
+WC tested up to: 11.1
 
 Compliant online withdrawal (elállás) button and audited case management for WooCommerce. EU 2023/2673 and 415/2025 Korm. rendelet ready.
 
@@ -49,6 +49,33 @@ The function implements the requirements introduced by **Directive (EU) 2023/267
 * **AI / Site Manager ready** — LW Site Manager Abilities API integration (list/get cases, update status, read the audit log) for REST and AI agents.
 * **WP-CLI** — manage cases from the command line: `wp elallas list / get / status / stats / pdf / cleanup`.
 * **HPOS compatible** — declares compatibility with WooCommerce High-Performance Order Storage.
+
+= EU legal-guarantee notice and GARAN label (from 27 September 2026) =
+
+From **27 September 2026** online shops selling goods to consumers must show the **harmonised EU notice on the legal guarantee** and, where the manufacturer offers a commercial guarantee of durability longer than two years, the **harmonised GARAN label** — both in the mandatory form set by **Commission Implementing Regulation (EU) 2025/1960** (based on Directive (EU) 2024/825). In Hungary the rules are added to 45/2014. (II. 26.) Korm. rendelet by 116/2026. (VII. 30.) Korm. rendelet: the notice and the label must be shown "clearly visible" (11. § (1a)), and the durability guarantee must be pointed out right before the order is placed (15. § (1)).
+
+The "Szavatosság és GARAN" settings tab adds both:
+
+* **Harmonised legal-guarantee notice** — the official, unmodified European Commission notice in the page language (24 official languages, Hungarian fallback), with the link next to it pointing to the same Your Europe page as the notice's QR code. Opens from a short label (click/hover) or is shown inline. Placements: product page (under the add-to-cart form), header, footer, before the order button on the classic checkout, the block checkout and the "Pay for order" page, the order view (thank-you page, My Account) and the customer order e-mails (processing, completed, on hold, invoice) as an image, a colour PNG attachment or both. A standalone notice page (`/szavatossag/`) can be created with one click.
+* **GARAN label** — the official label filled with the durability period (whole years, more than 2), the manufacturer (brand/trademark) and the model identifier. It is shown only for products where it is switched on in the product editor ("Gyártói tartóssági jótállás (GARAN címke)" with "Időtartam (év)", "Gyártó (Brand/Trademark)" and "Modellazonosító"; the values are checked to fit the label's fixed field widths, and a preview is shown). Variations inherit the parent's data by default or can have their own data or no label ("GARAN címke" on the variation: inherit / own data / no label); the label on the product page follows the selected variation.
+* **Mandatory GARAN before the order button** — while the GARAN module is on, the labels of the covered items are always listed right before the order / pay button (classic checkout, block checkout, "Pay for order" page). Product page (nested label that opens the full label, full label under the add-to-cart button, or full label under the description), cart, product lists and order e-mails are configurable. In e-mails the label is a PNG image (when the host has GD with FreeType) plus a text line and links. The label data is stored on the order line at checkout, so later product edits do not change past orders.
+* **Shortcodes** — `[elallas_guarantee_notice]` (attributes `label` and `mode="toggle|inline"`) and `[elallas_garan_label]` (attributes `product_id` and `mode="nested|full"`), for Elementor Pro, customised block templates or any other placement (Shortcode block / widget). Both print nothing while their module is switched off.
+* **Scope and B2B** — only goods are covered: purely virtual (digital) products can be excluded, and the output can be hidden for business (B2B) orders.
+* **Configuration check** — an admin notice warns before and after the deadline when the notice is off or not placed, the checkout placement is off, the GARAN label is off, a filter may hide the mandatory GARAN, or the settings were not reviewed yet. Tampered official GARAN files are detected (SHA-256) and the label is then not shown.
+* **Block themes** — the output follows the add-to-cart block (`woocommerce/add-to-cart-form` or `woocommerce/add-to-cart-with-options`), and also works when the product is rendered through the classic product template block.
+
+= Third-party assets =
+
+* **European Commission files** — the harmonised notice (PNG and SVG, `assets/notice/`) and the GARAN label (`assets/garan/`) are byte-identical, unmodified copies of the official files published by the European Commission ([Practical guidelines and high-resolution vector files – EU notice and label for product guarantees](https://commission.europa.eu/publications/practical-guidelines-and-high-resolution-vector-files-eu-notice-and-label-product-guarantees_en)). `assets/garan/garan-base-colour@4x.png` is rendered at build time from the official colour label with empty fields, for the e-mail image. Integrity is verified against `assets/CHECKSUMS.sha256`.
+* **Inter 3.19** — the font used to fill the GARAN label (`assets/fonts/inter/`, Regular and ExtraBold, TTF and WOFF2), licensed under the SIL Open Font License 1.1 (`assets/fonts/inter/OFL.txt`).
+
+= Known limitations =
+
+* The GARAN label appears as an image in e-mails only when the host has GD with FreeType support; otherwise it is sent as text (years, manufacturer, model) and a link.
+* The GARAN label on product lists (archives) works with classic themes only; on block themes it appears on the product page, in the cart and at checkout.
+* Until 1.1.1, state software update and repairability information in the product description.
+* The Gutenberg block and Elementor widget arrive in 1.1.1; until then place the shortcodes with the Shortcode block / widget.
+* The GARAN label is not shown before the express payment buttons of the block cart (it is in the classic cart).
 
 = By uptools.io =
 
@@ -107,6 +134,17 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 6. Onboarding wizard
 
 == Changelog ==
+
+= 1.1.0 =
+* New: harmonised EU legal-guarantee notice (Implementing Regulation (EU) 2025/1960, mandatory from 27 September 2026): the official Commission notice in 24 languages with its Your Europe link, on the product page, header, footer, before the order button (classic checkout, block checkout, "Pay for order" page), in the order view and in customer order e-mails (image, colour PNG attachment or both), plus a one-click standalone notice page.
+* New: GARAN durability label: product and variation fields (period, manufacturer, model identifier) with fit checks and an editor preview, the filled official label on the product page (nested, full, or under the description), in the cart, on product lists and in order e-mails (PNG image with GD FreeType, otherwise text), and always before the order / pay button while the module is on. The label data is stored on the order line at checkout.
+* New: `[elallas_guarantee_notice]` and `[elallas_garan_label]` shortcodes.
+* New: "Szavatosság és GARAN" settings tab with goods-only scope, virtual-product exclusion and B2B hiding.
+* New: compliance admin notice for the 27 September 2026 deadline (notice off or not placed, checkout placement off, GARAN label off, GARAN hidden by a filter, settings not reviewed), with a 30-day dismiss; errors for tampered official GARAN files and a misplaced block-checkout slot.
+* New: block theme support for the product-page output after the `woocommerce/add-to-cart-form` and `woocommerce/add-to-cart-with-options` blocks and inside the classic product template block; several products on one page each get their own output.
+* New: official European Commission notice and GARAN files and the Inter 3.19 font (SIL OFL 1.1), verified by SHA-256 checksums.
+* New: English, Czech, Romanian and Slovak translations for the new strings.
+* Change: declared WooCommerce cart and checkout blocks compatibility; WC tested up to 11.1.
 
 = 1.0.14 =
 * Fix: the release package and Composer dist no longer ship tests, docs or development configuration

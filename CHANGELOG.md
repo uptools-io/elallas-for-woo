@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.1.0] - 2026-09-25
+
+### Added
+- Harmonised EU legal-guarantee notice (Implementing Regulation (EU) 2025/1960, mandatory from 27 September 2026): the official Commission notice in 24 languages with its Your Europe link, on the product page, header, footer, before the order button (classic checkout, block checkout, "Pay for order" page), in the order view and in customer order e-mails (image, colour PNG attachment or both), plus a one-click standalone notice page.
+- GARAN durability label: product and variation fields (period, manufacturer, model identifier) with fit checks and an editor preview, the filled official label on the product page (nested, full, or under the description), in the cart, on product lists and in order e-mails (PNG image with GD FreeType, otherwise text), and always before the order / pay button while the module is on. The label data is stored on the order line at checkout.
+- `[elallas_guarantee_notice]` and `[elallas_garan_label]` shortcodes.
+- "Szavatosság és GARAN" settings tab with goods-only scope, virtual-product exclusion and B2B hiding.
+- Compliance admin notice for the 27 September 2026 deadline (notice off or not placed, checkout placement off, GARAN label off, GARAN hidden by a filter, settings not reviewed), with a 30-day dismiss; errors for tampered official GARAN files and a misplaced block-checkout slot.
+- Block theme support for the product-page output after the `woocommerce/add-to-cart-form` and `woocommerce/add-to-cart-with-options` blocks and inside the classic product template block; several products on one page each get their own output.
+- Official European Commission notice and GARAN files and the Inter 3.19 font (SIL OFL 1.1), verified by SHA-256 checksums.
+- English, Czech, Romanian and Slovak translations for the new strings.
+
+### Changed
+- Declared WooCommerce cart and checkout blocks compatibility; WC tested up to 11.1.
+
 ## [1.0.14] - 2026-09-06
 
 ### Fixed
