@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace LightweightPlugins\Elallas\Admin\Settings;
 
-use LightweightPlugins\Elallas\Compliance\GaranSource;
+use LightweightPlugins\Elallas\Admin\ComplianceNotice;
 use LightweightPlugins\Elallas\Options;
 
 /**
@@ -76,7 +76,7 @@ final class ComplianceGaranSection {
 	 * @return void
 	 */
 	private static function render_status(): void {
-		$ok = GaranSource::integrity_ok();
+		$ok = ComplianceNotice::garan_files_intact();
 
 		echo '<p>' . esc_html__( 'E-mail címke képként: 1.1.1-től; addig szöveges tájékoztatás (évek, gyártó, modell, Your Europe link, termékoldal-link).', 'elallas-for-woo' ) . '</p>';
 		printf(

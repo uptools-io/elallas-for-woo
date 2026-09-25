@@ -12,6 +12,7 @@
 	var HOVER_OPEN = 150;
 	var HOVER_CLOSE = 400;
 	var canHover = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+	var openTimer = null;
 
 	function closest(el, selector) {
 		while (el && el.nodeType === 1) {
@@ -82,6 +83,7 @@
 			return;
 		}
 		e.preventDefault();
+		window.clearTimeout(openTimer);
 		var region = regionOf(toggle);
 		if (!region) {
 			return;
@@ -106,7 +108,6 @@
 	});
 
 	if (canHover) {
-		var openTimer = null;
 		var closeTimers = {};
 
 		document.addEventListener('mouseover', function (e) {
@@ -128,7 +129,9 @@
 			}
 			window.clearTimeout(openTimer);
 			openTimer = window.setTimeout(function () {
-				setOpen(region, true, true);
+				if (region.hidden) {
+					setOpen(region, true, true);
+				}
 			}, HOVER_OPEN);
 		});
 

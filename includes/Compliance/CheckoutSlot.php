@@ -87,12 +87,14 @@ final class CheckoutSlot {
 			return false;
 		}
 
-		$page = get_post( wc_get_page_id( 'checkout' ) );
-		if ( $page instanceof \WP_Post && has_block( 'woocommerce/checkout', $page ) ) {
-			return true;
+		// The current page decides: a classic [woocommerce_checkout] page is a
+		// checkout too, even when the configured checkout page uses the block.
+		$page = get_post( (int) get_queried_object_id() );
+		if ( ! $page instanceof \WP_Post ) {
+			$page = get_post( wc_get_page_id( 'checkout' ) );
 		}
 
-		return has_block( 'woocommerce/checkout' );
+		return $page instanceof \WP_Post && has_block( 'woocommerce/checkout', $page );
 	}
 
 	/**
