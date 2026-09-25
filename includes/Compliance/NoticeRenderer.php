@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace LightweightPlugins\Elallas\Compliance;
 
+use LightweightPlugins\Elallas\Data\DefaultTexts;
 use LightweightPlugins\Elallas\Domain\B2BDetector;
 use LightweightPlugins\Elallas\Frontend\TemplateLoader;
 use LightweightPlugins\Elallas\Integrations\Multilingual;
@@ -86,7 +87,12 @@ final class NoticeRenderer {
 			? Multilingual::translate_string( $override, 'notice_label' )
 			: Multilingual::translate_option_string( 'notice_label' );
 
-		return '' !== trim( $label ) ? $label : __( 'Az Ön jogszabályi szavatossági jogai', 'elallas-for-woo' );
+		// An untouched default is the raw Hungarian source: show its translation instead.
+		if ( '' === trim( $label ) || DefaultTexts::notice_label() === $label ) {
+			return __( 'Az Ön jogszabályi szavatossági jogai', 'elallas-for-woo' );
+		}
+
+		return $label;
 	}
 
 	/**
