@@ -43,5 +43,12 @@
                 <attribute>label</attribute>
             </attributes>
         </shortcode>
+        <!-- Harmonised legal-guarantee notice: optional label attribute. -->
+        <shortcode>
+            <tag>elallas_guarantee_notice</tag>
+            <attributes>
+                <attribute>label</attribute>
+            </attributes>
+        </shortcode>
     </shortcodes>
 </wpml-config>

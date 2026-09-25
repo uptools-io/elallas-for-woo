@@ -2,9 +2,6 @@
 /**
  * "Szavatosság és GARAN" settings tab.
  *
- * M0 skeleton: every compliance option has a valid input; the final layout,
- * texts and status rows are completed in M1a.
- *
  * @package LightweightPlugins\Elallas
  */
 
@@ -76,9 +73,18 @@ final class TabCompliance implements TabInterface {
 	public function render(): void {
 		?>
 		<h2><?php esc_html_e( 'Szavatosság és GARAN', 'elallas-for-woo' ); ?></h2>
+		<?php $this->render_created_message(); ?>
 		<div class="notice notice-warning inline" style="margin:0 0 16px;">
 			<p><strong><?php echo esc_html( DefaultTexts::disclaimer() ); ?></strong></p>
 			<p><?php echo esc_html( DefaultTexts::compliance_intro() ); ?></p>
+			<p><?php esc_html_e( 'Ismert korlátok ebben a verzióban:', 'elallas-for-woo' ); ?></p>
+			<ul style="list-style:disc;margin-left:2em;">
+				<li><?php esc_html_e( 'A GARAN címke az e-mailben 1.1.1-ig csak szövegként (évek, gyártó, modell) és linkként jelenik meg.', 'elallas-for-woo' ); ?></li>
+				<li><?php esc_html_e( 'Variációnkénti GARAN adat 1.1.1-től; addig a szülőtermék adata érvényes.', 'elallas-for-woo' ); ?></li>
+				<li><?php esc_html_e( 'A szoftverfrissítési és javíthatósági információt 1.1.1-ig a termékleírásban tüntesd fel.', 'elallas-for-woo' ); ?></li>
+				<li><?php esc_html_e( 'Gutenberg-blokk és Elementor-widget 1.1.1-től; addig a Shortcode blokkal / widgettel helyezd el a shortcode-okat.', 'elallas-for-woo' ); ?></li>
+				<li><?php esc_html_e( 'A blokkos kosár expressz fizetési gombjai előtt a GARAN címke nem jelenik meg (a klasszikus kosárban igen).', 'elallas-for-woo' ); ?></li>
+			</ul>
 		</div>
 
 		<h3><?php esc_html_e( 'Jogszabályi szavatosság tájékoztató', 'elallas-for-woo' ); ?></h3>
@@ -99,6 +105,7 @@ final class TabCompliance implements TabInterface {
 					<?php $this->render_checkbox( 'notice_display_footer', __( 'Lábléc', 'elallas-for-woo' ) ); ?><br />
 					<?php $this->render_checkbox( 'notice_display_checkout', __( 'Pénztár (a rendelés gomb előtt: klasszikus, blokkos és „Rendelés kifizetése” oldal)', 'elallas-for-woo' ) ); ?><br />
 					<?php $this->render_checkbox( 'notice_display_email', __( 'Rendelési e-mail', 'elallas-for-woo' ) ); ?>
+					<p class="description"><?php esc_html_e( 'A fejléc csak a wp_body_open horgonyt támogató témákon jelenik meg. Egyéb helyre a [elallas_guarantee_notice] shortcode-dal (Shortcode blokk / Elementor Shortcode widget) teheted. A pénztári megjelenítés a rendelésnézetre (köszönőoldal, Fiókom) is vonatkozik.', 'elallas-for-woo' ); ?></p>
 				</td>
 			</tr>
 			<tr>
@@ -112,9 +119,10 @@ final class TabCompliance implements TabInterface {
 							'attachment' => __( 'Színes PNG-melléklet', 'elallas-for-woo' ),
 							'both'       => __( 'Mindkettő', 'elallas-for-woo' ),
 						],
-						[ 'image' ]
+						[ 'image', 'attachment', 'both' ]
 					);
 					?>
+					<p class="description"><?php esc_html_e( 'A vevői rendelési e-mailekben (feldolgozás alatt, teljesítve, várakozik, számla). Egyszerű szöveges e-mailhez a hivatalos színes PNG mindig mellékletként is csatolódik. Az angol nyelvű értesítéshez nincs hivatalos PNG, ott szöveg és link jelenik meg.', 'elallas-for-woo' ); ?></p>
 				</td>
 			</tr>
 			<tr>
@@ -131,7 +139,8 @@ final class TabCompliance implements TabInterface {
 						]
 					);
 					?>
-					<p class="description"><?php esc_html_e( 'Shortcode: [elallas_guarantee_notice]', 'elallas-for-woo' ); ?></p>
+					<?php $this->render_create_page_link(); ?>
+					<p class="description"><?php esc_html_e( 'Shortcode: [elallas_guarantee_notice] (kattintásra nyíló) vagy [elallas_guarantee_notice mode="inline"] (azonnal látható). Kiválasztott oldal esetén az értesítés alatt „Megnyitás külön oldalon” link jelenik meg.', 'elallas-for-woo' ); ?></p>
 				</td>
 			</tr>
 		</table>
@@ -142,19 +151,68 @@ final class TabCompliance implements TabInterface {
 		<table class="form-table">
 			<tr>
 				<th scope="row"><?php esc_html_e( 'B2B', 'elallas-for-woo' ); ?></th>
-				<td><?php $this->render_checkbox( 'compliance_hide_b2b', __( 'Elrejtés céges (B2B) rendeléseknél', 'elallas-for-woo' ) ); ?></td>
+				<td>
+					<?php $this->render_checkbox( 'compliance_hide_b2b', __( 'Elrejtés céges (B2B) rendeléseknél', 'elallas-for-woo' ) ); ?>
+					<p class="description"><?php esc_html_e( 'Rendelésnézetben, a Rendelés kifizetése oldalon és e-mailben a számlázási cégnév/adószám alapján; termékoldalon, kosárban és pénztárban csak az elallas_compliance_is_b2b szűrővel.', 'elallas-for-woo' ); ?></p>
+				</td>
 			</tr>
 			<tr>
 				<th scope="row"><?php esc_html_e( 'Digitális termékek', 'elallas-for-woo' ); ?></th>
-				<td><?php $this->render_checkbox( 'compliance_exclude_virtual', __( 'Tisztán virtuális (digitális) termékeknél ne jelenjen meg', 'elallas-for-woo' ) ); ?></td>
+				<td>
+					<?php $this->render_checkbox( 'compliance_exclude_virtual', __( 'Tisztán virtuális (digitális) termékeknél ne jelenjen meg', 'elallas-for-woo' ) ); ?>
+					<p class="description"><?php esc_html_e( 'Virtuálisnak jelölt (nem szállítandó) termékeknél nem jelenik meg; ha virtuálisként kezelt fizikai árut árulsz, kapcsold ki ezt az opciót.', 'elallas-for-woo' ); ?></p>
+				</td>
 			</tr>
 			<tr>
 				<th scope="row"><?php esc_html_e( 'Termékinformációk', 'elallas-for-woo' ); ?></th>
 				<td><?php $this->render_checkbox( 'product_info_enabled', __( 'Opcionális termékinformációk (1.1.1-től)', 'elallas-for-woo' ) ); ?></td>
 			</tr>
 		</table>
+		<p class="description"><?php esc_html_e( 'Többnyelvű bolt: az értesítés nyelve az oldal nyelvét követi (24 hivatalos nyelv). Polylang esetén a GARAN termékadatok szinkronizálását a Polylang (for WooCommerce) beállításaiban kapcsold be.', 'elallas-for-woo' ); ?></p>
 		<input type="hidden" name="<?php echo esc_attr( Options::OPTION_NAME ); ?>[compliance_reviewed]" value="1" />
 		<?php
+	}
+
+	/**
+	 * "Create page" link (admin-post, nonce) while no published notice page exists.
+	 *
+	 * @return void
+	 */
+	private function render_create_page_link(): void {
+		$page_id = (int) Options::get( 'notice_page_id' );
+
+		if ( $page_id > 0 && 'publish' === get_post_status( $page_id ) ) {
+			return;
+		}
+
+		$url = wp_nonce_url( admin_url( 'admin-post.php?action=elallas_create_notice_page' ), 'elallas_create_notice_page' );
+		printf(
+			' <a class="button" href="%1$s">%2$s</a>',
+			esc_url( $url ),
+			esc_html__( 'Oldal létrehozása (/szavatossag/)', 'elallas-for-woo' )
+		);
+	}
+
+	/**
+	 * Result message of the "create page" action.
+	 *
+	 * @return void
+	 */
+	private function render_created_message(): void {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Display-only flag set by our own redirect.
+		$created = isset( $_GET['created'] ) ? sanitize_key( wp_unslash( $_GET['created'] ) ) : '';
+
+		if ( '1' === $created ) {
+			$page_id = (int) Options::get( 'notice_page_id' );
+			printf(
+				'<div class="notice notice-success inline"><p>%1$s <a href="%2$s">%3$s</a></p></div>',
+				esc_html__( 'A szavatossági oldal elkészült.', 'elallas-for-woo' ),
+				esc_url( (string) get_permalink( $page_id ) ),
+				esc_html__( 'Megtekintés', 'elallas-for-woo' )
+			);
+		} elseif ( '0' === $created ) {
+			printf( '<div class="notice notice-error inline"><p>%s</p></div>', esc_html__( 'Az oldal létrehozása nem sikerült.', 'elallas-for-woo' ) );
+		}
 	}
 
 	/**

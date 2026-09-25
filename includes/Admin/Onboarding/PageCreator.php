@@ -58,27 +58,45 @@ final class PageCreator {
 	 * @return int Page ID (0 on failure).
 	 */
 	public static function create(): int {
-		$existing = (int) Options::get( 'withdrawal_page_id' );
+		return self::create_for( 'withdrawal_page_id', __( 'Elállás', 'elallas-for-woo' ), '[elallas_form]' );
+	}
+
+	/**
+	 * Insert a published page and store its ID in an option, unless the stored
+	 * page still exists.
+	 *
+	 * @param string $option_key Option holding the page ID.
+	 * @param string $title      Page title.
+	 * @param string $content    Page content (shortcode).
+	 * @param string $slug       Page slug ('' = derived from the title by WordPress).
+	 * @return int Page ID (0 on failure).
+	 */
+	public static function create_for( string $option_key, string $title, string $content, string $slug = '' ): int {
+		$existing = (int) Options::get( $option_key );
 
 		if ( $existing > 0 && 'publish' === get_post_status( $existing ) ) {
 			return $existing;
 		}
 
-		$page_id = wp_insert_post(
-			[
-				'post_title'   => __( 'Elállás', 'elallas-for-woo' ),
-				'post_content' => '[elallas_form]',
-				'post_status'  => 'publish',
-				'post_type'    => 'page',
-			]
-		);
+		$postarr = [
+			'post_title'   => $title,
+			'post_content' => $content,
+			'post_status'  => 'publish',
+			'post_type'    => 'page',
+		];
 
-		if ( 0 === $page_id ) {
+		if ( '' !== $slug ) {
+			$postarr['post_name'] = $slug;
+		}
+
+		$page_id = wp_insert_post( $postarr );
+
+		if ( ! is_int( $page_id ) || 0 === $page_id ) {
 			return 0;
 		}
 
-		Options::set( 'withdrawal_page_id', (int) $page_id );
+		Options::set( $option_key, $page_id );
 
-		return (int) $page_id;
+		return $page_id;
 	}
 }
