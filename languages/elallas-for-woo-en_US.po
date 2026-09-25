@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Elállás for WooCommerce 1.0.14\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/elallas-for-woo\n"
-"POT-Creation-Date: 2026-09-25T19:09:17+00:00\n"
+"POT-Creation-Date: 2026-09-25T19:25:48+00:00\n"
 "PO-Revision-Date: 2026-09-25 20:45+0200\n"
 "Last-Translator: uptools.io <hello@uptools.io>\n"
 "Language-Team: English (United States) <en_US@li.org>\n"
@@ -252,27 +252,31 @@ msgstr "All statuses"
 msgid "Szűrés"
 msgstr "Filter"
 
-#: includes/Admin/ComplianceCheck.php:96
+#: includes/Admin/ComplianceCheck.php:99
 msgid "2026. szeptember 27-től kötelező a harmonizált szavatossági tájékoztató és (érintett termékeknél) a GARAN címke. Ellenőrizd a beállításokat."
 msgstr "Mandatory from 27 September 2026: the harmonised legal guarantee notice and (for affected products) the GARAN label. Please check the settings."
 
-#: includes/Admin/ComplianceCheck.php:97
+#: includes/Admin/ComplianceCheck.php:100
 msgid "A harmonizált szavatossági tájékoztató 2026. szeptember 27. óta kötelező."
 msgstr "The harmonised legal guarantee notice has been mandatory since 27 September 2026."
 
-#: includes/Admin/ComplianceCheck.php:114
+#: includes/Admin/ComplianceCheck.php:117
 msgid "Jelenleg nem jelenik meg."
 msgstr "It is currently not displayed."
 
-#: includes/Admin/ComplianceCheck.php:116
+#: includes/Admin/ComplianceCheck.php:119
 msgid "A pénztári megjelenítés ki van kapcsolva."
 msgstr "Display at checkout is switched off."
 
-#: includes/Admin/ComplianceCheck.php:118
+#: includes/Admin/ComplianceCheck.php:121
+msgid "A GARAN címke ki van kapcsolva, pedig az érintett termékeknél a rendelés gomb előtt kötelező."
+msgstr "The GARAN label is switched off, although it is mandatory before the order button for covered products."
+
+#: includes/Admin/ComplianceCheck.php:123
 msgid "Egy bővítmény vagy a téma szűrővel (elallas_garan_checkout_visible) elrejtheti a rendelés gomb előtti GARAN címkét."
 msgstr "A plugin or the theme may hide the GARAN label before the order button with a filter (elallas_garan_checkout_visible)."
 
-#: includes/Admin/ComplianceCheck.php:120
+#: includes/Admin/ComplianceCheck.php:125
 msgid "A beállítások még nincsenek átnézve."
 msgstr "The settings have not been reviewed yet."
 
@@ -1149,7 +1153,7 @@ msgstr "The official EU GARAN label for the producer's commercial guarantee of d
 msgid "a teljes címke megnyitása"
 msgstr "open the full label"
 
-#: includes/Compliance/NoticeRenderer.php:89
+#: includes/Compliance/NoticeRenderer.php:92
 msgid "Az Ön jogszabályi szavatossági jogai"
 msgstr "Your legal guarantee rights"
 

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Elállás for WooCommerce 1.0.13\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/elallas-for-woo\n"
-"POT-Creation-Date: 2026-09-25T19:09:17+00:00\n"
+"POT-Creation-Date: 2026-09-25T19:25:48+00:00\n"
 "PO-Revision-Date: 2026-07-15 16:09+0000\n"
 "Last-Translator: uptools.io <hello@uptools.io>\n"
 "Language-Team: Romanian <LL@li.org>\n"
@@ -267,7 +267,7 @@ msgstr "Toate stările"
 msgid "Szűrés"
 msgstr "Filtrare"
 
-#: includes/Admin/ComplianceCheck.php:96
+#: includes/Admin/ComplianceCheck.php:99
 msgid ""
 "2026. szeptember 27-től kötelező a harmonizált szavatossági tájékoztató és "
 "(érintett termékeknél) a GARAN címke. Ellenőrizd a beállításokat."
@@ -276,22 +276,28 @@ msgstr ""
 "privind garanția legală de conformitate și (pentru produsele vizate) "
 "eticheta GARAN. Vă rugăm să verificați setările."
 
-#: includes/Admin/ComplianceCheck.php:97
+#: includes/Admin/ComplianceCheck.php:100
 msgid ""
 "A harmonizált szavatossági tájékoztató 2026. szeptember 27. óta kötelező."
 msgstr ""
 "Notificarea armonizată privind garanția legală de conformitate este "
 "obligatorie din 27 septembrie 2026."
 
-#: includes/Admin/ComplianceCheck.php:114
+#: includes/Admin/ComplianceCheck.php:117
 msgid "Jelenleg nem jelenik meg."
 msgstr "În prezent nu este afișată."
 
-#: includes/Admin/ComplianceCheck.php:116
+#: includes/Admin/ComplianceCheck.php:119
 msgid "A pénztári megjelenítés ki van kapcsolva."
 msgstr "Afișarea la finalizarea comenzii este dezactivată."
 
-#: includes/Admin/ComplianceCheck.php:118
+#: includes/Admin/ComplianceCheck.php:121
+msgid ""
+"A GARAN címke ki van kapcsolva, pedig az érintett termékeknél a rendelés "
+"gomb előtt kötelező."
+msgstr "Eticheta GARAN este dezactivată, deși pentru produsele vizate este obligatorie înaintea butonului de comandă."
+
+#: includes/Admin/ComplianceCheck.php:123
 msgid ""
 "Egy bővítmény vagy a téma szűrővel (elallas_garan_checkout_visible) "
 "elrejtheti a rendelés gomb előtti GARAN címkét."
@@ -299,7 +305,7 @@ msgstr ""
 "Un plugin sau tema poate ascunde eticheta GARAN dinaintea butonului de "
 "comandă printr-un filtru (elallas_garan_checkout_visible)."
 
-#: includes/Admin/ComplianceCheck.php:120
+#: includes/Admin/ComplianceCheck.php:125
 msgid "A beállítások még nincsenek átnézve."
 msgstr "Setările nu au fost încă verificate."
 
@@ -846,9 +852,9 @@ msgid ""
 "PNG, ott szöveg és link jelenik meg."
 msgstr ""
 "În e-mailurile de comandă către clienți (în procesare, finalizată, în "
-"așteptare, factură). E-mailurile în text simplu primesc întotdeauna și "
-"PNG-ul oficial color ca atașament. Pentru notificarea în limba engleză nu "
-"există PNG oficial; în schimb se afișează text și un link."
+"așteptare, factură). E-mailurile în text simplu primesc întotdeauna și PNG-"
+"ul oficial color ca atașament. Pentru notificarea în limba engleză nu există "
+"PNG oficial; în schimb se afișează text și un link."
 
 #: includes/Admin/Settings/TabCompliance.php:129
 msgid "Szavatossági oldal"
@@ -1397,7 +1403,7 @@ msgstr ""
 msgid "a teljes címke megnyitása"
 msgstr "deschideți eticheta completă"
 
-#: includes/Compliance/NoticeRenderer.php:89
+#: includes/Compliance/NoticeRenderer.php:92
 msgid "Az Ön jogszabályi szavatossági jogai"
 msgstr "Drepturile dumneavoastră privind garanția legală de conformitate"
 

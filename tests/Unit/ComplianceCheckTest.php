@@ -32,6 +32,7 @@ final class ComplianceCheckTest extends TestCase {
 				'notice_display_footer'   => false,
 				'notice_display_checkout' => true,
 				'notice_display_email'    => true,
+				'garan_enabled'           => true,
 				'compliance_reviewed'     => true,
 			],
 			$overrides
@@ -66,6 +67,20 @@ final class ComplianceCheckTest extends TestCase {
 			[ ComplianceCheck::CHECKOUT_OFF, ComplianceCheck::GARAN_FILTERED ],
 			ComplianceCheck::problems( $this->options( [ 'notice_display_checkout' => false ] ), true )
 		);
+	}
+
+	public function test_garan_off(): void {
+		$this->assertSame( [ ComplianceCheck::GARAN_OFF ], ComplianceCheck::problems( $this->options( [ 'garan_enabled' => false ] ), false ) );
+	}
+
+	public function test_garan_off_hides_the_filter_warning(): void {
+		$this->assertSame( [ ComplianceCheck::GARAN_OFF ], ComplianceCheck::problems( $this->options( [ 'garan_enabled' => false ] ), true ) );
+	}
+
+	public function test_garan_off_reason(): void {
+		$message = ComplianceCheck::message( [ ComplianceCheck::GARAN_OFF ], '2026-09-27' );
+
+		$this->assertStringEndsWith( 'A GARAN címke ki van kapcsolva, pedig az érintett termékeknél a rendelés gomb előtt kötelező.', $message );
 	}
 
 	public function test_snooze_lasts_thirty_days(): void {

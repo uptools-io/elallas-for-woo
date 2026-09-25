@@ -28,6 +28,7 @@ final class ComplianceCheck {
 	public const NOTICE_OFF     = 'notice_off';
 	public const NOTICE_HIDDEN  = 'notice_hidden';
 	public const CHECKOUT_OFF   = 'checkout_off';
+	public const GARAN_OFF      = 'garan_off';
 	public const GARAN_FILTERED = 'garan_filtered';
 	public const NOT_REVIEWED   = 'not_reviewed';
 
@@ -62,7 +63,9 @@ final class ComplianceCheck {
 			$problems[] = self::CHECKOUT_OFF;
 		}
 
-		if ( $garan_checkout_filtered ) {
+		if ( empty( $options['garan_enabled'] ) ) {
+			$problems[] = self::GARAN_OFF;
+		} elseif ( $garan_checkout_filtered ) {
 			$problems[] = self::GARAN_FILTERED;
 		}
 
@@ -114,6 +117,8 @@ final class ComplianceCheck {
 				return __( 'Jelenleg nem jelenik meg.', 'elallas-for-woo' );
 			case self::CHECKOUT_OFF:
 				return __( 'A pénztári megjelenítés ki van kapcsolva.', 'elallas-for-woo' );
+			case self::GARAN_OFF:
+				return __( 'A GARAN címke ki van kapcsolva, pedig az érintett termékeknél a rendelés gomb előtt kötelező.', 'elallas-for-woo' );
 			case self::GARAN_FILTERED:
 				return __( 'Egy bővítmény vagy a téma szűrővel (elallas_garan_checkout_visible) elrejtheti a rendelés gomb előtti GARAN címkét.', 'elallas-for-woo' );
 			case self::NOT_REVIEWED:

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-25T19:09:17+00:00\n"
+"POT-Creation-Date: 2026-09-25T19:25:48+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: elallas-for-woo\n"
@@ -260,27 +260,31 @@ msgstr ""
 msgid "Szűrés"
 msgstr ""
 
-#: includes/Admin/ComplianceCheck.php:96
+#: includes/Admin/ComplianceCheck.php:99
 msgid "2026. szeptember 27-től kötelező a harmonizált szavatossági tájékoztató és (érintett termékeknél) a GARAN címke. Ellenőrizd a beállításokat."
 msgstr ""
 
-#: includes/Admin/ComplianceCheck.php:97
+#: includes/Admin/ComplianceCheck.php:100
 msgid "A harmonizált szavatossági tájékoztató 2026. szeptember 27. óta kötelező."
 msgstr ""
 
-#: includes/Admin/ComplianceCheck.php:114
+#: includes/Admin/ComplianceCheck.php:117
 msgid "Jelenleg nem jelenik meg."
 msgstr ""
 
-#: includes/Admin/ComplianceCheck.php:116
+#: includes/Admin/ComplianceCheck.php:119
 msgid "A pénztári megjelenítés ki van kapcsolva."
 msgstr ""
 
-#: includes/Admin/ComplianceCheck.php:118
+#: includes/Admin/ComplianceCheck.php:121
+msgid "A GARAN címke ki van kapcsolva, pedig az érintett termékeknél a rendelés gomb előtt kötelező."
+msgstr ""
+
+#: includes/Admin/ComplianceCheck.php:123
 msgid "Egy bővítmény vagy a téma szűrővel (elallas_garan_checkout_visible) elrejtheti a rendelés gomb előtti GARAN címkét."
 msgstr ""
 
-#: includes/Admin/ComplianceCheck.php:120
+#: includes/Admin/ComplianceCheck.php:125
 msgid "A beállítások még nincsenek átnézve."
 msgstr ""
 
@@ -1160,7 +1164,7 @@ msgstr ""
 msgid "a teljes címke megnyitása"
 msgstr ""
 
-#: includes/Compliance/NoticeRenderer.php:89
+#: includes/Compliance/NoticeRenderer.php:92
 msgid "Az Ön jogszabályi szavatossági jogai"
 msgstr ""
 

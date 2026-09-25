@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Elállás for WooCommerce 1.0.13\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/elallas-for-woo\n"
-"POT-Creation-Date: 2026-09-25T19:09:17+00:00\n"
+"POT-Creation-Date: 2026-09-25T19:25:48+00:00\n"
 "PO-Revision-Date: 2026-07-15 16:09+0000\n"
 "Last-Translator: uptools.io <hello@uptools.io>\n"
 "Language-Team: Slovak <sk_SK@li.org>\n"
@@ -266,7 +266,7 @@ msgstr "Všetky stavy"
 msgid "Szűrés"
 msgstr "Filtrovať"
 
-#: includes/Admin/ComplianceCheck.php:96
+#: includes/Admin/ComplianceCheck.php:99
 msgid ""
 "2026. szeptember 27-től kötelező a harmonizált szavatossági tájékoztató és "
 "(érintett termékeknél) a GARAN címke. Ellenőrizd a beállításokat."
@@ -274,21 +274,27 @@ msgstr ""
 "Od 27. septembra 2026 je povinné harmonizované oznámenie o zákonnej záruke a "
 "(pri dotknutých výrobkoch) označenie GARAN. Skontrolujte, prosím, nastavenia."
 
-#: includes/Admin/ComplianceCheck.php:97
+#: includes/Admin/ComplianceCheck.php:100
 msgid ""
 "A harmonizált szavatossági tájékoztató 2026. szeptember 27. óta kötelező."
 msgstr ""
 "Harmonizované oznámenie o zákonnej záruke je povinné od 27. septembra 2026."
 
-#: includes/Admin/ComplianceCheck.php:114
+#: includes/Admin/ComplianceCheck.php:117
 msgid "Jelenleg nem jelenik meg."
 msgstr "Momentálne sa nezobrazuje."
 
-#: includes/Admin/ComplianceCheck.php:116
+#: includes/Admin/ComplianceCheck.php:119
 msgid "A pénztári megjelenítés ki van kapcsolva."
 msgstr "Zobrazenie v pokladni je vypnuté."
 
-#: includes/Admin/ComplianceCheck.php:118
+#: includes/Admin/ComplianceCheck.php:121
+msgid ""
+"A GARAN címke ki van kapcsolva, pedig az érintett termékeknél a rendelés "
+"gomb előtt kötelező."
+msgstr "Štítok GARAN je vypnutý, hoci pri dotknutých výrobkoch je pred tlačidlom objednávky povinný."
+
+#: includes/Admin/ComplianceCheck.php:123
 msgid ""
 "Egy bővítmény vagy a téma szűrővel (elallas_garan_checkout_visible) "
 "elrejtheti a rendelés gomb előtti GARAN címkét."
@@ -296,7 +302,7 @@ msgstr ""
 "Plugin alebo téma môže pomocou filtra (elallas_garan_checkout_visible) skryť "
 "označenie GARAN pred tlačidlom objednávky."
 
-#: includes/Admin/ComplianceCheck.php:120
+#: includes/Admin/ComplianceCheck.php:125
 msgid "A beállítások még nincsenek átnézve."
 msgstr "Nastavenia ešte neboli skontrolované."
 
@@ -367,8 +373,8 @@ msgid ""
 "Fél éves érték: ellenőrizd, hogy a szám nem ér a naptár-ikonhoz (a fél éves "
 "értékek jogi/grafikai megítélése nyitott kérdés)."
 msgstr ""
-"Polročná hodnota: skontrolujte, či sa číslo nedotýka ikony kalendára "
-"(právne/grafické posúdenie polročných hodnôt je otvorenou otázkou)."
+"Polročná hodnota: skontrolujte, či sa číslo nedotýka ikony kalendára (právne/"
+"grafické posúdenie polročných hodnôt je otvorenou otázkou)."
 
 #: includes/Admin/GaranProductFields.php:251
 msgid "Időtartam (év)"
@@ -673,8 +679,8 @@ msgid ""
 "E-mail címke képként: elérhető (a kitöltött címke PNG-ként kerül a vevői e-"
 "mailbe, alatta a szöveges tájékoztatás és a linkek)."
 msgstr ""
-"Označenie v e-maile ako obrázok: dostupné (vyplnené označenie sa vloží do "
-"e-mailu pre zákazníka ako PNG, pod ním textové informácie a odkazy)."
+"Označenie v e-maile ako obrázok: dostupné (vyplnené označenie sa vloží do e-"
+"mailu pre zákazníka ako PNG, pod ním textové informácie a odkazy)."
 
 #: includes/Admin/Settings/ComplianceGaranSection.php:85
 msgid ""
@@ -1386,7 +1392,7 @@ msgstr ""
 msgid "a teljes címke megnyitása"
 msgstr "otvoriť celé označenie"
 
-#: includes/Compliance/NoticeRenderer.php:89
+#: includes/Compliance/NoticeRenderer.php:92
 msgid "Az Ön jogszabályi szavatossági jogai"
 msgstr "Vaše práva zo zákonnej záruky"
 
