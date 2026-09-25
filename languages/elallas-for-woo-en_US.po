@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Elállás for WooCommerce 1.0.14\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/elallas-for-woo\n"
-"POT-Creation-Date: 2026-09-25T18:41:47+00:00\n"
+"POT-Creation-Date: 2026-09-25T19:09:17+00:00\n"
 "PO-Revision-Date: 2026-09-25 20:45+0200\n"
 "Last-Translator: uptools.io <hello@uptools.io>\n"
 "Language-Team: English (United States) <en_US@li.org>\n"
@@ -45,7 +45,8 @@ msgstr ""
 msgid "Autoloader not found. Please run \"composer install\" in the plugin directory, or re-install the plugin from a release ZIP."
 msgstr ""
 
-#: includes/Admin/AdminMenu.php:41 includes/Admin/AdminMenu.php:42 includes/Admin/AdminMenu.php:100
+#: includes/Admin/AdminMenu.php:41 includes/Admin/AdminMenu.php:42
+#: includes/Admin/AdminMenu.php:100
 msgid "Elállási ügyek"
 msgstr "Withdrawal cases"
 
@@ -61,7 +62,9 @@ msgstr "Withdrawal – settings"
 msgid "Elállás beüzemelése"
 msgstr "Withdrawal setup"
 
-#: includes/Admin/AdminMenu.php:74 includes/Admin/CaseDetailPage.php:27 includes/Admin/Onboarding/Wizard.php:27 includes/Admin/Settings/SettingsPage.php:55
+#: includes/Admin/AdminMenu.php:74 includes/Admin/CaseDetailPage.php:27
+#: includes/Admin/Onboarding/Wizard.php:27
+#: includes/Admin/Settings/SettingsPage.php:55
 msgid "Nincs jogosultságod ehhez az oldalhoz."
 msgstr "You do not have permission to access this page."
 
@@ -99,23 +102,32 @@ msgstr "Case status updated."
 msgid "Összefoglaló"
 msgstr "Summary"
 
-#: includes/Admin/CaseDetailSections.php:36 includes/Admin/CasesListTable.php:46
+#: includes/Admin/CaseDetailSections.php:36
+#: includes/Admin/CasesListTable.php:46
 msgid "Ügyszám"
 msgstr "Case number"
 
-#: includes/Admin/CaseDetailSections.php:37 includes/Admin/CasesListTable.php:47 templates/emails/admin-notification.php:53 templates/emails/plain/admin-notification.php:37 templates/frontend/my-account.php:27
+#: includes/Admin/CaseDetailSections.php:37
+#: includes/Admin/CasesListTable.php:47
+#: templates/emails/admin-notification.php:53
+#: templates/emails/plain/admin-notification.php:37
+#: templates/frontend/my-account.php:27
 msgid "Rendelés"
 msgstr "Order"
 
-#: includes/Admin/CaseDetailSections.php:38 includes/Admin/CasesListTable.php:49 templates/frontend/my-account.php:29
+#: includes/Admin/CaseDetailSections.php:38
+#: includes/Admin/CasesListTable.php:49 templates/frontend/my-account.php:29
 msgid "Státusz"
 msgstr "Status"
 
-#: includes/Admin/CaseDetailSections.php:39 includes/Admin/CasesListTable.php:51 includes/Models/CaseStatus.php:55
+#: includes/Admin/CaseDetailSections.php:39
+#: includes/Admin/CasesListTable.php:51 includes/Models/CaseStatus.php:55
 msgid "Beérkezett"
 msgstr "Received"
 
-#: includes/Admin/CaseDetailSections.php:40 includes/Admin/CasesListTable.php:52 includes/Admin/Onboarding/Wizard.php:84 includes/Admin/Settings/TabDeadline.php:34
+#: includes/Admin/CaseDetailSections.php:40
+#: includes/Admin/CasesListTable.php:52 includes/Admin/Onboarding/Wizard.php:84
+#: includes/Admin/Settings/TabDeadline.php:34
 msgid "Határidő"
 msgstr "Deadline"
 
@@ -131,7 +143,12 @@ msgstr "Customer declaration and items"
 msgid "Vásárló megjegyzése:"
 msgstr "Customer note:"
 
-#: includes/Admin/CaseDetailSections.php:67 includes/Admin/Settings/TabExceptions.php:141 templates/emails/admin-notification.php:73 templates/emails/customer-confirmation.php:55 templates/frontend/confirm.php:47 templates/frontend/select.php:53 templates/pdf/withdrawal-statement.php:109
+#: includes/Admin/CaseDetailSections.php:67
+#: includes/Admin/Settings/TabExceptions.php:141
+#: templates/emails/admin-notification.php:73
+#: templates/emails/customer-confirmation.php:55
+#: templates/frontend/confirm.php:47 templates/frontend/select.php:53
+#: templates/pdf/withdrawal-statement.php:109
 msgid "Termék"
 msgstr "Product"
 
@@ -147,7 +164,8 @@ msgstr "Ordered"
 msgid "Elállt"
 msgstr "Withdrawn"
 
-#: includes/Admin/CaseDetailSections.php:71 templates/emails/admin-notification.php:75
+#: includes/Admin/CaseDetailSections.php:71
+#: templates/emails/admin-notification.php:75
 msgid "Jogosultság"
 msgstr "Eligibility"
 
@@ -159,7 +177,8 @@ msgstr "Event log"
 msgid "Időpont"
 msgstr "Timestamp"
 
-#: includes/Admin/CaseDetailSections.php:132 includes/Admin/CasesListTable.php:50
+#: includes/Admin/CaseDetailSections.php:132
+#: includes/Admin/CasesListTable.php:50
 msgid "Típus"
 msgstr "Type"
 
@@ -187,7 +206,9 @@ msgstr "If filled in, it is included in the status email sent to the customer (e
 msgid "Státusz mentése"
 msgstr "Save status"
 
-#: includes/Admin/CaseDetailSections.php:186 includes/Admin/Settings/TabDocuments.php:34 includes/Admin/Settings/TabDocuments.php:56
+#: includes/Admin/CaseDetailSections.php:186
+#: includes/Admin/Settings/TabDocuments.php:34
+#: includes/Admin/Settings/TabDocuments.php:56
 msgid "Dokumentumok"
 msgstr "Documents"
 
@@ -263,7 +284,8 @@ msgstr "The official GARAN label file is damaged or modified; the label is not d
 msgid "A GARAN és az értesítés a blokkos pénztárban nem a rendelés gomb előtt jelenik meg. Lásd a hibaelhárítási útmutatót."
 msgstr "In the block checkout the GARAN label and the notice are not displayed before the order button. See the troubleshooting guide."
 
-#: includes/Admin/ComplianceNotice.php:67 includes/Admin/ComplianceNotice.php:163 includes/Admin/NoticeManager.php:58
+#: includes/Admin/ComplianceNotice.php:67
+#: includes/Admin/ComplianceNotice.php:163 includes/Admin/NoticeManager.php:58
 msgid "Elállás for WooCommerce:"
 msgstr "Elállás for WooCommerce:"
 
@@ -283,55 +305,86 @@ msgstr "You are not allowed to perform this action."
 msgid "Szavatosság"
 msgstr "Legal guarantee"
 
-#: includes/Admin/GaranProductFields.php:50
+#: includes/Admin/GaranProductFields.php:65
 msgid "A GARAN modul jelenleg ki van kapcsolva a beállításokban; a címke nem jelenik meg."
 msgstr "The GARAN module is currently switched off in the settings; the label is not displayed."
 
-#: includes/Admin/GaranProductFields.php:57
-msgid "Ha a variációk modellazonosítója vagy jótállása eltér, a címke pontatlan lehet: minden variációnál a szülő adatai jelennek meg."
-msgstr "If the variations differ in model identifier or guarantee, the label may be inaccurate: every variation shows the parent product's data."
+#: includes/Admin/GaranProductFields.php:72
+msgid "Variálható termék: a variációk alapból ezeket az adatokat öröklik. Eltérő modellazonosítónál vagy jótállásnál a variáció „GARAN címke” beállításában adj meg saját adatot (vagy kapcsold ki)."
+msgstr "Variable product: variations inherit this data by default. If a variation has a different model identifier or commercial guarantee, set its own data in the variation's “GARAN label” setting (or turn the label off)."
 
-#: includes/Admin/GaranProductFields.php:64
+#: includes/Admin/GaranProductFields.php:79
 msgid "Gyártói tartóssági jótállás (GARAN címke)"
 msgstr "Producer's commercial guarantee of durability (GARAN label)"
 
-#: includes/Admin/GaranProductFields.php:195
+#: includes/Admin/GaranProductFields.php:224
+msgid "Előnézet (a mentett adatokkal)"
+msgstr "Preview (with the saved data)"
+
+#: includes/Admin/GaranProductFields.php:227
+msgid "Fél éves érték: ellenőrizd, hogy a szám nem ér a naptár-ikonhoz (a fél éves értékek jogi/grafikai megítélése nyitott kérdés)."
+msgstr "Half-year value: check that the number does not touch the calendar icon (the legal/graphical assessment of half-year values is an open question)."
+
+#: includes/Admin/GaranProductFields.php:251
 msgid "Időtartam (év)"
 msgstr "Duration (years)"
 
-#: includes/Admin/GaranProductFields.php:197
+#: includes/Admin/GaranProductFields.php:253
 msgid "Csak 2 évnél hosszabb, egész év (pl. 3); a rendszer ellenőrzi, hogy a címkén elfér-e."
 msgstr "Whole years longer than 2 years only (e.g. 3); the plugin checks that the value fits on the label."
 
-#: includes/Admin/GaranProductFields.php:205
+#: includes/Admin/GaranProductFields.php:261
 msgid "Gyártó (Brand/Trademark)"
 msgstr "Producer (Brand/Trademark)"
 
-#: includes/Admin/GaranProductFields.php:206
+#: includes/Admin/GaranProductFields.php:262
 msgid "A gyártó által megadott név, a gyártó által a címkén használt formában."
 msgstr "The name given by the producer, in the form the producer uses on the label."
 
-#: includes/Admin/GaranProductFields.php:211
+#: includes/Admin/GaranProductFields.php:267
 msgid "Modellazonosító"
 msgstr "Model identifier"
 
-#: includes/Admin/GaranProductFields.php:225
+#: includes/Admin/GaranProductFields.php:281
 msgid "időtartam"
 msgstr "duration"
 
-#: includes/Admin/GaranProductFields.php:226
+#: includes/Admin/GaranProductFields.php:282
 msgid "gyártó"
 msgstr "producer"
 
-#: includes/Admin/GaranProductFields.php:227
+#: includes/Admin/GaranProductFields.php:283
 msgid "modellazonosító"
 msgstr "model identifier"
 
 #. translators: %s: comma-separated list of the invalid fields.
-#: includes/Admin/GaranProductFields.php:233
+#: includes/Admin/GaranProductFields.php:289
 #, php-format
 msgid "A GARAN címke nem került bekapcsolásra: az időtartam csak 2 évnél hosszabb, a címkén elférő egész év lehet, a gyártó és a modellazonosító kitöltése kötelező, és a címke fix mezőszélességén el kell férniük (a betűméret nem csökkenthető). Hibás vagy túl hosszú: %s."
 msgstr "The GARAN label was not enabled: the duration must be a whole number of years longer than 2 that fits on the label, the producer and the model identifier are required, and they must fit the label's fixed field widths (the font size cannot be reduced). Invalid or too long: %s."
+
+#: includes/Admin/GaranVariationFields.php:60
+#: includes/Admin/Settings/ComplianceGaranSection.php:31
+msgid "GARAN címke"
+msgstr "GARAN label"
+
+#: includes/Admin/GaranVariationFields.php:65
+msgid "Öröklés a szülőtől"
+msgstr "Inherit from parent"
+
+#: includes/Admin/GaranVariationFields.php:66
+msgid "Saját adat"
+msgstr "Own data"
+
+#: includes/Admin/GaranVariationFields.php:67
+msgid "Nincs GARAN címke"
+msgstr "No GARAN label"
+
+#. translators: 1: variation id, 2: validation message
+#: includes/Admin/GaranVariationFields.php:120
+#, php-format
+msgid "#%1$d variáció: %2$s A variáció a szülő adatait örökli."
+msgstr "Variation #%1$d: %2$s The variation inherits the parent's data."
 
 #: includes/Admin/NoticeManager.php:59
 msgid "Még nincs beállítva elállási oldal. Indítsd el a beüzemelést."
@@ -345,7 +398,9 @@ msgstr "Start setup"
 msgid "Elrejtés"
 msgstr "Dismiss"
 
-#: includes/Admin/Onboarding/PageCreator.php:61 includes/Frontend/MyAccountEndpoint.php:71 includes/Frontend/MyAccountEndpoint.php:76
+#: includes/Admin/Onboarding/PageCreator.php:61
+#: includes/Frontend/MyAccountEndpoint.php:71
+#: includes/Frontend/MyAccountEndpoint.php:76
 msgid "Elállás"
 msgstr "Withdrawal"
 
@@ -353,7 +408,8 @@ msgstr "Withdrawal"
 msgid "Bolt adatai"
 msgstr "Store details"
 
-#: includes/Admin/Onboarding/Wizard.php:82 includes/Admin/Settings/TabGeneral.php:77
+#: includes/Admin/Onboarding/Wizard.php:82
+#: includes/Admin/Settings/TabGeneral.php:77
 msgid "Elállási oldal"
 msgstr "Withdrawal page"
 
@@ -449,7 +505,8 @@ msgstr "Perishable product"
 msgid "Zárt csomagolás felbontva"
 msgstr "Sealed packaging opened"
 
-#: includes/Admin/ProductFields.php:68 includes/Admin/TermFields.php:88 includes/Admin/TermFields.php:108
+#: includes/Admin/ProductFields.php:68 includes/Admin/TermFields.php:88
+#: includes/Admin/TermFields.php:108
 msgid "Elállásból kizárt"
 msgstr "Excluded from withdrawal"
 
@@ -457,7 +514,9 @@ msgstr "Excluded from withdrawal"
 msgid "A termék nem küldhető be online elállásra."
 msgstr "This product cannot be submitted for online withdrawal."
 
-#: includes/Admin/ProductFields.php:77 includes/Admin/Settings/TabExceptions.php:142 includes/Admin/Settings/TabExceptions.php:195
+#: includes/Admin/ProductFields.php:77
+#: includes/Admin/Settings/TabExceptions.php:142
+#: includes/Admin/Settings/TabExceptions.php:195
 msgid "Kizárás indoka"
 msgstr "Reason for exclusion"
 
@@ -465,87 +524,93 @@ msgstr "Reason for exclusion"
 msgid "— Válassz indokot —"
 msgstr "— Select a reason —"
 
-#: includes/Admin/Settings/ComplianceGaranSection.php:30
-msgid "GARAN címke"
-msgstr "GARAN label"
-
-#: includes/Admin/Settings/ComplianceGaranSection.php:33 includes/Admin/Settings/TabCompliance.php:93 includes/Admin/Settings/TabGeneral.php:65
+#: includes/Admin/Settings/ComplianceGaranSection.php:34
+#: includes/Admin/Settings/TabCompliance.php:93
+#: includes/Admin/Settings/TabGeneral.php:65
 msgid "Bekapcsolás"
 msgstr "Enable"
 
-#: includes/Admin/Settings/ComplianceGaranSection.php:35
+#: includes/Admin/Settings/ComplianceGaranSection.php:36
 msgid "GARAN címke megjelenítése"
 msgstr "Display the GARAN label"
 
-#: includes/Admin/Settings/ComplianceGaranSection.php:36
+#: includes/Admin/Settings/ComplianceGaranSection.php:37
 msgid "Bekapcsolva a címke a rendelés gomb előtt mindig megjelenik (45/2014. 15. § (1), kötelező)."
 msgstr "When enabled, the label is always displayed before the order button (45/2014. Korm. rendelet 15. § (1), mandatory)."
 
-#: includes/Admin/Settings/ComplianceGaranSection.php:40 includes/Admin/Settings/TabCompliance.php:103
+#: includes/Admin/Settings/ComplianceGaranSection.php:41
+#: includes/Admin/Settings/TabCompliance.php:103
 msgid "Termékoldal"
 msgstr "Product page"
 
-#: includes/Admin/Settings/ComplianceGaranSection.php:46
+#: includes/Admin/Settings/ComplianceGaranSection.php:47
 msgid "Beágyazott, kattintásra teljes"
 msgstr "Nested, full label on click"
 
-#: includes/Admin/Settings/ComplianceGaranSection.php:47
+#: includes/Admin/Settings/ComplianceGaranSection.php:48
 msgid "Teljes címke a kosárgomb alatt"
 msgstr "Full label below the add-to-cart button"
 
-#: includes/Admin/Settings/ComplianceGaranSection.php:48
+#: includes/Admin/Settings/ComplianceGaranSection.php:49
 msgid "Teljes címke a leírás alatt"
 msgstr "Full label below the description"
 
-#: includes/Admin/Settings/ComplianceGaranSection.php:49
+#: includes/Admin/Settings/ComplianceGaranSection.php:50
 msgid "Galériában"
 msgstr "In the gallery"
 
-#: includes/Admin/Settings/ComplianceGaranSection.php:57 includes/Admin/Settings/TabCompliance.php:101 includes/Admin/Settings/TabGeneral.php:94
+#: includes/Admin/Settings/ComplianceGaranSection.php:58
+#: includes/Admin/Settings/TabCompliance.php:101
+#: includes/Admin/Settings/TabGeneral.php:94
 msgid "Megjelenítési helyek"
 msgstr "Display locations"
 
-#: includes/Admin/Settings/ComplianceGaranSection.php:59
+#: includes/Admin/Settings/ComplianceGaranSection.php:60
 msgid "Kosároldal, az expressz fizetés és a pénztár gombok előtt"
 msgstr "Cart page, before the express payment and checkout buttons"
 
-#: includes/Admin/Settings/ComplianceGaranSection.php:60 includes/Admin/Settings/TabCompliance.php:107
+#: includes/Admin/Settings/ComplianceGaranSection.php:61
+#: includes/Admin/Settings/TabCompliance.php:107
 msgid "Rendelési e-mail"
 msgstr "Order e-mail"
 
-#: includes/Admin/Settings/ComplianceGaranSection.php:61
+#: includes/Admin/Settings/ComplianceGaranSection.php:62
 msgid "Terméklista (listaoldal)"
 msgstr "Product list (archive page)"
 
-#: includes/Admin/Settings/ComplianceGaranSection.php:62
+#: includes/Admin/Settings/ComplianceGaranSection.php:63
 msgid "A címke csak azoknál a termékeknél jelenik meg, ahol a termékszerkesztőben be van kapcsolva. Ha a termékoldal Elementor Pro vagy testreszabott blokksablon, helyezd el az [elallas_garan_label] shortcode-ot a kosárgomb alá."
 msgstr "The label only appears on products where it is enabled in the product editor. If the product page is an Elementor Pro or customised block template, place the [elallas_garan_label] shortcode below the add-to-cart button."
 
-#: includes/Admin/Settings/ComplianceGaranSection.php:66
+#: includes/Admin/Settings/ComplianceGaranSection.php:67
 msgid "Állapot"
 msgstr "Status"
 
-#: includes/Admin/Settings/ComplianceGaranSection.php:81
-msgid "E-mail címke képként: 1.1.1-től; addig szöveges tájékoztatás (évek, gyártó, modell, Your Europe link, termékoldal-link)."
-msgstr "E-mail label as an image: from 1.1.1; until then text information (years, producer, model, Your Europe link, product page link)."
-
 #: includes/Admin/Settings/ComplianceGaranSection.php:84
+msgid "E-mail címke képként: elérhető (a kitöltött címke PNG-ként kerül a vevői e-mailbe, alatta a szöveges tájékoztatás és a linkek)."
+msgstr "E-mail label as image: available (the filled-in label is added to the customer e-mail as a PNG, followed by the text information and the links)."
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:85
+msgid "E-mail címke képként: nem elérhető (a tárhelyen nincs GD FreeType-támogatás) – az e-mailben szöveges tájékoztatás megy (évek, gyártó, modell, Your Europe link, termékoldal-link)."
+msgstr "E-mail label as image: not available (the server has no GD FreeType support) – the e-mail contains text information instead (years, manufacturer, model, Your Europe link, product page link)."
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:89
 msgid "Hivatalos GARAN fájlok sértetlensége:"
 msgstr "Integrity of the official GARAN files:"
 
-#: includes/Admin/Settings/ComplianceGaranSection.php:86
+#: includes/Admin/Settings/ComplianceGaranSection.php:91
 msgid "rendben"
 msgstr "OK"
 
-#: includes/Admin/Settings/ComplianceGaranSection.php:86
+#: includes/Admin/Settings/ComplianceGaranSection.php:91
 msgid "HIBA – a címke nem jelenik meg, telepítsd újra a plugint"
 msgstr "ERROR – the label is not displayed, please reinstall the plugin"
 
-#: includes/Admin/Settings/ComplianceGaranSection.php:93
+#: includes/Admin/Settings/ComplianceGaranSection.php:98
 msgid "Blokkos pénztár ellenőrzése"
 msgstr "Check the block checkout"
 
-#: includes/Admin/Settings/ComplianceGaranSection.php:94
+#: includes/Admin/Settings/ComplianceGaranSection.php:99
 msgid "(tegyél egy terméket a kosárba; az oldal alján megjelenő sáv jelzi, hogy az értesítés és a GARAN a rendelés gomb előtt van-e)"
 msgstr "(add a product to the cart; the bar at the bottom of the page shows whether the notice and the GARAN label are before the order button)"
 
@@ -553,7 +618,8 @@ msgstr "(add a product to the cart; the bar at the bottom of the page shows whet
 msgid "Beállítások elmentve."
 msgstr "Settings saved."
 
-#: includes/Admin/Settings/TabCompliance.php:37 includes/Admin/Settings/TabCompliance.php:75
+#: includes/Admin/Settings/TabCompliance.php:37
+#: includes/Admin/Settings/TabCompliance.php:75
 msgid "Szavatosság és GARAN"
 msgstr "Legal guarantee and GARAN"
 
@@ -562,12 +628,12 @@ msgid "Ismert korlátok ebben a verzióban:"
 msgstr "Known limitations in this version:"
 
 #: includes/Admin/Settings/TabCompliance.php:82
-msgid "A GARAN címke az e-mailben 1.1.1-ig csak szövegként (évek, gyártó, modell) és linkként jelenik meg."
-msgstr "Until 1.1.1 the GARAN label appears in e-mails as text (years, producer, model) and a link only."
+msgid "A GARAN címke az e-mailben csak akkor jelenik meg képként, ha a tárhelyen van GD FreeType-támogatás; enélkül szövegként (évek, gyártó, modell) és linkként."
+msgstr "The GARAN label appears as an image in e-mails only if the server has GD FreeType support; otherwise as text (years, manufacturer, model) and a link."
 
 #: includes/Admin/Settings/TabCompliance.php:83
-msgid "Variációnkénti GARAN adat 1.1.1-től; addig a szülőtermék adata érvényes."
-msgstr "Per-variation GARAN data from 1.1.1; until then the parent product's data applies."
+msgid "A terméklistákon (archívum) megjelenő GARAN címke csak klasszikus témával működik; blokktémánál a termékoldalon, a kosárban és a pénztárban jelenik meg."
+msgstr "The GARAN label on product lists (archives) works only with classic themes; with block themes it appears on the product page, in the cart and at checkout."
 
 #: includes/Admin/Settings/TabCompliance.php:84
 msgid "A szoftverfrissítési és javíthatósági információt 1.1.1-ig a termékleírásban tüntesd fel."
@@ -637,7 +703,8 @@ msgstr "In customer order e-mails (processing, completed, on hold, invoice). Pla
 msgid "Szavatossági oldal"
 msgstr "Legal guarantee page"
 
-#: includes/Admin/Settings/TabCompliance.php:137 includes/Admin/Settings/TabGeneral.php:85
+#: includes/Admin/Settings/TabCompliance.php:137
+#: includes/Admin/Settings/TabGeneral.php:85
 msgid "— Válassz oldalt —"
 msgstr "— Select a page —"
 
@@ -645,7 +712,8 @@ msgstr "— Select a page —"
 msgid "Shortcode: [elallas_guarantee_notice] (kattintásra nyíló) vagy [elallas_guarantee_notice mode=\"inline\"] (azonnal látható). Kiválasztott oldal esetén az értesítés alatt „Megnyitás külön oldalon” link jelenik meg."
 msgstr "Shortcode: [elallas_guarantee_notice] (opens on click) or [elallas_guarantee_notice mode=\"inline\"] (shown immediately). When a page is selected, an “Open on a separate page” link appears below the notice."
 
-#: includes/Admin/Settings/TabCompliance.php:150 includes/Admin/Settings/TabGeneral.php:34
+#: includes/Admin/Settings/TabCompliance.php:150
+#: includes/Admin/Settings/TabGeneral.php:34
 msgid "Általános"
 msgstr "General"
 
@@ -761,7 +829,8 @@ msgstr "Generate a PDF declaration (durable medium)"
 msgid "Megőrzési idő (nap)"
 msgstr "Retention period (days)"
 
-#: includes/Admin/Settings/TabDocuments.php:72 includes/Admin/Settings/TabPrivacy.php:87
+#: includes/Admin/Settings/TabDocuments.php:72
+#: includes/Admin/Settings/TabPrivacy.php:87
 msgid "0 = korlátlan megőrzés."
 msgstr "0 = unlimited retention."
 
@@ -803,7 +872,7 @@ msgstr "Admin recipient"
 
 #: includes/Admin/Settings/TabEmails.php:77
 msgid "Több címzett is megadható vesszővel, pontosvesszővel vagy szóközzel elválasztva. Üresen hagyva az oldal adminisztrátori e-mail címe."
-msgstr ""
+msgstr "Multiple recipients can be given, separated by commas, semicolons or spaces. If left empty, the site administrator's e-mail address is used."
 
 #: includes/Admin/Settings/TabEmails.php:80
 msgid "Vásárlói e-mail extra szöveg"
@@ -873,7 +942,8 @@ msgstr "Excluded products (at product level)"
 msgid "Jelenleg egyetlen termék sincs termék szinten kizárva."
 msgstr "Currently no products are excluded at product level."
 
-#: includes/Admin/Settings/TabExceptions.php:152 includes/Admin/Settings/TabExceptions.php:204
+#: includes/Admin/Settings/TabExceptions.php:152
+#: includes/Admin/Settings/TabExceptions.php:204
 msgid "Szerkesztés"
 msgstr "Edit"
 
@@ -941,7 +1011,8 @@ msgstr "Detailed logging under WooCommerce → Status → Logs (source: elallas-
 msgid "Hibák és figyelmeztetések bekapcsolás nélkül is naplózódnak. Bekapcsolva a részletes (info/debug) események is bekerülnek. Nem tartalmaz személyes adatot."
 msgstr "Errors and warnings are logged even without this enabled. When enabled, detailed (info/debug) events are also included. Contains no personal data."
 
-#: includes/Admin/Settings/TabLegal.php:36 includes/Admin/Settings/TabLegal.php:58
+#: includes/Admin/Settings/TabLegal.php:36
+#: includes/Admin/Settings/TabLegal.php:58
 msgid "Jogi szövegek"
 msgstr "Legal texts"
 
@@ -1053,11 +1124,11 @@ msgstr "The withdrawal case was not found."
 msgid "A dokumentum nem található."
 msgstr "The document was not found."
 
-#: includes/Compliance/CheckoutSlot.php:214
+#: includes/Compliance/CheckoutSlot.php:216
 msgid "Elállás: az értesítés és a GARAN a blokkos pénztárban a rendelés gomb előtt jelenik meg."
 msgstr "Elállás: the notice and the GARAN label are displayed before the order button in the block checkout."
 
-#: includes/Compliance/CheckoutSlot.php:215
+#: includes/Compliance/CheckoutSlot.php:217
 msgid "Elállás: a rendelés gomb horgonya nem található, tartalék-hely lépett életbe. Ellenőrizd az elallas_checkout_block_anchors szelektorait."
 msgstr "Elállás: the order button anchor was not found, a fallback position is in use. Check the elallas_checkout_block_anchors selectors."
 
@@ -1068,10 +1139,15 @@ msgid "Gyártói tartóssági jótállás: %1$s év (%2$s, %3$s)"
 msgstr "Producer's commercial guarantee of durability: %1$s years (%2$s, %3$s)"
 
 #. translators: %s: Your Europe URL
-#: includes/Compliance/GaranRenderer.php:251
+#: includes/Compliance/GaranRenderer.php:287
 #, php-format
 msgid "Az Európai Unió hivatalos GARAN címkéje a gyártói tartóssági jótállásról. A QR-kód a %s oldalra mutat."
 msgstr "The official EU GARAN label for the producer's commercial guarantee of durability. The QR code points to %s."
+
+#: includes/Compliance/GaranVariations.php:81
+#: templates/frontend/garan-label.php:36
+msgid "a teljes címke megnyitása"
+msgstr "open the full label"
 
 #: includes/Compliance/NoticeRenderer.php:89
 msgid "Az Ön jogszabályi szavatossági jogai"
@@ -1177,7 +1253,8 @@ msgstr "Notification to the merchant when a new withdrawal declaration arrives."
 msgid "Új elállási nyilatkozat érkezett – #{order_number}"
 msgstr "New withdrawal declaration received – #{order_number}"
 
-#: includes/Emails/AdminNotification.php:68 templates/frontend/my-account.php:56
+#: includes/Emails/AdminNotification.php:68
+#: templates/frontend/my-account.php:56
 msgid "Új elállási nyilatkozat"
 msgstr "New withdrawal declaration"
 
@@ -1223,7 +1300,7 @@ msgstr "Withdrawal from the contract"
 
 #: includes/Frontend/StepProcessor.php:82
 msgid "Kérjük, válasszon legalább egy terméket."
-msgstr ""
+msgstr "Please select at least one product."
 
 #: includes/Frontend/StepProcessor.php:115
 msgid "A folytatáshoz minden nyilatkozatot el kell fogadnia."
@@ -1233,7 +1310,8 @@ msgstr "To continue, you must accept all declarations."
 msgid "Az online elállási funkció jelenleg nem érhető el."
 msgstr "The online withdrawal feature is currently unavailable."
 
-#: includes/Integrations/ElallasElementorWidget.php:37 blocks/withdrawal-form/editor.js:31
+#: includes/Integrations/ElallasElementorWidget.php:37
+#: blocks/withdrawal-form/editor.js:31
 msgid "Elállási űrlap"
 msgstr "Withdrawal form"
 
@@ -1305,7 +1383,9 @@ msgstr "Past the deadline – requires manual review"
 msgid "Nem megállapítható – manuális ellenőrzést igényel"
 msgstr "Cannot be determined – requires manual review"
 
-#: includes/Pdf/DocumentService.php:178 templates/pdf/withdrawal-statement.php:43 templates/pdf/withdrawal-statement.php:61
+#: includes/Pdf/DocumentService.php:178
+#: templates/pdf/withdrawal-statement.php:43
+#: templates/pdf/withdrawal-statement.php:61
 msgid "Elállási nyilatkozat"
 msgstr "Withdrawal declaration"
 
@@ -1405,7 +1485,8 @@ msgstr "Withdrawal closed"
 msgid "Elállási ügy státusz-szinkron."
 msgstr "Withdrawal case status sync."
 
-#: templates/emails/admin-notification.php:27 templates/emails/plain/admin-notification.php:24
+#: templates/emails/admin-notification.php:27
+#: templates/emails/plain/admin-notification.php:24
 msgid "Új elállási nyilatkozat érkezett az alábbi rendeléshez."
 msgstr "A new withdrawal declaration has been received for the following order."
 
@@ -1413,31 +1494,51 @@ msgstr "A new withdrawal declaration has been received for the following order."
 msgid "⚠ Figyelem: a nyilatkozat elállásból kizártként megjelölt terméke(ke)t tartalmaz. Kérjük, fokozott figyelemmel ellenőrizze a rendelést."
 msgstr "⚠ Warning: the declaration contains product(s) marked as excluded from withdrawal. Please review the order with extra care."
 
-#: templates/emails/admin-notification.php:49 templates/emails/customer-confirmation.php:37 templates/emails/plain/admin-notification.php:36 templates/emails/plain/customer-confirmation.php:25 templates/emails/plain/status-update.php:30 templates/emails/status-update.php:39 templates/frontend/my-account.php:26 templates/pdf/withdrawal-statement.php:70
+#: templates/emails/admin-notification.php:49
+#: templates/emails/customer-confirmation.php:37
+#: templates/emails/plain/admin-notification.php:36
+#: templates/emails/plain/customer-confirmation.php:25
+#: templates/emails/plain/status-update.php:30
+#: templates/emails/status-update.php:39 templates/frontend/my-account.php:26
+#: templates/pdf/withdrawal-statement.php:70
 msgid "Ügyazonosító"
 msgstr "Case ID"
 
-#: templates/emails/admin-notification.php:59 templates/emails/customer-confirmation.php:41 templates/emails/plain/admin-notification.php:39 templates/emails/plain/customer-confirmation.php:26 templates/pdf/withdrawal-statement.php:74
+#: templates/emails/admin-notification.php:59
+#: templates/emails/customer-confirmation.php:41
+#: templates/emails/plain/admin-notification.php:39
+#: templates/emails/plain/customer-confirmation.php:26
+#: templates/pdf/withdrawal-statement.php:74
 msgid "Beérkezés időpontja"
 msgstr "Date received"
 
-#: templates/emails/admin-notification.php:63 templates/emails/plain/admin-notification.php:40
+#: templates/emails/admin-notification.php:63
+#: templates/emails/plain/admin-notification.php:40
 msgid "Határidő státusza"
 msgstr "Deadline status"
 
-#: templates/emails/admin-notification.php:69 templates/emails/customer-confirmation.php:51 templates/emails/plain/admin-notification.php:43 templates/emails/plain/customer-confirmation.php:30
+#: templates/emails/admin-notification.php:69
+#: templates/emails/customer-confirmation.php:51
+#: templates/emails/plain/admin-notification.php:43
+#: templates/emails/plain/customer-confirmation.php:30
 msgid "Az elállással érintett termékek"
 msgstr "Products affected by the withdrawal"
 
-#: templates/emails/admin-notification.php:74 templates/emails/customer-confirmation.php:56 templates/frontend/confirm.php:48 templates/pdf/withdrawal-statement.php:111
+#: templates/emails/admin-notification.php:74
+#: templates/emails/customer-confirmation.php:56
+#: templates/frontend/confirm.php:48 templates/pdf/withdrawal-statement.php:111
 msgid "Mennyiség"
 msgstr "Quantity"
 
-#: templates/emails/admin-notification.php:98 templates/emails/plain/admin-notification.php:53
+#: templates/emails/admin-notification.php:98
+#: templates/emails/plain/admin-notification.php:53
 msgid "Ügy megnyitása az adminban"
 msgstr "Open the case in the admin"
 
-#: templates/emails/customer-confirmation.php:22 templates/emails/plain/customer-confirmation.php:21 templates/emails/plain/status-update.php:21 templates/emails/status-update.php:25
+#: templates/emails/customer-confirmation.php:22
+#: templates/emails/plain/customer-confirmation.php:21
+#: templates/emails/plain/status-update.php:21
+#: templates/emails/status-update.php:25
 msgid "Tisztelt Vásárlónk!"
 msgstr "Dear Customer,"
 
@@ -1447,21 +1548,26 @@ msgstr "Dear Customer,"
 msgid "Megerősítjük, hogy elállási nyilatkozatát tartós adathordozón rögzítettük. Ügyazonosító: %1$s, rendelés: #%2$s."
 msgstr "We confirm that your withdrawal declaration has been recorded on a durable medium. Case ID: %1$s, order: #%2$s."
 
-#: templates/emails/customer-confirmation.php:45 templates/emails/plain/customer-confirmation.php:27 templates/pdf/withdrawal-statement.php:90
+#: templates/emails/customer-confirmation.php:45
+#: templates/emails/plain/customer-confirmation.php:27
+#: templates/pdf/withdrawal-statement.php:90
 msgid "Rendelésszám"
 msgstr "Order number"
 
 #. translators: %s: shop name
-#: templates/emails/customer-confirmation.php:74 templates/emails/plain/customer-confirmation.php:41
+#: templates/emails/customer-confirmation.php:74
+#: templates/emails/plain/customer-confirmation.php:41
 #, php-format
 msgid "A nyilatkozatot a következő kereskedő felé tette meg: %s."
 msgstr "You submitted the declaration to the following merchant: %s."
 
-#: templates/emails/customer-confirmation.php:80 templates/emails/plain/customer-confirmation.php:46
+#: templates/emails/customer-confirmation.php:80
+#: templates/emails/plain/customer-confirmation.php:46
 msgid "Az elállás feldolgozásáról és a visszatérítésről a kereskedő külön értesíti Önt. A vételárat legkésőbb az elállás kézhezvételétől számított 14 napon belül visszatérítjük."
 msgstr "The merchant will notify you separately about the processing of the withdrawal and the refund. We will refund the purchase price no later than 14 days from receipt of the withdrawal."
 
-#: templates/emails/customer-confirmation.php:82 templates/emails/plain/customer-confirmation.php:48
+#: templates/emails/customer-confirmation.php:82
+#: templates/emails/plain/customer-confirmation.php:48
 msgid "Kérjük, őrizze meg ezt az e-mailt, amely az elállás visszaigazolásaként szolgál."
 msgstr "Please keep this email, which serves as confirmation of your withdrawal."
 
@@ -1473,7 +1579,8 @@ msgstr "The official label on the product page"
 msgid "Teljes méretben"
 msgstr "Full size"
 
-#: templates/emails/guarantee-notice.php:38 templates/emails/plain/guarantee-notice.php:29
+#: templates/emails/guarantee-notice.php:38
+#: templates/emails/plain/guarantee-notice.php:29
 msgid "A tájékoztatót mellékletben csatoltuk."
 msgstr "The notice is attached to this e-mail."
 
@@ -1500,20 +1607,24 @@ msgid "Teljes méretben: %s"
 msgstr "Full size: %s"
 
 #. translators: %s: case number
-#: templates/emails/plain/status-update.php:25 templates/emails/status-update.php:31
+#: templates/emails/plain/status-update.php:25
+#: templates/emails/status-update.php:31
 #, php-format
 msgid "Tájékoztatjuk, hogy %s azonosítójú elállási ügyének állapota megváltozott."
 msgstr "We would like to inform you that the status of your withdrawal case %s has changed."
 
-#: templates/emails/plain/status-update.php:31 templates/emails/status-update.php:43
+#: templates/emails/plain/status-update.php:31
+#: templates/emails/status-update.php:43
 msgid "Jelenlegi státusz"
 msgstr "Current status"
 
-#: templates/emails/plain/status-update.php:35 templates/emails/status-update.php:49
+#: templates/emails/plain/status-update.php:35
+#: templates/emails/status-update.php:49
 msgid "A kereskedő üzenete"
 msgstr "Message from the merchant"
 
-#: templates/emails/plain/status-update.php:38 templates/emails/status-update.php:55
+#: templates/emails/plain/status-update.php:38
+#: templates/emails/status-update.php:55
 msgid "Ha kérdése van az elállási ügyével kapcsolatban, kérjük, válaszoljon erre az e-mailre, vagy vegye fel a kapcsolatot ügyfélszolgálatunkkal. A vételárat legkésőbb az elállás kézhezvételétől számított 14 napon belül visszatérítjük."
 msgstr "If you have any questions about your withdrawal case, please reply to this email or contact our customer service. We will refund the purchase price no later than 14 days from receipt of the withdrawal."
 
@@ -1577,11 +1688,9 @@ msgstr "I agree that the webshop may process the details provided here in order 
 msgid "Új keresés"
 msgstr "New search"
 
-#: templates/frontend/garan-label.php:34
-msgid "a teljes címke megnyitása"
-msgstr "open the full label"
-
-#: templates/frontend/garan-label.php:56 templates/frontend/guarantee-notice.php:38 templates/frontend/guarantee-notice.php:42
+#: templates/frontend/garan-label.php:58
+#: templates/frontend/guarantee-notice.php:38
+#: templates/frontend/guarantee-notice.php:42
 msgid "(új lapon nyílik)"
 msgstr "(opens in a new tab)"
 
@@ -1750,6 +1859,18 @@ msgstr "Withdrawal form"
 msgctxt "block description"
 msgid "Online elállási nyilatkozat űrlap megjelenítése a látogatók számára."
 msgstr "Display an online withdrawal declaration form to visitors."
+
+#~ msgid "Ha a variációk modellazonosítója vagy jótállása eltér, a címke pontatlan lehet: minden variációnál a szülő adatai jelennek meg."
+#~ msgstr "If the variations differ in model identifier or guarantee, the label may be inaccurate: every variation shows the parent product's data."
+
+#~ msgid "E-mail címke képként: 1.1.1-től; addig szöveges tájékoztatás (évek, gyártó, modell, Your Europe link, termékoldal-link)."
+#~ msgstr "E-mail label as an image: from 1.1.1; until then text information (years, producer, model, Your Europe link, product page link)."
+
+#~ msgid "A GARAN címke az e-mailben 1.1.1-ig csak szövegként (évek, gyártó, modell) és linkként jelenik meg."
+#~ msgstr "Until 1.1.1 the GARAN label appears in e-mails as text (years, producer, model) and a link only."
+
+#~ msgid "Variációnkénti GARAN adat 1.1.1-től; addig a szülőtermék adata érvényes."
+#~ msgstr "Per-variation GARAN data from 1.1.1; until then the parent product's data applies."
 
 #~ msgid "Az automatikus betöltő (autoloader) nem található. Futtasd a „composer install” parancsot a plugin könyvtárában, vagy telepítsd újra a plugint egy kiadási ZIP-ből."
 #~ msgstr "The autoloader could not be found. Run the \"composer install\" command in the plugin directory, or reinstall the plugin from a release ZIP."

@@ -79,8 +79,8 @@ final class TabCompliance implements TabInterface {
 			<p><?php echo esc_html( DefaultTexts::compliance_intro() ); ?></p>
 			<p><?php esc_html_e( 'Ismert korlátok ebben a verzióban:', 'elallas-for-woo' ); ?></p>
 			<ul style="list-style:disc;margin-left:2em;">
-				<li><?php esc_html_e( 'A GARAN címke az e-mailben 1.1.1-ig csak szövegként (évek, gyártó, modell) és linkként jelenik meg.', 'elallas-for-woo' ); ?></li>
-				<li><?php esc_html_e( 'Variációnkénti GARAN adat 1.1.1-től; addig a szülőtermék adata érvényes.', 'elallas-for-woo' ); ?></li>
+				<li><?php esc_html_e( 'A GARAN címke az e-mailben csak akkor jelenik meg képként, ha a tárhelyen van GD FreeType-támogatás; enélkül szövegként (évek, gyártó, modell) és linkként.', 'elallas-for-woo' ); ?></li>
+				<li><?php esc_html_e( 'A terméklistákon (archívum) megjelenő GARAN címke csak klasszikus témával működik; blokktémánál a termékoldalon, a kosárban és a pénztárban jelenik meg.', 'elallas-for-woo' ); ?></li>
 				<li><?php esc_html_e( 'A szoftverfrissítési és javíthatósági információt 1.1.1-ig a termékleírásban tüntesd fel.', 'elallas-for-woo' ); ?></li>
 				<li><?php esc_html_e( 'Gutenberg-blokk és Elementor-widget 1.1.1-től; addig a Shortcode blokkal / widgettel helyezd el a shortcode-okat.', 'elallas-for-woo' ); ?></li>
 				<li><?php esc_html_e( 'A blokkos kosár expressz fizetési gombjai előtt a GARAN címke nem jelenik meg (a klasszikus kosárban igen).', 'elallas-for-woo' ); ?></li>
