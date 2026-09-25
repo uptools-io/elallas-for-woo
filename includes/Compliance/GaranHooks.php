@@ -69,12 +69,13 @@ final class GaranHooks {
 	}
 
 	/**
-	 * Description mode: full label after the product tabs (classic themes).
+	 * Description mode: full label after the product tabs (classic themes and
+	 * the legacy-template block on block themes).
 	 *
 	 * @return void
 	 */
 	public function render_product_full(): void {
-		if ( ProductPlacement::is_block_theme() ) {
+		if ( ! ProductPlacement::classic_hooks_active() ) {
 			return;
 		}
 

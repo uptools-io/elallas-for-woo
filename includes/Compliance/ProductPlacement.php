@@ -15,8 +15,11 @@ namespace LightweightPlugins\Elallas\Compliance;
  * Classic theme: `woocommerce_single_product_summary` at the given priority.
  * Block theme: after the server-rendered `woocommerce/add-to-cart-form` block
  * (on block themes WooCommerce runs every summary callback in one place, before
- * the excerpt, so the classic hook would put the output above it). Each key is
- * printed at most once per request; a shortcode may claim a key with mark().
+ * the excerpt, so the classic hook would put the output above it). A block
+ * theme that renders the product through the `woocommerce/legacy-template`
+ * block runs the classic templates, so there the classic hook is used (see
+ * LegacyTemplateScope). Each key is printed at most once per request; a
+ * shortcode may claim a key with mark().
  *
  * Usage: ProductPlacement::add( 'notice', 35, 20, static fn ( \WC_Product $p ): string => '…' );
  */
@@ -39,10 +42,12 @@ final class ProductPlacement {
 	 * @return void
 	 */
 	public static function add( string $key, int $classic_priority, int $block_priority, callable $render ): void {
+		LegacyTemplateScope::register();
+
 		add_action(
 			'woocommerce_single_product_summary',
 			static function () use ( $key, $render ): void {
-				if ( self::is_block_theme() ) {
+				if ( ! self::classic_hooks_active() ) {
 					return;
 				}
 
@@ -103,6 +108,16 @@ final class ProductPlacement {
 		}
 
 		return function_exists( 'wp_is_block_theme' ) && wp_is_block_theme();
+	}
+
+	/**
+	 * Whether the classic single-product hooks are the placement to use now:
+	 * classic themes, or a block theme rendering the legacy-template block.
+	 *
+	 * @return bool
+	 */
+	public static function classic_hooks_active(): bool {
+		return ! self::is_block_theme() || LegacyTemplateScope::inside();
 	}
 
 	/**
