@@ -56,4 +56,13 @@ final class EmailContextTest extends TestCase {
 		EmailContext::capture( null, false, false, null );
 		$this->assertSame( '', EmailContext::current() );
 	}
+
+	public function test_email_render_decision(): void {
+		$this->assertFalse( EmailContext::is_email_render( '', false, 0, 0 ) );
+		$this->assertFalse( EmailContext::is_email_render( '', false, 2, 2 ), 'Closed e-mails earlier in the request.' );
+		$this->assertTrue( EmailContext::is_email_render( 'new_order', false, 0, 0 ) );
+		$this->assertTrue( EmailContext::is_email_render( '', true, 0, 0 ) );
+		$this->assertTrue( EmailContext::is_email_render( '', false, 1, 0 ), 'Header opened, footer not yet.' );
+		$this->assertTrue( EmailContext::is_email_render( '', false, 3, 2 ) );
+	}
 }

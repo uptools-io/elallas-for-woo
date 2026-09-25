@@ -162,8 +162,9 @@ final class GaranHooks {
 	/**
 	 * Order view (thank-you page, My account): label under each covered item.
 	 *
-	 * E-mails are handled by GaranEmail; the order-pay page shows the list
-	 * before the pay button instead.
+	 * E-mails are handled by GaranEmail (the interactive markup never goes into
+	 * an e-mail, also not one rendered outside the captured context); the
+	 * order-pay page shows the list before the pay button instead.
 	 *
 	 * @param int   $item_id    Item id.
 	 * @param mixed $item       Item.
@@ -172,7 +173,7 @@ final class GaranHooks {
 	 * @return void
 	 */
 	public function render_item_view( $item_id, $item, $order, $plain_text = false ): void {
-		if ( $plain_text || '' !== EmailContext::current() || is_admin() || ! Options::get( 'garan_display_email' ) ) {
+		if ( $plain_text || EmailContext::rendering_email() || is_admin() || ! Options::get( 'garan_display_email' ) ) {
 			return;
 		}
 		if ( ! $item instanceof \WC_Order_Item_Product || ! $order instanceof \WC_Order ) {

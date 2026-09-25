@@ -32,6 +32,19 @@ final class EmailContext {
 	];
 
 	/**
+	 * WooCommerce e-mail template actions: while one runs, output goes to an e-mail.
+	 *
+	 * @var array<int, string>
+	 */
+	private const EMAIL_ACTIONS = [
+		'woocommerce_email_order_details',
+		'woocommerce_email_before_order_table',
+		'woocommerce_email_after_order_table',
+		'woocommerce_email_order_meta',
+		'woocommerce_email_customer_details',
+	];
+
+	/**
 	 * Id of the e-mail being rendered ('' outside e-mails).
 	 *
 	 * @var string
@@ -107,6 +120,38 @@ final class EmailContext {
 		$ids = apply_filters( 'elallas_compliance_email_ids', self::CUSTOMER_EMAIL_IDS );
 
 		return is_array( $ids ) && in_array( $id, $ids, true );
+	}
+
+	/**
+	 * Whether any e-mail is being rendered right now (also e-mails rendered
+	 * outside the captured order-details block, e.g. by third-party mailers):
+	 * a captured id, a running WC e-mail action, or an open e-mail header.
+	 *
+	 * @return bool
+	 */
+	public static function rendering_email(): bool {
+		$doing = false;
+		foreach ( self::EMAIL_ACTIONS as $action ) {
+			if ( doing_action( $action ) ) {
+				$doing = true;
+				break;
+			}
+		}
+
+		return self::is_email_render( self::$current, $doing, did_action( 'woocommerce_email_header' ), did_action( 'woocommerce_email_footer' ) );
+	}
+
+	/**
+	 * Decision behind rendering_email() (pure).
+	 *
+	 * @param string $current Captured e-mail id.
+	 * @param bool   $doing   Whether a WC e-mail action is running.
+	 * @param int    $headers did_action( 'woocommerce_email_header' ).
+	 * @param int    $footers did_action( 'woocommerce_email_footer' ).
+	 * @return bool
+	 */
+	public static function is_email_render( string $current, bool $doing, int $headers, int $footers ): bool {
+		return '' !== $current || $doing || $headers > $footers;
 	}
 
 	/**
