@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+  M0 fit measurement for the GARAN label (dev-only, not shipped).
+
+  Serve the plugin root over HTTP and open this page, e.g.
+    python3 -m http.server 8765   (in the plugin root)
+    open http://localhost:8765/bin/measure-garan-fit.html
+
+  It inlines the two official SVGs unchanged (scale 1: 1 CSS px = 1 viewBox unit),
+  loads the bundled Inter 3.19 exactly as compliance.css will, replaces the
+  placeholder text and reports getBBox()/getComputedTextLength() results.
+  Results are also exposed as window.GARAN_FIT for headless runs.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GARAN fit measurement</title>
+<style>
+@font-face{font-family:'Inter-ExtraBold';src:url(../assets/fonts/inter/Inter-ExtraBold.woff2) format('woff2');font-weight:100 900;font-display:block}
+@font-face{font-family:'Inter-Regular';src:url(../assets/fonts/inter/Inter-Regular.woff2) format('woff2');font-weight:100 900;font-display:block}
+@font-face{font-family:'Inter';src:url(../assets/fonts/inter/Inter-Regular.woff2) format('woff2');font-weight:400;font-display:block}
+@font-face{font-family:'Inter';src:url(../assets/fonts/inter/Inter-ExtraBold.woff2) format('woff2');font-weight:800;font-display:block}
+body{font:13px/1.4 system-ui,sans-serif;margin:16px}
+table{border-collapse:collapse}td,th{border:1px solid #ccc;padding:2px 6px;text-align:right}
+.bad{background:#fdd}.ok{background:#dfd}
+#stage svg{display:block;margin:8px 0}
+</style>
+</head>
+<body>
+<h1>GARAN fit measurement</h1>
+<div id="stage"></div>
+<table id="out"><thead><tr><th>file</th><th>field</th><th>value</th><th>start</th><th>bbox width</th><th>text length</th><th>end (bbox)</th><th>limit</th><th>fits</th></tr></thead><tbody></tbody></table>
+<script>
+(async function () {
+	var years = [];
+	for (var i = 2; i <= 30; i++) { if (i >= 3) { years.push(String(i)); } years.push(i + ',5'); }
+	years.push('XX', '99', '99,5');
+	var brands = ['Brand/Trademark', 'Samsung', 'Apple', 'Miele & Cie. KG', 'BSH Hausgeräte GmbH',
+		'Robert Bosch Hausgeräte GmbH', 'ELECTROLUX HOME PRODUCTS EUROPE BVBA 2026'];
+	var models = ['Model identifier', 'A2848', 'SM-S921BZKDEUE', 'MQ-2024-PRO-MAX1', 'WAN28281BY', 'WM 7000'];
+	var files = [
+		{ name: 'colour', url: '../assets/garan/garan-label-colour.svg', limits: { years: 121.47, brand: 6.32 + 185, model: 262.97 } },
+		{ name: 'nested', url: '../assets/garan/garan-label-nested.svg', limits: { years: 70.87 } }
+	];
+	var results = [];
+	var fontsOk = {};
+	await document.fonts.load("800 80px 'Inter-ExtraBold'");
+	await document.fonts.load("400 9px 'Inter-Regular'");
+	await document.fonts.ready;
+	fontsOk.extrabold = document.fonts.check("800 80px 'Inter-ExtraBold'");
+	fontsOk.regular = document.fonts.check("400 9px 'Inter-Regular'");
+	for (var f = 0; f < files.length; f++) {
+		var file = files[f];
+		var src = await (await fetch(file.url)).text();
+		var holder = document.createElement('div');
+		holder.innerHTML = src.replace(/^<\?xml[^>]*>/, '');
+		var svg = holder.querySelector('svg');
+		var vb = svg.viewBox.baseVal;
+		svg.setAttribute('width', vb.width);
+		svg.setAttribute('height', vb.height);
+		document.getElementById('stage').appendChild(holder);
+		var texts = svg.querySelectorAll('text');
+		for (var t = 0; t < texts.length; t++) {
+			var el = texts[t];
+			var orig = el.textContent;
+			var field = orig === 'XX' ? 'years' : (orig.indexOf('Brand') === 0 ? 'brand' : 'model');
+			var list = field === 'years' ? years : (field === 'brand' ? brands : models);
+			var saved = el.innerHTML;
+			// Like GaranSvg::fill(): one tspan at x=0 y=0 replaces the placeholder tspans.
+			el.textContent = '';
+			var tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+			tspan.setAttribute('x', '0');
+			tspan.setAttribute('y', '0');
+			el.appendChild(tspan);
+			for (var v = 0; v < list.length; v++) {
+				tspan.textContent = list[v];
+				var bb = el.getBBox();
+				var m = el.getCTM();
+				var start = m.e + bb.x * m.a;
+				var end = m.e + (bb.x + bb.width) * m.a;
+				var limit = file.limits[field];
+				results.push({ file: file.name, field: field, value: list[v], start: +start.toFixed(2),
+					width: +(bb.width * m.a).toFixed(2), textLength: +(el.getComputedTextLength() * m.a).toFixed(2),
+					end: +end.toFixed(2), limit: limit, fits: end <= limit });
+			}
+			el.innerHTML = saved;
+		}
+	}
+	window.GARAN_FIT = { fonts: fontsOk, results: results };
+	var tb = document.querySelector('#out tbody');
+	results.forEach(function (r) {
+		var tr = document.createElement('tr');
+		tr.className = r.fits ? 'ok' : 'bad';
+		[r.file, r.field, r.value, r.start, r.width, r.textLength, r.end, r.limit, r.fits ? 'yes' : 'NO'].forEach(function (c) {
+			var td = document.createElement('td'); td.textContent = c; tr.appendChild(td);
+		});
+		tb.appendChild(tr);
+	});
+})();
+</script>
+</body>
+</html>

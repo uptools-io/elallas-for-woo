@@ -32,6 +32,8 @@ jobs:
       - name: Tests
         run: composer test
 
+      - run: sha256sum -c assets/CHECKSUMS.sha256
+
   release:
     name: Release
     needs: validate

@@ -12,3 +12,8 @@
 /phpunit.xml.dist	export-ignore
 /bin	export-ignore
 /strauss.phar	export-ignore
+# Official EU/Inter files must stay byte-identical (sha256 CI gate): never convert line endings.
+/assets/notice/**	-text
+/assets/garan/**	-text
+/assets/fonts/**	-text
+/assets/CHECKSUMS.sha256	-text

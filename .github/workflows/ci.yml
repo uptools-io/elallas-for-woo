@@ -27,6 +27,8 @@ jobs:
       - name: Run PHPCS
         run: composer phpcs
 
+      - run: sha256sum -c assets/CHECKSUMS.sha256
+
   phpstan:
     name: PHPStan
     runs-on: ubuntu-latest
