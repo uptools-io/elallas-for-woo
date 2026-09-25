@@ -2,8 +2,8 @@
 /**
  * GARAN section of the "Szavatosság és GARAN" settings tab.
  *
- * M0 skeleton: valid inputs for every GARAN option; the status rows
- * (e-mail image capability, file integrity, block-checkout check) come in M1a.
+ * Inputs for every GARAN option plus status rows (e-mail image, official
+ * file integrity, block-checkout check).
  *
  * @package LightweightPlugins\Elallas
  */
@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace LightweightPlugins\Elallas\Admin\Settings;
 
+use LightweightPlugins\Elallas\Compliance\GaranSource;
 use LightweightPlugins\Elallas\Options;
 
 /**
@@ -47,7 +48,7 @@ final class ComplianceGaranSection {
 							'description' => __( 'Teljes címke a leírás alatt', 'elallas-for-woo' ),
 							'gallery'     => __( 'Galériában', 'elallas-for-woo' ),
 						],
-						[ 'nested', 'full' ]
+						[ 'nested', 'full', 'description' ]
 					);
 					?>
 				</td>
@@ -61,8 +62,38 @@ final class ComplianceGaranSection {
 					<p class="description"><?php esc_html_e( 'A címke csak azoknál a termékeknél jelenik meg, ahol a termékszerkesztőben be van kapcsolva. Ha a termékoldal Elementor Pro vagy testreszabott blokksablon, helyezd el az [elallas_garan_label] shortcode-ot a kosárgomb alá.', 'elallas-for-woo' ); ?></p>
 				</td>
 			</tr>
+			<tr>
+				<th scope="row"><?php esc_html_e( 'Állapot', 'elallas-for-woo' ); ?></th>
+				<td><?php self::render_status(); ?></td>
+			</tr>
 		</table>
 		<?php
+	}
+
+	/**
+	 * Status rows: e-mail image, file integrity, block-checkout check link.
+	 *
+	 * @return void
+	 */
+	private static function render_status(): void {
+		$ok = GaranSource::integrity_ok();
+
+		echo '<p>' . esc_html__( 'E-mail címke képként: 1.1.1-től; addig szöveges tájékoztatás (évek, gyártó, modell, Your Europe link, termékoldal-link).', 'elallas-for-woo' ) . '</p>';
+		printf(
+			'<p>%1$s <strong style="color:%2$s">%3$s</strong></p>',
+			esc_html__( 'Hivatalos GARAN fájlok sértetlensége:', 'elallas-for-woo' ),
+			esc_attr( $ok ? '#00703c' : '#b32d2e' ),
+			$ok ? esc_html__( 'rendben', 'elallas-for-woo' ) : esc_html__( 'HIBA – a címke nem jelenik meg, telepítsd újra a plugint', 'elallas-for-woo' )
+		);
+
+		if ( function_exists( 'wc_get_checkout_url' ) ) {
+			printf(
+				'<p><a href="%1$s" target="_blank" rel="noopener">%2$s</a> <span class="description">%3$s</span></p>',
+				esc_url( add_query_arg( 'elallas_slot_check', '1', wc_get_checkout_url() ) ),
+				esc_html__( 'Blokkos pénztár ellenőrzése', 'elallas-for-woo' ),
+				esc_html__( '(tegyél egy terméket a kosárba; az oldal alján megjelenő sáv jelzi, hogy az értesítés és a GARAN a rendelés gomb előtt van-e)', 'elallas-for-woo' )
+			);
+		}
 	}
 
 	/**

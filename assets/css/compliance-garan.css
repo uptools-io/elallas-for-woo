@@ -1,0 +1,30 @@
+/*
+ * Elállás – EU GARAN durability label.
+ * The official SVG references "Inter-ExtraBold, Inter" / "Inter-Regular, Inter"
+ * (no @font-face inside), so every family name resolves to the bundled Inter 3.19.
+ */
+@font-face{font-family:'Inter-ExtraBold';src:url(../fonts/inter/Inter-ExtraBold.woff2) format('woff2');font-weight:100 900;font-display:swap}
+@font-face{font-family:'Inter-Regular';src:url(../fonts/inter/Inter-Regular.woff2) format('woff2');font-weight:100 900;font-display:swap}
+@font-face{font-family:'Inter';src:url(../fonts/inter/Inter-Regular.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Inter';src:url(../fonts/inter/Inter-ExtraBold.woff2) format('woff2');font-weight:800;font-display:swap}
+
+.elallas-garan{margin:1em 0;max-width:100%}
+.elallas-garan svg{display:block;height:auto}
+.elallas-garan__toggle{display:block;box-sizing:content-box;width:100%;max-width:368px;margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;cursor:pointer;line-height:0;color:inherit}
+.elallas-garan__toggle:hover,.elallas-garan__toggle:focus{background:transparent}
+.elallas-garan__toggle:focus-visible{outline:2px solid #034ea2;outline-offset:2px}
+.elallas-garan__toggle svg{width:100%}
+.elallas-garan__full{margin-top:.5em}
+.elallas-garan__full[hidden]{display:none}
+/* Full label never shrinks below 310 CSS px (QR code >= 2 x 2 cm); narrow containers scroll. */
+.elallas-garan__scroller{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.elallas-garan__scroller:focus-visible{outline:2px solid #034ea2;outline-offset:2px}
+.elallas-garan__scroller svg{width:min(100%,360px);min-width:310px}
+.elallas-garan__text{margin:.35em 0 0;font-size:.875em;line-height:1.45}
+.elallas-garan-checkout{margin:1em 0}
+.elallas-garan-checkout__intro{margin:0 0 .5em;font-weight:600}
+.elallas-garan-checkout__list{list-style:none;margin:0;padding:0}
+.elallas-garan-checkout__item{margin:0 0 1em;padding:0}
+.elallas-garan-checkout__item[hidden],.elallas-garan-checkout[hidden]{display:none}
+.elallas-garan-checkout .elallas-garan{margin:0}
+.elallas-garan .screen-reader-text{border:0;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute!important;width:1px;word-wrap:normal!important}

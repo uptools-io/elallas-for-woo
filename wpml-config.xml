@@ -18,10 +18,17 @@
         which conflicts with the runtime path.
     -->
 
-    <!-- Product meta: withdrawal exception flag + reason key. -->
+    <!--
+        Product meta: withdrawal exception flag + reason key, and the GARAN
+        label data (language-independent: copied to translations).
+    -->
     <custom-fields>
         <custom-field action="copy">_lw_elallas_excluded</custom-field>
         <custom-field action="copy">_lw_elallas_exclusion_reason</custom-field>
+        <custom-field action="copy">_lw_elallas_garan_enabled</custom-field>
+        <custom-field action="copy">_lw_elallas_garan_years</custom-field>
+        <custom-field action="copy">_lw_elallas_garan_brand</custom-field>
+        <custom-field action="copy">_lw_elallas_garan_model</custom-field>
     </custom-fields>
 
     <!-- Product category / tag meta: same exception flag + reason key. -->
