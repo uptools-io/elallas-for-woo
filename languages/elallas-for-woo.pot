@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Elállás for WooCommerce 1.0.13\n"
+"Project-Id-Version: Elállás for WooCommerce 1.0.14\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/elallas-for-woo\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-18T04:04:17+00:00\n"
+"POT-Creation-Date: 2026-09-25T18:41:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: elallas-for-woo\n"
@@ -54,7 +54,7 @@ msgid "Elállás beállítások"
 msgstr ""
 
 #: includes/Admin/AdminMenu.php:51
-#: includes/Admin/Settings/SettingsPage.php:62
+#: includes/Admin/Settings/SettingsPage.php:63
 msgid "Elállás – beállítások"
 msgstr ""
 
@@ -66,7 +66,7 @@ msgstr ""
 #: includes/Admin/AdminMenu.php:74
 #: includes/Admin/CaseDetailPage.php:27
 #: includes/Admin/Onboarding/Wizard.php:27
-#: includes/Admin/Settings/SettingsPage.php:54
+#: includes/Admin/Settings/SettingsPage.php:55
 msgid "Nincs jogosultságod ehhez az oldalhoz."
 msgstr ""
 
@@ -260,8 +260,108 @@ msgstr ""
 msgid "Szűrés"
 msgstr ""
 
+#: includes/Admin/ComplianceCheck.php:96
+msgid "2026. szeptember 27-től kötelező a harmonizált szavatossági tájékoztató és (érintett termékeknél) a GARAN címke. Ellenőrizd a beállításokat."
+msgstr ""
+
+#: includes/Admin/ComplianceCheck.php:97
+msgid "A harmonizált szavatossági tájékoztató 2026. szeptember 27. óta kötelező."
+msgstr ""
+
+#: includes/Admin/ComplianceCheck.php:114
+msgid "Jelenleg nem jelenik meg."
+msgstr ""
+
+#: includes/Admin/ComplianceCheck.php:116
+msgid "A pénztári megjelenítés ki van kapcsolva."
+msgstr ""
+
+#: includes/Admin/ComplianceCheck.php:118
+msgid "Egy bővítmény vagy a téma szűrővel (elallas_garan_checkout_visible) elrejtheti a rendelés gomb előtti GARAN címkét."
+msgstr ""
+
+#: includes/Admin/ComplianceCheck.php:120
+msgid "A beállítások még nincsenek átnézve."
+msgstr ""
+
+#: includes/Admin/ComplianceNotice.php:50
+msgid "A hivatalos GARAN címkefájl sérült vagy módosult; a címke nem jelenik meg. Telepítsd újra a plugint."
+msgstr ""
+
+#: includes/Admin/ComplianceNotice.php:54
+msgid "A GARAN és az értesítés a blokkos pénztárban nem a rendelés gomb előtt jelenik meg. Lásd a hibaelhárítási útmutatót."
+msgstr ""
+
+#: includes/Admin/ComplianceNotice.php:67
+#: includes/Admin/ComplianceNotice.php:163
 #: includes/Admin/NoticeManager.php:58
 msgid "Elállás for WooCommerce:"
+msgstr ""
+
+#: includes/Admin/ComplianceNotice.php:71
+msgid "Beállítások megnyitása"
+msgstr ""
+
+#: includes/Admin/ComplianceNotice.php:72
+msgid "Elrejtés 30 napra"
+msgstr ""
+
+#: includes/Admin/ComplianceNotice.php:103
+msgid "Nincs jogosultságod ehhez a művelethez."
+msgstr ""
+
+#: includes/Admin/ComplianceNotice.php:108
+msgid "Szavatosság"
+msgstr ""
+
+#: includes/Admin/GaranProductFields.php:50
+msgid "A GARAN modul jelenleg ki van kapcsolva a beállításokban; a címke nem jelenik meg."
+msgstr ""
+
+#: includes/Admin/GaranProductFields.php:57
+msgid "Ha a variációk modellazonosítója vagy jótállása eltér, a címke pontatlan lehet: minden variációnál a szülő adatai jelennek meg."
+msgstr ""
+
+#: includes/Admin/GaranProductFields.php:64
+msgid "Gyártói tartóssági jótállás (GARAN címke)"
+msgstr ""
+
+#: includes/Admin/GaranProductFields.php:195
+msgid "Időtartam (év)"
+msgstr ""
+
+#: includes/Admin/GaranProductFields.php:197
+msgid "Csak 2 évnél hosszabb, egész év (pl. 3); a rendszer ellenőrzi, hogy a címkén elfér-e."
+msgstr ""
+
+#: includes/Admin/GaranProductFields.php:205
+msgid "Gyártó (Brand/Trademark)"
+msgstr ""
+
+#: includes/Admin/GaranProductFields.php:206
+msgid "A gyártó által megadott név, a gyártó által a címkén használt formában."
+msgstr ""
+
+#: includes/Admin/GaranProductFields.php:211
+msgid "Modellazonosító"
+msgstr ""
+
+#: includes/Admin/GaranProductFields.php:225
+msgid "időtartam"
+msgstr ""
+
+#: includes/Admin/GaranProductFields.php:226
+msgid "gyártó"
+msgstr ""
+
+#: includes/Admin/GaranProductFields.php:227
+msgid "modellazonosító"
+msgstr ""
+
+#. translators: %s: comma-separated list of the invalid fields.
+#: includes/Admin/GaranProductFields.php:233
+#, php-format
+msgid "A GARAN címke nem került bekapcsolásra: az időtartam csak 2 évnél hosszabb, a címkén elférő egész év lehet, a gyártó és a modellazonosító kitöltése kötelező, és a címke fix mezőszélességén el kell férniük (a betűméret nem csökkenthető). Hibás vagy túl hosszú: %s."
 msgstr ""
 
 #: includes/Admin/NoticeManager.php:59
@@ -276,7 +376,7 @@ msgstr ""
 msgid "Elrejtés"
 msgstr ""
 
-#: includes/Admin/Onboarding/PageCreator.php:69
+#: includes/Admin/Onboarding/PageCreator.php:61
 #: includes/Frontend/MyAccountEndpoint.php:71
 #: includes/Frontend/MyAccountEndpoint.php:76
 msgid "Elállás"
@@ -404,8 +504,249 @@ msgstr ""
 msgid "— Válassz indokot —"
 msgstr ""
 
-#: includes/Admin/Settings/SettingsPage.php:64
+#: includes/Admin/Settings/ComplianceGaranSection.php:30
+msgid "GARAN címke"
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:33
+#: includes/Admin/Settings/TabCompliance.php:93
+#: includes/Admin/Settings/TabGeneral.php:65
+msgid "Bekapcsolás"
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:35
+msgid "GARAN címke megjelenítése"
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:36
+msgid "Bekapcsolva a címke a rendelés gomb előtt mindig megjelenik (45/2014. 15. § (1), kötelező)."
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:40
+#: includes/Admin/Settings/TabCompliance.php:103
+msgid "Termékoldal"
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:46
+msgid "Beágyazott, kattintásra teljes"
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:47
+msgid "Teljes címke a kosárgomb alatt"
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:48
+msgid "Teljes címke a leírás alatt"
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:49
+msgid "Galériában"
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:57
+#: includes/Admin/Settings/TabCompliance.php:101
+#: includes/Admin/Settings/TabGeneral.php:94
+msgid "Megjelenítési helyek"
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:59
+msgid "Kosároldal, az expressz fizetés és a pénztár gombok előtt"
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:60
+#: includes/Admin/Settings/TabCompliance.php:107
+msgid "Rendelési e-mail"
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:61
+msgid "Terméklista (listaoldal)"
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:62
+msgid "A címke csak azoknál a termékeknél jelenik meg, ahol a termékszerkesztőben be van kapcsolva. Ha a termékoldal Elementor Pro vagy testreszabott blokksablon, helyezd el az [elallas_garan_label] shortcode-ot a kosárgomb alá."
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:66
+msgid "Állapot"
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:81
+msgid "E-mail címke képként: 1.1.1-től; addig szöveges tájékoztatás (évek, gyártó, modell, Your Europe link, termékoldal-link)."
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:84
+msgid "Hivatalos GARAN fájlok sértetlensége:"
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:86
+msgid "rendben"
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:86
+msgid "HIBA – a címke nem jelenik meg, telepítsd újra a plugint"
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:93
+msgid "Blokkos pénztár ellenőrzése"
+msgstr ""
+
+#: includes/Admin/Settings/ComplianceGaranSection.php:94
+msgid "(tegyél egy terméket a kosárba; az oldal alján megjelenő sáv jelzi, hogy az értesítés és a GARAN a rendelés gomb előtt van-e)"
+msgstr ""
+
+#: includes/Admin/Settings/SettingsPage.php:65
 msgid "Beállítások elmentve."
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:37
+#: includes/Admin/Settings/TabCompliance.php:75
+msgid "Szavatosság és GARAN"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:80
+msgid "Ismert korlátok ebben a verzióban:"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:82
+msgid "A GARAN címke az e-mailben 1.1.1-ig csak szövegként (évek, gyártó, modell) és linkként jelenik meg."
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:83
+msgid "Variációnkénti GARAN adat 1.1.1-től; addig a szülőtermék adata érvényes."
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:84
+msgid "A szoftverfrissítési és javíthatósági információt 1.1.1-ig a termékleírásban tüntesd fel."
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:85
+msgid "Gutenberg-blokk és Elementor-widget 1.1.1-től; addig a Shortcode blokkal / widgettel helyezd el a shortcode-okat."
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:86
+msgid "A blokkos kosár expressz fizetési gombjai előtt a GARAN címke nem jelenik meg (a klasszikus kosárban igen)."
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:90
+msgid "Jogszabályi szavatosság tájékoztató"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:94
+msgid "Harmonizált szavatossági értesítés megjelenítése"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:97
+msgid "Felirat"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:98
+msgid "A felirat, amelyre kattintva/rámutatva a teljes hivatalos értesítés megjelenik. Üresen hagyva az alapértelmezett felirat jelenik meg."
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:104
+msgid "Fejléc"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:105
+msgid "Lábléc"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:106
+msgid "Pénztár (a rendelés gomb előtt: klasszikus, blokkos és „Rendelés kifizetése” oldal)"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:108
+msgid "A fejléc csak a wp_body_open horgonyt támogató témákon jelenik meg. Egyéb helyre a [elallas_guarantee_notice] shortcode-dal (Shortcode blokk / Elementor Shortcode widget) teheted. A pénztári megjelenítés a rendelésnézetre (köszönőoldal, Fiókom) is vonatkozik."
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:112
+msgid "E-mail mód"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:118
+msgid "Kép"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:119
+msgid "Színes PNG-melléklet"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:120
+msgid "Mindkettő"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:125
+msgid "A vevői rendelési e-mailekben (feldolgozás alatt, teljesítve, várakozik, számla). Egyszerű szöveges e-mailhez a hivatalos színes PNG mindig mellékletként is csatolódik. Az angol nyelvű értesítéshez nincs hivatalos PNG, ott szöveg és link jelenik meg."
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:129
+msgid "Szavatossági oldal"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:137
+#: includes/Admin/Settings/TabGeneral.php:85
+msgid "— Válassz oldalt —"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:143
+msgid "Shortcode: [elallas_guarantee_notice] (kattintásra nyíló) vagy [elallas_guarantee_notice mode=\"inline\"] (azonnal látható). Kiválasztott oldal esetén az értesítés alatt „Megnyitás külön oldalon” link jelenik meg."
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:150
+#: includes/Admin/Settings/TabGeneral.php:34
+msgid "Általános"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:153
+msgid "B2B"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:155
+msgid "Elrejtés céges (B2B) rendeléseknél"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:156
+msgid "Rendelésnézetben, a Rendelés kifizetése oldalon és e-mailben a számlázási cégnév/adószám alapján; termékoldalon, kosárban és pénztárban csak az elallas_compliance_is_b2b szűrővel."
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:160
+msgid "Digitális termékek"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:162
+msgid "Tisztán virtuális (digitális) termékeknél ne jelenjen meg"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:163
+msgid "Virtuálisnak jelölt (nem szállítandó) termékeknél nem jelenik meg; ha virtuálisként kezelt fizikai árut árulsz, kapcsold ki ezt az opciót."
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:167
+msgid "Termékinformációk"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:168
+msgid "Opcionális termékinformációk (1.1.1-től)"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:171
+msgid "Többnyelvű bolt: az értesítés nyelve az oldal nyelvét követi (24 hivatalos nyelv). Polylang esetén a GARAN termékadatok szinkronizálását a Polylang (for WooCommerce) beállításaiban kapcsold be."
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:192
+msgid "Oldal létrehozása (/szavatossag/)"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:209
+msgid "A szavatossági oldal elkészült."
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:211
+msgid "Megtekintés"
+msgstr ""
+
+#: includes/Admin/Settings/TabCompliance.php:214
+msgid "Az oldal létrehozása nem sikerült."
 msgstr ""
 
 #: includes/Admin/Settings/TabDeadline.php:57
@@ -606,16 +947,8 @@ msgstr ""
 msgid "Név"
 msgstr ""
 
-#: includes/Admin/Settings/TabGeneral.php:34
-msgid "Általános"
-msgstr ""
-
 #: includes/Admin/Settings/TabGeneral.php:62
 msgid "Általános beállítások"
-msgstr ""
-
-#: includes/Admin/Settings/TabGeneral.php:65
-msgid "Bekapcsolás"
 msgstr ""
 
 #: includes/Admin/Settings/TabGeneral.php:66
@@ -630,16 +963,8 @@ msgstr ""
 msgid "Megerősítés gomb felirata"
 msgstr ""
 
-#: includes/Admin/Settings/TabGeneral.php:85
-msgid "— Válassz oldalt —"
-msgstr ""
-
 #: includes/Admin/Settings/TabGeneral.php:90
 msgid "Az az oldal, amely tartalmazza az [elallas_form] rövidkódot."
-msgstr ""
-
-#: includes/Admin/Settings/TabGeneral.php:94
-msgid "Megjelenítési helyek"
 msgstr ""
 
 #: includes/Admin/Settings/TabGeneral.php:96
@@ -779,23 +1104,59 @@ msgstr ""
 msgid "A dokumentum nem található."
 msgstr ""
 
+#: includes/Compliance/CheckoutSlot.php:214
+msgid "Elállás: az értesítés és a GARAN a blokkos pénztárban a rendelés gomb előtt jelenik meg."
+msgstr ""
+
+#: includes/Compliance/CheckoutSlot.php:215
+msgid "Elállás: a rendelés gomb horgonya nem található, tartalék-hely lépett életbe. Ellenőrizd az elallas_checkout_block_anchors szelektorait."
+msgstr ""
+
+#. translators: 1: years, 2: brand, 3: model identifier
+#: includes/Compliance/GaranRenderer.php:45
+#, php-format
+msgid "Gyártói tartóssági jótállás: %1$s év (%2$s, %3$s)"
+msgstr ""
+
+#. translators: %s: Your Europe URL
+#: includes/Compliance/GaranRenderer.php:251
+#, php-format
+msgid "Az Európai Unió hivatalos GARAN címkéje a gyártói tartóssági jótállásról. A QR-kód a %s oldalra mutat."
+msgstr ""
+
+#: includes/Compliance/NoticeRenderer.php:89
+msgid "Az Ön jogszabályi szavatossági jogai"
+msgstr ""
+
+#: includes/Compliance/NoticeSource.php:115
+msgid "Hivatalos EU-tájékoztató a jogszabályi szavatosságról"
+msgstr ""
+
 #: includes/Cron/RetentionCleaner.php:63
 msgid "Az ügy személyes adatai a megőrzési idő lejárta miatt anonimizálva lettek."
 msgstr ""
 
-#: includes/Data/DefaultTexts.php:52
+#: includes/Data/DefaultTexts.php:63
+msgid "A GARAN címke kizárólag a gyártó által vállalt, térítésmentes, az egész termékre kiterjedő, 2 évnél hosszabb tartóssági jótállás jelölésére használható. A bolti garancia, a kötelező jótállás (151/2003. Korm. rendelet) és a fizetős kiterjesztett garancia nem jelölhető vele."
+msgstr ""
+
+#: includes/Data/DefaultTexts.php:72
+msgid "2026. szeptember 27-től kötelező (45/2014. Korm. rendelet 11. § (1a), 15. § (1)). A hivatalos értesítés és címke grafikája nem módosítható; a plugin változatlanul jeleníti meg őket. Az ÁSZF frissítése a bolt feladata, az értesítés azt nem helyettesíti."
+msgstr ""
+
+#: includes/Data/DefaultTexts.php:81
 msgid "A szövegminta nem minősül jogi tanácsadásnak. Használat előtt ellenőriztesd a webshopodra vonatkozó ÁSZF-fel és jogi szakértővel."
 msgstr ""
 
-#: includes/Data/DefaultTexts.php:61
+#: includes/Data/DefaultTexts.php:90
 msgid "A megadott adatok alapján nem található elállásra alkalmas rendelés, vagy a rendelés nem jogosult online elállási nyilatkozat beküldésére."
 msgstr ""
 
-#: includes/Data/DefaultTexts.php:70
+#: includes/Data/DefaultTexts.php:99
 msgid "A rendszer számítása szerint az elállási nyilatkozat a beállított határidőn túl érkezett. Kérjük, manuálisan ellenőrizze a teljesítés, átadás vagy kézbesítés időpontját, valamint az ÁSZF és a vonatkozó jogszabályok alapján alkalmazandó szabályokat."
 msgstr ""
 
-#: includes/Data/DefaultTexts.php:79
+#: includes/Data/DefaultTexts.php:108
 msgid "A kivétel beállítása jogi kockázatot hordozhat. Ellenőriztesd az ÁSZF-fel és jogásszal."
 msgstr ""
 
@@ -1011,11 +1372,11 @@ msgstr ""
 msgid "Hozzáférés megtagadva"
 msgstr ""
 
-#: includes/Plugin.php:177
+#: includes/Plugin.php:180
 msgid "Beállítások"
 msgstr ""
 
-#: includes/Plugin.php:190
+#: includes/Plugin.php:193
 msgid "WooCommerce must be installed and active for this plugin to work."
 msgstr ""
 
@@ -1187,6 +1548,19 @@ msgstr ""
 msgid "Kérjük, őrizze meg ezt az e-mailt, amely az elállás visszaigazolásaként szolgál."
 msgstr ""
 
+#: templates/emails/garan-item.php:25
+msgid "A hivatalos címke a termékoldalon"
+msgstr ""
+
+#: templates/emails/guarantee-notice.php:34
+msgid "Teljes méretben"
+msgstr ""
+
+#: templates/emails/guarantee-notice.php:38
+#: templates/emails/plain/guarantee-notice.php:29
+msgid "A tájékoztatót mellékletben csatoltuk."
+msgstr ""
+
 #: templates/emails/plain/admin-notification.php:28
 msgid "FIGYELEM: a nyilatkozat elállásból kizártként megjelölt terméke(ke)t tartalmaz. Kérjük, fokozott figyelemmel ellenőrizze a rendelést."
 msgstr ""
@@ -1197,6 +1571,16 @@ msgstr ""
 
 #: templates/emails/plain/customer-confirmation.php:23
 msgid "Megerősítjük, hogy elállási nyilatkozatát tartós adathordozón rögzítettük."
+msgstr ""
+
+#: templates/emails/plain/garan-item.php:19
+msgid "A hivatalos címke a termékoldalon:"
+msgstr ""
+
+#. translators: %s: URL of the official notice image.
+#: templates/emails/plain/guarantee-notice.php:25
+#, php-format
+msgid "Teljes méretben: %s"
 msgstr ""
 
 #. translators: %s: case number
@@ -1219,6 +1603,10 @@ msgstr ""
 #: templates/emails/plain/status-update.php:38
 #: templates/emails/status-update.php:55
 msgid "Ha kérdése van az elállási ügyével kapcsolatban, kérjük, válaszoljon erre az e-mailre, vagy vegye fel a kapcsolatot ügyfélszolgálatunkkal. A vételárat legkésőbb az elállás kézhezvételétől számított 14 napon belül visszatérítjük."
+msgstr ""
+
+#: templates/frontend/checkout-garan-list.php:19
+msgid "A következő termékekre a gyártó tartóssági jótállást vállal:"
 msgstr ""
 
 #: templates/frontend/confirm.php:31
@@ -1276,6 +1664,20 @@ msgstr ""
 
 #: templates/frontend/denied.php:27
 msgid "Új keresés"
+msgstr ""
+
+#: templates/frontend/garan-label.php:34
+msgid "a teljes címke megnyitása"
+msgstr ""
+
+#: templates/frontend/garan-label.php:56
+#: templates/frontend/guarantee-notice.php:38
+#: templates/frontend/guarantee-notice.php:42
+msgid "(új lapon nyílik)"
+msgstr ""
+
+#: templates/frontend/guarantee-notice.php:45
+msgid "Megnyitás külön oldalon"
 msgstr ""
 
 #: templates/frontend/identify.php:28
