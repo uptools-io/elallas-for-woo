@@ -34,6 +34,16 @@ final class CaseStatusTest extends TestCase {
 		$this->assertFalse( CaseStatus::is_terminal( CaseStatus::MANUAL_REVIEW ) );
 	}
 
+	public function test_refund_is_allowed_only_once_the_withdrawal_stands(): void {
+		foreach ( [ CaseStatus::AUTO_CONFIRMED, CaseStatus::ACCEPTED, CaseStatus::AWAITING_RETURN, CaseStatus::GOODS_RECEIVED, CaseStatus::REFUND_PENDING, CaseStatus::CLOSED ] as $status ) {
+			$this->assertTrue( CaseStatus::allows_refund( $status ), $status );
+		}
+
+		foreach ( [ CaseStatus::RECEIVED, CaseStatus::MANUAL_REVIEW, CaseStatus::REJECTED, CaseStatus::CANCELLED, 'nonsense' ] as $status ) {
+			$this->assertFalse( CaseStatus::allows_refund( $status ), $status );
+		}
+	}
+
 	public function test_label_falls_back_to_key(): void {
 		$this->assertSame( 'unknown_key', CaseStatus::label( 'unknown_key' ) );
 		$this->assertNotEmpty( CaseStatus::label( CaseStatus::RECEIVED ) );

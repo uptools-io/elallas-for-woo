@@ -81,8 +81,8 @@ final class TabCompliance implements TabInterface {
 			<ul style="list-style:disc;margin-left:2em;">
 				<li><?php esc_html_e( 'A GARAN címke az e-mailben csak akkor jelenik meg képként, ha a tárhelyen van GD FreeType-támogatás; enélkül szövegként (évek, gyártó, modell) és linkként.', 'elallas-for-woo' ); ?></li>
 				<li><?php esc_html_e( 'A terméklistákon (archívum) megjelenő GARAN címke csak klasszikus témával működik; blokktémánál a termékoldalon, a kosárban és a pénztárban jelenik meg.', 'elallas-for-woo' ); ?></li>
-				<li><?php esc_html_e( 'A szoftverfrissítési és javíthatósági információt 1.1.1-ig a termékleírásban tüntesd fel.', 'elallas-for-woo' ); ?></li>
-				<li><?php esc_html_e( 'Gutenberg-blokk és Elementor-widget 1.1.1-től; addig a Shortcode blokkal / widgettel helyezd el a shortcode-okat.', 'elallas-for-woo' ); ?></li>
+				<li><?php esc_html_e( 'A szoftverfrissítési és javíthatósági információt egyelőre a termékleírásban tüntesd fel.', 'elallas-for-woo' ); ?></li>
+				<li><?php esc_html_e( 'Gutenberg-blokk és Elementor-widget egy későbbi verzióban; addig a Shortcode blokkal / widgettel helyezd el a shortcode-okat.', 'elallas-for-woo' ); ?></li>
 				<li><?php esc_html_e( 'A blokkos kosár expressz fizetési gombjai előtt a GARAN címke nem jelenik meg (a klasszikus kosárban igen).', 'elallas-for-woo' ); ?></li>
 			</ul>
 		</div>
@@ -165,7 +165,7 @@ final class TabCompliance implements TabInterface {
 			</tr>
 			<tr>
 				<th scope="row"><?php esc_html_e( 'Termékinformációk', 'elallas-for-woo' ); ?></th>
-				<td><?php $this->render_checkbox( 'product_info_enabled', __( 'Opcionális termékinformációk (1.1.1-től)', 'elallas-for-woo' ) ); ?></td>
+				<td><?php $this->render_checkbox( 'product_info_enabled', __( 'Opcionális termékinformációk (későbbi verzióban)', 'elallas-for-woo' ) ); ?></td>
 			</tr>
 		</table>
 		<p class="description"><?php esc_html_e( 'Többnyelvű bolt: az értesítés nyelve az oldal nyelvét követi (24 hivatalos nyelv). Polylang esetén a GARAN termékadatok szinkronizálását a Polylang (for WooCommerce) beállításaiban kapcsold be.', 'elallas-for-woo' ); ?></p>

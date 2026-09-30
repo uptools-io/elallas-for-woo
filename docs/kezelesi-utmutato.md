@@ -149,6 +149,15 @@ PDF — token-védett linken **le is töltheti a saját elállási nyilatkozatá
   vásárlói nyilatkozat, **rendelés-pillanatkép** (a beküldéskori adatok, akkor is, ha a termék/ár
   később változik; a kizárt tételek „kizárt"-ként jelölve), **audit log** (ki, mikor, mit), admin
   döntés (státuszváltás), dokumentumok (PDF letöltés token-védetten).
+- **Visszatérítés rögzítése a WooCommerce-ben** – az ügy oldalán, a státuszváltás fölött
+  (visszaigazolt, el nem utasított ügyeknél). Tételenként megadható a visszatérítendő mennyiség
+  (az elállt, még vissza nem térített mennyiség az előtöltés; a kivételként jelölt termék 0) és
+  hogy visszakerüljön-e a készletbe; a szállítási és egyéb díj bruttó összege teljes elállásnál
+  előtöltve, részlegesnél 0 (45/2014. Korm. rendelet 23. §). A gomb csak rögzít: a pénzt a bolt
+  utalja vissza, fizetési szolgáltatón keresztüli visszautalás nincs. Teljes visszatérítésnél a
+  rendelés „Visszatérítve” lesz; az „Ügy lezárása” jelölővel az ügy is lezárul. Ugyanaz a tétel
+  ugyanabban az ügyben nem téríthető vissza kétszer. Számlázó bővítmény (Számlázz.hu, Billingo) a
+  saját beállítása szerint reagálhat a Woo-visszatérítésre (sztornó/helyesbítő számla).
 
 ### Ügy-státuszok
 `Beérkezett` → `Automatikusan visszaigazolva` / `Manuális ellenőrzés alatt` → `Elfogadva` /
@@ -237,7 +246,7 @@ felelősség-kizárás és az ismert korlátok listája látható. A beállítá
 - **Digitális termékek** – „Tisztán virtuális (digitális) termékeknél ne jelenjen meg” (alap: be).
   A virtuálisnak jelölt (nem szállítandó) termékeknél nem jelenik meg; ha virtuálisként kezelt
   fizikai árut árulsz, kapcsold ki.
-- **Termékinformációk** – „Opcionális termékinformációk (1.1.1-től)”; az 1.1.0-ban még nincs
+- **Termékinformációk** – „Opcionális termékinformációk (későbbi verzióban)”; egyelőre nincs
   hatása.
 
 Többnyelvű boltban az értesítés nyelve az oldal nyelvét követi (24 hivatalos nyelv, magyar
@@ -347,14 +356,14 @@ A **manage_woocommerce** jogú felhasználók az admin felületen a következő 
   miatt). Szólj a fejlesztődnek (lásd a fejlesztői referenciát: `elallas_checkout_block_anchors`),
   majd futtasd újra az ellenőrzést.
 
-### 7.7. Ismert korlátok (1.1.0)
+### 7.7. Ismert korlátok
 
 - A GARAN címke az e-mailben csak GD FreeType-támogatású tárhelyen jelenik meg képként; enélkül
   szövegként (évek, gyártó, modell) és linkként.
 - A terméklistákon (archívum) a GARAN címke csak klasszikus témával jelenik meg; blokktémánál a
   termékoldalon, a kosárban és a pénztárban.
-- A szoftverfrissítési és javíthatósági információt 1.1.1-ig a termékleírásban tüntesd fel.
-- A szavatossági Gutenberg-blokk és Elementor-widget 1.1.1-ben jön; addig a Shortcode blokkal /
+- A szoftverfrissítési és javíthatósági információt egyelőre a termékleírásban tüntesd fel.
+- A szavatossági Gutenberg-blokk és Elementor-widget egy későbbi verzióban jön; addig a Shortcode blokkal /
   widgettel helyezd el a shortcode-okat.
 - A blokkos kosár expressz fizetési gombjai előtt a GARAN címke nem jelenik meg (a klasszikus
   kosárban igen).

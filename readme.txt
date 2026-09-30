@@ -4,7 +4,7 @@ Tags: woocommerce, withdrawal, refund, gdpr, compliance
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 8.0
@@ -35,6 +35,7 @@ The function implements the requirements introduced by **Directive (EU) 2023/267
 * **Order snapshot** — product names, SKUs, quantities and totals are stored at submission time, so a case stays reconstructable even if the product or price changes later.
 * **Audit log** — every event (who, when, what) is recorded in an append-only events table.
 * **Case management admin** — a filterable case list and a detailed case view (summary incl. the refund bank account, customer declaration, order snapshot, audit log, admin decision, documents) under WooCommerce.
+* **Record refund in WooCommerce** — one click from the case: per-line quantity and restock, shipping prefilled on full withdrawal; the refund appears on the order ("Refunded" when full), without moving money.
 * **CSV export** — export the cases matching your current filters.
 * **PDF withdrawal statement** — generated via dompdf with an SHA-256 file hash and an unguessable filename, stored in a protected directory and served through a token-gated download (direct URL access blocked). HTML fallback available.
 * **Neutral identification** — a wrong order number or email returns the same neutral message, so order numbers cannot be brute-forced to reveal customer data.
@@ -73,8 +74,8 @@ The "Szavatosság és GARAN" settings tab adds both:
 
 * The GARAN label appears as an image in e-mails only when the host has GD with FreeType support; otherwise it is sent as text (years, manufacturer, model) and a link.
 * The GARAN label on product lists (archives) works with classic themes only; on block themes it appears on the product page, in the cart and at checkout.
-* Until 1.1.1, state software update and repairability information in the product description.
-* The Gutenberg block and Elementor widget arrive in 1.1.1; until then place the shortcodes with the Shortcode block / widget.
+* For now, state software update and repairability information in the product description.
+* The Gutenberg block and Elementor widget arrive in a later version; until then place the shortcodes with the Shortcode block / widget.
 * The GARAN label is not shown before the express payment buttons of the block cart (it is in the classic cart).
 
 = By uptools.io =
@@ -134,6 +135,13 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 6. Onboarding wizard
 
 == Changelog ==
+
+= 1.2.0 =
+* New: "Record refund in WooCommerce" on the case page: per-line refund quantity and restock choice, shipping and fee amounts (prefilled on full withdrawal, 0 on partial), live gross total and an optional "close the case". It records a WooCommerce refund (no payment gateway call), restocks only the chosen lines, logs a case event, and never refunds the same line twice for a case. A fully refunded order becomes "Refunded".
+* New: English, Czech, Romanian and Slovak translations for the new strings.
+* Fix: the optional custom order statuses "Withdrawal requested" and "Withdrawal approved" did not fit the 20-character status column: with legacy order storage the status change was silently not saved, under HPOS the order ended up in an unregistered, truncated status. New slugs `wc-withdrawal-new` and `wc-withdrawal-accept`; a database upgrade repairs orders left in the truncated status.
+* Fix: a closed case no longer moves a fully refunded order from "Refunded" to "Withdrawal closed".
+* Change: the settings, readme and docs no longer promise the block, widget and product-info features for 1.1.1; they arrive in a later version.
 
 = 1.1.0 =
 * New: harmonised EU legal-guarantee notice (Implementing Regulation (EU) 2025/1960, mandatory from 27 September 2026): the official Commission notice in 24 languages with its Your Europe link, on the product page, header, footer, before the order button (classic checkout, block checkout, "Pay for order" page), in the order view and in customer order e-mails (image, colour PNG attachment or both), plus a one-click standalone notice page.

@@ -41,7 +41,7 @@ final class Invoicing {
 			return;
 		}
 
-		$providers = $this->detect( $order );
+		$providers = self::detect( $order );
 
 		if ( in_array( true, $providers, true ) ) {
 			$order->add_order_note(
@@ -69,7 +69,7 @@ final class Invoicing {
 	 * @param \WC_Order $order Order being processed.
 	 * @return array<string, bool> Provider slug => detected.
 	 */
-	public function detect( \WC_Order $order ): array {
+	public static function detect( \WC_Order $order ): array {
 		$szamlazz = class_exists( '\SzamlaAgent\SzamlaAgent' )
 			|| class_exists( 'SzamlaAgent' )
 			|| function_exists( 'woocommerce_szamlazz' )

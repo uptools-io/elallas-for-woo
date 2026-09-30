@@ -22,6 +22,7 @@ A funkció a **Directive (EU) 2023/2673** irányelv (amely a 2011/83/EU fogyaszt
 - **Rendelés-pillanatkép** — a nevek, SKU-k, mennyiségek és összegek a beküldés pillanatában rögzülnek, így az ügy a termék/ár későbbi változása után is rekonstruálható.
 - **Audit log** — append-only eseménynapló (ki, mikor, mit).
 - **Ügykezelő admin** — szűrhető ügylista és részletes ügynézet (összefoglaló a visszatérítési bankszámlával, nyilatkozat, rendelés-pillanatkép, audit log, admin döntés, dokumentumok) a WooCommerce alatt.
+- **Visszatérítés rögzítése a WooCommerce-ben** — az ügy oldaláról egy kattintással: tételenkénti mennyiség és készlet-visszatöltés, szállítási díj teljes elállásnál előtöltve; a rendelésen megjelenik a visszatérítés (teljesnél „Visszatérítve”), pénzmozgás nélkül.
 - **CSV export** és **PDF elállási nyilatkozat** (dompdf, SHA-256 hash, védett, token-védett letöltés).
 - **Semleges azonosítás** — hibás rendelésszám vagy e-mail ugyanazt a semleges üzenetet adja, megakadályozva a próbálgatást.
 - **Adatvédelmi vezérlők** — IP/UA teljes/hash/kikapcsolva, e-mail hash-elés és opcionális titkosítás, titkosított bankszámla, állítható megőrzés ütemezett anonimizálással.
@@ -162,8 +163,8 @@ Friss oldalon az aktiválás után egyszer érdemes végigmenni rajta.
 
 - A GARAN címke az e-mailben csak GD FreeType-támogatású tárhelyen jelenik meg képként; enélkül szövegként (évek, gyártó, modell) és linkként.
 - A terméklistákon (archívum) a GARAN címke csak klasszikus témával jelenik meg; blokktémánál a termékoldalon, a kosárban és a pénztárban.
-- A szoftverfrissítési és javíthatósági információt 1.1.1-ig a termékleírásban tüntesd fel.
-- A szavatossági Gutenberg-blokk és Elementor-widget 1.1.1-ben jön; addig a Shortcode blokkal / widgettel helyezd el a shortcode-okat.
+- A szoftverfrissítési és javíthatósági információt egyelőre a termékleírásban tüntesd fel.
+- A szavatossági Gutenberg-blokk és Elementor-widget egy későbbi verzióban jön; addig a Shortcode blokkal / widgettel helyezd el a shortcode-okat.
 - A blokkos kosár expressz fizetési gombjai előtt a GARAN címke nem jelenik meg (a klasszikus kosárban igen).
 
 ## Nem jogi tanácsadás

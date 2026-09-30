@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Elállás for WooCommerce 1.0.13\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/elallas-for-woo\n"
-"POT-Creation-Date: 2026-09-25T19:25:48+00:00\n"
+"POT-Creation-Date: 2026-09-30T13:22:38+00:00\n"
 "PO-Revision-Date: 2026-07-15 16:09+0000\n"
 "Last-Translator: uptools.io <hello@uptools.io>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -55,34 +55,35 @@ msgstr ""
 "Autoloader nebyl nalezen. Spusťte prosím „composer install“ v adresáři "
 "pluginu nebo plugin znovu nainstalujte z ZIP souboru vydání."
 
-#: includes/Admin/AdminMenu.php:41 includes/Admin/AdminMenu.php:42
-#: includes/Admin/AdminMenu.php:100
+#: includes/Admin/AdminMenu.php:42 includes/Admin/AdminMenu.php:43
+#: includes/Admin/AdminMenu.php:101
 msgid "Elállási ügyek"
 msgstr "Případy odstoupení od smlouvy"
 
-#: includes/Admin/AdminMenu.php:50
+#: includes/Admin/AdminMenu.php:51
 msgid "Elállás beállítások"
 msgstr "Nastavení odstoupení od smlouvy"
 
-#: includes/Admin/AdminMenu.php:51 includes/Admin/Settings/SettingsPage.php:63
+#: includes/Admin/AdminMenu.php:52 includes/Admin/Settings/SettingsPage.php:63
 msgid "Elállás – beállítások"
 msgstr "Odstoupení od smlouvy – nastavení"
 
-#: includes/Admin/AdminMenu.php:59 includes/Admin/Onboarding/Wizard.php:37
+#: includes/Admin/AdminMenu.php:60 includes/Admin/Onboarding/Wizard.php:37
 msgid "Elállás beüzemelése"
 msgstr "Zprovoznění odstoupení od smlouvy"
 
-#: includes/Admin/AdminMenu.php:74 includes/Admin/CaseDetailPage.php:27
+#: includes/Admin/AdminMenu.php:75 includes/Admin/CaseDetailPage.php:27
 #: includes/Admin/Onboarding/Wizard.php:27
 #: includes/Admin/Settings/SettingsPage.php:55
 msgid "Nincs jogosultságod ehhez az oldalhoz."
 msgstr "Nemáte oprávnění k této stránce."
 
-#: includes/Admin/AdminMenu.php:105
+#: includes/Admin/AdminMenu.php:106
 msgid "Keresés"
 msgstr "Hledat"
 
 #: includes/Admin/CaseActions.php:38 includes/Admin/CaseActions.php:72
+#: includes/Admin/CaseRefundAction.php:46
 msgid "Nincs jogosultságod."
 msgstr "Nemáte oprávnění."
 
@@ -90,7 +91,7 @@ msgstr "Nemáte oprávnění."
 msgid "Vendég"
 msgstr "Host"
 
-#: includes/Admin/CaseDetailPage.php:34
+#: includes/Admin/CaseDetailPage.php:34 includes/Admin/CaseRefundAction.php:53
 msgid "Az ügy nem található."
 msgstr "Případ nebyl nalezen."
 
@@ -226,6 +227,78 @@ msgstr "Uložit stav"
 msgid "Dokumentumok"
 msgstr "Dokumenty"
 
+#: includes/Admin/CaseRefundAction.php:68
+msgid "A visszatérítés rögzítve a WooCommerce-rendelésen."
+msgstr "Vrácení peněz bylo zaznamenáno u objednávky WooCommerce."
+
+#: includes/Admin/CaseRefundSection.php:35
+msgid "Visszatérítés rögzítése a WooCommerce-ben"
+msgstr "Zaznamenat vrácení peněz ve WooCommerce"
+
+#: includes/Admin/CaseRefundSection.php:41
+msgid "A rendelés nem tölthető be, ezért visszatérítés nem rögzíthető."
+msgstr "Objednávku nelze načíst, proto nelze vrácení peněz zaznamenat."
+
+#: includes/Admin/CaseRefundSection.php:49
+msgid ""
+"A visszatérítés csak rögzítésre kerül a rendelésen (mint a WooCommerce „Kézi "
+"visszatérítés” gombja); a pénzt a bolt utalja vissza."
+msgstr ""
+"Vrácení peněz se pouze zaznamená u objednávky (jako tlačítko WooCommerce "
+"„Vrátit ručně“); peníze vrací obchod sám."
+
+#: includes/Admin/CaseRefundSection.php:57
+msgid "Tétel"
+msgstr "Položka"
+
+#: includes/Admin/CaseRefundSection.php:58
+msgid "Visszatérítendő"
+msgstr "K vrácení"
+
+#: includes/Admin/CaseRefundSection.php:59
+msgid "Készlet"
+msgstr "Sklad"
+
+#: includes/Admin/CaseRefundSection.php:65
+msgid "Összesen (bruttó)"
+msgstr "Celkem (s DPH)"
+
+#: includes/Admin/CaseRefundSection.php:69
+msgid "Ügy lezárása (a vásárló megkapja a szokásos státusz e-mailt)"
+msgstr "Uzavřít případ (zákazník obdrží obvyklý e-mail o stavu)"
+
+#: includes/Admin/CaseRefundSection.php:72
+msgid "Visszatérítés rögzítése"
+msgstr "Zaznamenat vrácení peněz"
+
+#: includes/Admin/CaseRefundSection.php:107
+msgid "Nincs visszatérítendő mennyiség (már visszatérítve)."
+msgstr "Není co vracet (již vráceno)."
+
+#: includes/Admin/CaseRefundSection.php:113
+msgid "nem kezelt készlet"
+msgstr "sklad není spravován"
+
+#: includes/Admin/CaseRefundSection.php:114
+msgid "Visszakerül a készletbe"
+msgstr "Vrátit na sklad"
+
+#: includes/Admin/CaseRefundSection.php:119
+msgid "Kivételként jelölt termék"
+msgstr "Produkt označený jako výjimka"
+
+#: includes/Admin/CaseRefundSection.php:124
+msgid "db"
+msgstr "ks"
+
+#: includes/Admin/CaseRefundSection.php:137
+msgid ""
+"Számlázó bővítmény észlelve: a WooCommerce-visszatérítésre a saját "
+"beállításai szerint sztornó vagy helyesbítő számlát állíthat ki."
+msgstr ""
+"Zjištěn fakturační plugin: podle svého nastavení může k vrácení peněz ve "
+"WooCommerce vystavit storno nebo opravný doklad."
+
 #: includes/Admin/CasesListTable.php:48
 msgid "Vásárló"
 msgstr "Zákazník"
@@ -291,7 +364,9 @@ msgstr "Zobrazení v pokladně je vypnuto."
 msgid ""
 "A GARAN címke ki van kapcsolva, pedig az érintett termékeknél a rendelés "
 "gomb előtt kötelező."
-msgstr "Štítek GARAN je vypnutý, přestože je u dotčených výrobků před tlačítkem objednávky povinný."
+msgstr ""
+"Štítek GARAN je vypnutý, přestože je u dotčených výrobků před tlačítkem "
+"objednávky povinný."
 
 #: includes/Admin/ComplianceCheck.php:123
 msgid ""
@@ -746,18 +821,18 @@ msgstr ""
 
 #: includes/Admin/Settings/TabCompliance.php:84
 msgid ""
-"A szoftverfrissítési és javíthatósági információt 1.1.1-ig a termékleírásban "
+"A szoftverfrissítési és javíthatósági információt egyelőre a termékleírásban "
 "tüntesd fel."
 msgstr ""
-"Do verze 1.1.1 uvádějte informace o aktualizacích softwaru a opravitelnosti "
-"v popisu produktu."
+"Informace o aktualizacích softwaru a opravitelnosti zatím uvádějte v popisu "
+"produktu."
 
 #: includes/Admin/Settings/TabCompliance.php:85
 msgid ""
-"Gutenberg-blokk és Elementor-widget 1.1.1-től; addig a Shortcode blokkal / "
-"widgettel helyezd el a shortcode-okat."
+"Gutenberg-blokk és Elementor-widget egy későbbi verzióban; addig a Shortcode "
+"blokkal / widgettel helyezd el a shortcode-okat."
 msgstr ""
-"Blok Gutenberg a widget Elementor od verze 1.1.1; do té doby vkládejte "
+"Blok Gutenberg a widget Elementor v pozdější verzi; do té doby vkládejte "
 "shortcody pomocí bloku / widgetu Shortcode."
 
 #: includes/Admin/Settings/TabCompliance.php:86
@@ -907,8 +982,8 @@ msgid "Termékinformációk"
 msgstr "Informace o produktu"
 
 #: includes/Admin/Settings/TabCompliance.php:168
-msgid "Opcionális termékinformációk (1.1.1-től)"
-msgstr "Volitelné informace o produktu (od verze 1.1.1)"
+msgid "Opcionális termékinformációk (későbbi verzióban)"
+msgstr "Volitelné informace o produktu (v pozdější verzi)"
 
 #: includes/Admin/Settings/TabCompliance.php:171
 msgid ""
@@ -1382,7 +1457,7 @@ msgstr ""
 "odkazuje na stránku %s."
 
 #: includes/Compliance/GaranVariations.php:81
-#: templates/frontend/garan-label.php:36
+#: templates/frontend/garan-label.php:38
 msgid "a teljes címke megnyitása"
 msgstr "otevřít celý štítek"
 
@@ -1763,25 +1838,46 @@ msgid "WooCommerce withdrawal/elállás case management abilities."
 msgstr ""
 "Schopnosti správy případů odstoupení od smlouvy (withdrawal) ve WooCommerce."
 
-#: includes/Woo/OrderStatusManager.php:45
+#: includes/Woo/OrderStatusManager.php:64
 msgid "Elállás kérve"
 msgstr "Odstoupení od smlouvy vyžádáno"
 
-#: includes/Woo/OrderStatusManager.php:46
+#: includes/Woo/OrderStatusManager.php:65
 msgid "Elállás – ellenőrzés alatt"
 msgstr "Odstoupení od smlouvy – v kontrole"
 
-#: includes/Woo/OrderStatusManager.php:47
+#: includes/Woo/OrderStatusManager.php:66
 msgid "Elállás elfogadva"
 msgstr "Odstoupení od smlouvy přijato"
 
-#: includes/Woo/OrderStatusManager.php:48
+#: includes/Woo/OrderStatusManager.php:67
 msgid "Elállás lezárva"
 msgstr "Odstoupení od smlouvy uzavřeno"
 
-#: includes/Woo/OrderStatusManager.php:142
+#: includes/Woo/OrderStatusManager.php:166
 msgid "Elállási ügy státusz-szinkron."
 msgstr "Synchronizace stavu případu odstoupení od smlouvy."
+
+#: includes/Woo/RefundCreator.php:38
+msgid "Ehhez az ügyhöz most nem rögzíthető visszatérítés."
+msgstr "K tomuto případu nyní nelze zaznamenat vrácení peněz."
+
+#: includes/Woo/RefundCreator.php:45
+msgid ""
+"Nincs visszatérítendő összeg: minden tétel 0, vagy már vissza lett térítve."
+msgstr "Není co vracet: všechny položky jsou 0 nebo již byly vráceny."
+
+#. translators: %s: case number.
+#: includes/Woo/RefundCreator.php:52
+#, php-format
+msgid "Elállás: %s"
+msgstr "Odstoupení: %s"
+
+#. translators: 1: refund amount, 2: refund ID.
+#: includes/Woo/RefundCreator.php:122
+#, php-format
+msgid "Visszatérítés rögzítve a WooCommerce-ben: %1$s (#%2$d)."
+msgstr "Vrácení peněz zaznamenáno ve WooCommerce: %1$s (#%2$d)."
 
 #: templates/emails/admin-notification.php:27
 #: templates/emails/plain/admin-notification.php:24
@@ -1889,7 +1985,7 @@ msgstr ""
 "Uchovejte prosím tento e-mail, který slouží jako potvrzení odstoupení od "
 "smlouvy."
 
-#: templates/emails/garan-item.php:25
+#: templates/emails/garan-item.php:27
 msgid "A hivatalos címke a termékoldalon"
 msgstr "Oficiální štítek na stránce produktu"
 
@@ -1921,7 +2017,7 @@ msgstr ""
 "Potvrzujeme, že vaše prohlášení o odstoupení od smlouvy bylo zaevidováno na "
 "trvalém nosiči dat."
 
-#: templates/emails/plain/garan-item.php:19
+#: templates/emails/plain/garan-item.php:21
 msgid "A hivatalos címke a termékoldalon:"
 msgstr "Oficiální štítek na stránce produktu:"
 
@@ -1962,7 +2058,7 @@ msgstr ""
 "na tento e-mail nebo se obraťte na naši zákaznickou podporu. Kupní cenu "
 "vrátíme nejpozději do 14 dnů od doručení odstoupení od smlouvy."
 
-#: templates/frontend/checkout-garan-list.php:19
+#: templates/frontend/checkout-garan-list.php:21
 msgid "A következő termékekre a gyártó tartóssági jótállást vállal:"
 msgstr ""
 "Na následující výrobky poskytuje výrobce obchodní záruku na trvanlivost:"
@@ -2032,7 +2128,7 @@ msgstr ""
 msgid "Új keresés"
 msgstr "Nové hledání"
 
-#: templates/frontend/garan-label.php:58
+#: templates/frontend/garan-label.php:60
 #: templates/frontend/guarantee-notice.php:38
 #: templates/frontend/guarantee-notice.php:42
 msgid "(új lapon nyílik)"
@@ -2225,162 +2321,3 @@ msgid "Online elállási nyilatkozat űrlap megjelenítése a látogatók szám�
 msgstr ""
 "Zobrazení formuláře online prohlášení o odstoupení od smlouvy pro "
 "návštěvníky."
-
-#~ msgid ""
-#~ "Az automatikus betöltő (autoloader) nem található. Futtasd a „composer "
-#~ "install” parancsot a plugin könyvtárában, vagy telepítsd újra a plugint "
-#~ "egy kiadási ZIP-ből."
-#~ msgstr ""
-#~ "Automatický zavaděč (autoloader) nebyl nalezen. Spusťte příkaz „composer "
-#~ "install” v adresáři pluginu, nebo plugin znovu nainstalujte z vydaného "
-#~ "ZIP souboru."
-
-#~ msgid ""
-#~ "Több címzett is megadható, vesszővel, pontosvesszővel vagy szóközzel "
-#~ "elválasztva. Üresen hagyva az oldal adminisztrátori e-mail címe."
-#~ msgstr ""
-#~ "Lze zadat více příjemců oddělených čárkou, středníkem nebo mezerou. "
-#~ "Ponecháte-li prázdné, použije se e-mailová adresa administrátora webu."
-
-#~ msgid "Rendelési e-mail elállási szövege"
-#~ msgstr "Text o odstoupení od smlouvy v e-mailu objednávky"
-
-#~ msgid ""
-#~ "A WooCommerce rendelési e-mailekbe fűzött szöveg az elállási link köré "
-#~ "(csak akkor jelenik meg, ha az Általános fülön a „Rendelési e-mailben\" "
-#~ "megjelenítés be van kapcsolva). A {link} helyőrző helyére a beállított "
-#~ "elállási oldalra mutató hivatkozás kerül; ha nincs {link} a szövegben, a "
-#~ "hivatkozás a szöveg után kerül. Üresen hagyva csak a hivatkozás jelenik "
-#~ "meg."
-#~ msgstr ""
-#~ "Text vložený do objednávkových e-mailů WooCommerce kolem odkazu na "
-#~ "odstoupení od smlouvy (zobrazí se pouze tehdy, je-li na kartě Obecné "
-#~ "zapnuto zobrazení „V e-mailu objednávky”). Na místo zástupného symbolu "
-#~ "{link} se vloží odkaz na nastavenou stránku odstoupení od smlouvy; pokud "
-#~ "{link} v textu není, odkaz se přidá za text. Ponecháte-li prázdné, "
-#~ "zobrazí se pouze odkaz."
-
-#~ msgid "Tájékoztató / ÁSZF link"
-#~ msgstr "Odkaz na poučení / obchodní podmínky"
-
-#~ msgid ""
-#~ "Hivatkozás elhelyezése minden elállási e-mail alján (új lapon nyílik)"
-#~ msgstr ""
-#~ "Umístit odkaz na konec všech e-mailů o odstoupení od smlouvy (otevře se v "
-#~ "nové kartě)"
-
-#~ msgid "Tájékoztató URL"
-#~ msgstr "URL poučení"
-
-#~ msgid ""
-#~ "A hivatkozott oldal címe (pl. ÁSZF, elállási vagy adatkezelési "
-#~ "tájékoztató). Üresen hagyva a WooCommerce → Beállítások → Speciális alatt "
-#~ "beállított ÁSZF oldal érvényes."
-#~ msgstr ""
-#~ "Adresa odkazované stránky (např. obchodní podmínky, poučení o odstoupení "
-#~ "od smlouvy nebo zásady zpracování osobních údajů). Ponecháte-li prázdné, "
-#~ "použije se stránka obchodních podmínek nastavená v části WooCommerce → "
-#~ "Nastavení → Pokročilé."
-
-#~ msgid "Tájékoztató link felirata"
-#~ msgstr "Text odkazu na poučení"
-
-#~ msgid "A hivatkozás megjelenő szövege az e-mailekben."
-#~ msgstr "Text odkazu zobrazený v e-mailech."
-
-#~ msgid ""
-#~ "Az elállási kérelmét nem tudjuk teljesíteni, mert az érintett "
-#~ "termék(ek)re a jogszabály szerint nem gyakorolható elállási jog:"
-#~ msgstr ""
-#~ "Vaši žádost o odstoupení od smlouvy nemůžeme vyřídit, protože u dotčeného "
-#~ "zboží nelze podle právních předpisů uplatnit právo na odstoupení od "
-#~ "smlouvy:"
-
-#~ msgid "Általános Szerződési Feltételek (ÁSZF)"
-#~ msgstr "Všeobecné obchodní podmínky (VOP)"
-
-#~ msgid "Kérjük, válasszon legalább egy elállásra jogosult terméket."
-#~ msgstr ""
-#~ "Vyberte prosím alespoň jeden produkt způsobilý k odstoupení od smlouvy."
-
-#~ msgid ""
-#~ "A plugin működéséhez a WooCommerce telepítése és aktiválása szükséges."
-#~ msgstr "Pro fungování pluginu je nutná instalace a aktivace WooCommerce."
-
-#~ msgid "Hagyd üresen ezt a mezőt"
-#~ msgstr "Toto pole ponechte prázdné"
-
-#~ msgid "Elállási ügyek listázása"
-#~ msgstr "Výpis případů odstoupení od smlouvy"
-
-#~ msgid ""
-#~ "Elállási ügyek listázása, opcionálisan státusz szerint szűrve és lapozva."
-#~ msgstr ""
-#~ "Výpis případů odstoupení od smlouvy, volitelně filtrovaný podle stavu a "
-#~ "stránkovaný."
-
-#~ msgid "Elállási ügy lekérése"
-#~ msgstr "Načtení případu odstoupení od smlouvy"
-
-#~ msgid "Egy ügy lekérése a tételeivel és audit eseményeivel együtt."
-#~ msgstr "Načtení případu včetně jeho položek a auditních událostí."
-
-#~ msgid "Ügy státuszának módosítása"
-#~ msgstr "Změna stavu případu"
-
-#~ msgid "Egy elállási ügy státuszának megváltoztatása."
-#~ msgstr "Změna stavu případu odstoupení od smlouvy."
-
-#~ msgid "Ügy audit naplójának lekérése"
-#~ msgstr "Načtení auditního protokolu případu"
-
-#~ msgid "Egy elállási ügy audit eseménynaplójának lekérése."
-#~ msgstr "Načtení auditního protokolu událostí případu odstoupení od smlouvy."
-
-#~ msgid "Érvénytelen státuszérték."
-#~ msgstr "Neplatná hodnota stavu."
-
-#~ msgid "Az ügy státusza nem frissíthető."
-#~ msgstr "Stav případu nelze aktualizovat."
-
-#~ msgid "* A megerősítéshez mindhárom jelölőnégyzet bejelölése kötelező."
-#~ msgstr ""
-#~ "* Pro potvrzení je nutné zaškrtnout všechna tři zaškrtávací políčka."
-
-#~ msgid ""
-#~ "Ehhez a rendeléshez nem gyakorolható online elállás, mert az érintett "
-#~ "termék(ek)re a jogszabály szerint nem illeti meg elállási jog:"
-#~ msgstr ""
-#~ "U této objednávky nelze uplatnit online odstoupení od smlouvy, protože u "
-#~ "dotčeného zboží nevzniká podle právních předpisů právo na odstoupení od "
-#~ "smlouvy:"
-
-#~ msgid "A kérelméről és az elutasítás okáról e-mailben is tájékoztattuk."
-#~ msgstr ""
-#~ "O vaší žádosti a o důvodu zamítnutí jsme vás informovali také e-mailem."
-
-#~ msgid ""
-#~ "Ha úgy gondolja, hogy tévedés történt, kérjük, vegye fel a kapcsolatot "
-#~ "ügyfélszolgálatunkkal."
-#~ msgstr ""
-#~ "Pokud se domníváte, že došlo k omylu, obraťte se prosím na naši "
-#~ "zákaznickou podporu."
-
-#~ msgid ""
-#~ "A megjelölt termék(ek)re nem gyakorolható elállás, ezért nem választhatók "
-#~ "ki. A rendelés többi termékére az elállás továbbra is kezdeményezhető."
-#~ msgstr ""
-#~ "U označeného zboží nelze uplatnit odstoupení od smlouvy, proto je nelze "
-#~ "vybrat. U ostatních produktů objednávky lze odstoupení od smlouvy nadále "
-#~ "zahájit."
-
-#~ msgid "Elállásból kizárva"
-#~ msgstr "Vyloučeno z odstoupení od smlouvy"
-
-#~ msgid ""
-#~ "Az „Elállás\" fiók-végpont URL-részlete (pl. elallasaim). Mentés után a "
-#~ "fiók menü hivatkozása automatikusan az új címre mutat."
-#~ msgstr ""
-#~ "URL slug účtového koncového bodu „Odstoupení od smlouvy” (např. "
-#~ "odstoupeni). Po uložení odkaz v nabídce účtu automaticky odkazuje na "
-#~ "novou adresu."

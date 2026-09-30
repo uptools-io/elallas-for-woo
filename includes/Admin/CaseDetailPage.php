@@ -64,6 +64,7 @@ final class CaseDetailPage {
 			CaseDetailSections::summary( $case );
 			CaseDetailSections::items( $case );
 			CaseDetailSections::audit( $case );
+			CaseRefundSection::render( $case );
 			CaseDetailSections::decision_form( $case );
 			CaseDetailSections::documents( $case );
 			?>

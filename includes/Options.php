@@ -98,7 +98,7 @@ final class Options {
 
 			// Compliance – GARAN durability label.
 			'garan_enabled'              => true,
-			'garan_product_mode'         => 'nested', // nested|full|description|gallery (description: P1, gallery: 1.1.1).
+			'garan_product_mode'         => 'nested', // nested|full|description|gallery (description: P1, gallery: later).
 			'garan_display_archive'      => false, // P1.
 			'garan_display_cart'         => true, // Classic cart, before the express-pay and checkout buttons.
 			'garan_display_email'        => true,
@@ -108,7 +108,7 @@ final class Options {
 			'compliance_hide_b2b'        => false,
 			'compliance_exclude_virtual' => true,
 			'compliance_reviewed'        => false, // Set to true by the tab's hidden input on save.
-			'product_info_enabled'       => true, // 1.1.1.
+			'product_info_enabled'       => true, // Reserved for a later version.
 
 			// Diagnostics.
 			'logging_enabled'            => false,

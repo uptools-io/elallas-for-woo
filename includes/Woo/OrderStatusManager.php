@@ -158,6 +158,11 @@ final class OrderStatusManager {
 			return;
 		}
 
+		// A closed case keeps a fully refunded order "Refunded" (set by WooCommerce).
+		if ( self::CLOSED === $status && $order->has_status( 'refunded' ) ) {
+			return;
+		}
+
 		$order->update_status( $status, __( 'Elállási ügy státusz-szinkron.', 'elallas-for-woo' ) );
 	}
 }

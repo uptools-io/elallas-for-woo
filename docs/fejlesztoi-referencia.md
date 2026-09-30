@@ -275,14 +275,14 @@ Az 1.1.0 szavatossági kulcsai (`Options::get_defaults()`, a `TabCompliance` men
 | `notice_email_mode` | `'image'` | `image` \| `attachment` \| `both` |
 | `notice_page_id` | `0` | önálló szavatossági oldal |
 | `garan_enabled` | `true` | a GARAN modul kapcsolója; a pénztári GARAN-nak nincs külön kulcsa (kötelező) |
-| `garan_product_mode` | `'nested'` | `nested` \| `full` \| `description` (a `gallery` 1.1.1-ben) |
+| `garan_product_mode` | `'nested'` | `nested` \| `full` \| `description` (a `gallery` egy későbbi verzióban) |
 | `garan_display_archive` | `false` | |
 | `garan_display_cart` | `true` | klasszikus kosár |
 | `garan_display_email` | `true` | e-mail és rendelésnézet |
 | `compliance_hide_b2b` | `false` | |
 | `compliance_exclude_virtual` | `true` | |
 | `compliance_reviewed` | `false` | a fül rejtett mezője mentéskor `true`-ra állítja |
-| `product_info_enabled` | `true` | 1.1.1-re fenntartva, 1.1.0-ban nincs hatása |
+| `product_info_enabled` | `true` | későbbi verzióra fenntartva, egyelőre nincs hatása |
 
 ## Egyedi rendelési státuszok (opcionális)
 
@@ -295,6 +295,18 @@ tárolja a státuszt, ezért egy slug (a `wc-` előtaggal együtt) legfeljebb 20
 HPOS alatt a MySQL levágta őket, régi tárolásnál a státuszváltás nem mentődött. Az 1.2.0-s
 DB-frissítés (`OrderStatusMigration`) a levágott `wc-withdrawal-reques` értéket `wc-withdrawal-new`-ra
 javítja; a levágott `wc-withdrawal-accept` már az új, érvényes slug.
+
+## Visszatérítés rögzítése (1.2.0)
+
+Az ügy oldalán a `CaseRefundSection` űrlapja az `admin-post.php?action=elallas_record_refund`
+végpontra küld (nonce + `manage_woocommerce`). A `RefundCreator` a szerveren újraszámol
+(`Domain\RefundCalculator`, WooCommerce nélkül unit-tesztelt), majd `wc_create_refund()`
+(`refund_payment` és `restock_items` hamis) és a bejelölt tételekre `wc_restock_refunded_items()`.
+A visszatérítés `_lw_elallas_case_id` metát kap; ebből számolja az ügyre már visszatérített
+mennyiséget, így egy WooCommerce-ben törölt visszatérítés mennyisége újra visszatéríthető.
+Ügyesemény: `refund_recorded` (refund ID, összeg, tételek, visszatöltött tételek). Ha az ügy
+lezárul, és a rendelés már `refunded`, a `use_wc_statuses` szinkron nem írja át
+`wc-withdrawal-closed`-ra.
 
 ## Dokumentum-letöltés
 

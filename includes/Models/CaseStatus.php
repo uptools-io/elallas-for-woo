@@ -95,4 +95,18 @@ final class CaseStatus {
 	public static function is_terminal( string $status ): bool {
 		return in_array( $status, [ self::CLOSED, self::REJECTED, self::CANCELLED ], true );
 	}
+
+	/**
+	 * Whether a refund may be recorded: the withdrawal is confirmed and stands.
+	 *
+	 * @param string $status Status key.
+	 * @return bool
+	 */
+	public static function allows_refund( string $status ): bool {
+		return in_array(
+			$status,
+			[ self::AUTO_CONFIRMED, self::ACCEPTED, self::AWAITING_RETURN, self::GOODS_RECEIVED, self::REFUND_PENDING, self::CLOSED ],
+			true
+		);
+	}
 }

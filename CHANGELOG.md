@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0] - 2026-09-30
+
+### Added
+- "Record refund in WooCommerce" on the case page: per-line refund quantity and restock choice, shipping and fee amounts (prefilled on full withdrawal, 0 on partial), live gross total and an optional "close the case". It records a WooCommerce refund (no payment gateway call), restocks only the chosen lines, logs a case event, and never refunds the same line twice for a case. A fully refunded order becomes "Refunded".
+- English, Czech, Romanian and Slovak translations for the new strings.
+
+### Fixed
+- The optional custom order statuses "Withdrawal requested" and "Withdrawal approved" did not fit the 20-character status column: with legacy order storage the status change was silently not saved, under HPOS the order ended up in an unregistered, truncated status. New slugs `wc-withdrawal-new` and `wc-withdrawal-accept`; a database upgrade repairs orders left in the truncated status.
+- A closed case no longer moves a fully refunded order from "Refunded" to "Withdrawal closed".
+
+### Changed
+- The settings, readme and docs no longer promise the block, widget and product-info features for 1.1.1; they arrive in a later version.
+
 ## [1.1.0] - 2026-09-25
 
 ### Added

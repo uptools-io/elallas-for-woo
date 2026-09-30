@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Elállás for WooCommerce 1.0.14\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/elallas-for-woo\n"
-"POT-Creation-Date: 2026-09-25T19:25:48+00:00\n"
+"POT-Creation-Date: 2026-09-30T13:22:38+00:00\n"
 "PO-Revision-Date: 2026-09-25 20:45+0200\n"
 "Last-Translator: uptools.io <hello@uptools.io>\n"
 "Language-Team: English (United States) <en_US@li.org>\n"
@@ -45,34 +45,35 @@ msgstr ""
 msgid "Autoloader not found. Please run \"composer install\" in the plugin directory, or re-install the plugin from a release ZIP."
 msgstr ""
 
-#: includes/Admin/AdminMenu.php:41 includes/Admin/AdminMenu.php:42
-#: includes/Admin/AdminMenu.php:100
+#: includes/Admin/AdminMenu.php:42 includes/Admin/AdminMenu.php:43
+#: includes/Admin/AdminMenu.php:101
 msgid "Elállási ügyek"
 msgstr "Withdrawal cases"
 
-#: includes/Admin/AdminMenu.php:50
+#: includes/Admin/AdminMenu.php:51
 msgid "Elállás beállítások"
 msgstr "Withdrawal settings"
 
-#: includes/Admin/AdminMenu.php:51 includes/Admin/Settings/SettingsPage.php:63
+#: includes/Admin/AdminMenu.php:52 includes/Admin/Settings/SettingsPage.php:63
 msgid "Elállás – beállítások"
 msgstr "Withdrawal – settings"
 
-#: includes/Admin/AdminMenu.php:59 includes/Admin/Onboarding/Wizard.php:37
+#: includes/Admin/AdminMenu.php:60 includes/Admin/Onboarding/Wizard.php:37
 msgid "Elállás beüzemelése"
 msgstr "Withdrawal setup"
 
-#: includes/Admin/AdminMenu.php:74 includes/Admin/CaseDetailPage.php:27
+#: includes/Admin/AdminMenu.php:75 includes/Admin/CaseDetailPage.php:27
 #: includes/Admin/Onboarding/Wizard.php:27
 #: includes/Admin/Settings/SettingsPage.php:55
 msgid "Nincs jogosultságod ehhez az oldalhoz."
 msgstr "You do not have permission to access this page."
 
-#: includes/Admin/AdminMenu.php:105
+#: includes/Admin/AdminMenu.php:106
 msgid "Keresés"
 msgstr "Search"
 
 #: includes/Admin/CaseActions.php:38 includes/Admin/CaseActions.php:72
+#: includes/Admin/CaseRefundAction.php:46
 msgid "Nincs jogosultságod."
 msgstr "You do not have permission."
 
@@ -80,7 +81,7 @@ msgstr "You do not have permission."
 msgid "Vendég"
 msgstr "Guest"
 
-#: includes/Admin/CaseDetailPage.php:34
+#: includes/Admin/CaseDetailPage.php:34 includes/Admin/CaseRefundAction.php:53
 msgid "Az ügy nem található."
 msgstr "Case not found."
 
@@ -211,6 +212,70 @@ msgstr "Save status"
 #: includes/Admin/Settings/TabDocuments.php:56
 msgid "Dokumentumok"
 msgstr "Documents"
+
+#: includes/Admin/CaseRefundAction.php:68
+msgid "A visszatérítés rögzítve a WooCommerce-rendelésen."
+msgstr "The refund has been recorded on the WooCommerce order."
+
+#: includes/Admin/CaseRefundSection.php:35
+msgid "Visszatérítés rögzítése a WooCommerce-ben"
+msgstr "Record refund in WooCommerce"
+
+#: includes/Admin/CaseRefundSection.php:41
+msgid "A rendelés nem tölthető be, ezért visszatérítés nem rögzíthető."
+msgstr "The order cannot be loaded, so no refund can be recorded."
+
+#: includes/Admin/CaseRefundSection.php:49
+msgid "A visszatérítés csak rögzítésre kerül a rendelésen (mint a WooCommerce „Kézi visszatérítés” gombja); a pénzt a bolt utalja vissza."
+msgstr "The refund is only recorded on the order (like WooCommerce's \"Refund manually\" button); the shop transfers the money back."
+
+#: includes/Admin/CaseRefundSection.php:57
+msgid "Tétel"
+msgstr "Item"
+
+#: includes/Admin/CaseRefundSection.php:58
+msgid "Visszatérítendő"
+msgstr "To refund"
+
+#: includes/Admin/CaseRefundSection.php:59
+msgid "Készlet"
+msgstr "Stock"
+
+#: includes/Admin/CaseRefundSection.php:65
+msgid "Összesen (bruttó)"
+msgstr "Total (gross)"
+
+#: includes/Admin/CaseRefundSection.php:69
+msgid "Ügy lezárása (a vásárló megkapja a szokásos státusz e-mailt)"
+msgstr "Close the case (the customer receives the usual status e-mail)"
+
+#: includes/Admin/CaseRefundSection.php:72
+msgid "Visszatérítés rögzítése"
+msgstr "Record refund"
+
+#: includes/Admin/CaseRefundSection.php:107
+msgid "Nincs visszatérítendő mennyiség (már visszatérítve)."
+msgstr "Nothing left to refund (already refunded)."
+
+#: includes/Admin/CaseRefundSection.php:113
+msgid "nem kezelt készlet"
+msgstr "stock not managed"
+
+#: includes/Admin/CaseRefundSection.php:114
+msgid "Visszakerül a készletbe"
+msgstr "Restock"
+
+#: includes/Admin/CaseRefundSection.php:119
+msgid "Kivételként jelölt termék"
+msgstr "Product marked as an exception"
+
+#: includes/Admin/CaseRefundSection.php:124
+msgid "db"
+msgstr "pcs"
+
+#: includes/Admin/CaseRefundSection.php:137
+msgid "Számlázó bővítmény észlelve: a WooCommerce-visszatérítésre a saját beállításai szerint sztornó vagy helyesbítő számlát állíthat ki."
+msgstr "Invoicing plugin detected: depending on its own settings it may issue a cancellation or corrective invoice for the WooCommerce refund."
 
 #: includes/Admin/CasesListTable.php:48
 msgid "Vásárló"
@@ -640,12 +705,12 @@ msgid "A terméklistákon (archívum) megjelenő GARAN címke csak klasszikus t�
 msgstr "The GARAN label on product lists (archives) works only with classic themes; with block themes it appears on the product page, in the cart and at checkout."
 
 #: includes/Admin/Settings/TabCompliance.php:84
-msgid "A szoftverfrissítési és javíthatósági információt 1.1.1-ig a termékleírásban tüntesd fel."
-msgstr "Until 1.1.1, state software update and repairability information in the product description."
+msgid "A szoftverfrissítési és javíthatósági információt egyelőre a termékleírásban tüntesd fel."
+msgstr "For now, state software update and repairability information in the product description."
 
 #: includes/Admin/Settings/TabCompliance.php:85
-msgid "Gutenberg-blokk és Elementor-widget 1.1.1-től; addig a Shortcode blokkal / widgettel helyezd el a shortcode-okat."
-msgstr "Gutenberg block and Elementor widget from 1.1.1; until then place the shortcodes with the Shortcode block / widget."
+msgid "Gutenberg-blokk és Elementor-widget egy későbbi verzióban; addig a Shortcode blokkal / widgettel helyezd el a shortcode-okat."
+msgstr "Gutenberg block and Elementor widget in a later version; until then place the shortcodes with the Shortcode block / widget."
 
 #: includes/Admin/Settings/TabCompliance.php:86
 msgid "A blokkos kosár expressz fizetési gombjai előtt a GARAN címke nem jelenik meg (a klasszikus kosárban igen)."
@@ -750,8 +815,8 @@ msgid "Termékinformációk"
 msgstr "Product information"
 
 #: includes/Admin/Settings/TabCompliance.php:168
-msgid "Opcionális termékinformációk (1.1.1-től)"
-msgstr "Optional product information (from 1.1.1)"
+msgid "Opcionális termékinformációk (későbbi verzióban)"
+msgstr "Optional product information (in a later version)"
 
 #: includes/Admin/Settings/TabCompliance.php:171
 msgid "Többnyelvű bolt: az értesítés nyelve az oldal nyelvét követi (24 hivatalos nyelv). Polylang esetén a GARAN termékadatok szinkronizálását a Polylang (for WooCommerce) beállításaiban kapcsold be."
@@ -1149,7 +1214,7 @@ msgid "Az Európai Unió hivatalos GARAN címkéje a gyártói tartóssági jót
 msgstr "The official EU GARAN label for the producer's commercial guarantee of durability. The QR code points to %s."
 
 #: includes/Compliance/GaranVariations.php:81
-#: templates/frontend/garan-label.php:36
+#: templates/frontend/garan-label.php:38
 msgid "a teljes címke megnyitása"
 msgstr "open the full label"
 
@@ -1469,25 +1534,45 @@ msgstr "Withdrawal"
 msgid "WooCommerce withdrawal/elállás case management abilities."
 msgstr "WooCommerce withdrawal/elállás case management abilities."
 
-#: includes/Woo/OrderStatusManager.php:45
+#: includes/Woo/OrderStatusManager.php:64
 msgid "Elállás kérve"
 msgstr "Withdrawal requested"
 
-#: includes/Woo/OrderStatusManager.php:46
+#: includes/Woo/OrderStatusManager.php:65
 msgid "Elállás – ellenőrzés alatt"
 msgstr "Withdrawal – under review"
 
-#: includes/Woo/OrderStatusManager.php:47
+#: includes/Woo/OrderStatusManager.php:66
 msgid "Elállás elfogadva"
 msgstr "Withdrawal approved"
 
-#: includes/Woo/OrderStatusManager.php:48
+#: includes/Woo/OrderStatusManager.php:67
 msgid "Elállás lezárva"
 msgstr "Withdrawal closed"
 
-#: includes/Woo/OrderStatusManager.php:142
+#: includes/Woo/OrderStatusManager.php:166
 msgid "Elállási ügy státusz-szinkron."
 msgstr "Withdrawal case status sync."
+
+#: includes/Woo/RefundCreator.php:38
+msgid "Ehhez az ügyhöz most nem rögzíthető visszatérítés."
+msgstr "A refund cannot be recorded for this case right now."
+
+#: includes/Woo/RefundCreator.php:45
+msgid "Nincs visszatérítendő összeg: minden tétel 0, vagy már vissza lett térítve."
+msgstr "Nothing to refund: every line is 0 or has already been refunded."
+
+#. translators: %s: case number.
+#: includes/Woo/RefundCreator.php:52
+#, php-format
+msgid "Elállás: %s"
+msgstr "Withdrawal: %s"
+
+#. translators: 1: refund amount, 2: refund ID.
+#: includes/Woo/RefundCreator.php:122
+#, php-format
+msgid "Visszatérítés rögzítve a WooCommerce-ben: %1$s (#%2$d)."
+msgstr "Refund recorded in WooCommerce: %1$s (#%2$d)."
 
 #: templates/emails/admin-notification.php:27
 #: templates/emails/plain/admin-notification.php:24
@@ -1575,7 +1660,7 @@ msgstr "The merchant will notify you separately about the processing of the with
 msgid "Kérjük, őrizze meg ezt az e-mailt, amely az elállás visszaigazolásaként szolgál."
 msgstr "Please keep this email, which serves as confirmation of your withdrawal."
 
-#: templates/emails/garan-item.php:25
+#: templates/emails/garan-item.php:27
 msgid "A hivatalos címke a termékoldalon"
 msgstr "The official label on the product page"
 
@@ -1600,7 +1685,7 @@ msgstr "Edit order"
 msgid "Megerősítjük, hogy elállási nyilatkozatát tartós adathordozón rögzítettük."
 msgstr "We confirm that your withdrawal declaration has been recorded on a durable medium."
 
-#: templates/emails/plain/garan-item.php:19
+#: templates/emails/plain/garan-item.php:21
 msgid "A hivatalos címke a termékoldalon:"
 msgstr "The official label on the product page:"
 
@@ -1632,7 +1717,7 @@ msgstr "Message from the merchant"
 msgid "Ha kérdése van az elállási ügyével kapcsolatban, kérjük, válaszoljon erre az e-mailre, vagy vegye fel a kapcsolatot ügyfélszolgálatunkkal. A vételárat legkésőbb az elállás kézhezvételétől számított 14 napon belül visszatérítjük."
 msgstr "If you have any questions about your withdrawal case, please reply to this email or contact our customer service. We will refund the purchase price no later than 14 days from receipt of the withdrawal."
 
-#: templates/frontend/checkout-garan-list.php:19
+#: templates/frontend/checkout-garan-list.php:21
 msgid "A következő termékekre a gyártó tartóssági jótállást vállal:"
 msgstr "The producer offers a commercial guarantee of durability for the following products:"
 
@@ -1692,7 +1777,7 @@ msgstr "I agree that the webshop may process the details provided here in order 
 msgid "Új keresés"
 msgstr "New search"
 
-#: templates/frontend/garan-label.php:58
+#: templates/frontend/garan-label.php:60
 #: templates/frontend/guarantee-notice.php:38
 #: templates/frontend/guarantee-notice.php:42
 msgid "(új lapon nyílik)"
@@ -1863,111 +1948,3 @@ msgstr "Withdrawal form"
 msgctxt "block description"
 msgid "Online elállási nyilatkozat űrlap megjelenítése a látogatók számára."
 msgstr "Display an online withdrawal declaration form to visitors."
-
-#~ msgid "Ha a variációk modellazonosítója vagy jótállása eltér, a címke pontatlan lehet: minden variációnál a szülő adatai jelennek meg."
-#~ msgstr "If the variations differ in model identifier or guarantee, the label may be inaccurate: every variation shows the parent product's data."
-
-#~ msgid "E-mail címke képként: 1.1.1-től; addig szöveges tájékoztatás (évek, gyártó, modell, Your Europe link, termékoldal-link)."
-#~ msgstr "E-mail label as an image: from 1.1.1; until then text information (years, producer, model, Your Europe link, product page link)."
-
-#~ msgid "A GARAN címke az e-mailben 1.1.1-ig csak szövegként (évek, gyártó, modell) és linkként jelenik meg."
-#~ msgstr "Until 1.1.1 the GARAN label appears in e-mails as text (years, producer, model) and a link only."
-
-#~ msgid "Variációnkénti GARAN adat 1.1.1-től; addig a szülőtermék adata érvényes."
-#~ msgstr "Per-variation GARAN data from 1.1.1; until then the parent product's data applies."
-
-#~ msgid "Az automatikus betöltő (autoloader) nem található. Futtasd a „composer install” parancsot a plugin könyvtárában, vagy telepítsd újra a plugint egy kiadási ZIP-ből."
-#~ msgstr "The autoloader could not be found. Run the \"composer install\" command in the plugin directory, or reinstall the plugin from a release ZIP."
-
-#~ msgid "Több címzett is megadható, vesszővel, pontosvesszővel vagy szóközzel elválasztva. Üresen hagyva az oldal adminisztrátori e-mail címe."
-#~ msgstr "You can enter several recipients, separated by commas, semicolons or spaces. If left empty, the site's administrator email address is used."
-
-#~ msgid "Rendelési e-mail elállási szövege"
-#~ msgstr "Withdrawal text in order emails"
-
-#~ msgid "A WooCommerce rendelési e-mailekbe fűzött szöveg az elállási link köré (csak akkor jelenik meg, ha az Általános fülön a „Rendelési e-mailben\" megjelenítés be van kapcsolva). A {link} helyőrző helyére a beállított elállási oldalra mutató hivatkozás kerül; ha nincs {link} a szövegben, a hivatkozás a szöveg után kerül. Üresen hagyva csak a hivatkozás jelenik meg."
-#~ msgstr "Text added to WooCommerce order emails around the withdrawal link (only shown if the \"In order email\" display is enabled on the General tab). The {link} placeholder is replaced with a link to the configured withdrawal page; if there is no {link} in the text, the link is placed after it. If left empty, only the link is shown."
-
-#~ msgid "Tájékoztató / ÁSZF link"
-#~ msgstr "Information / Terms & Conditions link"
-
-#~ msgid "Hivatkozás elhelyezése minden elállási e-mail alján (új lapon nyílik)"
-#~ msgstr "Place a link at the bottom of every withdrawal email (opens in a new tab)"
-
-#~ msgid "Tájékoztató URL"
-#~ msgstr "Information URL"
-
-#~ msgid "A hivatkozott oldal címe (pl. ÁSZF, elállási vagy adatkezelési tájékoztató). Üresen hagyva a WooCommerce → Beállítások → Speciális alatt beállított ÁSZF oldal érvényes."
-#~ msgstr "The address of the linked page (e.g. Terms & Conditions, withdrawal or privacy notice). If left empty, the Terms page set under WooCommerce → Settings → Advanced applies."
-
-#~ msgid "Tájékoztató link felirata"
-#~ msgstr "Information link label"
-
-#~ msgid "A hivatkozás megjelenő szövege az e-mailekben."
-#~ msgstr "The link text shown in the emails."
-
-#~ msgid "Az elállási kérelmét nem tudjuk teljesíteni, mert az érintett termék(ek)re a jogszabály szerint nem gyakorolható elállási jog:"
-#~ msgstr "We are unable to fulfil your withdrawal request, because under the law the right of withdrawal cannot be exercised for the affected product(s):"
-
-#~ msgid "Általános Szerződési Feltételek (ÁSZF)"
-#~ msgstr "General Terms and Conditions (GTC)"
-
-#~ msgid "Kérjük, válasszon legalább egy elállásra jogosult terméket."
-#~ msgstr "Please select at least one product eligible for withdrawal."
-
-#~ msgid "A plugin működéséhez a WooCommerce telepítése és aktiválása szükséges."
-#~ msgstr "This plugin requires WooCommerce to be installed and active."
-
-#~ msgid "Hagyd üresen ezt a mezőt"
-#~ msgstr "Leave this field empty"
-
-#~ msgid "Elállási ügyek listázása"
-#~ msgstr "List withdrawal cases"
-
-#~ msgid "Elállási ügyek listázása, opcionálisan státusz szerint szűrve és lapozva."
-#~ msgstr "List withdrawal cases, optionally filtered by status and paginated."
-
-#~ msgid "Elállási ügy lekérése"
-#~ msgstr "Retrieve a withdrawal case"
-
-#~ msgid "Egy ügy lekérése a tételeivel és audit eseményeivel együtt."
-#~ msgstr "Retrieve a case together with its items and audit events."
-
-#~ msgid "Ügy státuszának módosítása"
-#~ msgstr "Change case status"
-
-#~ msgid "Egy elállási ügy státuszának megváltoztatása."
-#~ msgstr "Change the status of a withdrawal case."
-
-#~ msgid "Ügy audit naplójának lekérése"
-#~ msgstr "Retrieve case audit log"
-
-#~ msgid "Egy elállási ügy audit eseménynaplójának lekérése."
-#~ msgstr "Retrieve the audit event log of a withdrawal case."
-
-#~ msgid "Érvénytelen státuszérték."
-#~ msgstr "Invalid status value."
-
-#~ msgid "Az ügy státusza nem frissíthető."
-#~ msgstr "The case status cannot be updated."
-
-#~ msgid "* A megerősítéshez mindhárom jelölőnégyzet bejelölése kötelező."
-#~ msgstr "* All three checkboxes must be ticked to confirm."
-
-#~ msgid "Ehhez a rendeléshez nem gyakorolható online elállás, mert az érintett termék(ek)re a jogszabály szerint nem illeti meg elállási jog:"
-#~ msgstr "Online withdrawal cannot be exercised for this order, because under the law the right of withdrawal does not apply to the affected product(s):"
-
-#~ msgid "A kérelméről és az elutasítás okáról e-mailben is tájékoztattuk."
-#~ msgstr "We have also informed you about your request and the reason for rejection by email."
-
-#~ msgid "Ha úgy gondolja, hogy tévedés történt, kérjük, vegye fel a kapcsolatot ügyfélszolgálatunkkal."
-#~ msgstr "If you believe a mistake has been made, please contact our customer service."
-
-#~ msgid "A megjelölt termék(ek)re nem gyakorolható elállás, ezért nem választhatók ki. A rendelés többi termékére az elállás továbbra is kezdeményezhető."
-#~ msgstr "Withdrawal cannot be exercised for the marked product(s), so they cannot be selected. Withdrawal can still be initiated for the other products in the order."
-
-#~ msgid "Elállásból kizárva"
-#~ msgstr "Excluded from withdrawal"
-
-#~ msgid "Az „Elállás\" fiók-végpont URL-részlete (pl. elallasaim). Mentés után a fiók menü hivatkozása automatikusan az új címre mutat."
-#~ msgstr "URL slug for the “Withdrawal” account endpoint (e.g. withdrawals). After saving, the My account menu link automatically points to the new address."

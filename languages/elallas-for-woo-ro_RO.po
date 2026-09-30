@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Elállás for WooCommerce 1.0.13\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/elallas-for-woo\n"
-"POT-Creation-Date: 2026-09-25T19:25:48+00:00\n"
+"POT-Creation-Date: 2026-09-30T13:22:38+00:00\n"
 "PO-Revision-Date: 2026-07-15 16:09+0000\n"
 "Last-Translator: uptools.io <hello@uptools.io>\n"
 "Language-Team: Romanian <LL@li.org>\n"
@@ -56,34 +56,35 @@ msgstr ""
 "Autoloaderul nu a fost găsit. Rulați „composer install” în directorul "
 "pluginului sau reinstalați pluginul dintr-o arhivă ZIP de versiune."
 
-#: includes/Admin/AdminMenu.php:41 includes/Admin/AdminMenu.php:42
-#: includes/Admin/AdminMenu.php:100
+#: includes/Admin/AdminMenu.php:42 includes/Admin/AdminMenu.php:43
+#: includes/Admin/AdminMenu.php:101
 msgid "Elállási ügyek"
 msgstr "Cazuri de retragere"
 
-#: includes/Admin/AdminMenu.php:50
+#: includes/Admin/AdminMenu.php:51
 msgid "Elállás beállítások"
 msgstr "Setări de retragere"
 
-#: includes/Admin/AdminMenu.php:51 includes/Admin/Settings/SettingsPage.php:63
+#: includes/Admin/AdminMenu.php:52 includes/Admin/Settings/SettingsPage.php:63
 msgid "Elállás – beállítások"
 msgstr "Retragere – setări"
 
-#: includes/Admin/AdminMenu.php:59 includes/Admin/Onboarding/Wizard.php:37
+#: includes/Admin/AdminMenu.php:60 includes/Admin/Onboarding/Wizard.php:37
 msgid "Elállás beüzemelése"
 msgstr "Configurarea retragerii"
 
-#: includes/Admin/AdminMenu.php:74 includes/Admin/CaseDetailPage.php:27
+#: includes/Admin/AdminMenu.php:75 includes/Admin/CaseDetailPage.php:27
 #: includes/Admin/Onboarding/Wizard.php:27
 #: includes/Admin/Settings/SettingsPage.php:55
 msgid "Nincs jogosultságod ehhez az oldalhoz."
 msgstr "Nu aveți permisiunea de a accesa această pagină."
 
-#: includes/Admin/AdminMenu.php:105
+#: includes/Admin/AdminMenu.php:106
 msgid "Keresés"
 msgstr "Căutare"
 
 #: includes/Admin/CaseActions.php:38 includes/Admin/CaseActions.php:72
+#: includes/Admin/CaseRefundAction.php:46
 msgid "Nincs jogosultságod."
 msgstr "Nu aveți permisiunea necesară."
 
@@ -91,7 +92,7 @@ msgstr "Nu aveți permisiunea necesară."
 msgid "Vendég"
 msgstr "Vizitator"
 
-#: includes/Admin/CaseDetailPage.php:34
+#: includes/Admin/CaseDetailPage.php:34 includes/Admin/CaseRefundAction.php:53
 msgid "Az ügy nem található."
 msgstr "Cazul nu a fost găsit."
 
@@ -227,6 +228,79 @@ msgstr "Salvează starea"
 msgid "Dokumentumok"
 msgstr "Documente"
 
+#: includes/Admin/CaseRefundAction.php:68
+msgid "A visszatérítés rögzítve a WooCommerce-rendelésen."
+msgstr "Rambursarea a fost înregistrată pe comanda WooCommerce."
+
+#: includes/Admin/CaseRefundSection.php:35
+msgid "Visszatérítés rögzítése a WooCommerce-ben"
+msgstr "Înregistrează rambursarea în WooCommerce"
+
+#: includes/Admin/CaseRefundSection.php:41
+msgid "A rendelés nem tölthető be, ezért visszatérítés nem rögzíthető."
+msgstr ""
+"Comanda nu poate fi încărcată, deci rambursarea nu poate fi înregistrată."
+
+#: includes/Admin/CaseRefundSection.php:49
+msgid ""
+"A visszatérítés csak rögzítésre kerül a rendelésen (mint a WooCommerce „Kézi "
+"visszatérítés” gombja); a pénzt a bolt utalja vissza."
+msgstr ""
+"Rambursarea este doar înregistrată pe comandă (ca butonul WooCommerce "
+"„Rambursare manuală”); banii îi returnează magazinul."
+
+#: includes/Admin/CaseRefundSection.php:57
+msgid "Tétel"
+msgstr "Articol"
+
+#: includes/Admin/CaseRefundSection.php:58
+msgid "Visszatérítendő"
+msgstr "De rambursat"
+
+#: includes/Admin/CaseRefundSection.php:59
+msgid "Készlet"
+msgstr "Stoc"
+
+#: includes/Admin/CaseRefundSection.php:65
+msgid "Összesen (bruttó)"
+msgstr "Total (brut)"
+
+#: includes/Admin/CaseRefundSection.php:69
+msgid "Ügy lezárása (a vásárló megkapja a szokásos státusz e-mailt)"
+msgstr "Închide cazul (clientul primește e-mailul obișnuit de stare)"
+
+#: includes/Admin/CaseRefundSection.php:72
+msgid "Visszatérítés rögzítése"
+msgstr "Înregistrează rambursarea"
+
+#: includes/Admin/CaseRefundSection.php:107
+msgid "Nincs visszatérítendő mennyiség (már visszatérítve)."
+msgstr "Nu mai este nimic de rambursat (deja rambursat)."
+
+#: includes/Admin/CaseRefundSection.php:113
+msgid "nem kezelt készlet"
+msgstr "stoc negestionat"
+
+#: includes/Admin/CaseRefundSection.php:114
+msgid "Visszakerül a készletbe"
+msgstr "Readu în stoc"
+
+#: includes/Admin/CaseRefundSection.php:119
+msgid "Kivételként jelölt termék"
+msgstr "Produs marcat ca excepție"
+
+#: includes/Admin/CaseRefundSection.php:124
+msgid "db"
+msgstr "buc."
+
+#: includes/Admin/CaseRefundSection.php:137
+msgid ""
+"Számlázó bővítmény észlelve: a WooCommerce-visszatérítésre a saját "
+"beállításai szerint sztornó vagy helyesbítő számlát állíthat ki."
+msgstr ""
+"Plugin de facturare detectat: în funcție de setările sale, poate emite o "
+"factură de stornare sau de corecție pentru rambursarea WooCommerce."
+
 #: includes/Admin/CasesListTable.php:48
 msgid "Vásárló"
 msgstr "Client"
@@ -295,7 +369,9 @@ msgstr "Afișarea la finalizarea comenzii este dezactivată."
 msgid ""
 "A GARAN címke ki van kapcsolva, pedig az érintett termékeknél a rendelés "
 "gomb előtt kötelező."
-msgstr "Eticheta GARAN este dezactivată, deși pentru produsele vizate este obligatorie înaintea butonului de comandă."
+msgstr ""
+"Eticheta GARAN este dezactivată, deși pentru produsele vizate este "
+"obligatorie înaintea butonului de comandă."
 
 #: includes/Admin/ComplianceCheck.php:123
 msgid ""
@@ -757,19 +833,19 @@ msgstr ""
 
 #: includes/Admin/Settings/TabCompliance.php:84
 msgid ""
-"A szoftverfrissítési és javíthatósági információt 1.1.1-ig a termékleírásban "
+"A szoftverfrissítési és javíthatósági információt egyelőre a termékleírásban "
 "tüntesd fel."
 msgstr ""
-"Până la versiunea 1.1.1, menționați informațiile despre actualizările de "
-"software și reparabilitate în descrierea produsului."
+"Deocamdată, menționați informațiile despre actualizările software și "
+"reparabilitate în descrierea produsului."
 
 #: includes/Admin/Settings/TabCompliance.php:85
 msgid ""
-"Gutenberg-blokk és Elementor-widget 1.1.1-től; addig a Shortcode blokkal / "
-"widgettel helyezd el a shortcode-okat."
+"Gutenberg-blokk és Elementor-widget egy későbbi verzióban; addig a Shortcode "
+"blokkal / widgettel helyezd el a shortcode-okat."
 msgstr ""
-"Bloc Gutenberg și widget Elementor începând cu versiunea 1.1.1; până atunci "
-"plasați shortcode-urile cu blocul / widgetul Shortcode."
+"Blocul Gutenberg și widgetul Elementor într-o versiune ulterioară; până "
+"atunci plasați shortcode-urile cu blocul / widgetul Shortcode."
 
 #: includes/Admin/Settings/TabCompliance.php:86
 msgid ""
@@ -921,8 +997,8 @@ msgid "Termékinformációk"
 msgstr "Informații despre produs"
 
 #: includes/Admin/Settings/TabCompliance.php:168
-msgid "Opcionális termékinformációk (1.1.1-től)"
-msgstr "Informații opționale despre produs (începând cu versiunea 1.1.1)"
+msgid "Opcionális termékinformációk (későbbi verzióban)"
+msgstr "Informații opționale despre produs (într-o versiune ulterioară)"
 
 #: includes/Admin/Settings/TabCompliance.php:171
 msgid ""
@@ -1399,7 +1475,7 @@ msgstr ""
 "producătorului. Codul QR trimite la pagina %s."
 
 #: includes/Compliance/GaranVariations.php:81
-#: templates/frontend/garan-label.php:36
+#: templates/frontend/garan-label.php:38
 msgid "a teljes címke megnyitása"
 msgstr "deschideți eticheta completă"
 
@@ -1783,25 +1859,46 @@ msgstr ""
 "Abilități de gestionare a cazurilor de retragere (withdrawal) pentru "
 "WooCommerce."
 
-#: includes/Woo/OrderStatusManager.php:45
+#: includes/Woo/OrderStatusManager.php:64
 msgid "Elállás kérve"
 msgstr "Retragere solicitată"
 
-#: includes/Woo/OrderStatusManager.php:46
+#: includes/Woo/OrderStatusManager.php:65
 msgid "Elállás – ellenőrzés alatt"
 msgstr "Retragere – în verificare"
 
-#: includes/Woo/OrderStatusManager.php:47
+#: includes/Woo/OrderStatusManager.php:66
 msgid "Elállás elfogadva"
 msgstr "Retragere acceptată"
 
-#: includes/Woo/OrderStatusManager.php:48
+#: includes/Woo/OrderStatusManager.php:67
 msgid "Elállás lezárva"
 msgstr "Retragere închisă"
 
-#: includes/Woo/OrderStatusManager.php:142
+#: includes/Woo/OrderStatusManager.php:166
 msgid "Elállási ügy státusz-szinkron."
 msgstr "Sincronizarea stării cazului de retragere."
+
+#: includes/Woo/RefundCreator.php:38
+msgid "Ehhez az ügyhöz most nem rögzíthető visszatérítés."
+msgstr "Pentru acest caz nu se poate înregistra acum o rambursare."
+
+#: includes/Woo/RefundCreator.php:45
+msgid ""
+"Nincs visszatérítendő összeg: minden tétel 0, vagy már vissza lett térítve."
+msgstr "Nimic de rambursat: toate liniile sunt 0 sau au fost deja rambursate."
+
+#. translators: %s: case number.
+#: includes/Woo/RefundCreator.php:52
+#, php-format
+msgid "Elállás: %s"
+msgstr "Retragere: %s"
+
+#. translators: 1: refund amount, 2: refund ID.
+#: includes/Woo/RefundCreator.php:122
+#, php-format
+msgid "Visszatérítés rögzítve a WooCommerce-ben: %1$s (#%2$d)."
+msgstr "Rambursare înregistrată în WooCommerce: %1$s (#%2$d)."
 
 #: templates/emails/admin-notification.php:27
 #: templates/emails/plain/admin-notification.php:24
@@ -1908,7 +2005,7 @@ msgstr ""
 "Vă rugăm să păstrați acest e-mail, care servește drept confirmare a "
 "retragerii."
 
-#: templates/emails/garan-item.php:25
+#: templates/emails/garan-item.php:27
 msgid "A hivatalos címke a termékoldalon"
 msgstr "Eticheta oficială pe pagina produsului"
 
@@ -1940,7 +2037,7 @@ msgstr ""
 "Vă confirmăm că declarația dumneavoastră de retragere a fost înregistrată pe "
 "suport durabil."
 
-#: templates/emails/plain/garan-item.php:19
+#: templates/emails/plain/garan-item.php:21
 msgid "A hivatalos címke a termékoldalon:"
 msgstr "Eticheta oficială pe pagina produsului:"
 
@@ -1982,7 +2079,7 @@ msgstr ""
 "Prețul de achiziție va fi rambursat în cel mult 14 zile de la primirea "
 "retragerii."
 
-#: templates/frontend/checkout-garan-list.php:19
+#: templates/frontend/checkout-garan-list.php:21
 msgid "A következő termékekre a gyártó tartóssági jótállást vállal:"
 msgstr ""
 "Producătorul oferă o garanție comercială de durabilitate pentru următoarele "
@@ -2052,7 +2149,7 @@ msgstr ""
 msgid "Új keresés"
 msgstr "Căutare nouă"
 
-#: templates/frontend/garan-label.php:58
+#: templates/frontend/garan-label.php:60
 #: templates/frontend/guarantee-notice.php:38
 #: templates/frontend/guarantee-notice.php:42
 msgid "(új lapon nyílik)"
@@ -2246,167 +2343,3 @@ msgctxt "block description"
 msgid "Online elállási nyilatkozat űrlap megjelenítése a látogatók számára."
 msgstr ""
 "Afișarea formularului de declarație de retragere online pentru vizitatori."
-
-#~ msgid ""
-#~ "Az automatikus betöltő (autoloader) nem található. Futtasd a „composer "
-#~ "install” parancsot a plugin könyvtárában, vagy telepítsd újra a plugint "
-#~ "egy kiadási ZIP-ből."
-#~ msgstr ""
-#~ "Încărcătorul automat (autoloader) nu a fost găsit. Rulați comanda "
-#~ "„composer install” în directorul pluginului sau reinstalați pluginul "
-#~ "dintr-o arhivă ZIP de distribuție."
-
-#~ msgid ""
-#~ "Több címzett is megadható, vesszővel, pontosvesszővel vagy szóközzel "
-#~ "elválasztva. Üresen hagyva az oldal adminisztrátori e-mail címe."
-#~ msgstr ""
-#~ "Pot fi indicați mai mulți destinatari, separați prin virgulă, punct și "
-#~ "virgulă sau spațiu. Dacă este lăsat necompletat, se folosește adresa de e-"
-#~ "mail a administratorului site-ului."
-
-#~ msgid "Rendelési e-mail elállási szövege"
-#~ msgstr "Textul de retragere din e-mailul comenzii"
-
-#~ msgid ""
-#~ "A WooCommerce rendelési e-mailekbe fűzött szöveg az elállási link köré "
-#~ "(csak akkor jelenik meg, ha az Általános fülön a „Rendelési e-mailben\" "
-#~ "megjelenítés be van kapcsolva). A {link} helyőrző helyére a beállított "
-#~ "elállási oldalra mutató hivatkozás kerül; ha nincs {link} a szövegben, a "
-#~ "hivatkozás a szöveg után kerül. Üresen hagyva csak a hivatkozás jelenik "
-#~ "meg."
-#~ msgstr ""
-#~ "Text adăugat în e-mailurile de comandă WooCommerce în jurul linkului de "
-#~ "retragere (apare doar dacă afișarea „În e-mailul comenzii” este activată "
-#~ "pe fila General). În locul substituentului {link} se inserează linkul "
-#~ "către pagina de retragere configurată; dacă în text nu există {link}, "
-#~ "linkul este adăugat după text. Dacă este lăsat necompletat, apare doar "
-#~ "linkul."
-
-#~ msgid "Tájékoztató / ÁSZF link"
-#~ msgstr "Link informare / Termeni și condiții"
-
-#~ msgid ""
-#~ "Hivatkozás elhelyezése minden elállási e-mail alján (új lapon nyílik)"
-#~ msgstr ""
-#~ "Plasarea unui link în subsolul fiecărui e-mail de retragere (se deschide "
-#~ "într-o filă nouă)"
-
-#~ msgid "Tájékoztató URL"
-#~ msgstr "URL informare"
-
-#~ msgid ""
-#~ "A hivatkozott oldal címe (pl. ÁSZF, elállási vagy adatkezelési "
-#~ "tájékoztató). Üresen hagyva a WooCommerce → Beállítások → Speciális alatt "
-#~ "beállított ÁSZF oldal érvényes."
-#~ msgstr ""
-#~ "Adresa paginii spre care se face trimiterea (de ex. Termeni și condiții, "
-#~ "informare privind retragerea sau prelucrarea datelor). Dacă este lăsat "
-#~ "necompletat, se aplică pagina de Termeni și condiții configurată în "
-#~ "WooCommerce → Setări → Avansat."
-
-#~ msgid "Tájékoztató link felirata"
-#~ msgstr "Eticheta linkului de informare"
-
-#~ msgid "A hivatkozás megjelenő szövege az e-mailekben."
-#~ msgstr "Textul afișat al linkului în e-mailuri."
-
-#~ msgid ""
-#~ "Az elállási kérelmét nem tudjuk teljesíteni, mert az érintett "
-#~ "termék(ek)re a jogszabály szerint nem gyakorolható elállási jog:"
-#~ msgstr ""
-#~ "Nu putem da curs cererii dumneavoastră de retragere, deoarece pentru "
-#~ "produsul (produsele) vizat(e), conform legii, nu se poate exercita "
-#~ "dreptul de retragere:"
-
-#~ msgid "Általános Szerződési Feltételek (ÁSZF)"
-#~ msgstr "Termeni și condiții"
-
-#~ msgid "Kérjük, válasszon legalább egy elállásra jogosult terméket."
-#~ msgstr ""
-#~ "Vă rugăm să selectați cel puțin un produs eligibil pentru retragere."
-
-#~ msgid ""
-#~ "A plugin működéséhez a WooCommerce telepítése és aktiválása szükséges."
-#~ msgstr ""
-#~ "Pentru funcționarea pluginului este necesară instalarea și activarea "
-#~ "WooCommerce."
-
-#~ msgid "Hagyd üresen ezt a mezőt"
-#~ msgstr "Lăsați acest câmp necompletat"
-
-#~ msgid "Elállási ügyek listázása"
-#~ msgstr "Listarea cazurilor de retragere"
-
-#~ msgid ""
-#~ "Elállási ügyek listázása, opcionálisan státusz szerint szűrve és lapozva."
-#~ msgstr ""
-#~ "Listarea cazurilor de retragere, opțional filtrate după stare și paginate."
-
-#~ msgid "Elállási ügy lekérése"
-#~ msgstr "Preluarea unui caz de retragere"
-
-#~ msgid "Egy ügy lekérése a tételeivel és audit eseményeivel együtt."
-#~ msgstr ""
-#~ "Preluarea unui caz împreună cu articolele și evenimentele sale de audit."
-
-#~ msgid "Ügy státuszának módosítása"
-#~ msgstr "Modificarea stării cazului"
-
-#~ msgid "Egy elállási ügy státuszának megváltoztatása."
-#~ msgstr "Schimbarea stării unui caz de retragere."
-
-#~ msgid "Ügy audit naplójának lekérése"
-#~ msgstr "Preluarea jurnalului de audit al cazului"
-
-#~ msgid "Egy elállási ügy audit eseménynaplójának lekérése."
-#~ msgstr ""
-#~ "Preluarea jurnalului de evenimente de audit al unui caz de retragere."
-
-#~ msgid "Érvénytelen státuszérték."
-#~ msgstr "Valoare de stare invalidă."
-
-#~ msgid "Az ügy státusza nem frissíthető."
-#~ msgstr "Starea cazului nu poate fi actualizată."
-
-#~ msgid "* A megerősítéshez mindhárom jelölőnégyzet bejelölése kötelező."
-#~ msgstr ""
-#~ "* Pentru confirmare este obligatorie bifarea tuturor celor trei casete."
-
-#~ msgid ""
-#~ "Ehhez a rendeléshez nem gyakorolható online elállás, mert az érintett "
-#~ "termék(ek)re a jogszabály szerint nem illeti meg elállási jog:"
-#~ msgstr ""
-#~ "Pentru această comandă nu se poate exercita retragerea online, deoarece "
-#~ "pentru produsul (produsele) vizat(e), conform legii, nu vă revine dreptul "
-#~ "de retragere:"
-
-#~ msgid "A kérelméről és az elutasítás okáról e-mailben is tájékoztattuk."
-#~ msgstr ""
-#~ "V-am informat și prin e-mail cu privire la cererea dumneavoastră și la "
-#~ "motivul respingerii."
-
-#~ msgid ""
-#~ "Ha úgy gondolja, hogy tévedés történt, kérjük, vegye fel a kapcsolatot "
-#~ "ügyfélszolgálatunkkal."
-#~ msgstr ""
-#~ "Dacă considerați că s-a produs o eroare, vă rugăm să contactați serviciul "
-#~ "nostru clienți."
-
-#~ msgid ""
-#~ "A megjelölt termék(ek)re nem gyakorolható elállás, ezért nem választhatók "
-#~ "ki. A rendelés többi termékére az elállás továbbra is kezdeményezhető."
-#~ msgstr ""
-#~ "Pentru produsul (produsele) marcat(e) nu se poate exercita retragerea, "
-#~ "prin urmare nu pot fi selectate. Retragerea poate fi în continuare "
-#~ "inițiată pentru celelalte produse din comandă."
-
-#~ msgid "Elállásból kizárva"
-#~ msgstr "Exclus de la retragere"
-
-#~ msgid ""
-#~ "Az „Elállás\" fiók-végpont URL-részlete (pl. elallasaim). Mentés után a "
-#~ "fiók menü hivatkozása automatikusan az új címre mutat."
-#~ msgstr ""
-#~ "Fragmentul de URL (slug) al punctului final de cont „Retragere” (ex. "
-#~ "retrageri). După salvare, linkul din meniul contului indică automat noua "
-#~ "adresă."

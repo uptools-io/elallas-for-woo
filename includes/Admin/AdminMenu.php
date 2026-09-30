@@ -28,6 +28,7 @@ final class AdminMenu {
 	public function __construct() {
 		add_action( 'admin_menu', [ $this, 'register' ], 10 );
 		new CaseActions();
+		new CaseRefundAction();
 	}
 
 	/**

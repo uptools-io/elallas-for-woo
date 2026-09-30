@@ -156,10 +156,10 @@ egységes címkével kell jelölni.
 A beállítások a **Szavatosság és GARAN** fülön vannak; a részletekhez lásd a
 [kezelési útmutatót](kezelesi-utmutato.md).
 
-**Ismert korlátok az 1.1.0-ban:** az e-mailben a GARAN címke csak GD FreeType-támogatású
+**Ismert korlátok:** az e-mailben a GARAN címke csak GD FreeType-támogatású
 tárhelyen jelenik meg képként (enélkül szövegként és linkként); a terméklistákon csak klasszikus
-témával; a szoftverfrissítési és javíthatósági információt 1.1.1-ig a termékleírásban kell
-feltüntetni; a szavatossági Gutenberg-blokk és Elementor-widget 1.1.1-ben jön (addig
+témával; a szoftverfrissítési és javíthatósági információt egyelőre a termékleírásban kell
+feltüntetni; a szavatossági Gutenberg-blokk és Elementor-widget egy későbbi verzióban jön (addig
 shortcode-dal helyezhető el); a blokkos kosár expressz fizetési gombjai előtt a GARAN címke nem
 jelenik meg.
 
