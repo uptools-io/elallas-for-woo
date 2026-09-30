@@ -286,8 +286,15 @@ Az 1.1.0 szavatossági kulcsai (`Options::get_defaults()`, a `TabCompliance` men
 
 ## Egyedi rendelési státuszok (opcionális)
 
-Ha a `use_wc_statuses` be van kapcsolva: `wc-withdrawal-requested`, `wc-withdrawal-review`,
-`wc-withdrawal-accepted`, `wc-withdrawal-closed` — az ügy státuszához szinkronizálva.
+Ha a `use_wc_statuses` be van kapcsolva: `wc-withdrawal-new` (Elállás kérve), `wc-withdrawal-review`,
+`wc-withdrawal-accept` (Elállás elfogadva), `wc-withdrawal-closed` — az ügy státuszához szinkronizálva.
+A slugok a `OrderStatusManager` konstansai; a WordPress és a WooCommerce 20 karakteres oszlopban
+tárolja a státuszt, ezért egy slug (a `wc-` előtaggal együtt) legfeljebb 20 karakter lehet.
+
+1.1.0-ig a `wc-withdrawal-requested` és `wc-withdrawal-accepted` slugok hosszabbak voltak ennél:
+HPOS alatt a MySQL levágta őket, régi tárolásnál a státuszváltás nem mentődött. Az 1.2.0-s
+DB-frissítés (`OrderStatusMigration`) a levágott `wc-withdrawal-reques` értéket `wc-withdrawal-new`-ra
+javítja; a levágott `wc-withdrawal-accept` már az új, érvényes slug.
 
 ## Dokumentum-letöltés
 

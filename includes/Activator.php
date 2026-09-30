@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace LightweightPlugins\Elallas;
 
 use LightweightPlugins\Elallas\Database\Schema;
+use LightweightPlugins\Elallas\Woo\OrderStatusMigration;
 
 /**
  * Handles plugin activation and DB upgrades.
@@ -24,7 +25,7 @@ final class Activator {
 	/**
 	 * Current DB version.
 	 */
-	private const DB_VERSION = '1.0.5';
+	private const DB_VERSION = '1.0.6';
 
 	/**
 	 * Daily retention cron hook.
@@ -38,6 +39,7 @@ final class Activator {
 	 */
 	public static function activate(): void {
 		self::create_tables();
+		OrderStatusMigration::run();
 		self::set_db_version();
 		self::create_documents_dir();
 		self::schedule_cron();
@@ -129,6 +131,7 @@ final class Activator {
 	public static function maybe_upgrade(): void {
 		if ( self::needs_upgrade() ) {
 			self::create_tables();
+			OrderStatusMigration::run();
 			self::set_db_version();
 		}
 	}
