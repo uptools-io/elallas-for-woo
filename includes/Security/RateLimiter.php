@@ -62,6 +62,18 @@ final class RateLimiter {
 	}
 
 	/**
+	 * Whether the cross-IP counter of a resolved order has exceeded its limit.
+	 *
+	 * Keyed by the WooCommerce order ID. Increments as a side effect.
+	 *
+	 * @param int $order_id Resolved WooCommerce order ID.
+	 * @return bool True if the limit is exceeded.
+	 */
+	public static function too_many_for_order( int $order_id ): bool {
+		return self::too_many_global( 'order_' . $order_id );
+	}
+
+	/**
 	 * Transient key for the current client and action.
 	 *
 	 * @param string $action Action slug.

@@ -33,11 +33,7 @@ final class StepProcessor {
 	 * @return array{view: string, data: array<string, mixed>}
 	 */
 	public function identify(): array {
-		if ( RateLimiter::too_many( 'identify' ) || RateLimiter::too_many_global( 'order_' . FormRequest::order_number() ) ) {
-			return $this->denied();
-		}
-
-		[ $order, $email, $order_number, $result ] = $this->revalidate();
+		[ $order, $email, $order_number, $result ] = $this->revalidate( 'identify' );
 
 		if ( null === $order ) {
 			return $this->denied();
@@ -61,7 +57,7 @@ final class StepProcessor {
 	 * @return array{view: string, data: array<string, mixed>}
 	 */
 	public function select(): array {
-		[ $order, $email, $order_number, $result ] = $this->revalidate();
+		[ $order, $email, $order_number, $result ] = $this->revalidate( 'select' );
 
 		if ( null === $order ) {
 			return $this->denied();
@@ -93,11 +89,7 @@ final class StepProcessor {
 	 * @return array{view: string, data: array<string, mixed>}
 	 */
 	public function confirm(): array {
-		if ( RateLimiter::too_many_global( 'order_' . FormRequest::order_number() ) ) {
-			return $this->denied();
-		}
-
-		[ $order, $email, $order_number, $result ] = $this->revalidate();
+		[ $order, $email, $order_number, $result ] = $this->revalidate( 'confirm' );
 
 		if ( null === $order ) {
 			return $this->denied();
@@ -131,15 +123,28 @@ final class StepProcessor {
 	}
 
 	/**
-	 * Re-validate the carried order + email.
+	 * Throttle, then re-validate the carried order + email.
 	 *
+	 * Applies the per-client and per-order attempt limits.
+	 *
+	 * @param string $step Step slug (identify|select|confirm).
 	 * @return array{0: ?\WC_Order, 1: string, 2: string, 3: ?EligibilityResult}
 	 */
-	private function revalidate(): array {
+	private function revalidate( string $step ): array {
 		$order_number = FormRequest::order_number();
 		$email        = FormRequest::email();
-		$order        = OrderAdapter::get_order_by_number( $order_number );
-		$result       = $order ? ( new EligibilityChecker() )->check( $order, $email ) : null;
+
+		if ( RateLimiter::too_many( $step ) ) {
+			return [ null, $email, $order_number, null ];
+		}
+
+		$order = OrderAdapter::get_order_by_number( $order_number );
+
+		if ( null !== $order && RateLimiter::too_many_for_order( $order->get_id() ) ) {
+			return [ null, $email, $order_number, null ];
+		}
+
+		$result = $order ? ( new EligibilityChecker() )->check( $order, $email ) : null;
 
 		if ( null === $order || ! $result instanceof EligibilityResult || ! $result->eligible ) {
 			return [ null, $email, $order_number, null ];

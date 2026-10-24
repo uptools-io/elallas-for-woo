@@ -37,12 +37,17 @@ final class CaseWriteHandler {
 	public function create( WP_REST_Request $request ): WP_REST_Response {
 		$order_number = sanitize_text_field( (string) $request->get_param( 'order_number' ) );
 
-		if ( ! Options::get( 'enabled' ) || RateLimiter::too_many( 'rest_cases_create' ) || RateLimiter::too_many_global( 'order_' . $order_number ) ) {
+		if ( ! Options::get( 'enabled' ) || RateLimiter::too_many( 'rest_cases_create' ) ) {
 			return $this->neutral();
 		}
 
-		$email  = sanitize_email( (string) $request->get_param( 'email' ) );
-		$order  = OrderAdapter::get_order_by_number( $order_number );
+		$email = sanitize_email( (string) $request->get_param( 'email' ) );
+		$order = OrderAdapter::get_order_by_number( $order_number );
+
+		if ( null !== $order && RateLimiter::too_many_for_order( $order->get_id() ) ) {
+			return $this->neutral();
+		}
+
 		$result = $order ? ( new EligibilityChecker() )->check( $order, $email ) : null;
 
 		if ( null === $order || ! $result instanceof EligibilityResult || ! $result->eligible ) {
@@ -114,7 +119,7 @@ final class CaseWriteHandler {
 			return $this->neutral();
 		}
 
-		if ( RateLimiter::too_many_global( 'order_' . $case->order_id ) ) {
+		if ( RateLimiter::too_many_for_order( $case->order_id ) ) {
 			return $this->neutral();
 		}
 
