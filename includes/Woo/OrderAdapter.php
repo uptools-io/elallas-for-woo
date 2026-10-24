@@ -104,12 +104,21 @@ final class OrderAdapter {
 	/**
 	 * Whether the supplied email matches the order's billing email.
 	 *
+	 * Compares the normalised, validated addresses.
+	 *
 	 * @param \WC_Order $order Order.
 	 * @param string    $email Candidate email.
 	 * @return bool
 	 */
 	public static function email_matches( \WC_Order $order, string $email ): bool {
-		return strtolower( trim( $email ) ) === strtolower( self::customer_email( $order ) );
+		$candidate = strtolower( trim( $email ) );
+		$billing   = strtolower( trim( self::customer_email( $order ) ) );
+
+		if ( '' === $candidate || '' === $billing || ! is_email( $candidate ) || ! is_email( $billing ) ) {
+			return false;
+		}
+
+		return $candidate === $billing;
 	}
 
 	/**
