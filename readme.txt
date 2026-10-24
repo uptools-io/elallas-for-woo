@@ -4,7 +4,7 @@ Tags: woocommerce, withdrawal, refund, gdpr, compliance
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 8.0
@@ -135,6 +135,11 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 6. Onboarding wizard
 
 == Changelog ==
+
+= 1.2.1 =
+* Fix: Stricter validation when confirming a withdrawal case.
+* Fix: Stricter e-mail validation when identifying an order.
+* Change: More consistent attempt limits across the withdrawal form.
 
 = 1.2.0 =
 * New: "Record refund in WooCommerce" on the case page: per-line refund quantity and restock choice, shipping and fee amounts (prefilled on full withdrawal, 0 on partial), live gross total and an optional "close the case". It records a WooCommerce refund (no payment gateway call), restocks only the chosen lines, logs a case event, and never refunds the same line twice for a case. A fully refunded order becomes "Refunded".

@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.1] - 2026-10-24
+
+### Fixed
+- Stricter validation when confirming a withdrawal case.
+- Stricter e-mail validation when identifying an order.
+
+### Changed
+- More consistent attempt limits across the withdrawal form.
+
 ## [1.2.0] - 2026-09-30
 
 ### Added
