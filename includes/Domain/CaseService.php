@@ -105,7 +105,7 @@ final class CaseService {
 	public function confirm( int $case_id ): bool {
 		$case = CaseRepository::find( $case_id );
 
-		if ( null === $case ) {
+		if ( null === $case || CaseStatus::RECEIVED !== $case->status ) {
 			return false;
 		}
 
