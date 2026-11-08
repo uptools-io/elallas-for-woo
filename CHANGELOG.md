@@ -8,6 +8,7 @@
 
 ### Changed
 - More consistent attempt limits across the withdrawal form.
+- The bundled PDF library (Dompdf) is updated to 3.1.6, which includes its latest security fixes.
 
 ## [1.2.0] - 2026-09-30
 

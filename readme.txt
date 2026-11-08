@@ -140,6 +140,7 @@ Yes. The declaration, confirmation and other texts are editable in the Legal and
 * Fix: Stricter validation when confirming a withdrawal case.
 * Fix: Stricter e-mail validation when identifying an order.
 * Change: More consistent attempt limits across the withdrawal form.
+* Update: The bundled PDF library (Dompdf) is updated to 3.1.6, which includes its latest security fixes.
 
 = 1.2.0 =
 * New: "Record refund in WooCommerce" on the case page: per-line refund quantity and restock choice, shipping and fee amounts (prefilled on full withdrawal, 0 on partial), live gross total and an optional "close the case". It records a WooCommerce refund (no payment gateway call), restocks only the chosen lines, logs a case event, and never refunds the same line twice for a case. A fully refunded order becomes "Refunded".
